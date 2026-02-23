@@ -27,7 +27,7 @@ export default function RootLayout({
             <nav className="flex items-center gap-2">
               <Link
                 href="/"
-                className="rounded-xl px-4 py-2 font-semibold hover:bg-zinc-900 transition"
+                className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
               >
                 Home
               </Link>
@@ -41,7 +41,7 @@ export default function RootLayout({
                 */}
               <Link
                 href="/contact"
-                className="rounded-xl bg-white text-black px-4 py-2 font-semibold border border-white text-white hover:bg-white hover:text-black transition"
+                className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
               >
                 Contact Us
               </Link>
