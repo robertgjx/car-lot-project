@@ -9,7 +9,7 @@ export default function ContactPage() {
         <div className="mt-6 bg-zinc-900 rounded-2xl p-6 space-y-3">
           <p>
             <span className="text-gray-400">Phone:</span>{" "}
-            <span className="text-white">(956-581-0455)</span>
+            <span className="text-white">(956)-581-0455</span>
           </p>
           <p>
             <span className="text-gray-400">Location:</span>{" "}

@@ -15,19 +15,19 @@ export default function Home() {
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-16">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="relative h-36 w-36 overflow-hidden rounded-3xl bg-white/10 ring-1 ring-white/15">
+          <div className="relative h-40 w-80 mb-6">
             {/* Change src if your logo file name is different */}
             <Image
               src="/logo.png"
               alt="Garcia's Auto Sales RGV logo"
               fill
-              className="object-contain p-0"
+              className="object-contain"
               priority
             />
           </div>
           <div className="text-left">
             <p className="text-sm text-white/70">Garcia&apos;s Auto Sales RGV</p>
-            <p className="text-xs text-white/50">Mission, TX</p>
+            <p className="text-xs text-white/50">Palmview, TX</p>
           </div>
         </div>
 
@@ -74,7 +74,7 @@ export default function Home() {
 
         {/* Footer microcopy */}
         <div className="mt-10 text-center text-xs text-white/45">
-          © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV • All rights reserved
+          © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV LLC • All rights reserved
         </div>
       </div>
     </main>
