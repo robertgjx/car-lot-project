@@ -15,13 +15,13 @@ export default function Home() {
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-16">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="relative h-28 w-28 overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15 shadow-[0_0_25px_rgba(225,255,255,0.08)]">
+          <div className="relative h-36 w-36 overflow-hidden rounded-3xl bg-white/10 ring-1 ring-white/15">
             {/* Change src if your logo file name is different */}
             <Image
               src="/logo.png"
               alt="Garcia's Auto Sales RGV logo"
               fill
-              className="object-contain p-2"
+              className="object-contain p-0"
               priority
             />
           </div>
