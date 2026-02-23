@@ -57,12 +57,12 @@ export default function Home() {
 
         {/* Buttons */}
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-          <Link
+          {/*<Link
             href="/inventory"
             className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg transition hover:opacity-90"
           >
             Browse Inventory
-          </Link>
+          </Link>*/}
 
           <Link
             href="/contact"
