@@ -31,7 +31,7 @@ export default function ContactPage() {
       alt="Facebook"
       width={20}
       height={20}
-      className="invert opacity-90"
+    
     />
     <span className="font-medium">Garcia's Auto Sales RGV</span>
   </a>
