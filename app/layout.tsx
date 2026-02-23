@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <body className="bg-neutral-950 text-white">
         {/* Navbar */}
         <header className="sticky top-0 z-50 border-b border-zinc-800 bg-neutral-900/80 backdrop-blur">
           <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
