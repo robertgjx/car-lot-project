@@ -12,7 +12,11 @@ export default function VehicleDetailsPage({
 }: {
   params: { id: string };
 }) {
-  const vehicle = getVehicleById(params.id);
+  // ✅ Make sure the id matches what’s in inventory.json
+  const decodedId = decodeURIComponent(params.id);
+
+  // Try decoded first, then raw as a fallback
+  const vehicle = getVehicleById(decodedId) ?? getVehicleById(params.id);
 
   if (!vehicle) {
     return (
@@ -24,8 +28,12 @@ export default function VehicleDetailsPage({
           >
             ← Back to Inventory
           </Link>
+
           <div className="mt-8 bg-zinc-900 rounded-2xl p-6">
-            Vehicle not found.
+            <div className="text-xl font-semibold">Vehicle not found.</div>
+            <div className="mt-2 text-sm text-gray-300">
+              Tried ID: <span className="font-mono">{decodedId}</span>
+            </div>
           </div>
         </div>
       </main>
@@ -49,7 +57,8 @@ export default function VehicleDetailsPage({
           </Link>
 
           <div className="text-sm text-gray-300">
-            Status: <span className="font-semibold">{vehicle.status ?? "N/A"}</span>
+            Status:{" "}
+            <span className="font-semibold">{vehicle.status ?? "N/A"}</span>
           </div>
         </div>
 
@@ -71,19 +80,52 @@ export default function VehicleDetailsPage({
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
 
-            <p className="mt-4 text-2xl font-bold">{formatMoney(vehicle.price)}</p>
+            <p className="mt-4 text-2xl font-bold">
+              {formatMoney(vehicle.price)}
+            </p>
 
             <div className="mt-6 space-y-2 text-gray-200">
-              <div>VIN: <span className="text-white font-semibold">{vehicle.vin ?? "N/A"}</span></div>
-              <div>Miles: <span className="text-white font-semibold">{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}</span></div>
-              <div>Drive Train: <span className="text-white font-semibold">{vehicle.driveTrain ?? "N/A"}</span></div>
-              <div>Fuel: <span className="text-white font-semibold">{vehicle.fuel ?? "N/A"}</span></div>
-              <div>Down: <span className="text-white font-semibold">{formatMoney(vehicle.down)}</span></div>
+              <div>
+                VIN:{" "}
+                <span className="text-white font-semibold">
+                  {vehicle.vin ?? "N/A"}
+                </span>
+              </div>
+
+              <div>
+                Miles:{" "}
+                <span className="text-white font-semibold">
+                  {vehicle.miles != null
+                    ? vehicle.miles.toLocaleString()
+                    : "N/A"}
+                </span>
+              </div>
+
+              <div>
+                Drive Train:{" "}
+                <span className="text-white font-semibold">
+                  {vehicle.driveTrain ?? "N/A"}
+                </span>
+              </div>
+
+              <div>
+                Fuel:{" "}
+                <span className="text-white font-semibold">
+                  {vehicle.fuel ?? "N/A"}
+                </span>
+              </div>
+
+              <div>
+                Down:{" "}
+                <span className="text-white font-semibold">
+                  {formatMoney(vehicle.down)}
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Gallery (rest of images) */}
+        {/* Gallery */}
         {restImgs.length > 0 && (
           <div className="mt-8">
             <h2 className="text-xl font-semibold">More Photos</h2>
@@ -93,7 +135,12 @@ export default function VehicleDetailsPage({
                   key={src}
                   className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-900"
                 >
-                  <Image src={src} alt="Vehicle photo" fill className="object-cover" />
+                  <Image
+                    src={src}
+                    alt="Vehicle photo"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               ))}
             </div>
