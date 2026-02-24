@@ -16,7 +16,7 @@ export default function VehicleDetailsPage({
   const decodedId = decodeURIComponent(params.id);
 
   // Try decoded first, then raw as a fallback
-  const vehicle = getVehicleById(decodedId) ?? getVehicleById(params.id);
+  const vehicle = getVehicleById(decodeURIComponent(params.id));
 
   if (!vehicle) {
     return (

@@ -35,5 +35,7 @@ export const vehicles: Vehicle[] = (inventory as Vehicle[]).map((v) => {
   return { ...v, images };
 });
 
-export const getVehicleById = (id: string) =>
-  vehicles.find((v) => v.id === id);
+export const getVehicleById = (id: string) => {
+  const target = decodeURIComponent(id).trim();
+  return vehicles.find((v) => v.id.trim() === target);
+};
