@@ -31,14 +31,14 @@ export default function RootLayout({
               >
                 Home
               </Link>
-              
+              {/*
               <Link
                 href="/inventory"
                 className="rounded-xl px-4 py-2 font-semibold border border-white text-white hover:bg-white hover:text-black transition"
               >
                 Inventory
               </Link>
-              
+              */}
               <Link
                 href="/contact"
                 className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
