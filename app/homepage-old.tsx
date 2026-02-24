@@ -160,7 +160,7 @@ export default function Home() {
             >
               <div className="relative h-52 w-full bg-zinc-900">
                 <Image
-                  src={v.image}
+                  src={v.images?.[0] ?? v.image ?? "/cars/placeholder.jpg"}
                   alt={`${v.year} ${v.make} ${v.model}`}
                   fill
                   className="object-cover"
