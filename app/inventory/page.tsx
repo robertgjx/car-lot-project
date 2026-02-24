@@ -223,7 +223,7 @@ export default function InventoryPage() {
                   </p>
 
                   <Link
-                    href={`/inventory/${vehicle.id}`}
+                    href={`/inventory/${encodeURIComponent(vehicle.id)}`}
                     className="inline-block mt-4 rounded-xl bg-white text-black px-5 py-3 font-semibold hover:opacity-90 transition"
                   >
                     View Details
