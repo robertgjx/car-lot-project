@@ -204,7 +204,7 @@ export default function InventoryPage() {
             >
               <div className="relative w-full h-52 bg-zinc-800">
               <Image
-              src={vehicle.image?.[0] || "/cars/placeholder.jpg"}
+              src={vehicle.images?.[0] || "/cars/placeholder.jpg"}
               alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
               fill
               className="object-cover"

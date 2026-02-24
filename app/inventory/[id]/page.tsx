@@ -84,12 +84,21 @@ export default async function VehicleDetailsPage({
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="relative w-full h-[300px] md:h-[420px] rounded-2xl overflow-hidden bg-zinc-900">
             <Image
-              src={vehicle.image}
+              src={vehicle.images?.[0] ?? "/cars/placeholder.jpg"}
               alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
               fill
               className="object-cover"
               priority
             />
+            {(vehicle.images?.length ?? 0) > 1 && (
+  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+    {vehicle.images!.slice(1).map((src) => (
+      <div key={src} className="relative w-full h-56 rounded-2xl overflow-hidden">
+        <Image src={src} alt="Vehicle photo" fill className="object-cover" />
+      </div>
+    ))}
+  </div>
+)}
           </div>
 
           <div className="bg-zinc-900 rounded-2xl p-6 md:p-8">
