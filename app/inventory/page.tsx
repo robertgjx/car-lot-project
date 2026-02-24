@@ -194,6 +194,7 @@ export default function InventoryPage() {
             // ✅ bulletproof main image
             const mainImg =
               vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
+              console.log("IMG:", vehicle.id, mainImg);
 
             return (
               <div
