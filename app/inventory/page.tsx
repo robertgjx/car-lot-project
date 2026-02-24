@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { vehicles } from "../lib/vehicles";
+import { vehicles } from "@/app/lib/vehicles";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";

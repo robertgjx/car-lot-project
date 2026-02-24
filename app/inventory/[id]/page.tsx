@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getVehicleById } from "../../lib/vehicles";
+import { getVehicleById } from "@/app/lib/vehicles";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
