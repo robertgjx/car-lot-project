@@ -6,35 +6,34 @@ export type Vehicle = {
   make: string;
   model: string;
 
-  price: number | null;
-  miles: number | null;
-
   driveTrain: string | null;
+  price: number | null;
   down: number | null;
+  vin: string | null;
+  miles: number | null;
   fuel: string | null;
 
-  // ✅ Support the old single image field (some vehicles still have it)
-  image?: string | null;
+  // old field
+  image?: string;
 
-  // ✅ New multiple images field
-  images?: string[] | null;
+  // new field
+  images?: string[];
 
-  status: "available" | "pending" | "sold" | string;
+  status: string;
 };
 
 const PLACEHOLDER = "/cars/placeholder.jpg";
 
-// ✅ Normalize so EVERY vehicle always has a usable images array
 export const vehicles: Vehicle[] = (inventory as Vehicle[]).map((v) => {
-  const normalizedImages =
+  const images =
     Array.isArray(v.images) && v.images.length > 0
       ? v.images
       : v.image
       ? [v.image]
       : [PLACEHOLDER];
 
-  return {
-    ...v,
-    images: normalizedImages,
-  };
+  return { ...v, images };
 });
+
+export const getVehicleById = (id: string) =>
+  vehicles.find((v) => v.id === id);
