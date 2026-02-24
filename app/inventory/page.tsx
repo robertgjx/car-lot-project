@@ -9,11 +9,10 @@ function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
+
 const fullYear = (year?: number | null) => {
   if (!year) return "";
-  if (year < 100) {
-    return year >= 90 ? 1900 + year : 2000 + year;
-  }
+  if (year < 100) return year >= 90 ? 1900 + year : 2000 + year;
   return year;
 };
 
@@ -34,8 +33,7 @@ export default function InventoryPage() {
   const [sort, setSort] = useState<SortOption>("default");
 
   const makes = useMemo(() => {
-    const unique = Array.from(new Set(vehicles.map((v) => v.make))).sort();
-    return unique;
+    return Array.from(new Set(vehicles.map((v) => v.make))).sort();
   }, []);
 
   const filtered = useMemo(() => {
@@ -44,37 +42,32 @@ export default function InventoryPage() {
     const max = maxPrice.trim() === "" ? null : Number(maxPrice);
 
     let list = vehicles.filter((v) => {
-      // search match
       const haystack = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
       const matchesQuery = q === "" ? true : haystack.includes(q);
 
-      // make match
       const matchesMake = make === "all" ? true : v.make === make;
 
-      // price match
       const price = v.price ?? null;
-
       const matchesMin = min === null ? true : price !== null && price >= min;
       const matchesMax = max === null ? true : price !== null && price <= max;
 
       return matchesQuery && matchesMake && matchesMin && matchesMax;
     });
 
-    // sort
-    const sorters: Record<SortOption, (a: typeof vehicles[number], b: typeof vehicles[number]) => number> =
-      {
-        default: () => 0,
-        "price-asc": (a, b) => (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY),
-        "price-desc": (a, b) => (b.price ?? -1) - (a.price ?? -1),
-        "miles-asc": (a, b) => (a.miles ?? Number.POSITIVE_INFINITY) - (b.miles ?? Number.POSITIVE_INFINITY),
-        "miles-desc": (a, b) => (b.miles ?? -1) - (a.miles ?? -1),
-        "year-desc": (a, b) => (b.year ?? -1) - (a.year ?? -1),
-        "year-asc": (a, b) => (a.year ?? Number.POSITIVE_INFINITY) - (b.year ?? Number.POSITIVE_INFINITY),
-      };
+    const sorters: Record<
+      SortOption,
+      (a: (typeof vehicles)[number], b: (typeof vehicles)[number]) => number
+    > = {
+      default: () => 0,
+      "price-asc": (a, b) => (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY),
+      "price-desc": (a, b) => (b.price ?? -1) - (a.price ?? -1),
+      "miles-asc": (a, b) => (a.miles ?? Number.POSITIVE_INFINITY) - (b.miles ?? Number.POSITIVE_INFINITY),
+      "miles-desc": (a, b) => (b.miles ?? -1) - (a.miles ?? -1),
+      "year-desc": (a, b) => (b.year ?? -1) - (a.year ?? -1),
+      "year-asc": (a, b) => (a.year ?? Number.POSITIVE_INFINITY) - (b.year ?? Number.POSITIVE_INFINITY),
+    };
 
-    if (sort !== "default") {
-      list = [...list].sort(sorters[sort]);
-    }
+    if (sort !== "default") list = [...list].sort(sorters[sort]);
 
     return list;
   }, [query, make, minPrice, maxPrice, sort]);
@@ -83,20 +76,20 @@ export default function InventoryPage() {
     <main className="min-h-screen bg-black text-white p-6 md:p-10">
       <div className="max-w-6xl mx-auto">
         {/* Top Navigation */}
-<div className="flex items-center justify-between">
-  <h1 className="text-4xl font-bold">Inventory</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-4xl font-bold">Inventory</h1>
 
-  <Link
-    href="/"
-    className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition"
-  >
-    ← Back Home
-  </Link>
-</div>
+          <Link
+            href="/"
+            className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition"
+          >
+            ← Back Home
+          </Link>
+        </div>
 
-<p className="mt-2 text-gray-400">
-  Search and filter vehicles, then tap View Details.
-</p>
+        <p className="mt-2 text-gray-400">
+          Search and filter vehicles, then tap View Details.
+        </p>
 
         {/* Filters Bar */}
         <div className="mt-6 bg-zinc-900 rounded-2xl p-4 md:p-5">
@@ -197,45 +190,47 @@ export default function InventoryPage() {
 
         {/* Vehicle Grid */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((vehicle) => (
-            <div
-              key={vehicle.id}
-              className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg"
-            >
-              <div className="relative w-full h-52 bg-zinc-800">
-              <Image
-              src={vehicle.images?.[0] || "/cars/placeholder.jpg"}
-              alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
-              fill
-              className="object-cover"
-              onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "/cars/placeholder.jpg";
-               }}
-              />
+          {filtered.map((vehicle) => {
+            // ✅ bulletproof main image
+            const mainImg =
+              vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
+
+            return (
+              <div
+                key={vehicle.id}
+                className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg"
+              >
+                <div className="relative w-full h-52 bg-zinc-800">
+                  <Image
+                    src={mainImg}
+                    alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-5">
+                  <h2 className="text-xl font-semibold">
+                    {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
+                  </h2>
+
+                  <p className="mt-2 text-lg font-bold">{formatMoney(vehicle.price)}</p>
+
+                  <p className="mt-1 text-sm text-gray-300">
+                    Miles:{" "}
+                    {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
+                  </p>
+
+                  <Link
+                    href={`/inventory/${vehicle.id}`}
+                    className="inline-block mt-4 rounded-xl bg-white text-black px-5 py-3 font-semibold hover:opacity-90 transition"
+                  >
+                    View Details
+                  </Link>
+                </div>
               </div>
-
-              <div className="p-5">
-                <h2 className="text-xl font-semibold">
-                  {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
-                </h2>
-
-                <p className="mt-2 text-lg font-bold">
-                  {formatMoney(vehicle.price)}
-                </p>
-
-                <p className="mt-1 text-sm text-gray-300">
-                  Miles: {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
-                </p>
-
-                <Link
-                  href={`/inventory/${vehicle.id}`}
-                  className="inline-block mt-4 rounded-xl bg-white text-black px-5 py-3 font-semibold hover:opacity-90 transition"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Empty state */}
