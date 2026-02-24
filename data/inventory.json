@@ -10,7 +10,11 @@
     "vin": "235108",
     "miles": 236788,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "image": ["/cars/2017-chevy-colorado-235108/IMG_0702.jpg",
+              "/cars/2017-chevy-colorado-235108/IMG_0707.jpg",
+              "/cars/2017-chevy-colorado-235108/IMG_0708.jpg"
+
+               ],
     "status": "available"
   },
   {
