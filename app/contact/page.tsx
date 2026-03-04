@@ -11,7 +11,9 @@ export default function ContactPage() {
       <div className="mt-6 bg-zinc-900 rounded-2xl p-6 space-y-4">
         <p>
           <span className="text-gray-400">Phone:</span>{" "}
-          <a href="tel:9565810455" className="text-white hover:underline">(956)-581-0455</a>
+          <a href="tel:9565810455" className="text-white hover:underline">
+            (956)-581-0455
+          </a>
         </p>
 
         <p>
@@ -27,10 +29,7 @@ export default function ContactPage() {
           </p>
           <div className="mt-3 bg-zinc-800 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span className="text-white font-semibold text-lg">Caesar</span>
-            
-              href="tel:9564789359"
-              className="text-white font-medium hover:underline"
-            >
+            <a href="tel:9564789359" className="text-white font-medium hover:underline">
               (956) 478-9359
             </a>
           </div>
@@ -40,22 +39,17 @@ export default function ContactPage() {
 
         <div className="flex flex-col items-center gap-3 pt-2">
           <p className="text-sm text-white/60">Follow us on Facebook</p>
-          
+          <a
             href="https://facebook.com/garciasautosalesrgvllc"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-3 rounded-2xl bg-zinc-800 px-5 py-4 hover:bg-zinc-700 transition"
           >
-            <Image
-              src="/facebook.svg"
-              alt="Facebook"
-              width={24}
-              height={24}
-            />
-            <span className="font-semibold text-white">Garcia's Auto Sales RGV</span>
+            <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
+            <span className="font-semibold text-white">Garcia&apos;s Auto Sales RGV</span>
           </a>
         </div>
       </div>
     </main>
   );
-}
+} 
