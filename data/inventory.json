@@ -28,7 +28,7 @@
     "vin": "217453",
     "miles": 168647,
     "fuel": null,
-    "image": ["/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
+    "images": ["/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
               "/cars/2022-chevy-colorado-217453/IMG_0705.jpg",
               "/cars/2022-chevy-colorado-217453/IMG_0706.jpg"
 
@@ -46,7 +46,7 @@
     "vin": "242368",
     "miles": 199972,
     "fuel": null,
-    "image": ["/cars/2020-chevy-colorado-242368/IMG_0709.jpg",
+    "images": ["/cars/2020-chevy-colorado-242368/IMG_0709.jpg",
               "/cars/2020-chevy-colorado-242368/IMG_0710.jpg",
               "/cars/2020-chevy-colorado-242368/IMG_0711.jpg"
              ],
@@ -63,7 +63,11 @@
     "vin": "21341",
     "miles": 233409,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2011-toyota-tundra-21341/IMG_0712.jpeg",
+               "/cars/2011-toyota-tundra-21341/IMG_0713.jpeg",
+               "/cars/2011-toyota-tundra-21341/IMG_0714.jpeg"
+
+              ],
     "status": "available"
   },
   {
@@ -77,7 +81,10 @@
     "vin": "190143",
     "miles": null,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2016-ram-1500-190143/IMG_0715.jpeg",
+              "/cars/2016-ram-1500-190143/IMG_0716.jpeg",
+              "/cars/2016-ram-1500-190143/IMG_0717.jpeg"
+              ],
     "status": "available"
   },
   {
