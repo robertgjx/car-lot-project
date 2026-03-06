@@ -1,10 +1,118 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { getVehicleById } from "@/app/lib/vehicles";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+}
+
+function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const mainImg = images[0] ?? "/cars/placeholder.jpg";
+  const restImgs = images.slice(1);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + images.length) % images.length : 0));
+  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % images.length : 0));
+
+  return (
+    <>
+      {/* Main Image */}
+      <div
+        className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
+        onClick={() => openLightbox(0)}
+      >
+        <Image src={mainImg} alt={alt} fill className="object-cover" priority />
+        {images.length > 1 && (
+          <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
+            1 / {images.length}
+          </div>
+        )}
+      </div>
+
+      {/* Thumbnail Gallery */}
+      {restImgs.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold">More Photos</h2>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {restImgs.map((src, i) => (
+              <div
+                key={src}
+                className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
+                onClick={() => openLightbox(i + 1)}
+              >
+                <Image src={src} alt="Vehicle photo" fill className="object-cover hover:scale-105 transition-transform duration-200" />
+                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
+                  {i + 2} / {images.length}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 z-50 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold transition"
+            onClick={closeLightbox}
+          >
+            ✕
+          </button>
+
+          {/* Counter */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-3 py-1 rounded-full">
+            {lightboxIndex + 1} / {images.length}
+          </div>
+
+          {/* Prev button */}
+          {images.length > 1 && (
+            <button
+              className="absolute left-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+            >
+              ‹
+            </button>
+          )}
+
+          {/* Image */}
+          <div
+            className="relative w-full max-w-4xl max-h-[85vh] mx-16 aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={images[lightboxIndex]}
+              alt={`${alt} photo ${lightboxIndex + 1}`}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          {/* Next button */}
+          {images.length > 1 && (
+            <button
+              className="absolute right-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+            >
+              ›
+            </button>
+          )}
+        </div>
+      )}
+    </>
+  );
 }
 
 export default async function VehicleDetailsPage({
@@ -37,9 +145,12 @@ export default async function VehicleDetailsPage({
     );
   }
 
-  const mainImg =
-    vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
-  const restImgs = (vehicle.images ?? []).slice(1);
+  const images =
+    Array.isArray(vehicle.images) && vehicle.images.length > 0
+      ? vehicle.images
+      : (vehicle as any).image
+      ? [(vehicle as any).image]
+      : ["/cars/placeholder.jpg"];
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:p-10">
@@ -58,16 +169,11 @@ export default async function VehicleDetailsPage({
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Main Image */}
-          <div className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-zinc-900">
-            <Image
-              src={mainImg}
-              alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          {/* Main Image (clickable) */}
+          <LightboxGallery
+            images={images}
+            alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
+          />
 
           {/* Details */}
           <div className="bg-zinc-900 rounded-2xl p-6 md:p-8">
@@ -84,20 +190,6 @@ export default async function VehicleDetailsPage({
             </div>
           </div>
         </div>
-
-        {/* Gallery */}
-        {restImgs.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold">More Photos</h2>
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {restImgs.map((src) => (
-                <div key={src} className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-900">
-                  <Image src={src} alt="Vehicle photo" fill className="object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </main>
   );
