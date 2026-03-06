@@ -26,30 +26,30 @@ export default function RootLayout({
                 alt="Garcia's Auto Sales RGV"
                 width={130}
                 height={52}
-                className="object-contain"
+                className="object-contain w-24 md:w-32"
                 priority
               />
             </Link>
 
             {/* Links */}
-            <nav className="flex items-center gap-2">
+            <nav className="flex items-center gap-1 md:gap-2">
               <Link
                 href="/"
-                className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
+                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
               >
                 Home
               </Link>
               
               <Link
                 href="/inventory"
-                className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
+                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
               >
                 Inventory
               </Link>
               
               <Link
                 href="/contact"
-                className="rounded-xl bg-white text-black px-4 py-2 font-semibold hover:opacity-80 transition"
+                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
               >
                 Contact Us
               </Link>
