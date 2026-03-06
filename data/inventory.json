@@ -28,7 +28,11 @@
     "vin": "217453",
     "miles": 168647,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "image": ["/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
+              "/cars/2022-chevy-colorado-217453/IMG_0705.jpeg",
+              "/cars/2022-chevy-colorado-217453/IMG_0706.jpeg"
+
+             ],
     "status": "available"
   },
   {
@@ -42,7 +46,10 @@
     "vin": "242368",
     "miles": 199972,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "image": ["/cars/2020-chevy-colorado-242368/IMG_0709.jpeg",
+              "/cars/2020-chevy-colorado-242368/IMG_0710.jpeg",
+              "/cars/2020-chevy-colorado-242368/IMG_0711.jpeg"
+             ],
     "status": "available"
   },
   {
