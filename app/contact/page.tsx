@@ -5,14 +5,14 @@ export default function ContactPage() {
     <main className="min-h-screen">
       <h1 className="text-4xl font-bold">Contact</h1>
       <p className="mt-2 text-gray-400">
-        Call or text us to ask about a vehicle or in-house financing.
+        Call to ask about a vehicle or in-house financing.
       </p>
 
       <div className="mt-6 bg-zinc-900 rounded-2xl p-6 space-y-4">
         <p>
-          <span className="text-gray-400">Phone:</span>{" "}
+          <span className="text-gray-400">Office Phone:</span>{" "}
           <a href="tel:9565810455" className="text-white hover:underline">
-            (956)-581-0455
+            (956) 581-0455
           </a>
         </p>
 
