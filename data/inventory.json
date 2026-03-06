@@ -98,7 +98,11 @@
     "vin": "A87880",
     "miles": 281765,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/1998-ford-f-150-a87880/7100699826513600144.JPG",
+               "/cars/1998-ford-f-150-a87880/829465578052815738.JPG",
+               "/cars/1998-ford-f-150-a87880/3323425272065315354.JPG"
+
+  ],
     "status": "available"
   },
   {
@@ -112,7 +116,10 @@
     "vin": "288298",
     "miles": 167498,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2012-chevy-1500-288298/740498824427742733.JPG",
+              "/cars/2012-chevy-1500-288298/1997179692403624817.JPG",
+              "/cars/2012-chevy-1500-288298/6536834333290555408.JPG"
+  ],
     "status": "available"
   },
   {
