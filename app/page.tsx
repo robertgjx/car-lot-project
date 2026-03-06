@@ -225,7 +225,6 @@ export default function Home() {
           </div>
 
           <div className="rounded-3xl border border-zinc-800 bg-black p-6">
-            <p className="text-sm text-gray-400">Details</p>
             <div className="mt-4 space-y-3 text-gray-200">
               <p>
                 <span className="text-gray-400">Phone:</span> (956) 581-0455
@@ -239,10 +238,7 @@ export default function Home() {
                 Sun Closed
               </p>
             </div>
-
-            <p className="mt-5 text-sm text-gray-400">
-              (You can update these anytime.)
-            </p>
+            
           </div>
         </div>
       </section>
