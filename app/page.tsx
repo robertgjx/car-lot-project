@@ -44,7 +44,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/inventory"
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 text-base font-semibold text-black hover:opacity-90 transition"
+              className="inline-flex items-center justify-center rounded-2xl border border-zinc-700 bg-black/40 px-6 py-4 text-base font-semibold text-white hover:bg-zinc-900 transition"
             >
               View Inventory
             </Link>

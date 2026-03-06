@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,8 +20,15 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 border-b border-zinc-800 bg-neutral-900/80 backdrop-blur">
           <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
             {/* Brand */}
-            <Link href="/" className="font-extrabold text-xl md:text-2xl tracking-wide text-white hover:opacity-80 transition">
-              Garcia&apos;s Auto Sales RGV
+            <Link href="/" className="hover:opacity-80 transition">
+              <Image
+                src="/logo.png"
+                alt="Garcia's Auto Sales RGV"
+                width={130}
+                height={52}
+                className="object-contain"
+                priority
+              />
             </Link>
 
             {/* Links */}
