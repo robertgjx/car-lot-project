@@ -36,6 +36,11 @@ export default function InventoryPage() {
     return Array.from(new Set(vehicles.map((v) => v.make))).sort();
   }, []);
 
+  const maxInventoryPrice = useMemo(() => {
+    const prices = vehicles.map((v) => v.price).filter((p): p is number => p != null);
+    return prices.length > 0 ? Math.max(...prices) : 50000;
+  }, []);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     const min = minPrice.trim() === "" ? null : Number(minPrice);
@@ -44,13 +49,10 @@ export default function InventoryPage() {
     let list = vehicles.filter((v) => {
       const haystack = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
       const matchesQuery = q === "" ? true : haystack.includes(q);
-
       const matchesMake = make === "all" ? true : v.make === make;
-
       const price = v.price ?? null;
       const matchesMin = min === null ? true : price !== null && price >= min;
       const matchesMax = max === null ? true : price !== null && price <= max;
-
       return matchesQuery && matchesMake && matchesMin && matchesMax;
     });
 
@@ -78,7 +80,6 @@ export default function InventoryPage() {
         {/* Top Navigation */}
         <div className="flex items-center justify-between">
           <h1 className="text-4xl font-bold">Inventory</h1>
-
           <Link
             href="/"
             className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition"
@@ -158,7 +159,7 @@ export default function InventoryPage() {
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
                 inputMode="numeric"
-                placeholder="20000"
+                placeholder={maxInventoryPrice.toLocaleString()}
                 className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
               />
             </div>
@@ -191,10 +192,8 @@ export default function InventoryPage() {
         {/* Vehicle Grid */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((vehicle) => {
-            // ✅ bulletproof main image
             const mainImg =
               vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
-              console.log("IMG:", vehicle.id, mainImg);
 
             return (
               <div

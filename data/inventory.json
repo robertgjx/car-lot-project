@@ -2,7 +2,7 @@
   {
     "id": "2017-chevy-colorado-235108",
     "year": 2017,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Colorado",
     "driveTrain": null,
     "price": 16000,
@@ -20,7 +20,7 @@
   {
     "id": "2022-chevy-colorado-217453",
     "year": 2022,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Colorado",
     "driveTrain": null,
     "price": 16900,
@@ -38,7 +38,7 @@
   {
     "id": "2020-chevy-colorado-242368",
     "year": 2020,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Colorado",
     "driveTrain": "4x4",
     "price": 17000,
@@ -73,8 +73,8 @@
   {
     "id": "2016-ram-1500-190143",
     "year": 2016,
-    "make": "Ram",
-    "model": "1500",
+    "make": "Dodge",
+    "model": " Ram 1500",
     "driveTrain": null,
     "price": 14900,
     "down": 4000,
@@ -108,7 +108,7 @@
   {
     "id": "2012-chevy-1500-288298",
     "year": 2012,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "1500",
     "driveTrain": null,
     "price": 10900,
@@ -159,7 +159,7 @@
   {
     "id": "2006-chevy-217892",
     "year": 2006,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "",
     "driveTrain": null,
     "price": 9900,
@@ -177,7 +177,7 @@
   {
     "id": "2010-chevy-silverado-132740",
     "year": 2010,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Silverado",
     "driveTrain": null,
     "price": 10900,
@@ -194,7 +194,7 @@
   {
     "id": "2013-chevy-silverado-210123",
     "year": 2013,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Silverado",
     "driveTrain": null,
     "price": 11900,
@@ -211,7 +211,7 @@
   {
     "id": "2010-chevy-silverado-228967",
     "year": 2010,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Silverado",
     "driveTrain": null,
     "price": 10900,
@@ -245,7 +245,7 @@
   {
     "id": "2003-chevy-silverado-159195",
     "year": 2003,
-    "make": "Chevy",
+    "make": "Chevrolet",
     "model": "Silverado",
     "driveTrain": "4x4",
     "price": 10900,
