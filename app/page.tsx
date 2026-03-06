@@ -99,8 +99,8 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      {/* HOW IT WORKS */}
+{/*
+      {/* HOW IT WORKS 
       <section className="mt-10 rounded-3xl border border-zinc-800 bg-zinc-950 p-8">
         <h2 className="text-2xl font-extrabold">How it works</h2>
         <p className="mt-2 text-gray-300">
@@ -133,7 +133,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+*/}
       {/* FEATURED VEHICLES */}
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
