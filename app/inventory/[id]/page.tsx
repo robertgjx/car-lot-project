@@ -88,7 +88,8 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
 
           {/* Image */}
           <div
-            className="relative w-full max-w-4xl max-h-[85vh] mx-16 aspect-video"
+            className="relative mx-12 md:mx-16"
+            style={{ width: "calc(100vw - 96px)", height: "calc(100vh - 80px)" }}
             onClick={(e) => e.stopPropagation()}
           >
             <Image

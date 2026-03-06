@@ -16,21 +16,14 @@ const fullYear = (year?: number | null) => {
   return year;
 };
 
-type SortOption =
-  | "default"
-  | "price-asc"
-  | "price-desc"
-  | "miles-asc"
-  | "miles-desc"
-  | "year-desc"
-  | "year-asc";
+
 
 export default function InventoryPage() {
   const [query, setQuery] = useState("");
   const [make, setMake] = useState("all");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  const [sort, setSort] = useState<SortOption>("default");
+
 
   const makes = useMemo(() => {
     return Array.from(new Set(vehicles.map((v) => v.make))).sort();
@@ -46,7 +39,7 @@ export default function InventoryPage() {
     const min = minPrice.trim() === "" ? null : Number(minPrice);
     const max = maxPrice.trim() === "" ? null : Number(maxPrice);
 
-    let list = vehicles.filter((v) => {
+    const list = vehicles.filter((v) => {
       const haystack = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
       const matchesQuery = q === "" ? true : haystack.includes(q);
       const matchesMake = make === "all" ? true : v.make === make;
@@ -56,23 +49,8 @@ export default function InventoryPage() {
       return matchesQuery && matchesMake && matchesMin && matchesMax;
     });
 
-    const sorters: Record<
-      SortOption,
-      (a: (typeof vehicles)[number], b: (typeof vehicles)[number]) => number
-    > = {
-      default: () => 0,
-      "price-asc": (a, b) => (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY),
-      "price-desc": (a, b) => (b.price ?? -1) - (a.price ?? -1),
-      "miles-asc": (a, b) => (a.miles ?? Number.POSITIVE_INFINITY) - (b.miles ?? Number.POSITIVE_INFINITY),
-      "miles-desc": (a, b) => (b.miles ?? -1) - (a.miles ?? -1),
-      "year-desc": (a, b) => (b.year ?? -1) - (a.year ?? -1),
-      "year-asc": (a, b) => (a.year ?? Number.POSITIVE_INFINITY) - (b.year ?? Number.POSITIVE_INFINITY),
-    };
-
-    if (sort !== "default") list = [...list].sort(sorters[sort]);
-
     return list;
-  }, [query, make, minPrice, maxPrice, sort]);
+  }, [query, make, minPrice, maxPrice]);
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:p-10">
@@ -123,23 +101,6 @@ export default function InventoryPage() {
               </select>
             </div>
 
-            {/* Sort */}
-            <div>
-              <label className="text-xs text-gray-400">Sort</label>
-              <select
-                value={sort}
-                onChange={(e) => setSort(e.target.value as SortOption)}
-                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
-              >
-                <option value="default">Default</option>
-                <option value="price-asc">Price: Low → High</option>
-                <option value="price-desc">Price: High → Low</option>
-                <option value="miles-asc">Miles: Low → High</option>
-                <option value="miles-desc">Miles: High → Low</option>
-                <option value="year-desc">Year: New → Old</option>
-                <option value="year-asc">Year: Old → New</option>
-              </select>
-            </div>
 
             {/* Price range */}
             <div>
@@ -172,7 +133,6 @@ export default function InventoryPage() {
                   setMake("all");
                   setMinPrice("");
                   setMaxPrice("");
-                  setSort("default");
                 }}
                 className="w-full rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90"
               >
