@@ -102,7 +102,7 @@
                "/cars/1998-ford-f-150-a87880/829465578052815738.JPG",
                "/cars/1998-ford-f-150-a87880/3323425272065315354.JPG"
 
-  ],
+              ],
     "status": "available"
   },
   {
@@ -119,7 +119,7 @@
     "images": ["/cars/2012-chevy-1500-288298/740498824427742733.JPG",
               "/cars/2012-chevy-1500-288298/1997179692403624817.JPG",
               "/cars/2012-chevy-1500-288298/6536834333290555408.JPG"
-  ],
+              ],
     "status": "available"
   },
   {
@@ -133,7 +133,9 @@
     "vin": "A16337",
     "miles": 292701,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/1997-ford-f-150-a16337/4119319571558996043.JPG",
+              "/cars/1997-ford-f-150-a16337/8579180227567620168.JPG"
+              ],
     "status": "available"
   },
   {
@@ -147,7 +149,11 @@
     "vin": "D92970",
     "miles": null,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2012-ford-f-150-d92970/741466405554905712.JPG",
+               "/cars/2012-ford-f-150-d92970/7122482302171546347.JPG",
+               "/cars/2012-ford-f-150-d92970/4241270626897861139.JPG"
+
+  ],
     "status": "available"
   },
   {
@@ -161,7 +167,10 @@
     "vin": "217892",
     "miles": null,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2006-chevy-217892/3630354874968839197.JPG",
+              "/cars/2006-chevy-217892/3445549170076714259.JPG",
+              "/cars/2006-chevy-217892/8197259212365914498.JPG"
+             ],
     "status": "available"
   },
 
@@ -176,7 +185,10 @@
     "vin": "132740",
     "miles": 194157,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2010-chevy-silverado-132740/1821637671262691398.JPG",
+               "/cars/2010-chevy-silverado-132740/5416717634282343138.JPG",
+               "/cars/2010-chevy-silverado-132740/2543430589790469914.JPG"
+              ],
     "status": "available"
   },
   {
@@ -190,7 +202,10 @@
     "vin": "210123",
     "miles": 218876,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2013-chevy-silverado-210123/5455578370822137745.JPG",
+              "/cars/2013-chevy-silverado-210123/6320031384600331233.JPG",
+              "/cars/2013-chevy-silverado-210123/929187015292771181.JPG"
+              ],
     "status": "available"
   },
   {
@@ -204,7 +219,10 @@
     "vin": "228967",
     "miles": null,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images":[ "/cars/2010-chevy-silverado-228967/4552038235399585232.JPG",
+             "/cars/2010-chevy-silverado-228967/4010606812766958621.JPG",
+             "/cars/2010-chevy-silverado-228967/2783809797590872433.JPG"
+             ],
     "status": "available"
   },
   {
@@ -218,7 +236,10 @@
     "vin": "311682",
     "miles": 121346,
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2012-gmc-sierra-311682/219673382036342588.JPG",
+               "/cars/2012-gmc-sierra-311682/2013579358986810768.JPG",
+               "/cars/2012-gmc-sierra-311682/1544185416305754225.JPG"
+  ],
     "status": "available"
   },
   {
@@ -233,7 +254,7 @@
     "miles": 243985,
     "fuel": null,
     "image": "/cars/placeholder.jpg",
-    "status": "available"
+    "status": "sold"
   },
 
   {
