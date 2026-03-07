@@ -157,7 +157,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="mt-10 pb-10 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV. {t.footer.rights[lang]}
+        © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV LLC. {t.footer.rights[lang]}
       </footer>
     </main>
   );

@@ -9,15 +9,15 @@ export default function NavBar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-neutral-900/80 backdrop-blur">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-2 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="hover:opacity-80 transition">
           <Image
             src="/logo.png"
             alt="Garcia's Auto Sales RGV"
-            width={180}
-            height={72}
-            className="object-contain w-32 md:w-44"
+            width={220}
+            height={88}
+            className="object-contain w-40 md:w-56"
             priority
           />
         </Link>
