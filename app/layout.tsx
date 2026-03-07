@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import "./globals.css";
+import { LanguageProvider } from "./lib/LanguageContext";
+import NavBar from "./lib/NavBar";
 
 export const metadata: Metadata = {
   title: "Garcia's Auto Sales",
@@ -16,49 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-neutral-950 text-white">
-        {/* Navbar */}
-        <header className="sticky top-0 z-50 border-b border-zinc-800 bg-neutral-900/80 backdrop-blur">
-          <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
-            {/* Brand */}
-            <Link href="/" className="hover:opacity-80 transition">
-              <Image
-                src="/logo.png"
-                alt="Garcia's Auto Sales RGV"
-                width={130}
-                height={52}
-                className="object-contain w-24 md:w-32"
-                priority
-              />
-            </Link>
-
-            {/* Links */}
-            <nav className="flex items-center gap-1 md:gap-2">
-              <Link
-                href="/"
-                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
-              >
-                Home
-              </Link>
-              
-              <Link
-                href="/inventory"
-                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
-              >
-                Inventory
-              </Link>
-              
-              <Link
-                href="/contact"
-                className="rounded-xl bg-white text-black px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:opacity-80 transition"
-              >
-                Contact Us
-              </Link>
-            </nav>
-          </div>
-        </header>
-
-        {/* Page content */}
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-8">{children}</div>
+        <LanguageProvider>
+          <NavBar />
+          <div className="max-w-6xl mx-auto px-6 md:px-10 py-8">{children}</div>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -2,195 +2,189 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { getVehicleById } from "@/app/lib/vehicles";
+import { useMemo, useState } from "react";
+import { vehicles } from "@/app/lib/vehicles";
+import { useLang, t } from "@/app/lib/LanguageContext";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+const fullYear = (year?: number | null) => {
+  if (!year) return "";
+  if (year < 100) return year >= 90 ? 1900 + year : 2000 + year;
+  return year;
+};
 
-  const mainImg = images[0] ?? "/cars/placeholder.jpg";
-  const restImgs = images.slice(1);
+export default function InventoryPage() {
+  const { lang } = useLang();
+  const [query, setQuery] = useState("");
+  const [make, setMake] = useState("all");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
-  const openLightbox = (index: number) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
-  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + images.length) % images.length : 0));
-  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % images.length : 0));
+  const makes = useMemo(() => {
+    return Array.from(new Set(vehicles.map((v) => v.make))).sort();
+  }, []);
 
-  return (
-    <>
-      {/* Main Image */}
-      <div
-        className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
-        onClick={() => openLightbox(0)}
-      >
-        <Image src={mainImg} alt={alt} fill className="object-cover" priority />
-        {images.length > 1 && (
-          <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
-            1 / {images.length}
-          </div>
-        )}
-      </div>
+  const maxInventoryPrice = useMemo(() => {
+    const prices = vehicles.map((v) => v.price).filter((p): p is number => p != null);
+    return prices.length > 0 ? Math.max(...prices) : 50000;
+  }, []);
 
-      {/* Thumbnail Gallery */}
-      {restImgs.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold">More Photos</h2>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {restImgs.map((src, i) => (
-              <div
-                key={src}
-                className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
-                onClick={() => openLightbox(i + 1)}
-              >
-                <Image src={src} alt="Vehicle photo" fill className="object-cover hover:scale-105 transition-transform duration-200" />
-                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
-                  {i + 2} / {images.length}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const min = minPrice.trim() === "" ? null : Number(minPrice);
+    const max = maxPrice.trim() === "" ? null : Number(maxPrice);
 
-      {/* Lightbox */}
-      {lightboxIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-          onClick={closeLightbox}
-        >
-          {/* Close button */}
-          <button
-            className="absolute top-4 right-4 z-50 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold transition"
-            onClick={closeLightbox}
-          >
-            ✕
-          </button>
+    const list = vehicles.filter((v) => {
+      const haystack = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
+      const matchesQuery = q === "" ? true : haystack.includes(q);
+      const matchesMake = make === "all" ? true : v.make === make;
+      const price = v.price ?? null;
+      const matchesMin = min === null ? true : price !== null && price >= min;
+      const matchesMax = max === null ? true : price !== null && price <= max;
+      return matchesQuery && matchesMake && matchesMin && matchesMax;
+    });
 
-          {/* Counter */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-3 py-1 rounded-full">
-            {lightboxIndex + 1} / {images.length}
-          </div>
-
-          {/* Prev button */}
-          {images.length > 1 && (
-            <button
-              className="absolute left-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-            >
-              ‹
-            </button>
-          )}
-
-          {/* Image */}
-          <div
-            className="relative mx-12 md:mx-16"
-            style={{ width: "calc(100vw - 96px)", height: "calc(100vh - 80px)" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={images[lightboxIndex]}
-              alt={`${alt} photo ${lightboxIndex + 1}`}
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-
-          {/* Next button */}
-          {images.length > 1 && (
-            <button
-              className="absolute right-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
-              onClick={(e) => { e.stopPropagation(); next(); }}
-            >
-              ›
-            </button>
-          )}
-        </div>
-      )}
-    </>
-  );
-}
-
-export default async function VehicleDetailsPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  const decodedId = decodeURIComponent(id);
-  const vehicle = getVehicleById(decodedId);
-
-  if (!vehicle) {
-    return (
-      <main className="min-h-screen bg-black text-white p-6 md:p-10">
-        <div className="max-w-5xl mx-auto">
-          <Link
-            href="/inventory"
-            className="inline-block rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90"
-          >
-            ← Back to Inventory
-          </Link>
-          <div className="mt-8 bg-zinc-900 rounded-2xl p-6">
-            <div className="text-xl font-semibold">Vehicle not found.</div>
-            <div className="mt-2 text-sm text-gray-300">
-              Tried ID: <span className="font-mono">{decodedId}</span>
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  const images =
-    Array.isArray(vehicle.images) && vehicle.images.length > 0
-      ? vehicle.images
-      : (vehicle as any).image
-      ? [(vehicle as any).image]
-      : ["/cars/placeholder.jpg"];
+    return list;
+  }, [query, make, minPrice, maxPrice]);
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:p-10">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        {/* Top Navigation */}
         <div className="flex items-center justify-between">
+          <h1 className="text-4xl font-bold">{t.inv.title[lang]}</h1>
           <Link
-            href="/inventory"
+            href="/"
             className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition"
           >
-            ← Back to Inventory
+            {t.inv.backHome[lang]}
           </Link>
-          <div className="text-sm text-gray-300">
-            Status:{" "}
-            <span className="font-semibold">{vehicle.status ?? "N/A"}</span>
-          </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Main Image (clickable) */}
-          <LightboxGallery
-            images={images}
-            alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-          />
+        <p className="mt-2 text-gray-400">{t.inv.sub[lang]}</p>
 
-          {/* Details */}
-          <div className="bg-zinc-900 rounded-2xl p-6 md:p-8">
-            <h1 className="text-3xl md:text-4xl font-bold">
-              {vehicle.year} {vehicle.make} {vehicle.model}
-            </h1>
-            <p className="mt-4 text-2xl font-bold">{formatMoney(vehicle.price)}</p>
-            <div className="mt-6 space-y-2 text-gray-200">
-              <div>VIN: <span className="text-white font-semibold">{vehicle.vin ?? "N/A"}</span></div>
-              <div>Miles: <span className="text-white font-semibold">{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}</span></div>
-              <div>Drive Train: <span className="text-white font-semibold">{vehicle.driveTrain ?? "N/A"}</span></div>
-              <div>Fuel: <span className="text-white font-semibold">{vehicle.fuel ?? "N/A"}</span></div>
-              <div>Down: <span className="text-white font-semibold">{formatMoney(vehicle.down)}</span></div>
+        {/* Filters Bar */}
+        <div className="mt-6 bg-zinc-900 rounded-2xl p-4 md:p-5">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+            {/* Search */}
+            <div className="md:col-span-2">
+              <label className="text-xs text-gray-400">{t.inv.search[lang]}</label>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={t.inv.searchPh[lang]}
+                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+              />
+            </div>
+
+            {/* Make */}
+            <div>
+              <label className="text-xs text-gray-400">{t.inv.make[lang]}</label>
+              <select
+                value={make}
+                onChange={(e) => setMake(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+              >
+                <option value="all">{t.inv.all[lang]}</option>
+                {makes.map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Min Price */}
+            <div>
+              <label className="text-xs text-gray-400">{t.inv.minPrice[lang]}</label>
+              <input
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                inputMode="numeric"
+                placeholder="0"
+                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+              />
+            </div>
+
+            {/* Max Price */}
+            <div>
+              <label className="text-xs text-gray-400">{t.inv.maxPrice[lang]}</label>
+              <input
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                inputMode="numeric"
+                placeholder={maxInventoryPrice.toLocaleString()}
+                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+              />
+            </div>
+
+            {/* Buttons */}
+            <div className="md:col-span-2 flex items-end gap-3">
+              <button
+                onClick={() => {
+                  setQuery("");
+                  setMake("all");
+                  setMinPrice("");
+                  setMaxPrice("");
+                }}
+                className="w-full rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90"
+              >
+                {t.inv.reset[lang]}
+              </button>
+
+              <div className="w-full text-sm text-gray-300">
+                <div className="bg-black border border-zinc-800 rounded-xl px-4 py-3">
+                  {t.inv.showing[lang]} <span className="font-semibold">{filtered.length}</span>{" "}
+                  {t.inv.of[lang]} <span className="font-semibold">{vehicles.length}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Vehicle Grid */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((vehicle) => {
+            const mainImg = vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
+            return (
+              <div key={vehicle.id} className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative w-full h-52 bg-zinc-800">
+                  <Image
+                    src={mainImg}
+                    alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <h2 className="text-xl font-semibold">
+                    {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
+                  </h2>
+                  <p className="mt-2 text-lg font-bold">{formatMoney(vehicle.price)}</p>
+                  <p className="mt-1 text-sm text-gray-300">
+                    {t.inv.miles[lang]}{" "}
+                    {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
+                  </p>
+                  <Link
+                    href={`/inventory/${encodeURIComponent(vehicle.id)}`}
+                    className="inline-block mt-4 rounded-xl bg-white text-black px-5 py-3 font-semibold hover:opacity-90 transition"
+                  >
+                    {t.inv.viewDet[lang]}
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Empty state */}
+        {filtered.length === 0 && (
+          <div className="mt-10 text-gray-300 bg-zinc-900 rounded-2xl p-6">
+            {t.inv.noResults[lang]}
+          </div>
+        )}
       </div>
     </main>
   );
