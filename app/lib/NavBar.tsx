@@ -15,9 +15,9 @@ export default function NavBar() {
           <Image
             src="/logo.png"
             alt="Garcia's Auto Sales RGV"
-            width={130}
-            height={52}
-            className="object-contain w-24 md:w-32"
+            width={180}
+            height={72}
+            className="object-contain w-32 md:w-44"
             priority
           />
         </Link>
