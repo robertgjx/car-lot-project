@@ -6,6 +6,9 @@ import NavBar from "./lib/NavBar";
 export const metadata: Metadata = {
   title: "Garcia's Auto Sales",
   description: "Vehicle inventory and in-house financing",
+  verification: {
+    google: "beviLAImnHamLcX0ntJINoxaFVNKirU5DHrwZyLrE4A",
+  },
 };
 
 export default function RootLayout({
