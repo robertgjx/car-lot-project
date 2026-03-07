@@ -1,5 +1,59 @@
 [
   {
+  "id": "1999-chevrolet-tahoe-3gnec18rxxg216263",
+  "year": 1999,
+  "make": "Chevrolet",
+  "model": "Tahoe",
+  "driveTrain": null,
+  "price": 16900,
+  "down": 8000,
+  "vin": "3GNEC18RXXG216263",
+  "miles": null,
+  "fuel": "GASOLINE",
+  "images": [
+    "C:\\Users\\latin\\Downloads\\file_000000005edc71fb9823582ced170407.png",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_173440572.jpg",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_173345195.jpg"
+  ],
+  "status": "available"
+}
+  {
+  "id": "2003-chevrolet-silverado-1gcec14t63z337232",
+  "year": 2003,
+  "make": "Chevrolet",
+  "model": "Silverado",
+  "driveTrain": null,
+  "price": 11900,
+  "down": 4000,
+  "vin": "1GCEC14T63Z337232",
+  "miles": null,
+  "fuel": "GASOLINE",
+  "images": [
+    "C:\\Users\\latin\\Downloads\\file_00000000d20471fbab476b47361bb71e.png",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_173146605.jpg",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_173202731.jpg"
+  ],
+  "status": "available"
+}
+  {
+  "id": "2004-gmc-sierra-1gtec14t04z173039",
+  "year": 2004,
+  "make": "GMC",
+  "model": "Sierra",
+  "driveTrain": null,
+  "price": 11900,
+  "down": 4000,
+  "vin": "1GTEC14T04Z173039",
+  "miles": null,
+  "fuel": "GASOLINE",
+  "images": [
+    "C:\\Users\\latin\\Downloads\\file_00000000d4cc71fbb09b93002c6ba8a5.png",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_172925725.jpg",
+    "C:\\Users\\latin\\Downloads\\PXL_20260307_172959037.MP.jpg"
+  ],
+  "status": "available"
+}
+  {
     "id": "2017-chevy-colorado-235108",
     "year": 2017,
     "make": "Chevrolet",
