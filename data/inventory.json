@@ -64,8 +64,68 @@
     ],
       "status": "available"
     },
-  
-  {
+    {
+        "id": "1993-ford-f-150-pla74364",
+        "year": 1993,
+        "make": "FORD",
+        "model": "F-150",
+        "vin": "1FTDF15N6PLA74364",
+        "fuel": "Gasoline",
+        "engine": "5L V-Shaped V8",
+        "transmission": "Automatic",
+        "bodyStyle": "Pickup",
+        "doors": 2,
+        "color": "Brown",
+        "images": ["/cars/1993-ford-f-150-pla74364/619672366100832083.JPG",
+                   "/cars/1993-ford-f-150-pla74364/6298028485598297872.JPG",
+                   "/cars/1993-ford-f-150-pla74364/2900212382397818154.JPG"
+      ],
+        "status": "available"
+    },
+    {
+      "id": "2000-chevrolet-silverado-y7371611",
+      "year": 2000,
+      "make": "CHEVROLET",
+      "model": "Silverado",
+      "driveTrain": "4x4",
+      "price": 12900,
+      "down": 6000,
+      "vin": "1GCEK14T5Y7371611",
+      "miles": 184666,
+      "fuel": "Gasoline",
+      "engine": "5.3L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "White",
+      "images": ["/cars/2000-chevrolet-silverado-y7371611/632525433489587195.JPG",
+                 "/cars/2000-chevrolet-silverado-y7371611/581708566288142365.JPG",
+                 "/cars/2000-chevrolet-silverado-y7371611/7214336653949114790.JPG"
+    ],
+      "status": "available"
+    },
+    {
+      "id": "2000-gmc-sierra-yz271349",
+      "year": 2000,
+      "make": "GMC",
+      "model": "Sierra",
+      "driveTrain": "4x4",
+      "price": 11900,
+      "down": 4000,
+      "vin": "1GTEK14V9YZ271349",
+      "fuel": "Gasoline",
+      "engine": "4.8L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Black",
+      "images": ["/cars/2000-gmc-sierra-yz271349/3652834180334532012.JPG",
+                 "/cars/2000-gmc-sierra-yz271349/4695212702627971309.JPG",
+                 "/cars/2000-gmc-sierra-yz271349/28321031393482317.JPG"
+    ],
+      "status": "available"
+    },
+   {
     "id": "2017-chevy-colorado-235108",
     "year": 2017,
     "make": "Chevrolet",
