@@ -19,8 +19,8 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-b from-zinc-950 to-black p-8 md:p-14 min-h-[500px]">
         <div className="absolute inset-0 z-10">
-          <img src="/garcias.png" alt="Background" className="h-full w-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-black/40" />
+          <img src="/garcias.png" alt="Background" className="h-full w-full object-cover opacity-90" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
         <div className="relative z-10">
