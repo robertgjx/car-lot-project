@@ -6,20 +6,28 @@ export type Vehicle = {
   make: string;
   model: string;
 
+  // Core
   driveTrain: string | null;
   price: number | null;
   down: number | null;
   vin: string | null;
   miles: number | null;
   fuel: string | null;
+  status: string;
 
-  // old field
+  // Extended (from VIN decode)
+  trim?: string | null;
+  engine?: string | null;
+  transmission?: string | null;
+  bodyStyle?: string | null;
+  doors?: number | null;
+  color?: string | null;
+
+  // Legacy image field
   image?: string;
 
-  // new field
+  // Images
   images?: string[];
-
-  status: string;
 };
 
 const PLACEHOLDER = "/cars/placeholder.jpg";

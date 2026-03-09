@@ -18,6 +18,11 @@ function calcMonthly(price: number | null | undefined, down: number | null | und
   return monthly.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
+function val(v: string | number | null | undefined): string {
+  if (v === null || v === undefined || v === "") return "N/A";
+  return String(v);
+}
+
 function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
   const { lang } = useLang();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -78,6 +83,15 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
   );
 }
 
+function Row({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between border-b border-gray-100 pb-2">
+      <span className="text-gray-500">{label}</span>
+      <span className={`font-semibold ${value === "N/A" ? "text-gray-400" : "text-gray-900"}`}>{value}</span>
+    </div>
+  );
+}
+
 export default function VehicleDetailsClient({
   vehicle,
   decodedId,
@@ -87,10 +101,10 @@ export default function VehicleDetailsClient({
 }) {
   const { lang } = useLang();
 
-  const estLabel   = lang === "en" ? "Est. Monthly Payment"                                        : "Pago Mensual Est.";
-  const moLabel    = lang === "en" ? "/mo"                                                          : "/mes";
-  const estNote    = lang === "en" ? "Based on listed down payment • 24 month financing"            : "Con el enganche indicado • Financiamiento a 24 meses";
-  const contactBtn = lang === "en" ? "Contact Us About This Vehicle"                                : "Contáctanos Sobre Este Vehículo";
+  const estLabel   = lang === "en" ? "Est. Monthly Payment"                              : "Pago Mensual Est.";
+  const moLabel    = lang === "en" ? "/mo"                                               : "/mes";
+  const estNote    = lang === "en" ? "Based on listed down payment • 24 month financing" : "Con el enganche indicado • Financiamiento a 24 meses";
+  const contactBtn = lang === "en" ? "Contact Us About This Vehicle"                     : "Contáctanos Sobre Este Vehículo";
 
   if (!vehicle) {
     return (
@@ -126,7 +140,9 @@ export default function VehicleDetailsClient({
           </Link>
           <div className="text-sm text-gray-500">
             {t.det.status[lang]}{" "}
-            <span className="font-semibold text-gray-900">{vehicle.status ?? "N/A"}</span>
+            <span className={`font-semibold ${vehicle.status === "available" ? "text-green-600" : vehicle.status === "sold" ? "text-red-600" : "text-yellow-600"}`}>
+              {vehicle.status ?? "N/A"}
+            </span>
           </div>
         </div>
 
@@ -136,40 +152,55 @@ export default function VehicleDetailsClient({
           <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
               {vehicle.year} {vehicle.make} {vehicle.model}
+              {vehicle.trim ? <span className="text-xl font-medium text-gray-400 ml-2">{vehicle.trim}</span> : null}
             </h1>
 
             {/* Price */}
             <p className="mt-3 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
 
             {/* Est. Monthly Payment */}
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-2 flex items-center gap-2">
               <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
-              <span className="text-lg font-bold text-gray-900">
-                {calcMonthly(vehicle.price, vehicle.down)}{moLabel}
-              </span>
+              <span className="text-lg font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}{moLabel}</span>
             </div>
             <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
 
-            <div className="mt-6 space-y-3 text-gray-600">
-              <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span>{t.det.vin[lang]}</span>
-                <span className="font-semibold text-gray-900">{vehicle.vin ?? "N/A"}</span>
+            {/* PRICING SECTION */}
+            <div className="mt-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                {lang === "en" ? "Pricing" : "Precios"}
+              </p>
+              <div className="space-y-2">
+                <Row label={lang === "en" ? "Price" : "Precio"} value={formatMoney(vehicle.price)} />
+                <Row label={lang === "en" ? "Down Payment" : "Enganche"} value={formatMoney(vehicle.down)} />
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span>{t.det.miles[lang]}</span>
-                <span className="font-semibold text-gray-900">{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}</span>
+            </div>
+
+            {/* VEHICLE INFO SECTION */}
+            <div className="mt-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                {lang === "en" ? "Vehicle Info" : "Información del Vehículo"}
+              </p>
+              <div className="space-y-2">
+                <Row label="VIN" value={val(vehicle.vin)} />
+                <Row label={lang === "en" ? "Miles" : "Millas"} value={vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"} />
+                <Row label={lang === "en" ? "Trim" : "Versión"} value={val(vehicle.trim)} />
+                <Row label={lang === "en" ? "Body Style" : "Tipo de Carrocería"} value={val(vehicle.bodyStyle)} />
+                <Row label={lang === "en" ? "Doors" : "Puertas"} value={val(vehicle.doors)} />
+                <Row label={lang === "en" ? "Color" : "Color"} value={val(vehicle.color)} />
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span>{t.det.drive[lang]}</span>
-                <span className="font-semibold text-gray-900">{vehicle.driveTrain ?? "N/A"}</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span>{t.det.fuel[lang]}</span>
-                <span className="font-semibold text-gray-900">{vehicle.fuel ?? "N/A"}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t.det.down[lang]}</span>
-                <span className="font-semibold text-gray-900">{formatMoney(vehicle.down)}</span>
+            </div>
+
+            {/* MECHANICAL SECTION */}
+            <div className="mt-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                {lang === "en" ? "Mechanical" : "Mecánica"}
+              </p>
+              <div className="space-y-2">
+                <Row label={lang === "en" ? "Engine" : "Motor"} value={val(vehicle.engine)} />
+                <Row label={lang === "en" ? "Transmission" : "Transmisión"} value={val(vehicle.transmission)} />
+                <Row label={lang === "en" ? "Drive Train" : "Tracción"} value={val(vehicle.driveTrain)} />
+                <Row label={lang === "en" ? "Fuel Type" : "Combustible"} value={val(vehicle.fuel)} />
               </div>
             </div>
 
