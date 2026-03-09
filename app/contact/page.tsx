@@ -56,7 +56,7 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-3 rounded-2xl bg-red-600 px-5 py-4 hover:bg-red-700 transition"
           >
-            <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
+            <Image src="/facebook.png" alt="Facebook" width={24} height={24} />
             <span className="font-semibold text-white">Garcia&apos;s Auto Sales RGV</span>
           </a>
         </div>
