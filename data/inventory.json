@@ -480,7 +480,10 @@
     "vin": "G38888",
     "miles": 136000,
     "fuel": "GASOLINE",
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2019-ford-f-250-xl-g38888/IMG_0978.jpeg",
+               "/cars/2019-ford-f-250-xl-g38888/IMG_0979.jpeg",
+               "/cars/2019-ford-f-250-xl-g38888/IMG_0980.jpeg"
+  ],
     "status": "available"
   },
   {
@@ -494,7 +497,11 @@
     "vin": "1FT7W2B61HED11316",
     "miles": 275877,
     "fuel": "GASOLINE",
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2017-ford-f-250-xl-d11316/IMG_0983.jpeg",
+               "/cars/2017-ford-f-250-xl-d11316/IMG_0984.jpeg",
+               "/cars/2017-ford-f-250-xl-d11316/IMG_0985.jpeg",
+               "/cars/2017-ford-f-250-xl-d11316/IMG_0986.jpeg"
+  ],
     "status": "available"
   },
   {
