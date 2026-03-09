@@ -18,23 +18,24 @@
     ],
       "status": "available"
     },
-  
+    
     {
       "id": "2003-chevrolet-silverado-3z337232",
       "year": 2003,
-      "make": "Chevrolet",
+      "make": "CHEVROLET",
       "model": "Silverado",
-      "driveTrain": null,
       "price": 11900,
-      "down": null,
+      "down": 4000,
       "vin": "1GCEC14T63Z337232",
-      "miles": null,
       "fuel": "Gasoline",
-      "images": [
-        "/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
-        "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
-        "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
-      ],
+      "engine": "5.3L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Red",
+      "images": ["/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
+                 "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
+                 "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"],
       "status": "available"
     },
   
