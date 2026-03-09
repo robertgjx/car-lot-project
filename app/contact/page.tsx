@@ -49,7 +49,7 @@ export default function ContactPage() {
               : "Para cualquier pregunta, por favor llama a uno de nuestros asociados de inventario:"}
           </p>
           <div className="mt-3 bg-white border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shadow-sm">
-            <span className="text-gray-900 font-semibold text-lg">Caesar</span>
+            <span className="text-gray-900 font-semibold text-lg">Cesar</span>
             <a href="tel:9564789359" className="text-red-600 font-semibold hover:underline">
               (956) 478-9359
             </a>
@@ -84,7 +84,7 @@ export default function ContactPage() {
         <p className="text-sm text-gray-500 mb-3">1801 W Palma Vista Dr, Palmview, TX 78572</p>
         <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.5!2d-98.37416!3d26.22896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8665890b7a3c9a1f%3A0xa2b3c4d5e6f70819!2s1801+W+Palma+Vista+Dr%2C+Palmview%2C+TX+78572!5e0!3m2!1sen!2sus!4v1709000000000!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4864.939344059251!2d-98.39241568016485!3d26.235493877712752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8665a9648d9c1fdd%3A0x3af67e5f82db73ec!2s1801%20W%20Palma%20Vista%20Dr%2C%20Palmview%2C%20TX%2078572!5e1!3m2!1sen!2sus!4v1773041473618!5m2!1sen!2sus"
             width="100%"
             height="380"
             style={{ border: 0, display: "block" }}
@@ -116,7 +116,7 @@ export default function ContactPage() {
         <p className="text-sm text-gray-500 mb-3">1800 W Veterans Blvd, Palmview, TX 78572</p>
         <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.5!2d-98.37500!3d26.23100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8665890b00000000%3A0x0000000000000000!2s1800+W+Veterans+Blvd%2C+Palmview%2C+TX+78572!5e0!3m2!1sen!2sus!4v1709000000001!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4794.762200358663!2d-98.39107690056335!3d26.24007933741016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8665a966a1120bfd%3A0x6eaaf9d8a5f8e37c!2s1800%20W%20Veterans%20Blvd%2C%20Mission%2C%20TX%2078572!5e1!3m2!1sen!2sus!4v1773041205710!5m2!1sen!2sus"
             width="100%"
             height="380"
             style={{ border: 0, display: "block" }}
