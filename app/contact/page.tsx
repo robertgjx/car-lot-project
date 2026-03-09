@@ -37,7 +37,7 @@ export default function ContactPage() {
               : "Para cualquier pregunta, por favor llama a uno de nuestros asociados de inventario:"}
           </p>
           <div className="mt-3 bg-white border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shadow-sm">
-            <span className="text-gray-900 font-semibold text-lg">Caesar</span>
+            <span className="text-gray-900 font-semibold text-lg">Cesar</span>
             <a href="tel:9564789359" className="text-red-600 font-semibold hover:underline">
               (956) 478-9359
             </a>
