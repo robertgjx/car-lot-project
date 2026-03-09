@@ -11,6 +11,13 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
+function calcMonthly(price: number | null | undefined, down: number | null | undefined): string {
+  if (price == null) return "N/A";
+  const d = down ?? 0;
+  const monthly = ((price + 3000) - d) / 24;
+  return monthly.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+
 function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
   const { lang } = useLang();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -25,10 +32,7 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
 
   return (
     <>
-      <div
-        className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in"
-        onClick={() => openLightbox(0)}
-      >
+      <div className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in" onClick={() => openLightbox(0)}>
         <Image src={mainImg} alt={alt} fill className="object-cover" priority />
         {images.length > 1 && (
           <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
@@ -42,11 +46,7 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
           <h2 className="text-xl font-semibold text-gray-900">{t.det.photos[lang]}</h2>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {restImgs.map((src, i) => (
-              <div
-                key={src}
-                className="relative w-full h-56 rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in"
-                onClick={() => openLightbox(i + 1)}
-              >
+              <div key={src} className="relative w-full h-56 rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in" onClick={() => openLightbox(i + 1)}>
                 <Image src={src} alt="Vehicle photo" fill className="object-cover hover:scale-105 transition-transform duration-200" />
                 <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
                   {i + 2} / {images.length}
@@ -57,46 +57,20 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
         </div>
       )}
 
-      {/* Lightbox stays dark — intentional for photo viewing */}
       {lightboxIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center" onClick={closeLightbox}>
-          <button
-            className="absolute top-4 right-4 z-50 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold transition"
-            onClick={closeLightbox}
-          >
-            ✕
-          </button>
+          <button className="absolute top-4 right-4 z-50 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold transition" onClick={closeLightbox}>✕</button>
           <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-3 py-1 rounded-full">
             {lightboxIndex + 1} / {images.length}
           </div>
           {images.length > 1 && (
-            <button
-              className="absolute left-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-            >
-              ‹
-            </button>
+            <button className="absolute left-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition" onClick={(e) => { e.stopPropagation(); prev(); }}>‹</button>
           )}
-          <div
-            className="relative mx-12 md:mx-16"
-            style={{ width: "calc(100vw - 96px)", height: "calc(100vh - 80px)" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={images[lightboxIndex]}
-              alt={`${alt} photo ${lightboxIndex + 1}`}
-              fill
-              className="object-contain"
-              priority
-            />
+          <div className="relative mx-12 md:mx-16" style={{ width: "calc(100vw - 96px)", height: "calc(100vh - 80px)" }} onClick={(e) => e.stopPropagation()}>
+            <Image src={images[lightboxIndex]} alt={`${alt} photo ${lightboxIndex + 1}`} fill className="object-contain" priority />
           </div>
           {images.length > 1 && (
-            <button
-              className="absolute right-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
-              onClick={(e) => { e.stopPropagation(); next(); }}
-            >
-              ›
-            </button>
+            <button className="absolute right-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition" onClick={(e) => { e.stopPropagation(); next(); }}>›</button>
           )}
         </div>
       )}
@@ -152,15 +126,32 @@ export default function VehicleDetailsClient({
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <LightboxGallery
-            images={images}
-            alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-          />
+          <LightboxGallery images={images} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} />
+
           <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
-            <p className="mt-4 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+            <p className="mt-3 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+
+            {/* Monthly Payment Highlight */}
+            <div className="mt-3 flex items-center gap-2 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+              <div>
+                <p className="text-xs text-red-400 font-medium uppercase tracking-wide">
+                  {lang === "en" ? "Est. Monthly Payment" : "Pago Mensual Est."}
+                </p>
+                <p className="text-2xl font-bold text-red-600">
+                  {calcMonthly(vehicle.price, vehicle.down)}
+                  <span className="text-sm font-medium text-red-400 ml-1">
+                    {lang === "en" ? "/ mo" : "/ mes"}
+                  </span>
+                </p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {lang === "en" ? "Based on listed down payment • 24 months" : "Basado en el enganche indicado • 24 meses"}
+                </p>
+              </div>
+            </div>
+
             <div className="mt-6 space-y-3 text-gray-600">
               <div className="flex justify-between border-b border-gray-100 pb-2">
                 <span>{t.det.vin[lang]}</span>
@@ -180,13 +171,11 @@ export default function VehicleDetailsClient({
               </div>
               <div className="flex justify-between">
                 <span>{t.det.down[lang]}</span>
-                <span className="font-semibold text-red-600">{formatMoney(vehicle.down)}</span>
+                <span className="font-semibold text-gray-900">{formatMoney(vehicle.down)}</span>
               </div>
             </div>
-            <Link
-              href="/contact"
-              className="mt-8 w-full inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition"
-            >
+
+            <Link href="/contact" className="mt-8 w-full inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
               {lang === "en" ? "Contact Us About This Vehicle" : "Contáctanos Sobre Este Vehículo"}
             </Link>
           </div>
