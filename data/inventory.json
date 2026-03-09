@@ -166,7 +166,7 @@
     "down": 5000,
     "vin": "1GCHSCEA0N1217453",
     "miles": 168647,
-    "fuel": null,
+    "fuel": "GASOLINE",
     "images": ["/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
               "/cars/2022-chevy-colorado-217453/IMG_0705.jpg",
               "/cars/2022-chevy-colorado-217453/IMG_0706.jpg"
