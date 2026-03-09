@@ -90,7 +90,7 @@ export const t = {
     phone:     { en: "Phone:",     es: "Teléfono:" },
     location:  { en: "Location:",  es: "Ubicación:" },
     hours:     { en: "Hours:",     es: "Horario:" },
-    hoursVal:  { en: "Mon–Fri 9AM–6PM, Sat 9AM–3PM, Sun Closed", es: "Lun–Vie 9AM–6PM, Sáb 9AM–3PM, Dom Cerrado" },
+    hoursVal:  { en: "Mon–Fri 9AM–6PM, Sat 10AM–4PM, Sun Closed", es: "Lun–Vie 9AM–6PM, Sáb 10AM–4PM, Dom Cerrado" },
   },
 
   // Footer

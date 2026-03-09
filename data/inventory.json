@@ -327,7 +327,10 @@
     "vin": "2GTEC13T161174004",
     "miles": "EXPT",
     "fuel": null,
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2006-gmc-sierra-174004/5970964865868669574.JPG",
+               "/cars/2006-gmc-sierra-174004/3852580157566855559.JPG",
+               "/cars/2006-gmc-sierra-174004/5392475308087290927.JPG"
+  ],
     "status": "available"
   },
   {
