@@ -52,42 +52,42 @@ export default function InventoryPage() {
   }, [query, make, minPrice, maxPrice]);
 
   return (
-    <main className="min-h-screen bg-black text-white p-6 md:p-10">
+    <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-6xl mx-auto">
         {/* Top Navigation */}
         <div className="flex items-center justify-between">
-          <h1 className="text-4xl font-bold">{t.inv.title[lang]}</h1>
+          <h1 className="text-4xl font-bold text-gray-900">{t.inv.title[lang]}</h1>
           <Link
             href="/"
-            className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition"
+            className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition"
           >
             {t.inv.backHome[lang]}
           </Link>
         </div>
 
-        <p className="mt-2 text-gray-400">{t.inv.sub[lang]}</p>
+        <p className="mt-2 text-gray-500">{t.inv.sub[lang]}</p>
 
         {/* Filters Bar */}
-        <div className="mt-6 bg-zinc-900 rounded-2xl p-4 md:p-5">
+        <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
             {/* Search */}
             <div className="md:col-span-2">
-              <label className="text-xs text-gray-400">{t.inv.search[lang]}</label>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.search[lang]}</label>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.inv.searchPh[lang]}
-                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400"
               />
             </div>
 
             {/* Make */}
             <div>
-              <label className="text-xs text-gray-400">{t.inv.make[lang]}</label>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.make[lang]}</label>
               <select
                 value={make}
                 onChange={(e) => setMake(e.target.value)}
-                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition"
               >
                 <option value="all">{t.inv.all[lang]}</option>
                 {makes.map((m) => (
@@ -98,25 +98,25 @@ export default function InventoryPage() {
 
             {/* Min Price */}
             <div>
-              <label className="text-xs text-gray-400">{t.inv.minPrice[lang]}</label>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.minPrice[lang]}</label>
               <input
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
                 inputMode="numeric"
                 placeholder="0"
-                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400"
               />
             </div>
 
             {/* Max Price */}
             <div>
-              <label className="text-xs text-gray-400">{t.inv.maxPrice[lang]}</label>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.maxPrice[lang]}</label>
               <input
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
                 inputMode="numeric"
                 placeholder={maxInventoryPrice.toLocaleString()}
-                className="mt-1 w-full rounded-xl bg-black border border-zinc-800 px-4 py-3 text-white outline-none focus:border-zinc-600"
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400"
               />
             </div>
 
@@ -129,15 +129,15 @@ export default function InventoryPage() {
                   setMinPrice("");
                   setMaxPrice("");
                 }}
-                className="w-full rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90"
+                className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition"
               >
                 {t.inv.reset[lang]}
               </button>
 
-              <div className="w-full text-sm text-gray-300">
-                <div className="bg-black border border-zinc-800 rounded-xl px-4 py-3">
-                  {t.inv.showing[lang]} <span className="font-semibold">{filtered.length}</span>{" "}
-                  {t.inv.of[lang]} <span className="font-semibold">{vehicles.length}</span>
+              <div className="w-full text-sm text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-xl px-4 py-3">
+                  {t.inv.showing[lang]} <span className="font-semibold text-gray-900">{filtered.length}</span>{" "}
+                  {t.inv.of[lang]} <span className="font-semibold text-gray-900">{vehicles.length}</span>
                 </div>
               </div>
             </div>
@@ -149,8 +149,8 @@ export default function InventoryPage() {
           {filtered.map((vehicle) => {
             const mainImg = vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
             return (
-              <div key={vehicle.id} className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg">
-                <div className="relative w-full h-52 bg-zinc-800">
+              <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <div className="relative w-full h-52 bg-gray-100">
                   <Image
                     src={mainImg}
                     alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
@@ -159,17 +159,17 @@ export default function InventoryPage() {
                   />
                 </div>
                 <div className="p-5">
-                  <h2 className="text-xl font-semibold">
+                  <h2 className="text-xl font-semibold text-gray-900">
                     {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
                   </h2>
-                  <p className="mt-2 text-lg font-bold">{formatMoney(vehicle.price)}</p>
-                  <p className="mt-1 text-sm text-gray-300">
+                  <p className="mt-2 text-lg font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+                  <p className="mt-1 text-sm text-gray-500">
                     {t.inv.miles[lang]}{" "}
                     {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
                   </p>
                   <Link
                     href={`/inventory/${encodeURIComponent(vehicle.id)}`}
-                    className="inline-block mt-4 rounded-xl bg-white text-black px-5 py-3 font-semibold hover:opacity-90 transition"
+                    className="inline-block mt-4 rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition"
                   >
                     {t.inv.viewDet[lang]}
                   </Link>
@@ -181,7 +181,7 @@ export default function InventoryPage() {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="mt-10 text-gray-300 bg-zinc-900 rounded-2xl p-6">
+          <div className="mt-10 text-gray-500 bg-gray-50 border border-gray-200 rounded-2xl p-6">
             {t.inv.noResults[lang]}
           </div>
         )}
