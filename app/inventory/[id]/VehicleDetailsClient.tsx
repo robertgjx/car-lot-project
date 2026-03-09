@@ -26,7 +26,7 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
   return (
     <>
       <div
-        className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
+        className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in"
         onClick={() => openLightbox(0)}
       >
         <Image src={mainImg} alt={alt} fill className="object-cover" priority />
@@ -39,12 +39,12 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
 
       {restImgs.length > 0 && (
         <div className="mt-8">
-          <h2 className="text-xl font-semibold">{t.det.photos[lang]}</h2>
+          <h2 className="text-xl font-semibold text-gray-900">{t.det.photos[lang]}</h2>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {restImgs.map((src, i) => (
               <div
                 key={src}
-                className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in"
+                className="relative w-full h-56 rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in"
                 onClick={() => openLightbox(i + 1)}
               >
                 <Image src={src} alt="Vehicle photo" fill className="object-cover hover:scale-105 transition-transform duration-200" />
@@ -57,6 +57,7 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
         </div>
       )}
 
+      {/* Lightbox stays dark — intentional for photo viewing */}
       {lightboxIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center" onClick={closeLightbox}>
           <button
@@ -114,14 +115,14 @@ export default function VehicleDetailsClient({
 
   if (!vehicle) {
     return (
-      <main className="min-h-screen bg-black text-white p-6 md:p-10">
+      <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
         <div className="max-w-5xl mx-auto">
-          <Link href="/inventory" className="inline-block rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90">
+          <Link href="/inventory" className="inline-block rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
             {t.det.back[lang]}
           </Link>
-          <div className="mt-8 bg-zinc-900 rounded-2xl p-6">
-            <div className="text-xl font-semibold">{t.det.notFound[lang]}</div>
-            <div className="mt-2 text-sm text-gray-300">
+          <div className="mt-8 bg-gray-50 border border-gray-200 rounded-2xl p-6">
+            <div className="text-xl font-semibold text-gray-900">{t.det.notFound[lang]}</div>
+            <div className="mt-2 text-sm text-gray-500">
               {t.det.triedId[lang]} <span className="font-mono">{decodedId}</span>
             </div>
           </div>
@@ -138,14 +139,15 @@ export default function VehicleDetailsClient({
       : ["/cars/placeholder.jpg"];
 
   return (
-    <main className="min-h-screen bg-black text-white p-6 md:p-10">
+    <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between">
-          <Link href="/inventory" className="rounded-xl bg-zinc-800 px-5 py-3 font-semibold hover:opacity-90 transition">
+          <Link href="/inventory" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
             {t.det.back[lang]}
           </Link>
-          <div className="text-sm text-gray-300">
-            {t.det.status[lang]} <span className="font-semibold">{vehicle.status ?? "N/A"}</span>
+          <div className="text-sm text-gray-500">
+            {t.det.status[lang]}{" "}
+            <span className="font-semibold text-gray-900">{vehicle.status ?? "N/A"}</span>
           </div>
         </div>
 
@@ -154,18 +156,39 @@ export default function VehicleDetailsClient({
             images={images}
             alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
           />
-          <div className="bg-zinc-900 rounded-2xl p-6 md:p-8">
-            <h1 className="text-3xl md:text-4xl font-bold">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
-            <p className="mt-4 text-2xl font-bold">{formatMoney(vehicle.price)}</p>
-            <div className="mt-6 space-y-2 text-gray-200">
-              <div>{t.det.vin[lang]} <span className="text-white font-semibold">{vehicle.vin ?? "N/A"}</span></div>
-              <div>{t.det.miles[lang]} <span className="text-white font-semibold">{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}</span></div>
-              <div>{t.det.drive[lang]} <span className="text-white font-semibold">{vehicle.driveTrain ?? "N/A"}</span></div>
-              <div>{t.det.fuel[lang]} <span className="text-white font-semibold">{vehicle.fuel ?? "N/A"}</span></div>
-              <div>{t.det.down[lang]} <span className="text-white font-semibold">{formatMoney(vehicle.down)}</span></div>
+            <p className="mt-4 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+            <div className="mt-6 space-y-3 text-gray-600">
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span>{t.det.vin[lang]}</span>
+                <span className="font-semibold text-gray-900">{vehicle.vin ?? "N/A"}</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span>{t.det.miles[lang]}</span>
+                <span className="font-semibold text-gray-900">{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span>{t.det.drive[lang]}</span>
+                <span className="font-semibold text-gray-900">{vehicle.driveTrain ?? "N/A"}</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span>{t.det.fuel[lang]}</span>
+                <span className="font-semibold text-gray-900">{vehicle.fuel ?? "N/A"}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>{t.det.down[lang]}</span>
+                <span className="font-semibold text-red-600">{formatMoney(vehicle.down)}</span>
+              </div>
             </div>
+            <Link
+              href="/contact"
+              className="mt-8 w-full inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition"
+            >
+              {lang === "en" ? "Contact Us About This Vehicle" : "Contáctanos Sobre Este Vehículo"}
+            </Link>
           </div>
         </div>
       </div>
