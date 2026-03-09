@@ -41,6 +41,29 @@
                  "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"],
       "status": "available"
     },
+    {
+      "id": "2020-chevrolet-silverado-lf233736",
+      "year": 2020,
+      "make": "CHEVROLET",
+      "model": "Silverado",
+      "trim": "Work Truck",
+      "driveTrain": "4x4",
+      "price": 35000,
+      "down": 15000,
+      "vin": "1GC3YSEY4LF233736",
+      "miles": 381914,
+      "fuel": "Diesel",
+      "engine": "6.6L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Dark Gray",
+      "images": ["/cars/2020-chevrolet-silverado-lf233736/IMG_0967.jpeg",
+                 "/cars/2020-chevrolet-silverado-lf233736/IMG_0968.jpeg",
+                 "/cars/2020-chevrolet-silverado-lf233736/IMG_0969.jpeg"
+    ],
+      "status": "available"
+    },
   
   {
     "id": "2017-chevy-colorado-235108",
