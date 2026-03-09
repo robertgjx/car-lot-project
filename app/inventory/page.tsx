@@ -123,10 +123,13 @@ export default function InventoryPage() {
                   <p className="mt-1 text-sm text-gray-500">
                     {t.inv.miles[lang]}{" "}{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
                   </p>
-                  <div className="mt-2 flex items-center gap-1.5 bg-red-50 border border-red-100 rounded-xl px-3 py-2">
-                    <span className="text-sm font-bold text-red-600">{calcMonthly(vehicle.price, vehicle.down)}</span>
-                    <span className="text-xs text-red-400 font-medium">{lang === "en" ? "/ mo est." : "/ mes est."}</span>
+
+                  {/* Est. Monthly Payment — inline format */}
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">Est. Payment</span>
+                    <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}/mo</span>
                   </div>
+
                   <Link href={`/inventory/${encodeURIComponent(vehicle.id)}`} className="inline-block mt-4 rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                     {t.inv.viewDet[lang]}
                   </Link>

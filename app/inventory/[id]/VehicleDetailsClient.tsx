@@ -132,23 +132,13 @@ export default function VehicleDetailsClient({
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
-            <p className="mt-3 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
 
-            {/* Monthly Payment Highlight */}
-            <div className="mt-3 flex items-center gap-2 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
-              <div>
-                <p className="text-xs text-red-400 font-medium uppercase tracking-wide">
-                  {lang === "en" ? "Est. Monthly Payment" : "Pago Mensual Est."}
-                </p>
-                <p className="text-2xl font-bold text-red-600">
-                  {calcMonthly(vehicle.price, vehicle.down)}
-                  <span className="text-sm font-medium text-red-400 ml-1">
-                    {lang === "en" ? "/ mo" : "/ mes"}
-                  </span>
-                </p>
-                <p className="text-xs text-gray-400 mt-0.5">
-                  {lang === "en" ? "Based on listed down payment • 24 months" : "Basado en el enganche indicado • 24 meses"}
-                </p>
+            {/* Price + Monthly inline */}
+            <div className="mt-4 flex items-end gap-3">
+              <p className="text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+              <div className="mb-0.5 flex items-center gap-1 text-gray-500">
+                <span className="text-xs uppercase tracking-wide font-medium">Est. Payment</span>
+                <span className="text-base font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}/mo</span>
               </div>
             </div>
 
