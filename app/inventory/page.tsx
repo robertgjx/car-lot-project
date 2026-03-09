@@ -58,6 +58,9 @@ export default function InventoryPage() {
     return list;
   }, [query, make, minPrice, maxPrice]);
 
+  const estLabel   = lang === "en" ? "Est. Payment"                              : "Pago Est.";
+  const estNote    = lang === "en" ? "Based on listed down • 24 mo financing"    : "Con enganche indicado • 24 meses";
+
   return (
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-6xl mx-auto">
@@ -124,11 +127,12 @@ export default function InventoryPage() {
                     {t.inv.miles[lang]}{" "}{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
                   </p>
 
-                  {/* Est. Monthly Payment — inline format */}
+                  {/* Est. Monthly Payment */}
                   <div className="mt-2 flex items-center gap-2">
-                    <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">Est. Payment</span>
+                    <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
                     <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}/mo</span>
                   </div>
+                  <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
 
                   <Link href={`/inventory/${encodeURIComponent(vehicle.id)}`} className="inline-block mt-4 rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                     {t.inv.viewDet[lang]}

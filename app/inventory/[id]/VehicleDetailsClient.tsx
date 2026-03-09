@@ -87,6 +87,11 @@ export default function VehicleDetailsClient({
 }) {
   const { lang } = useLang();
 
+  const estLabel   = lang === "en" ? "Est. Monthly Payment"                                        : "Pago Mensual Est.";
+  const moLabel    = lang === "en" ? "/mo"                                                          : "/mes";
+  const estNote    = lang === "en" ? "Based on listed down payment • 24 month financing"            : "Con el enganche indicado • Financiamiento a 24 meses";
+  const contactBtn = lang === "en" ? "Contact Us About This Vehicle"                                : "Contáctanos Sobre Este Vehículo";
+
   if (!vehicle) {
     return (
       <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
@@ -133,14 +138,17 @@ export default function VehicleDetailsClient({
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
 
-            {/* Price + Monthly inline */}
-            <div className="mt-4 flex items-end gap-3">
-              <p className="text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
-              <div className="mb-0.5 flex items-center gap-1 text-gray-500">
-                <span className="text-xs uppercase tracking-wide font-medium">Est. Payment</span>
-                <span className="text-base font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}/mo</span>
-              </div>
+            {/* Price */}
+            <p className="mt-3 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
+
+            {/* Est. Monthly Payment */}
+            <div className="mt-3 flex items-center gap-2">
+              <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
+              <span className="text-lg font-bold text-gray-900">
+                {calcMonthly(vehicle.price, vehicle.down)}{moLabel}
+              </span>
             </div>
+            <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
 
             <div className="mt-6 space-y-3 text-gray-600">
               <div className="flex justify-between border-b border-gray-100 pb-2">
@@ -166,7 +174,7 @@ export default function VehicleDetailsClient({
             </div>
 
             <Link href="/contact" className="mt-8 w-full inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
-              {lang === "en" ? "Contact Us About This Vehicle" : "Contáctanos Sobre Este Vehículo"}
+              {contactBtn}
             </Link>
           </div>
         </div>
