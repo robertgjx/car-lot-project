@@ -1,4 +1,41 @@
 [
+    {
+      "id": "1999-chevrolet-tahoe-xg216263",
+      "year": 1999,
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "driveTrain": null,
+      "price": 16900,
+      "down": 8000,
+      "vin": "3GNEC18RXXG216263",
+      "miles": null,
+      "fuel": "Gasoline",
+      "images": [
+        "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
+        "/cars/1999-chevrolet-tahoe-xg216263/1732624747300584253.JPG",
+        "/cars/1999-chevrolet-tahoe-xg216263/4595755168522215631.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2003-chevrolet-silverado-3z337232",
+      "year": 2003,
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "driveTrain": null,
+      "price": 11900,
+      "down": null,
+      "vin": "1GCEC14T63Z337232",
+      "miles": null,
+      "fuel": "Gasoline",
+      "images": [
+        "/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
+        "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
+        "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
+      ],
+      "status": "available"
+    },
+  
   {
     "id": "2017-chevy-colorado-235108",
     "year": 2017,
