@@ -344,14 +344,17 @@
     "id": "2017-ford-f-250-xl-d78227",
     "year": 2017,
     "make": "Ford",
-    "model": "F-250 XL",
+    "model": "F-250",
+    "trim": "XL",
     "driveTrain": "4x4",
     "price": 24000,
-    "down": null,
+    "down": 9900,
     "vin": "D78227",
     "miles": null,
     "fuel": "GASOLINE",
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2017-ford-f-250-xl-d78227/4663853767034780008.JPG",
+              "/cars/2017-ford-f-250-xl-d78227/8883149282793141368.JPG"
+  ],
     "status": "available"
   },
   {
