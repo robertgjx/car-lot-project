@@ -515,7 +515,11 @@
     "vin": "1FT7W2BT9JEC26428",
     "miles": 191200,
     "fuel": "DIESEL",
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0987.jpeg",
+               "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0988.jpeg",
+              "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0989.jpeg",
+              "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0990.jpeg"
+  ],
     "status": "available"
   }
 ]
