@@ -38,20 +38,6 @@ export default function Home() {
               {t.hero.contactUs[lang]}
             </Link>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
-              <p className="text-sm text-gray-400">{t.hero.fast[lang]}</p>
-              <p className="mt-1 text-lg font-semibold">{t.hero.simple[lang]}</p>
-            </div>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
-              <p className="text-sm text-gray-400">{t.hero.flexible[lang]}</p>
-              <p className="mt-1 text-lg font-semibold">{t.hero.inhouse[lang]}</p>
-            </div>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
-              <p className="text-sm text-gray-400">{t.hero.transparent[lang]}</p>
-              <p className="mt-1 text-lg font-semibold">{t.hero.noSurprises[lang]}</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -70,30 +56,6 @@ export default function Home() {
           <p className="mt-2 text-gray-300">{t.why.suppDesc[lang]}</p>
         </div>
       </section>
-
-      {/* HOW IT WORKS 
-      <section className="mt-10 rounded-3xl border border-zinc-800 bg-zinc-950 p-8">
-        <h2 className="text-2xl font-extrabold">{t.how.title[lang]}</h2>
-        <p className="mt-2 text-gray-300">{t.how.sub[lang]}</p>
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-zinc-800 bg-black p-6">
-            <p className="text-sm text-gray-400">{t.how.s1[lang]}</p>
-            <p className="mt-1 text-lg font-semibold">{t.how.s1t[lang]}</p>
-            <p className="mt-2 text-gray-300">{t.how.s1d[lang]}</p>
-          </div>
-          <div className="rounded-2xl border border-zinc-800 bg-black p-6">
-            <p className="text-sm text-gray-400">{t.how.s2[lang]}</p>
-            <p className="mt-1 text-lg font-semibold">{t.how.s2t[lang]}</p>
-            <p className="mt-2 text-gray-300">{t.how.s2d[lang]}</p>
-          </div>
-          <div className="rounded-2xl border border-zinc-800 bg-black p-6">
-            <p className="text-sm text-gray-400">{t.how.s3[lang]}</p>
-            <p className="mt-1 text-lg font-semibold">{t.how.s3t[lang]}</p>
-            <p className="mt-2 text-gray-300">{t.how.s3d[lang]}</p>
-          </div>
-        </div>
-      </section>
-      */}
       {/* FEATURED VEHICLES */}
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
