@@ -8,53 +8,53 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen">
-      <h1 className="text-4xl font-bold">{t.nav.contact[lang]}</h1>
-      <p className="mt-2 text-gray-400">
+      <h1 className="text-4xl font-bold text-gray-900">{t.nav.contact[lang]}</h1>
+      <p className="mt-2 text-gray-500">
         {lang === "en"
           ? "Call to ask about a vehicle or in-house financing."
           : "Llama para preguntar sobre un vehículo o financiamiento propio."}
       </p>
 
-      <div className="mt-6 bg-zinc-900 rounded-2xl p-6 space-y-4">
+      <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4 shadow-sm">
         <p>
           <span className="text-gray-400">{lang === "en" ? "Office Phone:" : "Teléfono de oficina:"}</span>{" "}
-          <a href="tel:9565810455" className="text-white hover:underline">
+          <a href="tel:9565810455" className="text-red-600 font-semibold hover:underline">
             (956) 581-0455
           </a>
         </p>
 
         <p>
           <span className="text-gray-400">{t.contact.location[lang]}</span>{" "}
-          <span className="text-white">1801 W Palma Vista Dr. Palmview, TX 78572</span>
+          <span className="text-gray-900 font-medium">1801 W Palma Vista Dr. Palmview, TX 78572</span>
         </p>
 
-        <hr className="border-zinc-700" />
+        <hr className="border-gray-200" />
 
         <div>
-          <p className="text-gray-400 text-sm font-semibold uppercase tracking-wide">
+          <p className="text-gray-500 text-sm font-semibold uppercase tracking-wide">
             {lang === "en"
               ? "For any questions, please call one of our inventory associates:"
               : "Para cualquier pregunta, por favor llama a uno de nuestros asociados de inventario:"}
           </p>
-          <div className="mt-3 bg-zinc-800 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <span className="text-white font-semibold text-lg">Caesar</span>
-            <a href="tel:9564789359" className="text-white font-medium hover:underline">
+          <div className="mt-3 bg-white border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shadow-sm">
+            <span className="text-gray-900 font-semibold text-lg">Caesar</span>
+            <a href="tel:9564789359" className="text-red-600 font-semibold hover:underline">
               (956) 478-9359
             </a>
           </div>
         </div>
 
-        <hr className="border-zinc-700" />
+        <hr className="border-gray-200" />
 
         <div className="flex flex-col items-center gap-3 pt-2">
-          <p className="text-sm text-white/60">
+          <p className="text-sm text-gray-400">
             {lang === "en" ? "Follow us on Facebook" : "Síguenos en Facebook"}
           </p>
           <a
             href="https://facebook.com/garciasautosalesrgvllc"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-3 rounded-2xl bg-zinc-800 px-5 py-4 hover:bg-zinc-700 transition"
+            className="w-full flex items-center justify-center gap-3 rounded-2xl bg-red-600 px-5 py-4 hover:bg-red-700 transition"
           >
             <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
             <span className="font-semibold text-white">Garcia&apos;s Auto Sales RGV</span>
