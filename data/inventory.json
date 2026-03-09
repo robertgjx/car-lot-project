@@ -282,21 +282,7 @@
   ],
     "status": "available"
   },
-  {
-    "id": "2003-chevy-silverado-159195",
-    "year": 2003,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "driveTrain": "4x4",
-    "price": 10900,
-    "down": 3000,
-    "vin": "159195",
-    "miles": 243985,
-    "fuel": null,
-    "image": "/cars/placeholder.jpg",
-    "status": "sold"
-  },
-
+  
   {
     "id": "2013-gmc-sierra-366324",
     "year": 2013,
