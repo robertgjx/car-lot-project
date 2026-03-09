@@ -432,20 +432,6 @@
     "status": "available"
   },
   {
-    "id": "2002-chevrolet-2500-hd-166810",
-    "year": 2002,
-    "make": "Chevrolet",
-    "model": "2500 HD",
-    "driveTrain": null,
-    "price": 16000,
-    "down": 6000,
-    "vin": "1GCHC23142F166810",
-    "miles": "EXPT",
-    "fuel": "DIESEL",
-    "image": "/cars/placeholder.jpg",
-    "status": "available"
-  },
-  {
     "id": "2019-ford-f-250-xl-f57555",
     "year": 2019,
     "make": "Ford",
@@ -456,7 +442,11 @@
     "vin": "1FT7W2B60KEF57555",
     "miles": 149090,
     "fuel": "GASOLINE",
-    "image": "/cars/placeholder.jpg",
+    "images": ["/cars/2019-ford-f-250-xl-f57555/IMG_0971.jpeg",
+               "/cars/2019-ford-f-250-xl-f57555/IMG_0972.jpeg",
+               "/cars/2019-ford-f-250-xl-f57555/IMG_0973.jpeg",
+               "/cars/2019-ford-f-250-xl-f57555/IMG_0974.jpeg"
+  ],
     "status": "available"
   },
   {
