@@ -13,8 +13,8 @@
       "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
       "doors": 2,
       "images": [ "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
-                  "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
-                  "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
+                  "/cars/1999-chevrolet-tahoe-xg216263/4595755168522215631.JPG",
+                  "/cars/1999-chevrolet-tahoe-xg216263/1732624747300584253.JPG"
     ],
       "status": "available"
     },
@@ -282,7 +282,7 @@
   ],
     "status": "available"
   },
-  
+
   {
     "id": "2013-gmc-sierra-366324",
     "year": 2013,
