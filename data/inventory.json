@@ -1,21 +1,21 @@
 [
-  
     {
       "id": "1999-chevrolet-tahoe-xg216263",
       "year": 1999,
       "make": "CHEVROLET",
       "model": "Tahoe",
+      "price": 16900,
+      "down": 8000,
       "vin": "3GNEC18RXXG216263",
       "fuel": "Gasoline",
       "engine": "5.7L V-Shaped V8",
       "transmission": "Automatic",
       "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
       "doors": 2,
-      "images": [
-        "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
-        "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
-        "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
-      ],
+      "images": [ "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
+                  "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
+                  "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
+    ],
       "status": "available"
     },
   
