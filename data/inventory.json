@@ -463,7 +463,10 @@
     "vin": "1GC2KUEG0FZ130980",
     "miles": 249000,
     "fuel": "GASOLINE",
-    "image": "/cars/placeholder.jpg",
+    "images":[ "/cars/2015-chevrolet-2500-hd-130980/IMG_0975.jpeg",
+               "/cars/2015-chevrolet-2500-hd-130980/IMG_0976.jpeg",
+               "/cars/2015-chevrolet-2500-hd-130980/IMG_0977.jpeg"
+  ],
     "status": "available"
   },
   {
