@@ -28,7 +28,8 @@ export default function Home() {
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
           </p>
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">Welcome to</p>
+          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
           {/* subtitle removed */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
