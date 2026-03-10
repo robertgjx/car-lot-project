@@ -65,6 +65,15 @@ function InventoryInner() {
     return list;
   }, [query, make, minPrice, maxPrice]);
 
+  const ITEMS_PER_PAGE = 25;
+  const [page, setPage] = useState(1);
+
+  // Reset to page 1 when filters change
+  useEffect(() => { setPage(1); }, [query, make, minPrice, maxPrice]);
+
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+
   const estLabel   = lang === "en" ? "Est. Payment"                              : "Pago Est.";
   const estNote    = lang === "en" ? "Based on listed down • 24 mo financing"    : "Con enganche indicado • 24 meses";
 
@@ -118,7 +127,7 @@ function InventoryInner() {
 
         {/* Vehicle Grid */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((vehicle) => {
+          {paginated.map((vehicle) => {
             const mainImg = vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
             return (
               <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
@@ -153,6 +162,29 @@ function InventoryInner() {
         {filtered.length === 0 && (
           <div className="mt-10 text-gray-500 bg-gray-50 border border-gray-200 rounded-2xl p-6">
             {t.inv.noResults[lang]}
+          </div>
+        )}
+
+        {/* PAGINATION */}
+        {totalPages > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <button
+              onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              disabled={page === 1}
+              className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {lang === "en" ? "← Previous" : "← Anterior"}
+            </button>
+            <span className="text-sm text-gray-500 font-medium">
+              {lang === "en" ? `Page ${page} of ${totalPages}` : `Página ${page} de ${totalPages}`}
+            </span>
+            <button
+              onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              disabled={page === totalPages}
+              className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {lang === "en" ? "Next →" : "Siguiente →"}
+            </button>
           </div>
         )}
       </div>
