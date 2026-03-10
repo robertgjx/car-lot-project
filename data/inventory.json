@@ -852,7 +852,7 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Silver",
-    "images": ["public/cars/2018-gmc-acadia-jz230520/1201717930455305746.JPG",
+    "images": ["/cars/2018-gmc-acadia-jz230520/1201717930455305746.JPG",
                "/cars/2018-gmc-acadia-jz230520/4139018124377533369.JPG",
                "/cars/2018-gmc-acadia-jz230520/6813440434465584626.JPG",
                "/cars/2018-gmc-acadia-jz230520/3942156302508301167.JPG"
