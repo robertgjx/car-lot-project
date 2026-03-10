@@ -12,75 +12,172 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
+interface VinResult {
+  year: string; make: string; model: string; trim: string;
+  engine: string; bodyStyle: string; driveType: string;
+  transmission: string; doors: string; fuel: string;
+}
+
+function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; result: VinResult; onClose: () => void }) {
+  const inventoryMatch = vehicles.find((v) => v.vin?.toUpperCase() === vin.toUpperCase());
+  const rows = [
+    { label: lang === "en" ? "Year" : "Año", value: result.year },
+    { label: lang === "en" ? "Make" : "Marca", value: result.make },
+    { label: lang === "en" ? "Model" : "Modelo", value: result.model },
+    { label: lang === "en" ? "Trim" : "Versión", value: result.trim },
+    { label: lang === "en" ? "Engine" : "Motor", value: result.engine },
+    { label: lang === "en" ? "Body Style" : "Carrocería", value: result.bodyStyle },
+    { label: lang === "en" ? "Drive Type" : "Tracción", value: result.driveType },
+    { label: lang === "en" ? "Transmission" : "Transmisión", value: result.transmission },
+    { label: lang === "en" ? "Doors" : "Puertas", value: result.doors },
+    { label: lang === "en" ? "Fuel" : "Combustible", value: result.fuel },
+  ].filter((r) => r.value);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      {/* Modal */}
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-start justify-between rounded-t-3xl">
+          <div>
+            <h2 className="text-xl font-extrabold text-gray-900">{result.year} {result.make} {result.model}</h2>
+            {result.trim && <p className="text-sm text-gray-500 mt-0.5">{result.trim}</p>}
+            <p className="text-xs font-mono text-gray-400 mt-1">VIN: {vin}</p>
+          </div>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 transition ml-4 mt-1">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className="px-6 py-4 flex flex-col gap-4">
+          {/* Inventory status */}
+          {inventoryMatch ? (
+            <div className="rounded-2xl bg-green-50 border-2 border-green-400 p-4">
+              <p className="font-bold text-green-700 text-sm mb-1">
+                ✅ {lang === "en" ? "We have this vehicle in stock!" : "¡Tenemos este vehículo en inventario!"}
+              </p>
+              <p className="text-green-800 font-extrabold text-2xl">
+                {inventoryMatch.price ? `$${inventoryMatch.price.toLocaleString()}` : lang === "en" ? "Call for price" : "Llame para precio"}
+              </p>
+              {inventoryMatch.down && (
+                <p className="text-green-600 text-sm mt-0.5">
+                  {lang === "en" ? "Down" : "Enganche"}: ${inventoryMatch.down.toLocaleString()}
+                </p>
+              )}
+              <Link href={`/inventory/${inventoryMatch.id}`} onClick={onClose}
+                className="mt-3 inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition text-sm">
+                {lang === "en" ? "View Our Listing →" : "Ver Nuestro Listado →"}
+              </Link>
+            </div>
+          ) : (
+            <div className="rounded-2xl bg-gray-50 border border-gray-200 px-4 py-3 text-sm text-gray-500">
+              {lang === "en" ? "This vehicle is not currently in our inventory." : "Este vehículo no está en nuestro inventario actualmente."}
+            </div>
+          )}
+
+          {/* Specs table */}
+          <div className="rounded-2xl border border-gray-200 overflow-hidden">
+            <p className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-400 bg-gray-50 border-b border-gray-200">
+              {lang === "en" ? "Vehicle Specs" : "Especificaciones"}
+            </p>
+            {rows.map((row, i) => (
+              <div key={row.label} className={`flex justify-between px-4 py-3 text-sm ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
+                <span className="text-gray-500 font-medium">{row.label}</span>
+                <span className="text-gray-900 font-semibold text-right max-w-[55%]">{row.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={onClose}
+            className="w-full border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition text-sm">
+            {lang === "en" ? "Close" : "Cerrar"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 interface VinLookupProps { lang: string; }
 function VinLookup({ lang }: VinLookupProps) {
-  const router = useRouter();
   const [input, setInput] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
-  const [result, setResult] = useState<{ year: string; make: string; model: string } | null>(null);
-  const inventoryMatch = input.length === 17 && status === "found"
-    ? vehicles.find((v) => v.vin?.toUpperCase() === input.toUpperCase())
-    : null;
+  const [result, setResult] = useState<VinResult | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   async function lookup() {
     if (input.length !== 17) return;
-    setStatus("loading");
-    setResult(null);
+    setStatus("loading"); setResult(null); setShowModal(false);
     try {
       const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${input}?format=json`);
       const data = await res.json();
       const get = (label: string) => data.Results.find((r: any) => r.Variable === label)?.Value || "";
       const year = get("Model Year"); const make = get("Make"); const model = get("Model");
       if (!make || !year) { setStatus("notfound"); return; }
-      setResult({ year, make, model });
+      setResult({
+        year, make, model, trim: get("Trim"),
+        engine: [get("Displacement (L)") && `${get("Displacement (L)")}L`, get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`].filter(Boolean).join(" "),
+        bodyStyle: get("Body Class"), driveType: get("Drive Type"),
+        transmission: get("Transmission Style"), doors: get("Doors"), fuel: get("Fuel Type - Primary"),
+      });
       setStatus("found");
+      setShowModal(true);
     } catch { setStatus("error"); }
   }
 
   return (
-    <div className="rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
-      <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
-        {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
-      </p>
-      <div className="flex gap-2">
-        <input
-          type="text" maxLength={17} value={input}
-          onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); setResult(null); }}
-          onKeyDown={(e) => e.key === "Enter" && lookup()}
-          placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
-          className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
-          autoCorrect="off" autoCapitalize="characters"
-        />
-        <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
-          className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm">
-          {status === "loading" ? "..." : (lang === "en" ? "Look Up →" : "Buscar →")}
-        </button>
-      </div>
-      {status === "found" && result && (
-        <div className="mt-3 flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-3">
-          <div>
-            <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
-            {inventoryMatch ? (
-              <p className="text-xs text-green-600 font-semibold mt-0.5">✅ {lang === "en" ? "In our inventory!" : "¡En nuestro inventario!"}</p>
-            ) : (
-              <p className="text-xs text-gray-400 mt-0.5">{lang === "en" ? "Not currently in stock" : "No disponible actualmente"}</p>
-            )}
-          </div>
-          {inventoryMatch && (
-            <Link href={`/inventory/${inventoryMatch.id}`}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition">
-              {lang === "en" ? "View →" : "Ver →"}
-            </Link>
-          )}
+    <>
+      {showModal && result && (
+        <VinModal lang={lang} vin={input} result={result} onClose={() => setShowModal(false)} />
+      )}
+      <div className="rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+          {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+        </p>
+        <div className="flex gap-2">
+          <input
+            type="text" maxLength={17} value={input}
+            onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); }}
+            onKeyDown={(e) => e.key === "Enter" && lookup()}
+            placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
+            className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
+            autoCorrect="off" autoCapitalize="characters"
+          />
+          <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
+            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm">
+            {status === "loading" ? (
+              <span className="flex items-center gap-1">
+                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25"/><path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z"/></svg>
+              </span>
+            ) : (lang === "en" ? "Look Up →" : "Buscar →")}
+          </button>
         </div>
-      )}
-      {status === "notfound" && (
-        <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado. Verifica e intenta de nuevo."}</p>
-      )}
-      {status === "error" && (
-        <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red. Intenta de nuevo."}</p>
-      )}
-    </div>
+        {status === "found" && result && (
+          <button onClick={() => setShowModal(true)}
+            className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group">
+            <div className="text-left">
+              <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
+              <p className="text-xs text-red-500 font-semibold mt-0.5">{lang === "en" ? "Click to view full details" : "Toca para ver detalles completos"}</p>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-red-500 transition">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        )}
+        {status === "notfound" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado. Verifica e intenta de nuevo."}</p>}
+        {status === "error" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red. Intenta de nuevo."}</p>}
+      </div>
+    </>
   );
 }
 
