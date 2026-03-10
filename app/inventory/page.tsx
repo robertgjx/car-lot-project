@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { vehicles } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
@@ -25,7 +25,7 @@ const fullYear = (year?: number | null) => {
   return year;
 };
 
-export default function InventoryPage() {
+function InventoryInner() {
   const { lang } = useLang();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
@@ -157,5 +157,13 @@ export default function InventoryPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function InventoryPage() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center text-gray-400">Loading...</div>}>
+      <InventoryInner />
+    </Suspense>
   );
 }
