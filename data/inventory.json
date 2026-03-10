@@ -737,9 +737,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Green",
-    "images": ["",
-               "",
-               ""
+    "images": ["/cars/2018-chevrolet-equinox-j6177577/267675438585208269.JPG",
+               "/cars/2018-chevrolet-equinox-j6177577/2798058021881087994.JPG",
+               "/cars/2018-chevrolet-equinox-j6177577/1647420136915560001.JPG",
+               "/cars/2018-chevrolet-equinox-j6177577/3325308827331622213.JPG"
   ],
     "status": "available",
     "location":"Veterans Blvd"
