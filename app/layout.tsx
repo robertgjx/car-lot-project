@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "Garcia's Auto Sales RGV | Used Trucks & Cars in Palmview, TX",
   description: "Garcia's Auto Sales RGV — family owned dealership in Palmview, TX since 1984. Browse used trucks, cars, and SUVs with in-house financing. Serving the Rio Grande Valley. | Carros usados en Palmview TX con financiamiento propio. Sirviendo el Valle del Río Grande.",
   keywords: "used trucks RGV, used cars Palmview TX, in-house financing Rio Grande Valley, buy here pay here RGV, used trucks for sale, Garcia Auto Sales, Palmview used cars, carros usados RGV, camionetas usadas Palmview TX, financiamiento propio Valle del Rio Grande, autos usados RGV, compra aqui paga aqui RGV, carros usados Palmview, camionetas usadas Rio Grande Valley",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   verification: {
     google: "beviLAImnHamLcX0ntJINoxaFVNKirU5DHrwZyLrE4A",
   },
