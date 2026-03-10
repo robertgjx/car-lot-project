@@ -876,7 +876,11 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 5,
     "color": "Bergundy",
-    "images": [],
+    "images": ["/cars/2019-honda-pilot-kb051444/2839462725773183981.JPG",
+               "/cars/2019-honda-pilot-kb051444/8776074439792285621.JPG",
+               "/cars/2019-honda-pilot-kb051444/795321676829701257.JPG",
+               "/cars/2019-honda-pilot-kb051444/6061015570111115454.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -896,7 +900,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2020-jeep-grand-cherokee-lc314158/7074342982822073761.JPG",
+               "/cars/2020-jeep-grand-cherokee-lc314158/1510921292322551800.JPG",
+               "/cars/2020-jeep-grand-cherokee-lc314158/3112636318189206881.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -915,7 +922,11 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2018-gmc-acadia-jz156384/8469396723630832600.JPG",
+               "/cars/2018-gmc-acadia-jz156384/933547102129600154.JPG",
+               "/cars/2018-gmc-acadia-jz156384/3182957264331923595.JPG",
+               "/cars/2018-gmc-acadia-jz156384/1485096591999485043.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -935,7 +946,11 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Silver",
-    "images": [],
+    "images": ["/cars/2020-gmc-acadia-lz107646/6829335053632840290.JPG",
+               "/cars/2020-gmc-acadia-lz107646/8726196378415119148.JPG",
+               "/cars/2020-gmc-acadia-lz107646/1605004243072109140.JPG",
+               "/cars/2020-gmc-acadia-lz107646/1836404465681540943.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
