@@ -1,154 +1,161 @@
 [
-    {
-      "id": "1999-chevrolet-tahoe-xg216263",
-      "year": 1999,
-      "make": "Chevrolet",
-      "model": "Tahoe",
-      "price": 16900,
-      "down": 8000,
-      "vin": "3GNEC18RXXG216263",
-      "fuel": "Gasoline",
-      "engine": "5.7L V-Shaped V8",
-      "miles": "EXPT",
-      "color": "Tan",
-      "transmission": "Automatic",
-      "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-      "doors": 2,
-      "images": [ "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
-                  "/cars/1999-chevrolet-tahoe-xg216263/4595755168522215631.JPG",
-                  "/cars/1999-chevrolet-tahoe-xg216263/1732624747300584253.JPG"
+  {
+    "id": "1999-chevrolet-tahoe-xg216263",
+    "year": 1999,
+    "make": "Chevrolet",
+    "model": "Tahoe",
+    "price": 16900,
+    "down": 8000,
+    "vin": "3GNEC18RXXG216263",
+    "fuel": "Gasoline",
+    "engine": "5.7L V-Shaped V8",
+    "miles": null,
+    "color": "Tan",
+    "transmission": "Automatic",
+    "bodyStyle": "SUV",
+    "doors": 2,
+    "images": [
+      "/cars/1999-chevrolet-tahoe-xg216263/8495996111224043081.JPG",
+      "/cars/1999-chevrolet-tahoe-xg216263/4595755168522215631.JPG",
+      "/cars/1999-chevrolet-tahoe-xg216263/1732624747300584253.JPG"
     ],
-      "status": "available"
-    },
-    
-    {
-      "id": "2003-chevrolet-silverado-3z337232",
-      "year": 2003,
-      "make": "Chevrolet",
-      "model": "Silverado",
-      "price": 11900,
-      "down": 4000,
-      "vin": "1GCEC14T63Z337232",
-      "fuel": "Gasoline",
-      "engine": "5.3L V-Shaped V8",
-      "miles": "EXPT",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 2,
-      "color": "Red",
-      "images": ["/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
-                 "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
-                 "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"],
-      "status": "available"
-    },
-    {
-      "id": "2020-chevrolet-silverado-lf233736",
-      "year": 2020,
-      "make": "Chevrolet",
-      "model": "Silverado",
-      "trim": "Work Truck",
-      "driveTrain": "4x4",
-      "price": 35000,
-      "down": 15000,
-      "vin": "1GC3YSEY4LF233736",
-      "miles": 381914,
-      "fuel": "Diesel",
-      "engine": "6.6L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 2,
-      "color": "Dark Gray",
-      "images": ["/cars/2020-chevrolet-silverado-lf233736/IMG_0967.jpeg",
-                 "/cars/2020-chevrolet-silverado-lf233736/IMG_0968.jpeg",
-                 "/cars/2020-chevrolet-silverado-lf233736/IMG_0969.jpeg"
+    "status": "available"
+  },
+  {
+    "id": "2003-chevrolet-silverado-3z337232",
+    "year": 2003,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1GCEC14T63Z337232",
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "miles": null,
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Red",
+    "images": [
+      "/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
+      "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
+      "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
     ],
-      "status": "available"
-    },
-    {
-        "id": "1993-ford-f-150-pla74364",
-        "year": 1993,
-        "make": "Ford",
-        "model": "F-150",
-        "price": 10900,
-        "miles":"EXPT",
-        "vin": "1FTDF15N6PLA74364",
-        "fuel": "Gasoline",
-        "engine": "5L V-Shaped V8",
-        "transmission": "Automatic",
-        "bodyStyle": "Pickup",
-        "doors": 2,
-        "color": "Brown",
-        "images": ["/cars/1993-ford-f-150-pla74364/619672366100832083.JPG",
-                   "/cars/1993-ford-f-150-pla74364/6298028485598297872.JPG",
-                   "/cars/1993-ford-f-150-pla74364/2900212382397818154.JPG"
-      ],
-        "status": "available"
-    },
-    {
-      "id": "2000-chevrolet-silverado-y7371611",
-      "year": 2000,
-      "make": "Chevrolet",
-      "model": "Silverado",
-      "driveTrain": "4x4",
-      "price": 12900,
-      "down": 6000,
-      "vin": "1GCEK14T5Y7371611",
-      "miles": 184666,
-      "fuel": "Gasoline",
-      "engine": "5.3L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 2,
-      "color": "White",
-      "images": ["/cars/2000-chevrolet-silverado-y7371611/632525433489587195.JPG",
-                 "/cars/2000-chevrolet-silverado-y7371611/581708566288142365.JPG",
-                 "/cars/2000-chevrolet-silverado-y7371611/7214336653949114790.JPG"
+    "status": "available"
+  },
+  {
+    "id": "2020-chevrolet-silverado-lf233736",
+    "year": 2020,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "trim": "Work Truck",
+    "driveTrain": "4x4",
+    "price": 35000,
+    "down": 15000,
+    "vin": "1GC3YSEY4LF233736",
+    "miles": 381914,
+    "fuel": "Diesel",
+    "engine": "6.6L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Dark Gray",
+    "images": [
+      "/cars/2020-chevrolet-silverado-lf233736/IMG_0967.jpeg",
+      "/cars/2020-chevrolet-silverado-lf233736/IMG_0968.jpeg",
+      "/cars/2020-chevrolet-silverado-lf233736/IMG_0969.jpeg"
     ],
-      "status": "available"
-    },
-    {
-      "id": "2000-gmc-sierra-yz271349",
-      "year": 2000,
-      "make": "GMC",
-      "miles":"EXPT",
-      "model": "Sierra",
-      "driveTrain": "4x4",
-      "price": 11900,
-      "down": 4000,
-      "vin": "1GTEK14V9YZ271349",
-      "fuel": "Gasoline",
-      "engine": "4.8L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 2,
-      "color": "Black",
-      "images": ["/cars/2000-gmc-sierra-yz271349/3652834180334532012.JPG",
-                 "/cars/2000-gmc-sierra-yz271349/4695212702627971309.JPG",
-                 "/cars/2000-gmc-sierra-yz271349/28321031393482317.JPG"
+    "status": "available"
+  },
+  {
+    "id": "1993-ford-f-150-pla74364",
+    "year": 1993,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 10900,
+    "miles": null,
+    "vin": "1FTDF15N6PLA74364",
+    "fuel": "Gasoline",
+    "engine": "5L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Brown",
+    "images": [
+      "/cars/1993-ford-f-150-pla74364/619672366100832083.JPG",
+      "/cars/1993-ford-f-150-pla74364/6298028485598297872.JPG",
+      "/cars/1993-ford-f-150-pla74364/2900212382397818154.JPG"
     ],
-      "status": "available"
-    },
-   {
+    "status": "available"
+  },
+  {
+    "id": "2000-chevrolet-silverado-y7371611",
+    "year": 2000,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "driveTrain": "4x4",
+    "price": 12900,
+    "down": 6000,
+    "vin": "1GCEK14T5Y7371611",
+    "miles": 184666,
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "images": [
+      "/cars/2000-chevrolet-silverado-y7371611/632525433489587195.JPG",
+      "/cars/2000-chevrolet-silverado-y7371611/581708566288142365.JPG",
+      "/cars/2000-chevrolet-silverado-y7371611/7214336653949114790.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2000-gmc-sierra-yz271349",
+    "year": 2000,
+    "make": "GMC",
+    "model": "Sierra",
+    "driveTrain": "4x4",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1GTEK14V9YZ271349",
+    "miles": null,
+    "fuel": "Gasoline",
+    "engine": "4.8L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Black",
+    "images": [
+      "/cars/2000-gmc-sierra-yz271349/3652834180334532012.JPG",
+      "/cars/2000-gmc-sierra-yz271349/4695212702627971309.JPG",
+      "/cars/2000-gmc-sierra-yz271349/28321031393482317.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2017-chevy-colorado-235108",
     "year": 2017,
     "make": "Chevrolet",
     "model": "Colorado",
+    "trim": "Work Truck",
     "driveTrain": null,
     "price": 16000,
-    "color": "Black",
     "down": 4000,
-    "engine":"3.6L V-Shaped V6",
-    "transmission":"Automatic",
-    "bodyStyle": "Pickup",
-    "trim":"Work Truck",
     "vin": "1GCGSBEN0H1235108",
     "miles": 236788,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2017-chevy-colorado-235108/IMG_0702.jpg",
-              "/cars/2017-chevy-colorado-235108/IMG_0707.jpg",
-              "/cars/2017-chevy-colorado-235108/IMG_0708.jpg"
-
-               ],
+    "fuel": "Gasoline",
+    "engine": "3.6L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Black",
+    "images": [
+      "/cars/2017-chevy-colorado-235108/IMG_0702.jpg",
+      "/cars/2017-chevy-colorado-235108/IMG_0707.jpg",
+      "/cars/2017-chevy-colorado-235108/IMG_0708.jpg"
+    ],
     "status": "available"
   },
   {
@@ -156,22 +163,23 @@
     "year": 2022,
     "make": "Chevrolet",
     "model": "Colorado",
-    "color":"White",
-    "engine": "2.5L In-Line V4",
-    "bodyStyle": "Pickup",
-    "transmission": "Automatic",
     "trim": "LT",
     "driveTrain": null,
     "price": 14900,
     "down": 5000,
     "vin": "1GCHSCEA0N1217453",
     "miles": 168647,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
-              "/cars/2022-chevy-colorado-217453/IMG_0705.jpg",
-              "/cars/2022-chevy-colorado-217453/IMG_0706.jpg"
-
-             ],
+    "fuel": "Gasoline",
+    "engine": "2.5L In-Line V4",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "images": [
+      "/cars/2022-chevy-colorado-217453/IMG_0703.jpg",
+      "/cars/2022-chevy-colorado-217453/IMG_0705.jpg",
+      "/cars/2022-chevy-colorado-217453/IMG_0706.jpg"
+    ],
     "status": "available"
   },
   {
@@ -184,11 +192,12 @@
     "down": 5000,
     "vin": "1GCGTCEN5J1242368",
     "miles": 199972,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2020-chevy-colorado-242368/IMG_0709.jpg",
-              "/cars/2020-chevy-colorado-242368/IMG_0710.jpg",
-              "/cars/2020-chevy-colorado-242368/IMG_0711.jpg"
-             ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2020-chevy-colorado-242368/IMG_0709.jpg",
+      "/cars/2020-chevy-colorado-242368/IMG_0710.jpg",
+      "/cars/2020-chevy-colorado-242368/IMG_0711.jpg"
+    ],
     "status": "available"
   },
   {
@@ -201,12 +210,12 @@
     "down": 3000,
     "vin": "5TFRM5F14BX021341",
     "miles": 233409,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2011-toyota-tundra-21341/IMG_0712.jpeg",
-               "/cars/2011-toyota-tundra-21341/IMG_0713.jpeg",
-               "/cars/2011-toyota-tundra-21341/IMG_0714.jpeg"
-
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2011-toyota-tundra-21341/IMG_0712.jpeg",
+      "/cars/2011-toyota-tundra-21341/IMG_0713.jpeg",
+      "/cars/2011-toyota-tundra-21341/IMG_0714.jpeg"
+    ],
     "status": "available"
   },
   {
@@ -219,11 +228,12 @@
     "down": 4000,
     "vin": "1C6RR6LTXGS190143",
     "miles": 287282,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2016-ram-1500-190143/IMG_0715.jpeg",
-              "/cars/2016-ram-1500-190143/IMG_0716.jpeg",
-              "/cars/2016-ram-1500-190143/IMG_0717.jpeg"
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2016-ram-1500-190143/IMG_0715.jpeg",
+      "/cars/2016-ram-1500-190143/IMG_0716.jpeg",
+      "/cars/2016-ram-1500-190143/IMG_0717.jpeg"
+    ],
     "status": "available"
   },
   {
@@ -236,12 +246,12 @@
     "down": 2500,
     "vin": "1FTRX17L8WKA87880",
     "miles": 281765,
-    "fuel": "GASOLINE",
-    "images": ["/cars/1998-ford-f-150-a87880/7100699826513600144.JPG",
-               "/cars/1998-ford-f-150-a87880/829465578052815738.JPG",
-               "/cars/1998-ford-f-150-a87880/3323425272065315354.JPG"
-
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/1998-ford-f-150-a87880/7100699826513600144.JPG",
+      "/cars/1998-ford-f-150-a87880/829465578052815738.JPG",
+      "/cars/1998-ford-f-150-a87880/3323425272065315354.JPG"
+    ],
     "status": "available"
   },
   {
@@ -254,11 +264,12 @@
     "down": 3000,
     "vin": "3GCPCSE05CG288298",
     "miles": 167498,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2012-chevy-1500-288298/740498824427742733.JPG",
-              "/cars/2012-chevy-1500-288298/1997179692403624817.JPG",
-              "/cars/2012-chevy-1500-288298/6536834333290555408.JPG"
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2012-chevy-1500-288298/740498824427742733.JPG",
+      "/cars/2012-chevy-1500-288298/1997179692403624817.JPG",
+      "/cars/2012-chevy-1500-288298/6536834333290555408.JPG"
+    ],
     "status": "available"
   },
   {
@@ -271,10 +282,11 @@
     "down": 2000,
     "vin": "1FTDF1760VNA16337",
     "miles": 292701,
-    "fuel": "GASOLINE",
-    "images": ["/cars/1997-ford-f-150-a16337/4119319571558996043.JPG",
-              "/cars/1997-ford-f-150-a16337/8579180227567620168.JPG"
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/1997-ford-f-150-a16337/4119319571558996043.JPG",
+      "/cars/1997-ford-f-150-a16337/8579180227567620168.JPG"
+    ],
     "status": "available"
   },
   {
@@ -282,19 +294,19 @@
     "year": 2012,
     "make": "Ford",
     "model": "F-150",
-    "color": "Silver",
     "trim": "STX",
     "driveTrain": null,
     "price": 12900,
     "down": 6000,
     "vin": "1FTMF1CM1CKD92970",
     "miles": 225729,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2012-ford-f-150-d92970/741466405554905712.JPG",
-               "/cars/2012-ford-f-150-d92970/7122482302171546347.JPG",
-               "/cars/2012-ford-f-150-d92970/4241270626897861139.JPG"
-
-  ],
+    "fuel": "Gasoline",
+    "color": "Silver",
+    "images": [
+      "/cars/2012-ford-f-150-d92970/741466405554905712.JPG",
+      "/cars/2012-ford-f-150-d92970/7122482302171546347.JPG",
+      "/cars/2012-ford-f-150-d92970/4241270626897861139.JPG"
+    ],
     "status": "available"
   },
   {
@@ -302,21 +314,21 @@
     "year": 2006,
     "make": "Chevrolet",
     "model": "Silverado",
-    "color": "Black",
-    "doors": "4",
     "driveTrain": null,
     "price": 9900,
     "down": 3000,
     "vin": "2GCEC13V761217892",
     "miles": 286757,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2006-chevy-217892/3630354874968839197.JPG",
-              "/cars/2006-chevy-217892/3445549170076714259.JPG",
-              "/cars/2006-chevy-217892/8197259212365914498.JPG"
-             ],
+    "fuel": "Gasoline",
+    "color": "Black",
+    "doors": 4,
+    "images": [
+      "/cars/2006-chevy-217892/3630354874968839197.JPG",
+      "/cars/2006-chevy-217892/3445549170076714259.JPG",
+      "/cars/2006-chevy-217892/8197259212365914498.JPG"
+    ],
     "status": "available"
   },
-
   {
     "id": "2010-chevy-silverado-132740",
     "year": 2010,
@@ -327,11 +339,12 @@
     "down": 3000,
     "vin": "3GCPCSE06BG132740",
     "miles": 194157,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2010-chevy-silverado-132740/1821637671262691398.JPG",
-               "/cars/2010-chevy-silverado-132740/5416717634282343138.JPG",
-               "/cars/2010-chevy-silverado-132740/2543430589790469914.JPG"
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2010-chevy-silverado-132740/1821637671262691398.JPG",
+      "/cars/2010-chevy-silverado-132740/5416717634282343138.JPG",
+      "/cars/2010-chevy-silverado-132740/2543430589790469914.JPG"
+    ],
     "status": "available"
   },
   {
@@ -345,11 +358,12 @@
     "down": 3000,
     "vin": "3GCPCSE07DG210123",
     "miles": 218876,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2013-chevy-silverado-210123/5455578370822137745.JPG",
-              "/cars/2013-chevy-silverado-210123/6320031384600331233.JPG",
-              "/cars/2013-chevy-silverado-210123/929187015292771181.JPG"
-              ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2013-chevy-silverado-210123/5455578370822137745.JPG",
+      "/cars/2013-chevy-silverado-210123/6320031384600331233.JPG",
+      "/cars/2013-chevy-silverado-210123/929187015292771181.JPG"
+    ],
     "status": "available"
   },
   {
@@ -357,22 +371,23 @@
     "year": 2010,
     "make": "Chevrolet",
     "model": "Silverado",
-    "color": "Silver",
-    "doors": "4",
     "trim": "Work Truck",
     "driveTrain": "2WD",
-    "engine": "5.3 V8",
-    "transmission":"Automatic",
-    "bodyStyle":"Crew Cab",
     "price": 10900,
     "down": 3000,
     "vin": "3GCRCSE00AG228967",
     "miles": 269325,
-    "fuel": "GASOLINE",
-    "images":[ "/cars/2010-chevy-silverado-228967/4552038235399585232.JPG",
-             "/cars/2010-chevy-silverado-228967/4010606812766958621.JPG",
-             "/cars/2010-chevy-silverado-228967/2783809797590872433.JPG"
-             ],
+    "fuel": "Gasoline",
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "Silver",
+    "images": [
+      "/cars/2010-chevy-silverado-228967/4552038235399585232.JPG",
+      "/cars/2010-chevy-silverado-228967/4010606812766958621.JPG",
+      "/cars/2010-chevy-silverado-228967/2783809797590872433.JPG"
+    ],
     "status": "available"
   },
   {
@@ -380,46 +395,47 @@
     "year": 2012,
     "make": "GMC",
     "model": "Sierra",
-    "driveTrain": "4x4",
-    "color": "Gray",
-    "engine": "4.8 V8",
-    "doors": "4",
-    "transmission": "Automatic",
-    "bodyStyle": "Crew Cab",
     "trim": "SLE",
+    "driveTrain": "4x4",
     "price": 10900,
     "down": 3000,
     "vin": "3GTP2UEA3CG311682",
     "miles": 121346,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2012-gmc-sierra-311682/219673382036342588.JPG",
-               "/cars/2012-gmc-sierra-311682/2013579358986810768.JPG",
-               "/cars/2012-gmc-sierra-311682/1544185416305754225.JPG"
-  ],
+    "fuel": "Gasoline",
+    "engine": "4.8L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "Gray",
+    "images": [
+      "/cars/2012-gmc-sierra-311682/219673382036342588.JPG",
+      "/cars/2012-gmc-sierra-311682/2013579358986810768.JPG",
+      "/cars/2012-gmc-sierra-311682/1544185416305754225.JPG"
+    ],
     "status": "available"
   },
-
   {
     "id": "2013-gmc-sierra-366324",
     "year": 2013,
     "make": "GMC",
     "model": "Sierra",
-    "color": "Black",
-    "doors": "4",
-    "driveTrain": "2WD",
-    "engine": "5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle":"Crew Cab",
     "trim": "SLT",
+    "driveTrain": "2WD",
     "price": 10900,
     "down": 4000,
     "vin": "3GTP1VE08DG366324",
     "miles": 205315,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2013-gmc-sierra-366324/2711225650068096308.JPG",
-               "/cars/2013-gmc-sierra-366324/7291537330220740306.JPG",
-               "/cars/2013-gmc-sierra-366324/1799523655322455722.JPG"
-  ],
+    "fuel": "Gasoline",
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "Black",
+    "images": [
+      "/cars/2013-gmc-sierra-366324/2711225650068096308.JPG",
+      "/cars/2013-gmc-sierra-366324/7291537330220740306.JPG",
+      "/cars/2013-gmc-sierra-366324/1799523655322455722.JPG"
+    ],
     "status": "available"
   },
   {
@@ -427,22 +443,23 @@
     "year": 2006,
     "make": "GMC",
     "model": "Sierra",
-    "color": "Red",
-    "doors": "4",
-    "driveTrain": "2WD",
-    "engine":"5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle":"Pickup",
     "trim": "Base",
+    "driveTrain": "2WD",
     "price": 9900,
     "down": 3000,
     "vin": "2GTEC13T161174004",
-    "miles": "EXPT",
-    "fuel": "GASOLINE",
-    "images": ["/cars/2006-gmc-sierra-174004/5970964865868669574.JPG",
-               "/cars/2006-gmc-sierra-174004/3852580157566855559.JPG",
-               "/cars/2006-gmc-sierra-174004/5392475308087290927.JPG"
-  ],
+    "miles": null,
+    "fuel": "Gasoline",
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Red",
+    "images": [
+      "/cars/2006-gmc-sierra-174004/5970964865868669574.JPG",
+      "/cars/2006-gmc-sierra-174004/3852580157566855559.JPG",
+      "/cars/2006-gmc-sierra-174004/5392475308087290927.JPG"
+    ],
     "status": "available"
   },
   {
@@ -450,25 +467,25 @@
     "year": 2013,
     "make": "GMC",
     "model": "Sierra",
-    "driveTrain": "4x4",
-    "color": "Red",
-    "engine": "5.3L V8",
-    "bodyStyle": "Extended Cab",
-    "doors": "2",
-    "transmission":"Automatic",
     "trim": "SLE",
+    "driveTrain": "4x4",
     "price": 10900,
     "down": 3000,
     "vin": "1GTR2VE79DZ218380",
     "miles": 222363,
     "fuel": null,
-    "images": ["/cars/2013-gmc-sierra-218380/2319693821887859383.JPG",
-               "/cars/2013-gmc-sierra-218380/5693138798056657399.JPG",
-               "/cars/2013-gmc-sierra-218380/8984474973402979846.JPG"
-  ],
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Extended Cab",
+    "doors": 2,
+    "color": "Red",
+    "images": [
+      "/cars/2013-gmc-sierra-218380/2319693821887859383.JPG",
+      "/cars/2013-gmc-sierra-218380/5693138798056657399.JPG",
+      "/cars/2013-gmc-sierra-218380/8984474973402979846.JPG"
+    ],
     "status": "available"
   },
-
   {
     "id": "2017-ford-f-250-xl-d78227",
     "year": 2017,
@@ -476,20 +493,21 @@
     "model": "F-250 Super Duty",
     "trim": "XL",
     "driveTrain": "4x4",
-    "bodyStyle":"Crew Cab",
-    "color": "White",
-    "engine": "6.2L V8",
-    "transmission":"Automatic",
-    "doors": "4",
     "price": 24000,
     "down": 9900,
     "vin": "1FT7W2B67HED78227",
     "miles": 182172,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2017-ford-f-250-xl-d78227/4663853767034780008.JPG",
-              "/cars/2017-ford-f-250-xl-d78227/8883149282793141368.JPG",
-              "/cars/2017-ford-f-250-xl-d78227/1149229182268120436.JPG"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.2L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2017-ford-f-250-xl-d78227/4663853767034780008.JPG",
+      "/cars/2017-ford-f-250-xl-d78227/8883149282793141368.JPG",
+      "/cars/2017-ford-f-250-xl-d78227/1149229182268120436.JPG"
+    ],
     "status": "available"
   },
   {
@@ -497,23 +515,24 @@
     "year": 2016,
     "make": "Chevrolet",
     "model": "Silverado 2500 HD",
-    "driveTrain": "4X2 RWD",
-    "bodyStyle":"Crew Cab",
-    "transmission":"Automatic",
-    "engine": "6.0L V8",
     "trim": "Work Truck",
+    "driveTrain": "4x2",
     "price": 24000,
     "down": 9900,
     "vin": "1GC1CUEG0GF157768",
-    "color": "White",
-    "doors": "4",
     "miles": 180000,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2016-chevrolet-2500-hd-157768/8972703850093063148.JPG",
-               "/cars/2016-chevrolet-2500-hd-157768/1868498237477949398.JPG",
-               "/cars/2016-chevrolet-2500-hd-157768/2749360120892580424.JPG",
-               "/cars/2016-chevrolet-2500-hd-157768/2282077649104877593.JPG"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.0L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2016-chevrolet-2500-hd-157768/8972703850093063148.JPG",
+      "/cars/2016-chevrolet-2500-hd-157768/1868498237477949398.JPG",
+      "/cars/2016-chevrolet-2500-hd-157768/2749360120892580424.JPG",
+      "/cars/2016-chevrolet-2500-hd-157768/2282077649104877593.JPG"
+    ],
     "status": "available"
   },
   {
@@ -522,22 +541,23 @@
     "make": "Ford",
     "model": "F-250",
     "trim": "XL",
-    "doors": "4",
-    "engine": "6.2L V8",
-    "bodyStyle":"Crew Cab",
-    "color": "White",
     "driveTrain": "4x4",
-    "transmission": "Automatic",
     "price": 24000,
     "down": 9900,
     "vin": "1FT7W2B66HEF24746",
     "miles": null,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2018-ford-f-250-xl-f24746/6239798263675959660.JPG",
-               "/cars/2018-ford-f-250-xl-f24746/4112355606767325553.JPG",
-               "/cars/2018-ford-f-250-xl-f24746/7039321192308912367.JPG",
-               "/cars/2018-ford-f-250-xl-f24746/3193873237166170475.JPG"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.2L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2018-ford-f-250-xl-f24746/6239798263675959660.JPG",
+      "/cars/2018-ford-f-250-xl-f24746/4112355606767325553.JPG",
+      "/cars/2018-ford-f-250-xl-f24746/7039321192308912367.JPG",
+      "/cars/2018-ford-f-250-xl-f24746/3193873237166170475.JPG"
+    ],
     "status": "available"
   },
   {
@@ -545,69 +565,73 @@
     "year": 2018,
     "make": "Dodge",
     "model": "RAM 2500",
-    "driveTrain": "4x4",
-    "color": "White",
-    "bodyStyle":"Crew Cab",
-    "doors": "4",
-    "price": 18000,
-    "engine": "6.4 Hemi V8",
     "trim": "Tradesman",
+    "driveTrain": "4x4",
+    "price": 18000,
     "down": 8000,
     "vin": "3C6UR5HJ9JG425190",
     "miles": 270000,
-    "fuel": "GASOLINE",
+    "fuel": "Gasoline",
+    "engine": "6.4L Hemi V8",
     "transmission": "Automatic",
-    "images":[ "/cars/2018-dodge-ram-2500-425190/126744496823036701.JPG",
-               "/cars/2018-dodge-ram-2500-425190/6571214528337141726.JPG",
-               "/cars/2018-dodge-ram-2500-425190/5404967565954860775.JPG",
-               "/cars/2018-dodge-ram-2500-425190/673918797142672980.JPG"
-  ],
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2018-dodge-ram-2500-425190/126744496823036701.JPG",
+      "/cars/2018-dodge-ram-2500-425190/6571214528337141726.JPG",
+      "/cars/2018-dodge-ram-2500-425190/5404967565954860775.JPG",
+      "/cars/2018-dodge-ram-2500-425190/673918797142672980.JPG"
+    ],
     "status": "available"
   },
   {
     "id": "2019-ford-f-250-xl-f57555",
     "year": 2019,
     "make": "Ford",
-    "model": "F-250 Super Duty XL",
-    "color": "White",
-    "engine": "6.2L V-Shaped V8",
-    "doors": "4",
-    "transmission":"Automatic",
-    "trim":"Work Truck",
+    "model": "F-250 Super Duty",
+    "trim": "XL",
     "driveTrain": "4x4",
     "price": 26000,
     "down": 12000,
     "vin": "1FT7W2B60KEF57555",
     "miles": 149090,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2019-ford-f-250-xl-f57555/IMG_0971.jpeg",
-               "/cars/2019-ford-f-250-xl-f57555/IMG_0972.jpeg",
-               "/cars/2019-ford-f-250-xl-f57555/IMG_0973.jpeg",
-               "/cars/2019-ford-f-250-xl-f57555/IMG_0974.jpeg"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.2L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Crew Cab",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2019-ford-f-250-xl-f57555/IMG_0971.jpeg",
+      "/cars/2019-ford-f-250-xl-f57555/IMG_0972.jpeg",
+      "/cars/2019-ford-f-250-xl-f57555/IMG_0973.jpeg",
+      "/cars/2019-ford-f-250-xl-f57555/IMG_0974.jpeg"
+    ],
     "status": "available"
   },
   {
     "id": "2015-chevrolet-2500-hd-130980",
     "year": 2015,
     "make": "Chevrolet",
-    "model": "2500 HD",
-    "driveTrain": "4x4",
-    "color": "White",
-    "engine": "6L V8",
-    "doors": "4",
-    "bodyStyle": "Pickup",
-    "transmission":"Automatic",
+    "model": "Silverado 2500 HD",
     "trim": "Work Truck",
+    "driveTrain": "4x4",
     "price": 19000,
     "down": 8000,
     "vin": "1GC2KUEG0FZ130980",
     "miles": 249000,
-    "fuel": "GASOLINE",
-    "images":[ "/cars/2015-chevrolet-2500-hd-130980/IMG_0975.jpeg",
-               "/cars/2015-chevrolet-2500-hd-130980/IMG_0976.jpeg",
-               "/cars/2015-chevrolet-2500-hd-130980/IMG_0977.jpeg"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.0L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2015-chevrolet-2500-hd-130980/IMG_0975.jpeg",
+      "/cars/2015-chevrolet-2500-hd-130980/IMG_0976.jpeg",
+      "/cars/2015-chevrolet-2500-hd-130980/IMG_0977.jpeg"
+    ],
     "status": "available"
   },
   {
@@ -618,13 +642,14 @@
     "driveTrain": "4x4",
     "price": 29000,
     "down": 12000,
-    "vin": "G38888",
+    "vin": null,
     "miles": 136000,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2019-ford-f-250-xl-g38888/IMG_0978.jpeg",
-               "/cars/2019-ford-f-250-xl-g38888/IMG_0979.jpeg",
-               "/cars/2019-ford-f-250-xl-g38888/IMG_0980.jpeg"
-  ],
+    "fuel": "Gasoline",
+    "images": [
+      "/cars/2019-ford-f-250-xl-g38888/IMG_0978.jpeg",
+      "/cars/2019-ford-f-250-xl-g38888/IMG_0979.jpeg",
+      "/cars/2019-ford-f-250-xl-g38888/IMG_0980.jpeg"
+    ],
     "status": "available"
   },
   {
@@ -633,45 +658,47 @@
     "make": "Ford",
     "model": "F-250",
     "trim": "XL",
-    "engine":"6.2L V8",
-    "bodyStyle":"Pickup",
-    "transmission":"Automatic",
-    "doors": "4",
-    "color":"White",
     "driveTrain": "4x4",
     "price": 22000,
     "down": 8000,
     "vin": "1FT7W2B61HED11316",
     "miles": 275877,
-    "fuel": "GASOLINE",
-    "images": ["/cars/2017-ford-f-250-xl-d11316/IMG_0983.jpeg",
-               "/cars/2017-ford-f-250-xl-d11316/IMG_0984.jpeg",
-               "/cars/2017-ford-f-250-xl-d11316/IMG_0985.jpeg",
-               "/cars/2017-ford-f-250-xl-d11316/IMG_0986.jpeg"
-  ],
+    "fuel": "Gasoline",
+    "engine": "6.2L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2017-ford-f-250-xl-d11316/IMG_0983.jpeg",
+      "/cars/2017-ford-f-250-xl-d11316/IMG_0984.jpeg",
+      "/cars/2017-ford-f-250-xl-d11316/IMG_0985.jpeg",
+      "/cars/2017-ford-f-250-xl-d11316/IMG_0986.jpeg"
+    ],
     "status": "available"
   },
   {
     "id": "2018-ford-f-250-xlt-ps-c26428",
     "year": 2018,
     "make": "Ford",
-    "model": "F-250 XLT PS",
+    "model": "F-250 XLT",
     "driveTrain": "4x4",
     "price": 28000,
     "down": 12000,
-    "engine": "6.7L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle":"Pickup",
-    "doors":"4",
-    "color":"White",
     "vin": "1FT7W2BT9JEC26428",
     "miles": 191200,
-    "fuel": "DIESEL",
-    "images": ["/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0987.jpeg",
-               "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0988.jpeg",
-              "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0989.jpeg",
-              "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0990.jpeg"
-  ],
+    "fuel": "Diesel",
+    "engine": "6.7L Power Stroke V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "images": [
+      "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0987.jpeg",
+      "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0988.jpeg",
+      "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0989.jpeg",
+      "/cars/2018-ford-f-250-xlt-ps-c26428/IMG_0990.jpeg"
+    ],
     "status": "available"
   }
 ]
