@@ -47,8 +47,8 @@ export default function Home() {
         {/* FAMILY OWNED — photo background with overlay */}
         <div className="relative overflow-hidden rounded-3xl border border-gray-200 min-h-[180px] p-6">
           <div className="absolute inset-0 z-0">
-            <img src="/FamilyOwnedPhoto.jpg" alt="Family Owned" className="h-full w-full object-cover opacity-40" />
-            <div className="absolute inset-0 bg-white/40" />
+            <img src="/FamilyOwnedPhoto.jpg" alt="Family Owned" className="h-full w-full object-cover opacity-70" />
+            <div className="absolute inset-0 bg-white/20" />
           </div>
           <div className="relative z-10">
             <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
