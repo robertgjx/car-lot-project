@@ -46,63 +46,39 @@ export default function Home() {
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
           {lang === "en" ? "Shop by Brand" : "Buscar por Marca"}
         </p>
-        <div className="flex items-center justify-around gap-4 flex-wrap">
+        <div className="flex items-center justify-around gap-6 flex-wrap">
 
-          {/* CHEVROLET */}
           <Link href="/inventory?make=Chevrolet" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition">
-              <svg viewBox="0 0 100 60" className="w-12 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 20h30v20H0V20z" fill="#D4A017"/>
-                <path d="M35 0h30v20H35V0z" fill="#D4A017"/>
-                <path d="M35 40h30v20H35V40z" fill="#D4A017"/>
-                <path d="M70 20h30v20H70V20z" fill="#D4A017"/>
-              </svg>
+            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+              <img src="/brand-chevrolet.jpg" alt="Chevrolet" className="w-full h-full object-contain" />
             </div>
             <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Chevrolet</span>
           </Link>
 
-          {/* FORD */}
           <Link href="/inventory?make=Ford" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition">
-              <svg viewBox="0 0 120 50" className="w-14 h-8" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="60" cy="25" rx="58" ry="23" fill="#003478"/>
-                <text x="60" y="33" textAnchor="middle" fontFamily="serif" fontStyle="italic" fontWeight="bold" fontSize="28" fill="white">Ford</text>
-              </svg>
+            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+              <img src="/brand-ford.png" alt="Ford" className="w-full h-full object-contain" />
             </div>
             <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Ford</span>
           </Link>
 
-          {/* GMC */}
           <Link href="/inventory?make=GMC" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition">
-              <svg viewBox="0 0 80 40" className="w-12 h-8" xmlns="http://www.w3.org/2000/svg">
-                <rect x="1" y="1" width="78" height="38" rx="4" fill="white" stroke="#CC0000" strokeWidth="2"/>
-                <text x="40" y="28" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="22" fill="#CC0000" letterSpacing="2">GMC</text>
-              </svg>
+            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+              <img src="/brand-gmc.jpg" alt="GMC" className="w-full h-full object-contain" />
             </div>
             <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">GMC</span>
           </Link>
 
-          {/* DODGE */}
           <Link href="/inventory?make=Dodge" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition">
-              <svg viewBox="0 0 60 60" className="w-10 h-10" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="30,2 58,15 58,45 30,58 2,45 2,15" fill="#CC0000"/>
-                <polygon points="30,10 50,20 50,40 30,50 10,40 10,20" fill="white"/>
-                <text x="30" y="34" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="11" fill="#CC0000">DODGE</text>
-              </svg>
+            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+              <img src="/brand-dodge.png" alt="Dodge" className="w-full h-full object-contain" />
             </div>
             <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Dodge</span>
           </Link>
 
-          {/* TOYOTA */}
           <Link href="/inventory?make=Toyota" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition">
-              <svg viewBox="0 0 100 60" className="w-12 h-8" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="30" rx="22" ry="28" fill="none" stroke="#CC0000" strokeWidth="6"/>
-                <ellipse cx="50" cy="30" rx="42" ry="18" fill="none" stroke="#CC0000" strokeWidth="6"/>
-                <ellipse cx="50" cy="12" rx="14" ry="10" fill="none" stroke="#CC0000" strokeWidth="6"/>
-              </svg>
+            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+              <img src="/brand-toyota.png" alt="Toyota" className="w-full h-full object-contain" />
             </div>
             <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Toyota</span>
           </Link>
