@@ -298,34 +298,22 @@ export default function Home() {
 
       {/* SEASONAL ANNOUNCEMENT */}
       <section className="mt-6">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 p-6 shadow-md">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 px-8 py-5 shadow-md text-center">
           {/* Decorative clovers */}
           <div className="pointer-events-none absolute -top-4 -right-4 text-green-400 opacity-20 text-9xl select-none">☘</div>
-          <div className="pointer-events-none absolute bottom-2 left-4 text-green-400 opacity-10 text-7xl select-none">☘</div>
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-green-300 mb-1">
-                {lang === "en" ? "🍀 St. Patrick's Day Special" : "🍀 Especial Día de San Patricio"}
-              </p>
-              <h2 className="text-2xl font-extrabold text-white">
-                {lang === "en" ? "Get Lucky — Drive Home Today!" : "¡Tu suerte llega hoy — maneja a casa!"}
-              </h2>
-              <p className="mt-2 text-green-100 text-sm max-w-lg">
-                {lang === "en"
-                  ? "Stop by Garcia's Auto Sales this St. Patrick's Day weekend. In-house financing available — no luck needed to get approved!"
-                  : "Visítanos este fin de semana de San Patricio. ¡Financiamiento propio disponible — no necesitas suerte para ser aprobado!"}
-              </p>
-            </div>
-            <a
-              href="/inventory"
-              className="shrink-0 inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 text-base font-bold text-green-700 hover:bg-green-50 transition shadow"
-            >
-              {lang === "en" ? "View Inventory →" : "Ver Inventario →"}
-            </a>
+          <div className="pointer-events-none absolute bottom-0 left-4 text-green-400 opacity-15 text-8xl select-none">☘</div>
+          <div className="pointer-events-none absolute top-1 left-10 text-green-400 opacity-10 text-6xl select-none">☘</div>
+          <div className="pointer-events-none absolute bottom-0 right-24 text-green-400 opacity-10 text-7xl select-none">☘</div>
+          <div className="relative z-10">
+            <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+              {lang === "en" ? "🎩 ☘️ Happy St. Patrick's Day! ☘️ 🎩" : "🎩 ☘️ ¡Feliz Día de San Patricio! ☘️ 🎩"}
+            </p>
+            <p className="mt-1 text-green-200 text-sm font-medium">
+              {lang === "en" ? "From all of us at Garcia's Auto Sales RGV" : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
+            </p>
           </div>
         </div>
       </section>
-
       {/* FEATURED VEHICLES */}
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
@@ -371,7 +359,7 @@ export default function Home() {
               <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
                 {t.contact.page[lang]}
               </Link>
-              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-gray-300 bg-white px-6 py-4 text-base font-semibold text-gray-900 hover:bg-gray-100 transition">
+              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
                 {t.contact.browse[lang]}
               </Link>
             </div>
