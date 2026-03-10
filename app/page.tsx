@@ -28,7 +28,9 @@ export default function Home() {
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
           </p>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">Welcome to</p>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">
+          {lang === "en" ? "Welcome to" : "Bienvenido a"}
+          </p>
           <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
           {/* subtitle removed */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -113,8 +115,8 @@ export default function Home() {
           <div className="pointer-events-none absolute top-1 left-10 text-green-400 opacity-10 text-6xl select-none">☘</div>
           <div className="pointer-events-none absolute bottom-0 right-24 text-green-400 opacity-10 text-7xl select-none">☘</div>
           <div className="relative z-10">
-            <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-              🎩 ☘️ Happy St. Patrick&apos;s Day! ☘️ 🎩
+          <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            {lang === "en" ? "🎩 ☘️ Happy St. Patrick's Day! ☘️ 🎩" : "🎩 ☘️ ¡Feliz Día de San Patricio! ☘️ 🎩"}
             </p>
             <p className="mt-1 text-green-200 text-sm font-medium">
               {lang === "en" ? "From all of us at Garcia's Auto Sales RGV" : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
