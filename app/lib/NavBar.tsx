@@ -50,8 +50,8 @@ export default function NavBar() {
               alt="Garcia's Auto Sales RGV"
               width={220}
               height={88}
-              className="object-contain w-40 md:w-52"
-              style={{ maxHeight: '60px' }}
+              className="object-contain w-44 md:w-56"
+              style={{ maxHeight: '55px' }}
               priority
               />
             <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
