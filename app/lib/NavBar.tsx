@@ -50,7 +50,7 @@ export default function NavBar() {
               alt="Garcia's Auto Sales RGV"
               width={220}
               height={88}
-              className="object-contain w-40 md:w-56"
+              className="object-contain w-52 md:w-72"
               priority
             />
           </Link>
