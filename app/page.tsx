@@ -43,14 +43,10 @@ export default function Home() {
 
       {/* WHY US */}
       <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div className="relative overflow-hidden rounded-3xl border border-gray-200 min-h-[180px] p-6">
-          <div className="absolute inset-0 z-0">
-          </div>
-          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-            <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
-            <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
-          </div>
-        </div>
+      <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+      <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
+      <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
+      </div>
 
         <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
           <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
