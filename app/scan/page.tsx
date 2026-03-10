@@ -1,5 +1,7 @@
 "use client";
 
+// @ts-ignore
+import type {} from "@zxing/browser";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { vehicles } from "@/app/lib/vehicles";
@@ -31,7 +33,10 @@ function parseNHTSA(results: NHTSAResult[]): DecodedVehicle {
     make: get("Make"),
     model: get("Model"),
     trim: get("Trim"),
-    engine: [get("Displacement (L)") && `${get("Displacement (L)")}L`, get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`].filter(Boolean).join(" "),
+    engine: [
+      get("Displacement (L)") && `${get("Displacement (L)")}L`,
+      get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`,
+    ].filter(Boolean).join(" "),
     bodyStyle: get("Body Class"),
     driveType: get("Drive Type"),
     transmission: get("Transmission Style"),
@@ -48,12 +53,11 @@ export default function ScanPage() {
   const [decoded, setDecoded] = useState<DecodedVehicle | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const videoRef = useRef<HTMLVideoElement>(null);
-  const streamRef = useRef<MediaStream | null>(null);
-  const animFrameRef = useRef<number | null>(null);
+  const readerRef = useRef<any>(null);
 
   const txt = {
     title: lang === "en" ? "VIN Scanner" : "Escáner de VIN",
-    subtitle: lang === "en" ? "Scan a vehicle's barcode or enter the VIN manually to get full details." : "Escanea el código de barras o ingresa el VIN para ver los detalles.",
+    subtitle: lang === "en" ? "Scan a vehicle's barcode or enter the VIN manually." : "Escanea el código de barras o ingresa el VIN manualmente.",
     scanBtn: lang === "en" ? "Scan Barcode" : "Escanear Código",
     manualBtn: lang === "en" ? "Enter VIN Manually" : "Ingresar VIN Manual",
     placeholder: lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres...",
@@ -65,75 +69,82 @@ export default function ScanPage() {
     back: lang === "en" ? "← Back" : "← Regresar",
     scanning: lang === "en" ? "Point camera at the barcode on the window sticker" : "Apunta la cámara al código de barras en el sticker",
     loading: lang === "en" ? "Looking up vehicle..." : "Buscando vehículo...",
-    errorTitle: lang === "en" ? "Could not decode VIN" : "No se pudo decodificar el VIN",
+    cancel: lang === "en" ? "Cancel" : "Cancelar",
+    tip: lang === "en" ? "Tip" : "Consejo",
+    tipText: lang === "en"
+      ? "The VIN barcode is on the driver's side door jamb sticker or bottom of the windshield."
+      : "El código de barras del VIN está en la pegatina del pilar de la puerta del conductor o en la parte inferior del parabrisas.",
   };
 
-  // Cleanup camera on unmount
   useEffect(() => {
-    return () => stopCamera();
+    return () => {stopCamera(); };
   }, []);
 
-  function stopCamera() {
-    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    if (streamRef.current) streamRef.current.getTracks().forEach((t) => t.stop());
-    streamRef.current = null;
+  async function stopCamera() {
+    try {
+      if (readerRef.current) {
+        await readerRef.current.stopAsyncDecode?.();
+        readerRef.current.reset?.();
+        readerRef.current = null;
+      }
+    } catch {}
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach((t) => t.stop());
+      videoRef.current.srcObject = null;
+    }
   }
 
   async function startCamera() {
     setMode("camera");
+    // Dynamically import zxing so it only loads client-side
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } },
-      });
-      streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-        scanFrame();
-      }
-    } catch {
-      setErrorMsg(lang === "en" ? "Camera access denied. Please allow camera access and try again." : "Acceso a cámara denegado. Por favor permite el acceso e intenta de nuevo.");
-      setMode("error");
-    }
-  }
+      const { BrowserMultiFormatReader, NotFoundException } = await import("@zxing/browser") as any;
+      const codeReader = new BrowserMultiFormatReader();
+      readerRef.current = codeReader;
 
-  function scanFrame() {
-    if (!videoRef.current) return;
-    const video = videoRef.current;
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      const canvas = document.createElement("canvas");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-      ctx.drawImage(video, 0, 0);
-      // @ts-ignore — BarcodeDetector is available on modern mobile browsers
-      if ("BarcodeDetector" in window) {
-        // @ts-ignore
-        const detector = new BarcodeDetector({ formats: ["code_39", "code_128", "qr_code", "pdf417"] });
-        detector.detect(canvas).then((barcodes: any[]) => {
-          if (barcodes.length > 0) {
-            const raw = barcodes[0].rawValue;
-            // VINs are 17 chars, sometimes barcode has leading I
+      const devices = await BrowserMultiFormatReader.listVideoInputDevices();
+      // Prefer back camera
+      const deviceId = devices.find((d: any) =>
+        d.label.toLowerCase().includes("back") ||
+        d.label.toLowerCase().includes("rear") ||
+        d.label.toLowerCase().includes("environment")
+      )?.deviceId || devices[devices.length - 1]?.deviceId;
+
+      if (!deviceId && devices.length === 0) {
+        throw new Error("No camera found");
+      }
+
+      await codeReader.decodeFromVideoDevice(
+        deviceId || undefined,
+        videoRef.current!,
+        (result:any, err:any) => {
+          if (result) {
+            const raw = result.getText();
             const extracted = raw.replace(/^I/, "").trim().toUpperCase();
             if (extracted.length === 17) {
               stopCamera();
               lookupVIN(extracted);
-              return;
             }
           }
-          animFrameRef.current = requestAnimationFrame(scanFrame);
-        }).catch(() => {
-          animFrameRef.current = requestAnimationFrame(scanFrame);
-        });
+          // NotFoundException is normal (no barcode in frame yet), ignore it
+          if (err && !(err instanceof NotFoundException)) {
+            console.warn("Scan error:", err);
+          }
+        }
+      );
+    } catch (e: any) {
+      const msg = e?.message || "";
+      if (msg.includes("Permission") || msg.includes("NotAllowed") || msg.includes("denied")) {
+        setErrorMsg(lang === "en"
+          ? "Camera access denied. Please allow camera access in your browser settings and try again."
+          : "Acceso a cámara denegado. Permite el acceso en tu navegador e intenta de nuevo.");
       } else {
-        // BarcodeDetector not supported — fall back to manual
-        stopCamera();
-        setMode("manual");
-        setErrorMsg(lang === "en" ? "Barcode scanning not supported on this browser. Please enter the VIN manually." : "Escaneo no compatible con este navegador. Ingresa el VIN manualmente.");
+        setErrorMsg(lang === "en"
+          ? "Could not start camera. Please enter the VIN manually."
+          : "No se pudo iniciar la cámara. Ingresa el VIN manualmente.");
       }
-    } else {
-      animFrameRef.current = requestAnimationFrame(scanFrame);
+      setMode("error");
     }
   }
 
@@ -159,6 +170,7 @@ export default function ScanPage() {
   }
 
   function reset() {
+    stopCamera();
     setMode("idle");
     setVin("");
     setManualInput("");
@@ -166,7 +178,6 @@ export default function ScanPage() {
     setErrorMsg("");
   }
 
-  // Check if VIN is in our inventory
   const inventoryMatch = vin ? vehicles.find((v) => v.vin?.toUpperCase() === vin.toUpperCase()) : null;
 
   const rows = decoded ? [
@@ -188,7 +199,7 @@ export default function ScanPage() {
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <Link href="/" className="text-gray-400 hover:text-gray-700 transition">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </Link>
@@ -202,26 +213,26 @@ export default function ScanPage() {
       {mode === "idle" && (
         <div className="flex flex-col gap-4">
           <button onClick={startCamera}
-            className="w-full flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-5 rounded-2xl text-lg transition shadow-md">
+            className="w-full flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold py-5 rounded-2xl text-lg transition shadow-md">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 2l-4 5-4-5"/>
-              <line x1="7" y1="12" x2="7" y2="17"/><line x1="10" y1="12" x2="10" y2="17"/>
-              <line x1="13" y1="12" x2="13" y2="17"/><line x1="16" y1="12" x2="16" y2="17"/>
+              <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+              <path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+              <line x1="7" y1="8" x2="7" y2="16"/><line x1="10" y1="8" x2="10" y2="16"/>
+              <line x1="13" y1="8" x2="13" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/>
             </svg>
             {txt.scanBtn}
           </button>
           <button onClick={() => setMode("manual")}
-            className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-red-400 text-gray-800 font-bold py-5 rounded-2xl text-lg transition">
+            className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-red-400 active:bg-gray-50 text-gray-800 font-bold py-5 rounded-2xl text-lg transition">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
             </svg>
             {txt.manualBtn}
           </button>
-
-          {/* Tip card */}
           <div className="mt-2 rounded-2xl bg-gray-50 border border-gray-200 p-4 text-sm text-gray-500">
-            <p className="font-semibold text-gray-700 mb-1">💡 {lang === "en" ? "Tip" : "Consejo"}</p>
-            <p>{lang === "en" ? "The VIN barcode is usually found on the driver's side door jamb sticker or the bottom of the windshield." : "El código de barras del VIN generalmente está en la pegatina del pilar de la puerta del conductor o en la parte inferior del parabrisas."}</p>
+            <p className="font-semibold text-gray-700 mb-1">💡 {txt.tip}</p>
+            <p>{txt.tipText}</p>
           </div>
         </div>
       )}
@@ -229,24 +240,23 @@ export default function ScanPage() {
       {/* CAMERA */}
       {mode === "camera" && (
         <div className="flex flex-col gap-4">
-          <div className="relative rounded-2xl overflow-hidden bg-black aspect-video">
-            <video ref={videoRef} className="w-full h-full object-cover" playsInline muted />
+          <div className="relative rounded-2xl overflow-hidden bg-black w-full aspect-video">
+            <video ref={videoRef} className="w-full h-full object-cover" playsInline muted autoPlay />
             {/* Scanning overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-              <div className="w-64 h-20 border-2 border-red-500 rounded-lg relative">
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-red-500 rounded-tl" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-red-500 rounded-tr" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-red-500 rounded-bl" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-red-500 rounded-br" />
-                {/* Scanning line animation */}
-                <div className="absolute inset-x-0 top-1/2 h-0.5 bg-red-500 opacity-80 animate-pulse" />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-72 h-24 relative">
+                <div className="absolute top-0 left-0 w-5 h-5 border-t-4 border-l-4 border-red-500 rounded-tl-md" />
+                <div className="absolute top-0 right-0 w-5 h-5 border-t-4 border-r-4 border-red-500 rounded-tr-md" />
+                <div className="absolute bottom-0 left-0 w-5 h-5 border-b-4 border-l-4 border-red-500 rounded-bl-md" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-4 border-r-4 border-red-500 rounded-br-md" />
+                <div className="absolute inset-x-4 top-1/2 h-0.5 bg-red-500/70 animate-pulse" />
               </div>
             </div>
           </div>
           <p className="text-center text-sm text-gray-500">{txt.scanning}</p>
           <button onClick={() => { stopCamera(); reset(); }}
             className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition">
-            {lang === "en" ? "Cancel" : "Cancelar"}
+            {txt.cancel}
           </button>
         </div>
       )}
@@ -254,18 +264,17 @@ export default function ScanPage() {
       {/* MANUAL */}
       {mode === "manual" && (
         <div className="flex flex-col gap-4">
-          {errorMsg && (
-            <div className="rounded-2xl bg-yellow-50 border border-yellow-200 px-4 py-3 text-sm text-yellow-800">{errorMsg}</div>
-          )}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">VIN</label>
             <input
               type="text"
               maxLength={17}
               value={manualInput}
-              onChange={(e) => setManualInput(e.target.value.toUpperCase())}
+              onChange={(e) => setManualInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, ""))}
               placeholder={txt.placeholder}
               className="w-full border-2 border-gray-200 focus:border-red-500 rounded-2xl px-4 py-4 text-base font-mono tracking-widest outline-none transition"
+              autoCapitalize="characters"
+              autoCorrect="off"
             />
             <p className="text-xs text-gray-400 mt-1 text-right">{manualInput.length}/17</p>
           </div>
@@ -294,13 +303,10 @@ export default function ScanPage() {
       {/* RESULT */}
       {mode === "result" && decoded && (
         <div className="flex flex-col gap-4">
-          {/* VIN badge */}
           <div className="rounded-2xl bg-gray-50 border border-gray-200 px-4 py-3 flex items-center justify-between">
             <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider">VIN</span>
             <span className="font-mono text-sm text-gray-700">{vin}</span>
           </div>
-
-          {/* Vehicle title */}
           <div>
             <h2 className="text-2xl font-extrabold text-gray-900">
               {decoded.year} {decoded.make} {decoded.model}
@@ -308,7 +314,6 @@ export default function ScanPage() {
             {decoded.trim && <p className="text-gray-500 text-sm mt-0.5">{decoded.trim}</p>}
           </div>
 
-          {/* Inventory match */}
           {inventoryMatch ? (
             <div className="rounded-2xl bg-green-50 border-2 border-green-400 p-4">
               <p className="font-bold text-green-700 text-sm mb-2">{txt.inInventory}</p>
@@ -329,7 +334,6 @@ export default function ScanPage() {
             </div>
           )}
 
-          {/* Specs table */}
           <div className="rounded-2xl border border-gray-200 overflow-hidden">
             {rows.map((row, i) => (
               <div key={row.label} className={`flex justify-between px-4 py-3 text-sm ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
@@ -350,8 +354,8 @@ export default function ScanPage() {
       {mode === "error" && (
         <div className="flex flex-col gap-4">
           <div className="rounded-2xl bg-red-50 border border-red-200 p-5 text-center">
-            <p className="text-2xl mb-2">⚠️</p>
-            <p className="font-bold text-red-700">{txt.errorTitle}</p>
+            <p className="text-3xl mb-2">⚠️</p>
+            <p className="font-bold text-red-700">{lang === "en" ? "Something went wrong" : "Algo salió mal"}</p>
             <p className="text-sm text-red-500 mt-1">{errorMsg}</p>
           </div>
           <button onClick={reset}
