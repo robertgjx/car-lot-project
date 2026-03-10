@@ -44,7 +44,7 @@
     {
       "id": "2020-chevrolet-silverado-lf233736",
       "year": 2020,
-      "make": "CHEVROLET",
+      "make": "Chevrolet",
       "model": "Silverado",
       "trim": "Work Truck",
       "driveTrain": "4x4",
@@ -67,7 +67,7 @@
     {
         "id": "1993-ford-f-150-pla74364",
         "year": 1993,
-        "make": "FORD",
+        "make": "Ford",
         "model": "F-150",
         "price": 10900,
         "miles":"EXPT",
@@ -87,7 +87,7 @@
     {
       "id": "2000-chevrolet-silverado-y7371611",
       "year": 2000,
-      "make": "CHEVROLET",
+      "make": "Chevrolet",
       "model": "Silverado",
       "driveTrain": "4x4",
       "price": 12900,
