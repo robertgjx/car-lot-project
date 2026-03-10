@@ -22,22 +22,36 @@ function parseNHTSA(results: NHTSAResult[]): DecodedVehicle {
   };
 }
 
+function extractVIN(text: string): string | null {
+  // VINs are 17 chars, only A-H, J-N, P-Z, 0-9 (no I, O, Q)
+  const cleaned = text.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, " ");
+  const matches = cleaned.match(/[A-HJ-NPR-Z0-9]{17}/g);
+  if (matches && matches.length > 0) return matches[0];
+  return null;
+}
+
 export default function ScanPage() {
   const { lang } = useLang();
-  const [mode, setMode] = useState<"idle" | "camera" | "manual" | "loading" | "result" | "error">("idle");
+  const [mode, setMode] = useState<"idle" | "camera" | "photo" | "ocr" | "manual" | "loading" | "result" | "error">("idle");
   const [vin, setVin] = useState("");
   const [manualInput, setManualInput] = useState("");
   const [decoded, setDecoded] = useState<DecodedVehicle | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [ocrProgress, setOcrProgress] = useState(0);
+  const [ocrStatus, setOcrStatus] = useState("");
+  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const photoVideoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const photoStreamRef = useRef<MediaStream | null>(null);
   const scanningRef = useRef(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const txt = {
     title: lang === "en" ? "VIN Scanner" : "Escáner de VIN",
-    subtitle: lang === "en" ? "Scan a vehicle's barcode or enter the VIN manually." : "Escanea el código de barras o ingresa el VIN manualmente.",
-    scanBtn: lang === "en" ? "Scan Barcode" : "Escanear Código",
+    subtitle: lang === "en" ? "Scan a barcode, snap a photo, or type the VIN." : "Escanea un código, toma una foto o escribe el VIN.",
+    scanBtn: lang === "en" ? "Scan Barcode" : "Escanear Código de Barras",
+    photoBtn: lang === "en" ? "Snap VIN Photo" : "Tomar Foto del VIN",
     manualBtn: lang === "en" ? "Enter VIN Manually" : "Ingresar VIN Manual",
     placeholder: lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres...",
     lookupBtn: lang === "en" ? "Look Up Vehicle" : "Buscar Vehículo",
@@ -46,96 +60,153 @@ export default function ScanPage() {
     viewListing: lang === "en" ? "View Our Listing →" : "Ver Nuestro Listado →",
     tryAnother: lang === "en" ? "Scan Another" : "Escanear Otro",
     back: lang === "en" ? "← Back" : "← Regresar",
-    scanning: lang === "en" ? "Point camera at the barcode on the window sticker" : "Apunta la cámara al código de barras del sticker",
+    scanning: lang === "en" ? "Point camera at the VIN barcode" : "Apunta la cámara al código de barras del VIN",
+    photoPrompt: lang === "en" ? "Point camera at the VIN number and tap Capture" : "Apunta la cámara al número VIN y toca Capturar",
+    captureBtn: lang === "en" ? "📸 Capture" : "📸 Capturar",
     loading: lang === "en" ? "Looking up vehicle..." : "Buscando vehículo...",
     cancel: lang === "en" ? "Cancel" : "Cancelar",
+    readingVin: lang === "en" ? "Reading VIN from photo..." : "Leyendo VIN de la foto...",
     tip: lang === "en" ? "Tip" : "Consejo",
     tipText: lang === "en"
-      ? "The VIN barcode is on the driver's side door jamb sticker or bottom of the windshield."
-      : "El código de barras del VIN está en la pegatina del pilar de la puerta del conductor o en la parte inferior del parabrisas.",
+      ? "VIN barcode is on the driver's door jamb sticker or bottom of the windshield."
+      : "El código de barras VIN está en la pegatina del pilar de la puerta del conductor.",
   };
 
   const stopCamera = useCallback(() => {
     scanningRef.current = false;
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((t) => t.stop());
-      streamRef.current = null;
-    }
+    if (streamRef.current) { streamRef.current.getTracks().forEach((t) => t.stop()); streamRef.current = null; }
     if (videoRef.current) videoRef.current.srcObject = null;
   }, []);
 
-  useEffect(() => () => stopCamera(), [stopCamera]);
+  const stopPhotoCamera = useCallback(() => {
+    if (photoStreamRef.current) { photoStreamRef.current.getTracks().forEach((t) => t.stop()); photoStreamRef.current = null; }
+    if (photoVideoRef.current) photoVideoRef.current.srcObject = null;
+  }, []);
 
+  useEffect(() => () => { stopCamera(); stopPhotoCamera(); }, [stopCamera, stopPhotoCamera]);
+
+  // --- BARCODE SCANNER ---
   async function startCamera() {
     setMode("camera");
     setErrorMsg("");
     try {
-      // Request camera — this is what Safari needs first
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 } },
-        audio: false,
+        video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 } }, audio: false,
       });
       streamRef.current = stream;
-
-      if (!videoRef.current) throw new Error("Video element not ready");
+      if (!videoRef.current) throw new Error("No video element");
       videoRef.current.srcObject = stream;
       videoRef.current.setAttribute("playsinline", "true");
       await videoRef.current.play();
 
-      // Now try zxing
       try {
         const { BrowserMultiFormatReader } = await import("@zxing/browser") as any;
         const reader = new BrowserMultiFormatReader();
         scanningRef.current = true;
-
         const tick = () => {
           if (!scanningRef.current || !videoRef.current || !canvasRef.current) return;
           const video = videoRef.current;
           const canvas = canvasRef.current;
           if (video.readyState < 2) { requestAnimationFrame(tick); return; }
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
+          canvas.width = video.videoWidth; canvas.height = video.videoHeight;
           const ctx = canvas.getContext("2d");
           if (!ctx) return;
           ctx.drawImage(video, 0, 0);
           reader.decodeFromCanvas(canvas)
             .then((result: any) => {
               if (!scanningRef.current) return;
-              const raw: string = result.getText();
-              const extracted = raw.replace(/^I/, "").trim().toUpperCase();
-              if (extracted.length === 17) {
-                stopCamera();
-                lookupVIN(extracted);
-              } else {
-                requestAnimationFrame(tick);
-              }
+              const extracted = result.getText().replace(/^I/, "").trim().toUpperCase();
+              if (extracted.length === 17) { stopCamera(); lookupVIN(extracted); }
+              else requestAnimationFrame(tick);
             })
-            .catch(() => {
-              if (scanningRef.current) requestAnimationFrame(tick);
-            });
+            .catch(() => { if (scanningRef.current) requestAnimationFrame(tick); });
         };
         requestAnimationFrame(tick);
       } catch {
-        // zxing failed — still have camera, show manual
         stopCamera();
         setMode("manual");
-        setErrorMsg(lang === "en"
-          ? "Barcode scanning unavailable on this browser. Please enter VIN manually."
-          : "Escaneo no disponible. Ingresa el VIN manualmente.");
+        setErrorMsg(lang === "en" ? "Barcode scanning unavailable. Enter VIN manually." : "Escaneo no disponible. Ingresa el VIN manualmente.");
       }
     } catch (e: any) {
       stopCamera();
-      const msg = (e?.message || "").toLowerCase();
-      if (msg.includes("permission") || msg.includes("notallowed") || msg.includes("denied")) {
-        setErrorMsg(lang === "en"
-          ? "Camera access denied. Go to Settings → Safari → Camera and allow access, then try again."
-          : "Acceso denegado. Ve a Configuración → Safari → Cámara y permite el acceso.");
-      } else {
-        setErrorMsg(lang === "en"
-          ? "Could not access camera. Please enter the VIN manually."
-          : "No se pudo acceder a la cámara. Ingresa el VIN manualmente.");
-      }
+      setErrorMsg(lang === "en"
+        ? "Camera access denied. Go to Settings → Safari → Camera → Allow."
+        : "Acceso denegado. Ve a Configuración → Safari → Cámara → Permitir.");
       setMode("error");
+    }
+  }
+
+  // --- PHOTO / OCR ---
+  async function startPhotoCamera() {
+    setMode("photo");
+    setCapturedImage(null);
+    setErrorMsg("");
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 } }, audio: false,
+      });
+      photoStreamRef.current = stream;
+      if (!photoVideoRef.current) throw new Error("No video element");
+      photoVideoRef.current.srcObject = stream;
+      photoVideoRef.current.setAttribute("playsinline", "true");
+      await photoVideoRef.current.play();
+    } catch {
+      stopPhotoCamera();
+      setErrorMsg(lang === "en" ? "Camera access denied." : "Acceso a cámara denegado.");
+      setMode("error");
+    }
+  }
+
+  async function captureAndOCR() {
+    if (!photoVideoRef.current) return;
+    const video = photoVideoRef.current;
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.drawImage(video, 0, 0);
+    const dataUrl = canvas.toDataURL("image/jpeg", 0.95);
+    setCapturedImage(dataUrl);
+    stopPhotoCamera();
+    setMode("ocr");
+    setOcrProgress(0);
+    setOcrStatus(lang === "en" ? "Loading text reader..." : "Cargando lector de texto...");
+
+    try {
+      const Tesseract = await import("tesseract.js");
+      const worker = await Tesseract.createWorker("eng", 1, {
+        logger: (m: any) => {
+          if (m.status === "recognizing text") {
+            setOcrProgress(Math.round(m.progress * 100));
+            setOcrStatus(lang === "en" ? "Reading VIN from photo..." : "Leyendo VIN de la foto...");
+          } else if (m.status === "loading tesseract core") {
+            setOcrStatus(lang === "en" ? "Loading engine..." : "Cargando motor...");
+            setOcrProgress(10);
+          } else if (m.status === "initializing api") {
+            setOcrStatus(lang === "en" ? "Initializing..." : "Inicializando...");
+            setOcrProgress(30);
+          }
+        },
+      });
+
+      setOcrStatus(lang === "en" ? "Scanning for VIN..." : "Buscando VIN...");
+      const { data: { text } } = await worker.recognize(dataUrl);
+      await worker.terminate();
+
+      const found = extractVIN(text);
+      if (found) {
+        lookupVIN(found);
+      } else {
+        // VIN not found — show manual with pre-notice
+        setMode("manual");
+        setErrorMsg(lang === "en"
+          ? "Couldn't read a VIN from the photo. Try again with better lighting or enter manually."
+          : "No se encontró un VIN en la foto. Intenta con mejor iluminación o ingrésalo manualmente.");
+      }
+    } catch {
+      setMode("manual");
+      setErrorMsg(lang === "en" ? "OCR failed. Please enter the VIN manually." : "Error al leer. Ingresa el VIN manualmente.");
     }
   }
 
@@ -148,8 +219,7 @@ export default function ScanPage() {
       const parsed = parseNHTSA(data.Results);
       if (!parsed.make || !parsed.year) {
         setErrorMsg(lang === "en" ? "Invalid VIN or vehicle not found." : "VIN inválido o vehículo no encontrado.");
-        setMode("error");
-        return;
+        setMode("error"); return;
       }
       setDecoded(parsed);
       setMode("result");
@@ -160,9 +230,9 @@ export default function ScanPage() {
   }
 
   function reset() {
-    stopCamera();
-    setMode("idle");
-    setVin(""); setManualInput(""); setDecoded(null); setErrorMsg("");
+    stopCamera(); stopPhotoCamera();
+    setMode("idle"); setVin(""); setManualInput(""); setDecoded(null);
+    setErrorMsg(""); setOcrProgress(0); setOcrStatus(""); setCapturedImage(null);
   }
 
   const inventoryMatch = vin ? vehicles.find((v) => v.vin?.toUpperCase() === vin.toUpperCase()) : null;
@@ -181,7 +251,6 @@ export default function ScanPage() {
 
   return (
     <main className="min-h-screen bg-white text-gray-900 px-4 py-6 max-w-lg mx-auto">
-      {/* Hidden canvas for decoding */}
       <canvas ref={canvasRef} className="hidden" />
 
       {/* Header */}
@@ -199,7 +268,7 @@ export default function ScanPage() {
 
       {/* IDLE */}
       {mode === "idle" && (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           <button onClick={startCamera}
             className="w-full flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold py-5 rounded-2xl text-lg transition shadow-md">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -210,22 +279,30 @@ export default function ScanPage() {
             </svg>
             {txt.scanBtn}
           </button>
+          <button onClick={startPhotoCamera}
+            className="w-full flex items-center justify-center gap-3 bg-gray-900 hover:bg-gray-800 active:bg-gray-700 text-white font-bold py-5 rounded-2xl text-lg transition shadow-md">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            {txt.photoBtn}
+          </button>
           <button onClick={() => setMode("manual")}
-            className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-red-400 active:bg-gray-50 text-gray-800 font-bold py-5 rounded-2xl text-lg transition">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-red-400 active:bg-gray-50 text-gray-800 font-bold py-4 rounded-2xl text-base transition">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
               <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
             </svg>
             {txt.manualBtn}
           </button>
-          <div className="mt-2 rounded-2xl bg-gray-50 border border-gray-200 p-4 text-sm text-gray-500">
+          <div className="mt-1 rounded-2xl bg-gray-50 border border-gray-200 p-4 text-sm text-gray-500">
             <p className="font-semibold text-gray-700 mb-1">💡 {txt.tip}</p>
             <p>{txt.tipText}</p>
           </div>
         </div>
       )}
 
-      {/* CAMERA */}
+      {/* BARCODE CAMERA */}
       {mode === "camera" && (
         <div className="flex flex-col gap-4">
           <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ aspectRatio: "4/3" }}>
@@ -245,6 +322,67 @@ export default function ScanPage() {
             className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition">
             {txt.cancel}
           </button>
+        </div>
+      )}
+
+      {/* PHOTO CAMERA */}
+      {mode === "photo" && (
+        <div className="flex flex-col gap-4">
+          <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ aspectRatio: "4/3" }}>
+            <video ref={photoVideoRef} className="w-full h-full object-cover" playsInline muted autoPlay />
+            {/* Corner guides */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-64 h-16 relative">
+                <div className="absolute top-0 left-0 w-5 h-5 border-t-4 border-l-4 border-white rounded-tl-md" />
+                <div className="absolute top-0 right-0 w-5 h-5 border-t-4 border-r-4 border-white rounded-tr-md" />
+                <div className="absolute bottom-0 left-0 w-5 h-5 border-b-4 border-l-4 border-white rounded-bl-md" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-4 border-r-4 border-white rounded-br-md" />
+              </div>
+            </div>
+          </div>
+          <p className="text-center text-sm text-gray-500">{txt.photoPrompt}</p>
+          <button onClick={captureAndOCR}
+            className="w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-4 rounded-2xl text-lg transition">
+            {txt.captureBtn}
+          </button>
+          <button onClick={() => { stopPhotoCamera(); reset(); }}
+            className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition">
+            {txt.cancel}
+          </button>
+        </div>
+      )}
+
+      {/* OCR PROCESSING */}
+      {mode === "ocr" && (
+        <div className="flex flex-col gap-6 py-8">
+          {capturedImage && (
+            <div className="rounded-2xl overflow-hidden border border-gray-200">
+              <img src={capturedImage} alt="Captured" className="w-full object-cover opacity-60" style={{ maxHeight: "180px" }} />
+            </div>
+          )}
+          <div className="flex flex-col items-center gap-4">
+            {/* Animated scanner effect */}
+            <div className="relative w-20 h-20">
+              <div className="absolute inset-0 rounded-full border-4 border-red-100" />
+              <div className="absolute inset-0 rounded-full border-4 border-red-600 border-t-transparent animate-spin" />
+              <div className="absolute inset-0 flex items-center justify-center text-2xl">🔍</div>
+            </div>
+            <div className="w-full">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-gray-600 font-medium">{ocrStatus}</span>
+                <span className="text-red-600 font-bold">{ocrProgress}%</span>
+              </div>
+              <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                <div
+                  className="bg-red-600 h-3 rounded-full transition-all duration-300"
+                  style={{ width: `${ocrProgress}%` }}
+                />
+              </div>
+            </div>
+            <p className="text-xs text-gray-400 text-center">
+              {lang === "en" ? "This may take a few seconds on first use" : "Esto puede tardar unos segundos la primera vez"}
+            </p>
+          </div>
         </div>
       )}
 
