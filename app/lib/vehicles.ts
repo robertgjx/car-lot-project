@@ -28,6 +28,9 @@ export type Vehicle = {
 
   // Images
   images?: string[];
+
+  // Location
+  location?: string | null;
 };
 
 const PLACEHOLDER = "/cars/placeholder.jpg";

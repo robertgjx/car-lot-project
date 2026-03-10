@@ -187,6 +187,7 @@ function InventoryInner() {
   const [make, setMake] = useState(() => searchParams.get("make") ?? "all");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [location, setLocation] = useState("all");
 
   useEffect(() => {
     const m = searchParams.get("make");
@@ -214,7 +215,8 @@ function InventoryInner() {
       const price = v.price ?? null;
       const matchesMin = min === null ? true : price !== null && price >= min;
       const matchesMax = max === null ? true : price !== null && price <= max;
-      return matchesQuery && matchesMake && matchesMin && matchesMax;
+      const matchesLocation = location === "all" ? true : (v as any).location === location;
+      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLocation;
     });
 
     return list;
@@ -224,7 +226,7 @@ function InventoryInner() {
   const [page, setPage] = useState(1);
 
   // Reset to page 1 when filters change
-  useEffect(() => { setPage(1); }, [query, make, minPrice, maxPrice]);
+  useEffect(() => { setPage(1); }, [query, make, minPrice, maxPrice, location]);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
@@ -262,6 +264,16 @@ function InventoryInner() {
               </select>
             </div>
             <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Location" : "Ubicación"}
+              </label>
+              <select value={location} onChange={(e) => setLocation(e.target.value)} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                <option value="all">{lang === "en" ? "All Locations" : "Todas"}</option>
+                <option value="Palma Vista">📍 Palma Vista</option>
+                <option value="Veterans Blvd">📍 Veterans Blvd</option>
+              </select>
+            </div>
+            <div>
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.minPrice[lang]}</label>
               <input value={minPrice} onChange={(e) => setMinPrice(e.target.value)} inputMode="numeric" placeholder="0" className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
@@ -270,7 +282,7 @@ function InventoryInner() {
               <input value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} inputMode="numeric" placeholder={maxInventoryPrice.toLocaleString()} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
             <div className="md:col-span-2 flex items-end gap-3">
-              <button onClick={() => { setQuery(""); setMake("all"); setMinPrice(""); setMaxPrice(""); }} className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
+              <button onClick={() => { setQuery(""); setMake("all"); setMinPrice(""); setMaxPrice(""); setLocation("all"); }} className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                 {t.inv.reset[lang]}
               </button>
               <div className="w-full text-sm text-gray-600">
@@ -293,9 +305,16 @@ function InventoryInner() {
                   <Image src={mainImg} alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`} fill className="object-cover" />
                 </div>
                 <div className="p-5">
-                  <h2 className="text-xl font-semibold text-gray-900">
-                    {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
-                  </h2>
+                  <div className="flex items-start justify-between gap-2">
+                    <h2 className="text-xl font-semibold text-gray-900">
+                      {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
+                    </h2>
+                    {(vehicle as any).location && (
+                      <span className="shrink-0 inline-flex items-center gap-1 bg-gray-100 text-gray-500 text-xs font-semibold px-2.5 py-1 rounded-full">
+                        📍 {(vehicle as any).location}
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-2 text-lg font-bold text-red-600">{formatMoney(vehicle.price)}</p>
                   <p className="mt-1 text-sm text-gray-500">
                     {t.inv.miles[lang]}{" "}{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
