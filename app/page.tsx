@@ -90,12 +90,46 @@ export default function Home() {
       <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
 
         <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+          <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
+          <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
+        </div>
+        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
           <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
           <p className="mt-2 text-gray-600">{t.why.finDesc[lang]}</p>
         </div>
         <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
           <h2 className="text-xl font-bold text-gray-900">{t.why.suppTitle[lang]}</h2>
           <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
+        </div>
+      </section>
+
+      {/* SEASONAL ANNOUNCEMENT */}
+      <section className="mt-6">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 p-6 shadow-md">
+          {/* Decorative clovers */}
+          <div className="pointer-events-none absolute -top-4 -right-4 text-green-400 opacity-20 text-9xl select-none">☘</div>
+          <div className="pointer-events-none absolute bottom-2 left-4 text-green-400 opacity-10 text-7xl select-none">☘</div>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-green-300 mb-1">
+                {lang === "en" ? "🍀 St. Patrick's Day Special" : "🍀 Especial Día de San Patricio"}
+              </p>
+              <h2 className="text-2xl font-extrabold text-white">
+                {lang === "en" ? "Get Lucky — Drive Home Today!" : "¡Tu suerte llega hoy — maneja a casa!"}
+              </h2>
+              <p className="mt-2 text-green-100 text-sm max-w-lg">
+                {lang === "en"
+                  ? "Stop by Garcia's Auto Sales this St. Patrick's Day weekend. In-house financing available — no luck needed to get approved!"
+                  : "Visítanos este fin de semana de San Patricio. ¡Financiamiento propio disponible — no necesitas suerte para ser aprobado!"}
+              </p>
+            </div>
+            <a
+              href="/inventory"
+              className="shrink-0 inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 text-base font-bold text-green-700 hover:bg-green-50 transition shadow"
+            >
+              {lang === "en" ? "View Inventory →" : "Ver Inventario →"}
+            </a>
+          </div>
         </div>
       </section>
 
