@@ -45,8 +45,8 @@ export default function ContactPage() {
         <div>
           <p className="text-gray-500 text-sm font-semibold uppercase tracking-wide">
             {lang === "en"
-              ? "For any questions, please call one of our inventory associates:"
-              : "Para cualquier pregunta, por favor llama a uno de nuestros asociados de inventario:"}
+              ? "For inventory questions, please call one of our inventory associates:"
+              : "Para preguntas sobre el inventario, por favor llame a uno de nuestros asesores de inventario:"}
           </p>
           <div className="mt-3 bg-white border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shadow-sm">
             <span className="text-gray-900 font-semibold text-lg">Cesar</span>
