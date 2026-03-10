@@ -44,16 +44,17 @@ export default function NavBar() {
       <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
         <div className="max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-0 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="hover:opacity-80 transition">
+          <Link href="/" className="hover:opacity-80 transition flex flex-col">
             <Image
               src="/logo.png"
               alt="Garcia's Auto Sales RGV"
               width={220}
               height={88}
-              className="object-contain w-52 md:w-72"
+              className="object-contain w-40 md:w-52"
+              style={{ maxHeight: '60px' }}
               priority
-            />
-            <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase -mt-1 pl-1">Est. 1984</span>
+              />
+            <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
           </Link>
 
           {/* Links + toggle */}
