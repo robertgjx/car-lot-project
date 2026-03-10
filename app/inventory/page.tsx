@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { vehicles } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 
@@ -26,10 +27,16 @@ const fullYear = (year?: number | null) => {
 
 export default function InventoryPage() {
   const { lang } = useLang();
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
-  const [make, setMake] = useState("all");
+  const [make, setMake] = useState(() => searchParams.get("make") ?? "all");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+
+  useEffect(() => {
+    const m = searchParams.get("make");
+    if (m) setMake(m);
+  }, [searchParams]);
 
   const makes = useMemo(() => {
     return Array.from(new Set(vehicles.map((v) => v.make))).sort();
