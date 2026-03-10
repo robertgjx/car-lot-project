@@ -53,6 +53,7 @@ export default function NavBar() {
               className="object-contain w-52 md:w-72"
               priority
             />
+            <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase -mt-1 pl-1">Est. 1984</span>
           </Link>
 
           {/* Links + toggle */}
