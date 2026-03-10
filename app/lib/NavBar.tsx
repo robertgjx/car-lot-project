@@ -41,7 +41,7 @@ export default function NavBar() {
       </div>
 
       {/* MAIN NAVBAR */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-2 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="hover:opacity-80 transition flex flex-col">
