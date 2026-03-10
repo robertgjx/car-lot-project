@@ -51,7 +51,7 @@ export default function NavBar() {
               width={220}
               height={88}
               className="object-contain w-56 md:w-72"
-              style={{ maxHeight: '55px' }}
+              style={{ maxHeight: '80px' }}
               priority
               />
             <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
