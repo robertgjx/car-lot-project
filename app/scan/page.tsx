@@ -97,6 +97,7 @@ export default function ScanPage() {
 
   async function startCamera() {
     setMode("camera");
+    await new Promise(r => setTimeout(r , 300));
     // Dynamically import zxing so it only loads client-side
     try {
       const { BrowserMultiFormatReader, NotFoundException } = await import("@zxing/browser") as any;
