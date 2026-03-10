@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { vehicles } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 
@@ -24,6 +24,68 @@ const fullYear = (year?: number | null) => {
   if (year < 100) return year >= 90 ? 1900 + year : 2000 + year;
   return year;
 };
+
+function VinLookupBar({ lang }: { lang: string }) {
+  const router = useRouter();
+  const [input, setInput] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
+  const [result, setResult] = useState<{ year: string; make: string; model: string } | null>(null);
+  const inventoryMatch = status === "found" ? vehicles.find((v) => v.vin?.toUpperCase() === input.toUpperCase()) : null;
+
+  async function lookup() {
+    if (input.length !== 17) return;
+    setStatus("loading"); setResult(null);
+    try {
+      const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${input}?format=json`);
+      const data = await res.json();
+      const get = (label: string) => data.Results.find((r: any) => r.Variable === label)?.Value || "";
+      const year = get("Model Year"); const make = get("Make"); const model = get("Model");
+      if (!make || !year) { setStatus("notfound"); return; }
+      setResult({ year, make, model }); setStatus("found");
+    } catch { setStatus("error"); }
+  }
+
+  return (
+    <div className="hidden md:block rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 mb-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+        {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+      </p>
+      <div className="flex gap-2">
+        <input
+          type="text" maxLength={17} value={input}
+          onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); setResult(null); }}
+          onKeyDown={(e) => e.key === "Enter" && lookup()}
+          placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
+          className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
+          autoCorrect="off" autoCapitalize="characters"
+        />
+        <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
+          className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm whitespace-nowrap">
+          {status === "loading" ? "..." : (lang === "en" ? "Look Up →" : "Buscar →")}
+        </button>
+      </div>
+      {status === "found" && result && (
+        <div className="mt-3 flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-3">
+          <div>
+            <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
+            {inventoryMatch
+              ? <p className="text-xs text-green-600 font-semibold mt-0.5">✅ {lang === "en" ? "In our inventory!" : "¡En nuestro inventario!"}</p>
+              : <p className="text-xs text-gray-400 mt-0.5">{lang === "en" ? "Not currently in stock" : "No disponible actualmente"}</p>
+            }
+          </div>
+          {inventoryMatch && (
+            <Link href={`/inventory/${inventoryMatch.id}`}
+              className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition">
+              {lang === "en" ? "View →" : "Ver →"}
+            </Link>
+          )}
+        </div>
+      )}
+      {status === "notfound" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>}
+      {status === "error" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>}
+    </div>
+  );
+}
 
 function InventoryInner() {
   const { lang } = useLang();
@@ -89,6 +151,9 @@ function InventoryInner() {
 
         <p className="mt-2 text-gray-500">{t.inv.sub[lang]}</p>
 
+        {/* VIN Lookup — desktop only */}
+        <VinLookupBar lang={lang} />
+
         {/* Filters Bar */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
@@ -126,7 +191,7 @@ function InventoryInner() {
         </div>
 
         {/* Vehicle Grid */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginated.map((vehicle) => {
             const mainImg = vehicle.images?.[0] ?? (vehicle as any).image ?? "/cars/placeholder.jpg";
             return (

@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { vehicles } from "./lib/vehicles";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
 
 function formatMoney(n: number | null | undefined) {
@@ -10,9 +12,98 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
+interface VinLookupProps { lang: string; }
+function VinLookup({ lang }: VinLookupProps) {
+  const router = useRouter();
+  const [input, setInput] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
+  const [result, setResult] = useState<{ year: string; make: string; model: string } | null>(null);
+  const inventoryMatch = input.length === 17 && status === "found"
+    ? vehicles.find((v) => v.vin?.toUpperCase() === input.toUpperCase())
+    : null;
+
+  async function lookup() {
+    if (input.length !== 17) return;
+    setStatus("loading");
+    setResult(null);
+    try {
+      const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${input}?format=json`);
+      const data = await res.json();
+      const get = (label: string) => data.Results.find((r: any) => r.Variable === label)?.Value || "";
+      const year = get("Model Year"); const make = get("Make"); const model = get("Model");
+      if (!make || !year) { setStatus("notfound"); return; }
+      setResult({ year, make, model });
+      setStatus("found");
+    } catch { setStatus("error"); }
+  }
+
+  return (
+    <div className="rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
+      <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+        {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+      </p>
+      <div className="flex gap-2">
+        <input
+          type="text" maxLength={17} value={input}
+          onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); setResult(null); }}
+          onKeyDown={(e) => e.key === "Enter" && lookup()}
+          placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
+          className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
+          autoCorrect="off" autoCapitalize="characters"
+        />
+        <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
+          className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm">
+          {status === "loading" ? "..." : (lang === "en" ? "Look Up →" : "Buscar →")}
+        </button>
+      </div>
+      {status === "found" && result && (
+        <div className="mt-3 flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-3">
+          <div>
+            <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
+            {inventoryMatch ? (
+              <p className="text-xs text-green-600 font-semibold mt-0.5">✅ {lang === "en" ? "In our inventory!" : "¡En nuestro inventario!"}</p>
+            ) : (
+              <p className="text-xs text-gray-400 mt-0.5">{lang === "en" ? "Not currently in stock" : "No disponible actualmente"}</p>
+            )}
+          </div>
+          {inventoryMatch && (
+            <Link href={`/inventory/${inventoryMatch.id}`}
+              className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition">
+              {lang === "en" ? "View →" : "Ver →"}
+            </Link>
+          )}
+        </div>
+      )}
+      {status === "notfound" && (
+        <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado. Verifica e intenta de nuevo."}</p>
+      )}
+      {status === "error" && (
+        <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red. Intenta de nuevo."}</p>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const { lang } = useLang();
-  const featured = vehicles.slice(0, 3);
+  const [featured, setFeatured] = useState<Vehicle[]>(vehicles.slice(0, 3));
+
+  useEffect(() => {
+    fetch("/api/track-view")
+      .then((r) => r.json())
+      .then(({ top }) => {
+        if (top && top.length > 0) {
+          const topVehicles = top
+            .map((id: string) => vehicles.find((v) => v.id === id))
+            .filter(Boolean) as Vehicle[];
+          // Fill up to 3 with fallbacks if needed
+          const fallbacks = vehicles.filter((v) => !top.includes(v.id));
+          const combined = [...topVehicles, ...fallbacks].slice(0, 3);
+          setFeatured(combined);
+        }
+      })
+      .catch(() => {}); // fallback to default
+  }, []);
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
@@ -28,10 +119,7 @@ export default function Home() {
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
           </p>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">
-          {lang === "en" ? "Welcome to" : "Bienvenido a"}
-          </p>
-          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
+          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
           {/* subtitle removed */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
@@ -89,6 +177,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* VIN LOOKUP — desktop only */}
+      <section className="hidden md:block mt-6">
+        <VinLookup lang={lang} />
+      </section>
+
       {/* WHY US */}
       <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
 
@@ -108,19 +201,30 @@ export default function Home() {
 
       {/* SEASONAL ANNOUNCEMENT */}
       <section className="mt-6">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 px-8 py-5 shadow-md text-center">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 p-6 shadow-md">
           {/* Decorative clovers */}
           <div className="pointer-events-none absolute -top-4 -right-4 text-green-400 opacity-20 text-9xl select-none">☘</div>
-          <div className="pointer-events-none absolute bottom-0 left-4 text-green-400 opacity-15 text-8xl select-none">☘</div>
-          <div className="pointer-events-none absolute top-1 left-10 text-green-400 opacity-10 text-6xl select-none">☘</div>
-          <div className="pointer-events-none absolute bottom-0 right-24 text-green-400 opacity-10 text-7xl select-none">☘</div>
-          <div className="relative z-10">
-          <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            {lang === "en" ? "🎩 ☘️ Happy St. Patrick's Day! ☘️ 🎩" : "🎩 ☘️ ¡Feliz Día de San Patricio! ☘️ 🎩"}
-            </p>
-            <p className="mt-1 text-green-200 text-sm font-medium">
-              {lang === "en" ? "From all of us at Garcia's Auto Sales RGV" : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
-            </p>
+          <div className="pointer-events-none absolute bottom-2 left-4 text-green-400 opacity-10 text-7xl select-none">☘</div>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-green-300 mb-1">
+                {lang === "en" ? "🍀 St. Patrick's Day Special" : "🍀 Especial Día de San Patricio"}
+              </p>
+              <h2 className="text-2xl font-extrabold text-white">
+                {lang === "en" ? "Get Lucky — Drive Home Today!" : "¡Tu suerte llega hoy — maneja a casa!"}
+              </h2>
+              <p className="mt-2 text-green-100 text-sm max-w-lg">
+                {lang === "en"
+                  ? "Stop by Garcia's Auto Sales this St. Patrick's Day weekend. In-house financing available — no luck needed to get approved!"
+                  : "Visítanos este fin de semana de San Patricio. ¡Financiamiento propio disponible — no necesitas suerte para ser aprobado!"}
+              </p>
+            </div>
+            <a
+              href="/inventory"
+              className="shrink-0 inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 text-base font-bold text-green-700 hover:bg-green-50 transition shadow"
+            >
+              {lang === "en" ? "View Inventory →" : "Ver Inventario →"}
+            </a>
           </div>
         </div>
       </section>
@@ -170,7 +274,7 @@ export default function Home() {
               <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
                 {t.contact.page[lang]}
               </Link>
-              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
+              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-gray-300 bg-white px-6 py-4 text-base font-semibold text-gray-900 hover:bg-gray-100 transition">
                 {t.contact.browse[lang]}
               </Link>
             </div>
