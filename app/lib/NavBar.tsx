@@ -11,7 +11,7 @@ export default function NavBar() {
     <>
       {/* TOP INFO BAR */}
       <div className="bg-red-600 text-white text-xs">
-        <div className="max-w-6xl mx-auto px-4 md:px-10 py-0 flex flex-wrap items-center justify-between gap-y-1 gap-x-4">
+        <div className="max-w-6xl mx-auto px-4 md:px-10 py-2 flex flex-wrap items-center justify-between gap-y-1 gap-x-4">
           {/* Locations */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="flex items-center gap-1">
@@ -42,7 +42,7 @@ export default function NavBar() {
 
       {/* MAIN NAVBAR */}
       <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
-        <div className="max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-2 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-0 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="hover:opacity-80 transition">
             <Image
