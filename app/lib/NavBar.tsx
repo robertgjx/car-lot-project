@@ -46,7 +46,7 @@ export default function NavBar() {
           {/* Logo */}
           <Link href="/" className="hover:opacity-80 transition flex flex-col">
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               alt="Garcia's Auto Sales RGV"
               width={220}
               height={88}
