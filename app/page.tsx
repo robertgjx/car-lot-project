@@ -112,7 +112,7 @@ export default function Home() {
           <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-green-300 mb-1">
-                {lang === "en" ? "🍀 St. Patrick's Day Special" : "🍀 Especial Día de San Patricio"}
+                {lang === "en" ? "🍀 Happy St. Patrick's Day" : "🍀 Feliz Día de San Patricio"}
               </p>
               <h2 className="text-2xl font-extrabold text-white">
                 {lang === "en" ? "Get Lucky — Drive Home Today!" : "¡Tu suerte llega hoy — maneja a casa!"}
