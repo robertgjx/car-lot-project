@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Vehicle } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 
@@ -100,6 +100,17 @@ export default function VehicleDetailsClient({
   decodedId: string;
 }) {
   const { lang } = useLang();
+
+  // Track this vehicle view
+  useEffect(() => {
+    if (vehicle?.id) {
+      fetch("/api/track-view", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: vehicle.id }),
+      }).catch(() => {}); // silently fail
+    }
+  }, [vehicle?.id]);
 
   const estLabel   = lang === "en" ? "Est. Monthly Payment"                              : "Pago Mensual Est.";
   const moLabel    = lang === "en" ? "/mo"                                               : "/mes";
