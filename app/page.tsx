@@ -29,9 +29,9 @@ export default function Home() {
             {t.hero.badge[lang]}
           </p>
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-100 md:text-xl">{t.hero.sub[lang]}</p>
+          {/* subtitle removed */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
+            <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
               {t.hero.viewInv[lang]}
             </Link>
             <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
@@ -43,10 +43,19 @@ export default function Home() {
 
       {/* WHY US */}
       <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
+
+        {/* FAMILY OWNED — photo background with overlay */}
+        <div className="relative overflow-hidden rounded-3xl border border-gray-200 min-h-[180px] p-6">
+          <div className="absolute inset-0 z-0">
+            <img src="/FamilyOwnedPhoto.jpg" alt="Family Owned" className="h-full w-full object-cover opacity-40" />
+            <div className="absolute inset-0 bg-white/40" />
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
+            <p className="mt-2 text-gray-700">{t.why.familyDesc[lang]}</p>
+          </div>
         </div>
+
         <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
           <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
           <p className="mt-2 text-gray-600">{t.why.finDesc[lang]}</p>
