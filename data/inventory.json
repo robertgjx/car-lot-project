@@ -605,7 +605,7 @@
   {
     "id": "2018-chevrolet-silverado-jz274037",
     "year": 2018,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Silverado",
     "trim": "Work Truck/LS/Fleet/Base",
     "price": 15900,
@@ -628,7 +628,7 @@
   {
     "id": "2012-ford-f-150-ckd94306",
     "year": 2012,
-    "make": "FORD",
+    "make": "Ford",
     "model": "F-150",
     "price": 12900,
     "down": 3500,
@@ -675,7 +675,7 @@
   {
     "id": "2013-ford-explorer-dga79465",
     "year": 2013,
-    "make": "FORD",
+    "make": "Ford",
     "model": "Explorer",
     "trim": "XLT",
     "price": 5900,
@@ -700,7 +700,7 @@
   {
     "id": "2019-ford-explorer-kga10598",
     "year": 2019,
-    "make": "FORD",
+    "make": "Ford",
     "model": "Explorer",
     "trim": "Limited",
     "price": 12900,
@@ -724,7 +724,7 @@
   {
     "id": "2018-chevrolet-equinox-j6177577",
     "year": 2018,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Equinox",
     "trim": "LS",
     "price": 9000,
@@ -748,7 +748,7 @@
   {
     "id": "2022-chevrolet-blazer-ns185707",
     "year": 2022,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Blazer",
     "trim": "2LT",
     "price": 14900,
@@ -768,7 +768,7 @@
   {
     "id": "2020-chevrolet-equinox-l6214535",
     "year": 2020,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Equinox",
     "trim": "LS",
     "price": 11900,
@@ -788,7 +788,7 @@
   {
     "id": "2021-chevrolet-trailblazer-mb134985",
     "year": 2021,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Trailblazer",
     "trim": "LS",
     "price": 14900,
@@ -808,7 +808,7 @@
   {
     "id": "2020-chevrolet-equinox-l6228625",
     "year": 2020,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Equinox",
     "trim": "LT (2FL)",
     "price": 11900,
@@ -846,7 +846,7 @@
   {
     "id": "2019-honda-pilot-kb051444",
     "year": 2019,
-    "make": "HONDA",
+    "make": "Honda",
     "model": "Pilot",
     "trim": "EXL",
     "price": 13900,
@@ -866,7 +866,7 @@
   {
     "id": "2020-jeep-grand-cherokee-lc314158",
     "year": 2020,
-    "make": "JEEP",
+    "make": "Jeep",
     "model": "Grand Cherokee",
     "trim": "Overland",
     "price": 13900,
@@ -926,7 +926,7 @@
   {
     "id": "2017-ford-mustang-h5210061",
     "year": 2017,
-    "make": "FORD",
+    "make": "Ford",
     "model": "Mustang",
     "trim": "I4 Coupe",
     "price": 14900,
@@ -948,7 +948,7 @@
   {
     "id": "2016-chevrolet-impala-g1986042",
     "year": 2016,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Impala",
     "trim": "LT (1LT)",
     "price": 8900,
@@ -971,7 +971,7 @@
   {
     "id": "2020-toyota-corolla-lp017671",
     "year": 2020,
-    "make": "TOYOTA",
+    "make": "Toyota",
     "model": "Corolla",
     "trim": "LE, w/Premium Pkg",
     "price": 10900,
