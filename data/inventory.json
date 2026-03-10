@@ -510,7 +510,7 @@
   {
     "id": "2018-ford-f-150-jfb09194",
     "year": 2018,
-    "make": "FORD",
+    "make": "Ford",
     "model": "F-150",
     "trim": "STX",
     "price": 12900,
@@ -762,7 +762,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2022-chevrolet-blazer-ns185707/5725317122885732137.JPG",
+               "/cars/2022-chevrolet-blazer-ns185707/808880611358720670.JPG",
+               "/cars/2022-chevrolet-blazer-ns185707/1610252576632498009.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -782,7 +785,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Orange",
-    "images": [],
+    "images": ["/cars/2020-chevrolet-equinox-l6214535/2291573649979835275.JPG",
+               "/cars/2020-chevrolet-equinox-l6214535/6771497920387831384.JPG",
+               "/cars/2020-chevrolet-equinox-l6214535/8349090748791102165.JPG"
+],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -802,7 +808,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Blue",
-    "images": [],
+    "images": ["/cars/2021-chevrolet-trailblazer-mb134985/1430649523990390617.JPG",
+               "/cars/2021-chevrolet-trailblazer-mb134985/7830068703131571358.JPG",
+               "/cars/2021-chevrolet-trailblazer-mb134985/4563599469628876450.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -822,7 +831,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Silver",
-    "images": [],
+    "images": ["/cars/2020-chevrolet-equinox-l6228625/8606640538829298400.JPG",
+               "/cars/2020-chevrolet-equinox-l6228625/975017346357746657.JPG",
+               "/cars/2020-chevrolet-equinox-l6228625/6347286640092644068.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -840,7 +852,11 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Silver",
-    "images": [],
+    "images": ["public/cars/2018-gmc-acadia-jz230520/1201717930455305746.JPG",
+               "/cars/2018-gmc-acadia-jz230520/4139018124377533369.JPG",
+               "/cars/2018-gmc-acadia-jz230520/6813440434465584626.JPG",
+               "/cars/2018-gmc-acadia-jz230520/3942156302508301167.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
