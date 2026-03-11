@@ -140,8 +140,11 @@ function VinLookupBar({ lang }: { lang: string }) {
     <>
       {showModal && result && <VinModal lang={lang} vin={input} result={result} onClose={() => setShowModal(false)} />}
       <div className="hidden md:block rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 mb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
           {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+        </p>
+        <p className="text-xs text-gray-400 italic mb-3">
+          {lang === "en" ? "Added for your convenience" : "Agregado para su conveniencia"}
         </p>
         <div className="flex gap-2">
           <input
@@ -244,10 +247,33 @@ function InventoryInner() {
           </Link>
         </div>
 
-        <p className="mt-2 text-gray-500">{t.inv.sub[lang]}</p>
+        {/* UPDATED subtitle */}
+        <p className="mt-2 text-gray-500">
+          {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
+        </p>
+
+        {/* Over 400 vehicles callout banner */}
+        <div className="mt-4 rounded-2xl bg-red-600 text-white px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🚗</span>
+            <div>
+              <p className="font-extrabold text-lg leading-tight">
+                {lang === "en" ? "Over 400 vehicles in stock!" : "¡Más de 400 vehículos en inventario!"}
+              </p>
+              <p className="text-red-100 text-sm mt-0.5">
+                {lang === "en" ? "Come pay us a visit — we'd love to help you find your next ride." : "Visítanos — con gusto te ayudamos a encontrar tu próximo vehículo."}
+              </p>
+            </div>
+          </div>
+          <Link href="/contact" className="shrink-0 bg-white text-red-600 font-bold px-5 py-2.5 rounded-xl hover:bg-red-50 transition text-sm">
+            {lang === "en" ? "Get Directions →" : "Cómo Llegar →"}
+          </Link>
+        </div>
 
         {/* VIN Lookup — desktop only */}
-        <VinLookupBar lang={lang} />
+        <div className="mt-6">
+          <VinLookupBar lang={lang} />
+        </div>
 
         {/* Filters Bar */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
@@ -364,6 +390,20 @@ function InventoryInner() {
             </button>
           </div>
         )}
+
+        {/* More inventory coming soon banner */}
+        <div className="mt-12 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-8 text-center">
+          <p className="text-2xl mb-2">🚘</p>
+          <p className="text-lg font-bold text-gray-800">
+            {lang === "en" ? "More inventory coming soon!" : "¡Más inventario próximamente!"}
+          </p>
+          <p className="text-sm text-gray-500 mt-1">
+            {lang === "en"
+              ? "We're always adding new vehicles. Check back often or give us a call!"
+              : "Siempre estamos agregando vehículos nuevos. ¡Visítanos pronto o llámanos!"}
+          </p>
+        </div>
+
       </div>
     </main>
   );
