@@ -498,7 +498,7 @@
     "down": 3000,
     "vin": "1GTR2VE79DZ218380",
     "miles": 222363,
-    "fuel": null,
+    "fuel": "Gasoline",
     "images": [
       "/cars/2013-gmc-sierra-218380/2319693821887859383.JPG",
       "/cars/2013-gmc-sierra-218380/5693138798056657399.JPG",
@@ -533,7 +533,7 @@
   {
     "id": "2016-ford-f-550-gea66133",
     "year": 2016,
-    "make": "FORD",
+    "make": "Ford",
     "model": "F-550",
     "trim": "Super Duty - Dual Rear Wheel",
     "driveTrain": "4x4",
@@ -1272,7 +1272,7 @@
   {
     "id": "2019-chevrolet-silverado-kz196370",
     "year": 2019,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Silverado",
     "trim": "LT",
     "price": 27000,
@@ -1295,7 +1295,7 @@
   {
     "id": "2019-chevrolet-silverado-kz151447",
     "year": 2019,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Silverado",
     "trim": "LT",
     "driveTrain": "4x4",
@@ -1317,7 +1317,7 @@
   {
     "id": "2016-chevrolet-silverado-gz171869",
     "year": 2016,
-    "make": "CHEVROLET",
+    "make": "Chevrolet",
     "model": "Silverado",
     "trim": "Work Truck/LS/Fleet/Base",
     "driveTrain": "4x4",
@@ -1334,6 +1334,6 @@
                "/cars/2016-chevrolet-silverado-gz171869/232568637716692658.JPG"
   ],
     "status": "available",
-    "location": "Veterans Blvd"
+    "location": "Palma Vista"
   }
 ]
