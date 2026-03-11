@@ -252,24 +252,6 @@ function InventoryInner() {
           {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
         </p>
 
-        {/* Over 400 vehicles callout banner */}
-        <div className="mt-4 rounded-2xl bg-red-600 text-white px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">🚗</span>
-            <div>
-              <p className="font-extrabold text-lg leading-tight">
-                {lang === "en" ? "Over 400 vehicles in stock!" : "¡Más de 400 vehículos en inventario!"}
-              </p>
-              <p className="text-red-100 text-sm mt-0.5">
-                {lang === "en" ? "Come pay us a visit — we'd love to help you find your next ride." : "Visítanos — con gusto te ayudamos a encontrar tu próximo vehículo."}
-              </p>
-            </div>
-          </div>
-          <Link href="/contact" className="shrink-0 bg-white text-red-600 font-bold px-5 py-2.5 rounded-xl hover:bg-red-50 transition text-sm">
-            {lang === "en" ? "Get Directions →" : "Cómo Llegar →"}
-          </Link>
-        </div>
-
         {/* VIN Lookup — desktop only */}
         <div className="mt-6">
           <VinLookupBar lang={lang} />
