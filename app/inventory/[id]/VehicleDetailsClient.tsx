@@ -149,12 +149,21 @@ export default function VehicleDetailsClient({
           <Link href="/inventory" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
             {t.det.back[lang]}
           </Link>
-          <div className="text-sm text-gray-500">
-            {t.det.status[lang]}{" "}
-            <span className={`font-semibold ${vehicle.status === "available" ? "text-green-600" : vehicle.status === "sold" ? "text-red-600" : "text-yellow-600"}`}>
-              {vehicle.status ?? "N/A"}
-            </span>
-          </div>
+          <div className="flex items-center gap-2">
+  {vehicle.status === "sold" ? (
+    <span className="bg-red-600 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+      🔴 {lang === "en" ? "Sold" : "Vendido"}
+    </span>
+  ) : vehicle.status === "available" ? (
+    <span className="bg-green-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+      🟢 {lang === "en" ? "Available" : "Disponible"}
+    </span>
+  ) : (
+    <span className="bg-yellow-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+      🟡 {vehicle.status}
+    </span>
+  )}
+</div>
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -310,8 +310,22 @@ function InventoryInner() {
             return (
               <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
                 <div className="relative w-full h-52 bg-gray-100">
-                  <Image src={mainImg} alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`} fill className="object-cover" />
-                </div>
+  <Image src={mainImg} alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`} fill className={`object-cover ${vehicle.status === "sold" ? "opacity-60 grayscale" : ""}`} />
+  {vehicle.status === "sold" && (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <span className="bg-red-600 text-white font-extrabold text-xl px-6 py-2 rounded-2xl shadow-lg rotate-[-12deg] tracking-widest uppercase">
+        {lang === "en" ? "Sold" : "Vendido"}
+      </span>
+    </div>
+  )}
+  {vehicle.status === "available" && (
+    <div className="absolute top-3 left-3">
+      <span className="bg-green-500 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow">
+        {lang === "en" ? "Available" : "Disponible"}
+      </span>
+    </div>
+  )}
+</div>
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-2">
                     <h2 className="text-xl font-semibold text-gray-900">
