@@ -1312,7 +1312,7 @@
     "images": ["/cars/2019-chevrolet-silverado-kz151447/2019-chevrolet-silverado-kz151447.JPG"
   ],
     "status": "available",
-    "location": "Veterans Blvd"
+    "location": "Palma Vista"
   },
   {
     "id": "2016-chevrolet-silverado-gz171869",
@@ -1352,7 +1352,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Gray",
-    "images": [],
+    "images": ["/cars/2017-jeep-cherokee-hw641978/5155431692344730920.JPG",
+               "/cars/2017-jeep-cherokee-hw641978/5894491960956617357.JPG",
+               "/cars/2017-jeep-cherokee-hw641978/6261971274957037838.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
     
@@ -1373,7 +1376,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2010-chevrolet-tahoe-ar236206/7176317393440975663.JPG",
+               "/cars/2010-chevrolet-tahoe-ar236206/3303837440326211611.JPG",
+               "/cars/2010-chevrolet-tahoe-ar236206/8717669139463849319.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -1393,7 +1399,11 @@
     "bodyStyle": "Pickup Extended Cab",
     "doors": 2,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2019-ford-f-150-kkc92214/2260474345002277207.JPG",
+               "/cars/2019-ford-f-150-kkc92214/5349900062417963838.JPG",
+               "/cars/2019-ford-f-150-kkc92214/410357916327628512.JPG",
+               "/cars/2019-ford-f-150-kkc92214/1324003369657111850.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -1413,7 +1423,9 @@
     "bodyStyle": "Coupe",
     "doors": 2,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2016-ford-mustang-g5215619/627174973744020317.JPG",
+               "/cars/2016-ford-mustang-g5215619/9143360705527555512.JPG"
+  ],
     "status": "available",
     "location": "Veterans Blvd"
   },
@@ -1433,8 +1445,13 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "White",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2020-gmc-terrain-ll327538/5605727382333922499.JPG",
+               "/cars/2020-gmc-terrain-ll327538/6382469771058106869.JPG",
+               "/cars/2020-gmc-terrain-ll327538/119530571429155753.JPG"
+  ],
+    "status": "available",
+    "location":"Palma Vista"
+
   },
   {
     "id": "2023-chevrolet-equinox-pl207812",
@@ -1452,8 +1469,12 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Grey",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2023-chevrolet-equinox-pl207812/7380045924983497517.JPG",
+               "/cars/2023-chevrolet-equinox-pl207812/1953312907972679086.JPG",
+               "/cars/2023-chevrolet-equinox-pl207812/794057447884996756.JPG"
+  ],
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2021-toyota-tundra-mx965872",
@@ -1471,8 +1492,13 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Gray",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2021-toyota-tundra-mx965872/5751619227526888554.JPG",
+               "/cars/2021-toyota-tundra-mx965872/3824641783705124619.JPG",
+               "/cars/2021-toyota-tundra-mx965872/30640393233998277.JPG"
+  ],
+    "status": "available",
+    "location": "Palma Vista"
+
   },
   {
     "id": "2017-honda-cr-v-he005848",
@@ -1486,12 +1512,16 @@
     "miles": 211051,
     "fuel": "Gasoline",
     "engine": "1.5L In-Line V4",
-    "transmission": "Continuously Variable Transmission (CVT)",
+    "transmission": "Automatic",
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 5,
     "color": "Silver",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2017-honda-cr-v-he005848/557274197852740106.JPG",
+               "/cars/2017-honda-cr-v-he005848/5778741214798090533.JPG",
+               "/cars/2017-honda-cr-v-he005848/1977970507227072544.JPG"
+  ],
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2017-chevrolet-tahoe-hr190933",
@@ -1509,8 +1539,13 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "White",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2017-chevrolet-tahoe-hr190933/8595338669479220076.JPG",
+               "/cars/2017-chevrolet-tahoe-hr190933/6929923025264851733.JPG",
+               "/cars/2017-chevrolet-tahoe-hr190933/5026694682192641881.JPG",
+               "/cars/2017-chevrolet-tahoe-hr190933/9134214012069498030.JPG"
+  ],
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2019-chevrolet-silverado-kz106359",
@@ -1528,8 +1563,12 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Black",
-    "images": [],
-    "status": "available"
+    "images": ["/cars/2019-chevrolet-silverado-kz106359/537642959366059395.JPG",
+               "/cars/2019-chevrolet-silverado-kz106359/8841761832491715747.JPG",
+               "/cars/2019-chevrolet-silverado-kz106359/3688543842550381290.JPG"
+  ],
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2014-ford-f-150-efb26254",
@@ -1541,12 +1580,14 @@
     "vin": "1FTMF1CT1EFB26254",
     "miles": 178704,
     "fuel": "Gasoline",
+    "transmission": "Automatic",
     "engine": "3.5L V-Shaped V6",
     "bodyStyle": "Pickup",
     "doors": 2,
     "color": "Silver",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2014-chevrolet-silverado-eg340960",
@@ -1559,12 +1600,14 @@
     "vin": "3GCPCREC9EG340960",
     "miles": 214974,
     "fuel": "Gasoline",
+    "transmission": "Automatic",
     "engine": "5.3L V8",
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Pearl",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2018-chevrolet-silverado-jg395349",
@@ -1583,7 +1626,8 @@
     "doors": 4,
     "color": "White",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2015-chevrolet-colorado-f1252105",
@@ -1603,7 +1647,8 @@
     "doors": 4,
     "color": "Brown",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2012-chevrolet-tahoe-cr104914",
@@ -1622,7 +1667,8 @@
     "doors": 4,
     "color": "Black",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2017-chevrolet-silverado-hg119932",
@@ -1641,7 +1687,8 @@
     "doors": 4,
     "color": "Black",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2022-dodge-ram-1500-nn347001",
@@ -1660,7 +1707,8 @@
     "doors": 4,
     "color": "Silver",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2016-toyota-tacoma-gx051613",
@@ -1679,7 +1727,8 @@
     "doors": 4,
     "color": "White",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2017-dodge-ram-1500-hg791521",
@@ -1698,7 +1747,8 @@
     "doors": 2,
     "color": "Dark Green",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
   },
   {
     "id": "2009-jeep-grand-cherokee-9c520932",
@@ -1717,7 +1767,8 @@
     "doors": 4,
     "color": "Black",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2011-jeep-wrangler-bl507491",
@@ -1736,7 +1787,9 @@
     "doors": 2,
     "color": "Black",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location": "Palma Vista"
+
   },
   {
     "id": "2018-ford-f-150-jkf62314",
@@ -1755,7 +1808,8 @@
     "doors": 4,
     "color": "White",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2017-ford-f-150-hfb30429",
@@ -1774,7 +1828,8 @@
     "doors": 2,
     "color": "White",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location":"Palma Vista"
   },
   {
     "id": "2019-chevrolet-silverado-kg298023",
@@ -1793,6 +1848,7 @@
     "doors": 4,
     "color": "White",
     "images": [],
-    "status": "available"
+    "status": "available",
+    "location":"Palma Vista"
   }
 ]
