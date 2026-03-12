@@ -1723,7 +1723,10 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Silver",
-    "images": [],
+    "images": ["/cars/2022-dodge-ram-1500-nn347001/6046765000687409735.JPG",
+               "/cars/2022-dodge-ram-1500-nn347001/5171593253750196642.JPG",
+               "/cars/2022-dodge-ram-1500-nn347001/7523188615883037294.JPG"
+  ],
     "status": "available",
     "location":"Palma Vista"
   },
@@ -1743,7 +1746,10 @@
     "bodyStyle": "Pickup Extended Cab",
     "doors": 4,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2016-toyota-tacoma-gx051613/7960695215743759210.JPG",
+               "/cars/2016-toyota-tacoma-gx051613/1230589005701283010.JPG",
+               "/cars/2016-toyota-tacoma-gx051613/8567093924763075406.JPG"
+  ],
     "status": "available",
     "location": "Palma Vista"
   },
@@ -1762,8 +1768,10 @@
     "transmission": "Automatic",
     "bodyStyle": "Pickup",
     "doors": 2,
-    "color": "Dark Green",
-    "images": [],
+    "color": "Dark Gray",
+    "images": ["/cars/2017-dodge-ram-1500-hg791521/1481808088035886322.JPG",
+               "/cars/2017-dodge-ram-1500-hg791521/4527801009514375367.JPG"
+  ],
     "status": "available",
     "location": "Palma Vista"
   },
@@ -1783,7 +1791,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 4,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2009-jeep-grand-cherokee-9c520932/9136162568115717814.JPG",
+               "/cars/2009-jeep-grand-cherokee-9c520932/2210547280288266645.JPG",
+               "/cars/2009-jeep-grand-cherokee-9c520932/4143740481615578447.JPG"
+  ],
     "status": "available",
     "location":"Palma Vista"
   },
@@ -1803,7 +1814,10 @@
     "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
     "doors": 2,
     "color": "Black",
-    "images": [],
+    "images": ["/cars/2011-jeep-wrangler-bl507491/4184482590386283674.JPG",
+               "/cars/2011-jeep-wrangler-bl507491/5083207670691355561.JPG",
+               "/cars/2011-jeep-wrangler-bl507491/735622126673849750.JPG"
+  ],
     "status": "available",
     "location": "Palma Vista"
 
@@ -1824,7 +1838,10 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2018-ford-f-150-jkf62314/3301450167591314433.JPG",
+               "/cars/2018-ford-f-150-jkf62314/4297352673911411175.JPG",
+               "/cars/2018-ford-f-150-jkf62314/1660858906453187831.JPG"
+  ],
     "status": "available",
     "location":"Palma Vista"
   },
@@ -1844,7 +1861,9 @@
     "bodyStyle": "Pickup",
     "doors": 2,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2017-ford-f-150-hfb30429/7833603073853829.JPG",
+               "/cars/2017-ford-f-150-hfb30429/9005154774810394043.JPG"
+  ],
     "status": "available",
     "location":"Palma Vista"
   },
@@ -1864,7 +1883,11 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "White",
-    "images": [],
+    "images": ["/cars/2019-chevrolet-silverado-kg298023/2617870578700899235.JPG",
+               "/cars/2019-chevrolet-silverado-kg298023/1755393900767598861.JPG",
+               "/cars/2019-chevrolet-silverado-kg298023/6738821222898672830.JPG",
+               "/cars/2019-chevrolet-silverado-kg298023/8394990295214939464.JPG"
+  ],
     "status": "available",
     "location":"Palma Vista"
   }
