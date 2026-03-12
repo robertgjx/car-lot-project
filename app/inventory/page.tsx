@@ -223,7 +223,7 @@ function InventoryInner() {
     });
 
     return list;
-  }, [query, make, minPrice, maxPrice]);
+  }, [query, make, minPrice, maxPrice, location]);
 
   const ITEMS_PER_PAGE = 25;
   const [page, setPage] = useState(1);
