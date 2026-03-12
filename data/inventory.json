@@ -527,7 +527,7 @@
                "/cars/2018-ford-f-150-jfb09194/2538732870139439095.JPG"
   ],
     
-    "status": "SOLD",
+    "status": "sold",
     "location":"Palma Vista"
   },
   {
@@ -789,7 +789,7 @@
                "/cars/2020-chevrolet-equinox-l6214535/6771497920387831384.JPG",
                "/cars/2020-chevrolet-equinox-l6214535/8349090748791102165.JPG"
 ],
-    "status": "SOLD",
+    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
