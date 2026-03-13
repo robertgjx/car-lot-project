@@ -23,7 +23,7 @@ function val(v: string | number | null | undefined): string {
   return String(v);
 }
 
-function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
+function LightboxGallery({ images, alt, onShare }: { images: string[]; alt: string; onShare: () => void }) {
   const { lang } = useLang();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -39,6 +39,14 @@ function LightboxGallery({ images, alt }: { images: string[]; alt: string }) {
     <>
       <div className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in" onClick={() => openLightbox(0)}>
         <Image src={mainImg} alt={alt} fill className="object-cover" priority />
+        <button
+          onClick={(e) => { e.stopPropagation(); onShare(); }}
+          className="absolute top-3 right-3 z-10 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-xl shadow-md transition backdrop-blur-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+        </button>
         {images.length > 1 && (
           <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-lg">
             1 / {images.length}
@@ -101,14 +109,13 @@ export default function VehicleDetailsClient({
 }) {
   const { lang } = useLang();
 
-  // Track this vehicle view
   useEffect(() => {
     if (vehicle?.id) {
       fetch("/api/track-view", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: vehicle.id }),
-      }).catch(() => {}); // silently fail
+      }).catch(() => {});
     }
   }, [vehicle?.id]);
 
@@ -116,6 +123,21 @@ export default function VehicleDetailsClient({
   const moLabel    = lang === "en" ? "/mo"                                               : "/mes";
   const estNote    = lang === "en" ? "Based on listed down payment • 24 month financing" : "Con el enganche indicado • Financiamiento a 24 meses";
   const contactBtn = lang === "en" ? "Contact Us About This Vehicle"                     : "Contáctanos Sobre Este Vehículo";
+
+  async function handleShare() {
+    if (!vehicle) return;
+    const title = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
+    const url = window.location.href;
+    const text = lang === "en"
+      ? `Check out this ${title} at Garcia's Auto Sales RGV!`
+      : `¡Mira este ${title} en Garcia's Auto Sales RGV!`;
+    if (navigator.share) {
+      await navigator.share({ title, text, url });
+    } else {
+      await navigator.clipboard.writeText(url);
+      alert(lang === "en" ? "Link copied!" : "¡Enlace copiado!");
+    }
+  }
 
   if (!vehicle) {
     return (
@@ -150,24 +172,24 @@ export default function VehicleDetailsClient({
             {t.det.back[lang]}
           </Link>
           <div className="flex items-center gap-2">
-  {vehicle.status === "sold" ? (
-    <span className="bg-red-600 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
-      🔴 {lang === "en" ? "Sold" : "Vendido"}
-    </span>
-  ) : vehicle.status === "available" ? (
-    <span className="bg-green-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
-      🟢 {lang === "en" ? "Available" : "Disponible"}
-    </span>
-  ) : (
-    <span className="bg-yellow-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
-      🟡 {vehicle.status}
-    </span>
-  )}
-</div>
+            {vehicle.status === "sold" ? (
+              <span className="bg-red-600 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+                🔴 {lang === "en" ? "Sold" : "Vendido"}
+              </span>
+            ) : vehicle.status === "available" ? (
+              <span className="bg-green-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+                🟢 {lang === "en" ? "Available" : "Disponible"}
+              </span>
+            ) : (
+              <span className="bg-yellow-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
+                🟡 {vehicle.status}
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <LightboxGallery images={images} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} />
+          <LightboxGallery images={images} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} onShare={handleShare} />
 
           <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -175,17 +197,14 @@ export default function VehicleDetailsClient({
               {vehicle.trim ? <span className="text-xl font-medium text-gray-400 ml-2">{vehicle.trim}</span> : null}
             </h1>
 
-            {/* Price */}
             <p className="mt-3 text-2xl font-bold text-red-600">{formatMoney(vehicle.price)}</p>
 
-            {/* Est. Monthly Payment */}
             <div className="mt-2 flex items-center gap-2">
               <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
               <span className="text-lg font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}{moLabel}</span>
             </div>
             <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
 
-            {/* PRICING SECTION */}
             <div className="mt-6">
               <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                 {lang === "en" ? "Pricing" : "Precios"}
@@ -196,7 +215,6 @@ export default function VehicleDetailsClient({
               </div>
             </div>
 
-            {/* VEHICLE INFO SECTION */}
             <div className="mt-6">
               <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                 {lang === "en" ? "Vehicle Info" : "Información del Vehículo"}
@@ -211,7 +229,6 @@ export default function VehicleDetailsClient({
               </div>
             </div>
 
-            {/* MECHANICAL SECTION */}
             <div className="mt-6">
               <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                 {lang === "en" ? "Mechanical" : "Mecánica"}
