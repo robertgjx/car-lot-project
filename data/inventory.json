@@ -2170,9 +2170,10 @@
     "color": "Black",
     "location": "Veterans Blvd",
     "images": [
+      "/cars/2011-ford-f-150-bfb69761/8442604435030505925.JPG",
       "/cars/2011-ford-f-150-bfb69761/5661659701398159562.JPG",
-      "/cars/2011-ford-f-150-bfb69761/606557279464179351.JPG",
-      "/cars/2011-ford-f-150-bfb69761/8442604435030505925.JPG"
+      "/cars/2011-ford-f-150-bfb69761/606557279464179351.JPG"
+      
     ],
     "status": "available"
   }
