@@ -1026,7 +1026,7 @@
                "/cars/2020-toyota-corolla-lp017671/5198240530893846910.JPG",
                "/cars/2020-toyota-corolla-lp017671/3244671098297391929.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
@@ -1410,7 +1410,7 @@
                "/cars/2019-ford-f-150-kkc92214/410357916327628512.JPG",
                "/cars/2019-ford-f-150-kkc92214/1324003369657111850.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
