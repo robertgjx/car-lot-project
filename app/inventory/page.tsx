@@ -183,6 +183,29 @@ function VinLookupBar({ lang }: { lang: string }) {
   );
 }
 
+function Pagination({ page, totalPages, lang, onPageChange }: { page: number; totalPages: number; lang: string; onPageChange: (p: number) => void }) {
+  if (totalPages <= 1) return null;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  return (
+    <div className="flex items-center justify-center gap-2 flex-wrap">
+      <button onClick={() => onPageChange(Math.max(1, page - 1))} disabled={page === 1}
+        className="rounded-xl border border-gray-200 bg-white px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+        ←
+      </button>
+      {pages.map((p) => (
+        <button key={p} onClick={() => onPageChange(p)}
+          className={`rounded-xl px-4 py-2 font-semibold transition ${p === page ? "bg-red-600 text-white" : "border border-gray-200 bg-white text-gray-900 hover:bg-gray-100"}`}>
+          {p}
+        </button>
+      ))}
+      <button onClick={() => onPageChange(Math.min(totalPages, page + 1))} disabled={page === totalPages}
+        className="rounded-xl border border-gray-200 bg-white px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+        →
+      </button>
+    </div>
+  );
+}
+
 function InventoryInner() {
   const { lang } = useLang();
   const searchParams = useSearchParams();
@@ -225,7 +248,7 @@ function InventoryInner() {
     return list;
   }, [query, make, minPrice, maxPrice, location]);
 
-  const ITEMS_PER_PAGE = 25;
+  const ITEMS_PER_PAGE = 27;
   const [page, setPage] = useState(1);
 
   // Reset to page 1 when filters change
@@ -303,6 +326,15 @@ function InventoryInner() {
           </div>
         </div>
 
+        {/* Pagination Top */}
+{totalPages > 1 && (
+  <div className="mt-6 mb-4">
+    <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+  </div>
+)}
+
+
+
         {/* Vehicle Grid */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginated.map((vehicle) => {
@@ -365,25 +397,10 @@ function InventoryInner() {
         )}
 
         {/* PAGINATION */}
+       
         {totalPages > 1 && (
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <button
-              onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              disabled={page === 1}
-              className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {lang === "en" ? "← Previous" : "← Anterior"}
-            </button>
-            <span className="text-sm text-gray-500 font-medium">
-              {lang === "en" ? `Page ${page} of ${totalPages}` : `Página ${page} de ${totalPages}`}
-            </span>
-            <button
-              onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              disabled={page === totalPages}
-              className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {lang === "en" ? "Next →" : "Siguiente →"}
-            </button>
+          <div className="mt-10">
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
           </div>
         )}
 
