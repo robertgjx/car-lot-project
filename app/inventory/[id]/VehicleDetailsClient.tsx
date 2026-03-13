@@ -177,8 +177,11 @@ export default function VehicleDetailsClient({
                 🔴 {lang === "en" ? "Sold" : "Vendido"}
               </span>
             ) : vehicle.status === "available" ? (
-              <span className="bg-green-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
-                🟢 {lang === "en" ? "Available" : "Disponible"}
+              <span className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-green-500 shadow-sm shadow-green-400 animate-pulse inline-block" />
+                <span className="hidden sm:inline font-extrabold text-sm text-green-600 uppercase tracking-widest">
+                  {lang === "en" ? "Available" : "Disponible"}
+                </span>
               </span>
             ) : (
               <span className="bg-yellow-500 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
