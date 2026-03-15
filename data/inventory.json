@@ -212,7 +212,7 @@
     "year": 2011,
     "make": "Toyota",
     "model": "Tundra",
-    "driveTrain": null,
+    "driveTrain": "2WD",
     "price": 7900,
     "down": 3000,
     "vin": "5TFRM5F14BX021341",
