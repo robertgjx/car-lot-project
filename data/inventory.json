@@ -216,6 +216,12 @@
     "price": 7900,
     "down": 3000,
     "vin": "5TFRM5F14BX021341",
+    "color": "White",
+    "trim": "SR5",
+    "bodyStyle": "Pickup",
+    "engine": "4.6L V-Shaped V8",
+    "doors": 4,
+    "transmission":"Automatic",
     "miles": 233409,
     "fuel": "GASOLINE",
     "images": [
