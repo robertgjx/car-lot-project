@@ -1,5 +1,53 @@
 [
   {
+    "id": "2005-chevrolet-silverado-51387048",
+    "year": 2005,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "driveTrain": "4x4",
+    "price": 8900,
+    "down": 3000,
+    "vin": "2GCEK13TX51387048",
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Blue",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2005-chevrolet-silverado-51387048/2235353852438913484.JPG",
+      "/cars/2005-chevrolet-silverado-51387048/6379756818786336674.JPG",
+      "/cars/2005-chevrolet-silverado-51387048/4119071355169254302.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2014-ford-f-350-eeb45551",
+    "year": 2014,
+    "make": "Ford",
+    "model": "F-350",
+    "driveTrain": "4x4",
+    "price": 14900,
+    "down": 7000,
+    "vin": "1FT8W3B65EEB45551",
+    "miles": 290399,
+    "fuel": "Gasoline",
+    "engine": "6.2L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2014-ford-f-350-eeb45551/IMG_1210.jpeg",
+      "/cars/2014-ford-f-350-eeb45551/IMG_1212.jpeg",
+      "/cars/2014-ford-f-350-eeb45551/IMG_1214.jpeg",
+      "/cars/2014-ford-f-350-eeb45551/IMG_1215.jpeg"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1999-chevrolet-tahoe-xg216263",
     "year": 1999,
     "make": "Chevrolet",
