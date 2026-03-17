@@ -1,5 +1,28 @@
 [
   {
+    "id": "2006-chevrolet-silverado-6z254735",
+    "year": 2006,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "driveTrain": "RWD",
+    "price": 9900,
+    "down": 4500,
+    "vin": "1GCEC14T56Z254735",
+    "miles": 211000,
+    "fuel": "Gasoline",
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2006-chevrolet-silverado-6z254735/3868205862239065632.JPG",
+      "/cars/2006-chevrolet-silverado-6z254735/387996076271283602.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2005-chevrolet-silverado-51387048",
     "year": 2005,
     "make": "Chevrolet",
