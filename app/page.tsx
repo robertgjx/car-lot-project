@@ -300,23 +300,35 @@ export default function Home() {
       </section>
 
       {/* SEASONAL ANNOUNCEMENT */}
-      <section className="mt-6">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-600 to-green-800 px-8 py-5 shadow-md text-center">
-          {/* Decorative clovers */}
-          <div className="pointer-events-none absolute -top-4 -right-4 text-green-400 opacity-20 text-9xl select-none">☘</div>
-          <div className="pointer-events-none absolute bottom-0 left-4 text-green-400 opacity-15 text-8xl select-none">☘</div>
-          <div className="pointer-events-none absolute top-1 left-10 text-green-400 opacity-10 text-6xl select-none">☘</div>
-          <div className="pointer-events-none absolute bottom-0 right-24 text-green-400 opacity-10 text-7xl select-none">☘</div>
-          <div className="relative z-10">
-            <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-              {lang === "en" ? "🎩 ☘️ Happy St. Patrick's Day! ☘️ 🎩" : "🎩 ☘️ ¡Feliz Día de San Patricio! ☘️ 🎩"}
-            </p>
-            <p className="mt-1 text-green-200 text-sm font-medium">
-              {lang === "en" ? "From all of us at Garcia's Auto Sales RGV" : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
-            </p>
-          </div>
-        </div>
-      </section>
+<section className="mt-6">
+  <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-200 via-yellow-100 to-green-200 px-8 py-5 shadow-md text-center">
+
+    {/* Decorative eggs */}
+    <div className="pointer-events-none absolute -top-4 -right-4 text-pink-300 opacity-20 text-9xl select-none">🥚</div>
+    <div className="pointer-events-none absolute bottom-0 left-4 text-yellow-300 opacity-20 text-8xl select-none">🥚</div>
+    <div className="pointer-events-none absolute top-1 left-10 text-green-300 opacity-15 text-6xl select-none">🐣</div>
+    <div className="pointer-events-none absolute bottom-0 right-24 text-purple-300 opacity-15 text-7xl select-none">🐰</div>
+
+    <div className="relative z-10">
+      <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
+        {lang === "en" 
+          ? "🐰🌸 Happy Easter! 🌸🐣" 
+          : "🐰🌸 ¡Feliz Pascua! 🌸🐣"}
+      </p>
+
+      <p className="mt-1 text-gray-600 text-sm font-medium">
+        {lang === "en" 
+          ? "From all of us at Garcia's Auto Sales RGV" 
+          : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
+      </p>
+
+      {/* Optional CTA */}
+      <button className="mt-3 bg-white text-pink-500 font-semibold px-4 py-2 rounded-full shadow hover:bg-pink-50 transition">
+        {lang === "en" ? "Browse Spring Deals" : "Ver Ofertas de Primavera"}
+      </button>
+    </div>
+  </div>
+</section>
       {/* FEATURED VEHICLES */}
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
