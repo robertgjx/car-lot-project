@@ -48,6 +48,57 @@
     "status": "available"
   },
   {
+    "id": "2002-ford-f-150-2ca59466",
+    "year": 2002,
+    "make": "Ford",
+    "model": "F-150",
+    "trim": "SVT",
+    "driveTrain": "RWD",
+    "price": 25000,
+    "down": 15000,
+    "vin": "2FTZF07372CA59466",
+    "miles": 137600,
+    "fuel": "Gasoline",
+    "engine": "5.4L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2002-ford-f-150-2ca59466/7475743749101895013.JPG",
+      "/cars/2002-ford-f-150-2ca59466/3276307917352583788.JPG",
+      "/cars/2002-ford-f-150-2ca59466/5174638685228658207.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2015-gmc-yukon-xl-fr538765",
+    "year": 2015,
+    "make": "GMC",
+    "model": "Yukon XL",
+    "trim": "SLT",
+    "driveTrain": "4x4",
+    "price": 14900,
+    "down": 5000,
+    "vin": "1GKS2HKC2FR538765",
+    "miles": 202882,
+    "fuel": "Gasoline",
+    "engine": "5.3L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+    "doors": 4,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2015-gmc-yukon-xl-fr538765/7554267385552428209.JPG",
+      "/cars/2015-gmc-yukon-xl-fr538765/1558478382891184442.JPG",
+      "/cars/2015-gmc-yukon-xl-fr538765/4284123374281363447.JPG",
+      "/cars/2015-gmc-yukon-xl-fr538765/6886733621340481962.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2018-ford-f-150-jfd53995",
     "year": 2018,
     "make": "Ford",
