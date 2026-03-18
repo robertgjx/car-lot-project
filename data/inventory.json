@@ -2651,6 +2651,29 @@
                  "/cars/2018-ford-f-150-jkf42300/3552171202648956800.JPG"
     ],
       "status": "available"
+    },
+    {
+      "id": "2018-gmc-acadia-jz243972",
+      "year": 2018,
+      "make": "GMC",
+      "model": "Acadia",
+      "price": 11900,
+      "down": 3000,
+      "vin": "1GKKNMLS2JZ243972",
+      "miles": 234729,
+      "fuel": "Gasoline",
+      "engine": "3.6L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+      "doors": 4,
+      "color": "Dark Gray",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2018-gmc-acadia-jz243972/2343478318720732760.JPG",
+        "/cars/2018-gmc-acadia-jz243972/8177060518051649203.JPG",
+        "/cars/2018-gmc-acadia-jz243972/9036542501948491542.JPG"
+      ],
+      "status": "available"
     }
   
 ]
