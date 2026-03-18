@@ -321,11 +321,6 @@ export default function Home() {
           ? "From all of us at Garcia's Auto Sales RGV" 
           : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
       </p>
-
-      {/* Optional CTA */}
-      <button className="mt-3 bg-white text-pink-500 font-semibold px-4 py-2 rounded-full shadow hover:bg-pink-50 transition">
-        {lang === "en" ? "Browse Spring Deals" : "Ver Ofertas de Primavera"}
-      </button>
     </div>
   </div>
 </section>
