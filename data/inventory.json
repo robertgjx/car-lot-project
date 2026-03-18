@@ -214,7 +214,7 @@
       "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
       "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
     ],
-    "status": "available",
+    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -2705,6 +2705,7 @@
       "model": "Silverado",
       "price": 9900,
       "down": 3000,
+      "miles":"EXPT",
       "vin": "3GCEC14V56G200515",
       "fuel": "Gasoline",
       "engine": "4.8L V-Shaped V8",
