@@ -2674,6 +2674,29 @@
         "/cars/2018-gmc-acadia-jz243972/9036542501948491542.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "2004-gmc-sierra-41322832",
+      "year": 2004,
+      "make": "GMC",
+      "model": "Sierra",
+      "price": 8900,
+      "down": 3000,
+      "vin": "2GTEK13T141322832",
+      "miles": 215121,
+      "fuel": "Gasoline",
+      "engine": "5.3L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Beige",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2004-gmc-sierra-41322832/1631706537926927496.JPG",
+        "/cars/2004-gmc-sierra-41322832/5145608412079047445.JPG",
+        "/cars/2004-gmc-sierra-41322832/7703613764440978383.JPG"
+      ],
+      "status": "available"
     }
   
 ]
