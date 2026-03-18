@@ -1,5 +1,30 @@
 [
   {
+    "id": "1994-ford-f-150-rnb16296",
+    "year": 1994,
+    "make": "Ford",
+    "model": "F-150",
+    "trim": "XLT",
+    "price": 7900,
+    "down": 3000,
+    "miles": "EXPT",
+    "vin": "1FTEF14N0RNB16296",
+    "fuel": "Gasoline",
+    "engine": "5L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Long Bed Pickup",
+    "doors": 2,
+    "color": "Blue/White",
+    "location": "Veterans Blvd",
+    "images": [
+      "/cars/1994-ford-f-150-rnb16296/IMG_1391.jpeg",
+      "/cars/1994-ford-f-150-rnb16296/IMG_1389.jpeg",
+      "/cars/1994-ford-f-150-rnb16296/IMG_1394.jpeg",
+      "/cars/1994-ford-f-150-rnb16296/IMG_1395.jpeg"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2006-chevrolet-silverado-6z254735",
     "year": 2006,
     "make": "Chevrolet",
