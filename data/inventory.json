@@ -2697,6 +2697,27 @@
         "/cars/2004-gmc-sierra-41322832/7703613764440978383.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "2006-chevrolet-silverado-6g200515",
+      "year": 2006,
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "price": 9900,
+      "down": 3000,
+      "vin": "3GCEC14V56G200515",
+      "fuel": "Gasoline",
+      "engine": "4.8L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Red",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2006-chevrolet-silverado-6g200515/IMG_1416.jpeg",
+        "/cars/2006-chevrolet-silverado-6g200515/IMG_1417.jpeg"
+      ],
+      "status": "available"
     }
   
 ]
