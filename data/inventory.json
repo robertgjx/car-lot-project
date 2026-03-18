@@ -23,6 +23,30 @@
     "status": "available"
   },
   {
+    "id": "2018-ford-f-150-jfd53995",
+    "year": 2018,
+    "make": "Ford",
+    "model": "F-150",
+    "driveTrain": "RWD",
+    "price": 12900,
+    "down": 5000,
+    "vin": "1FTEW1CB8JFD53995",
+    "miles": 256809,
+    "fuel": "Gasoline",
+    "engine": "3.3L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2018-ford-f-150-jfd53995/4756803182540111428.JPG",
+      "/cars/2018-ford-f-150-jfd53995/7715355648937591496.JPG",
+      "/cars/2018-ford-f-150-jfd53995/5170579345358578364.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2005-chevrolet-silverado-51387048",
     "year": 2005,
     "make": "Chevrolet",
