@@ -303,22 +303,39 @@ export default function Home() {
 <section className="mt-6">
   <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-200 via-yellow-100 to-green-200 px-8 py-5 shadow-md text-center">
 
-    {/* Decorative eggs */}
-    <div className="pointer-events-none absolute -top-4 -right-4 text-pink-300 opacity-20 text-9xl select-none">🥚</div>
-    <div className="pointer-events-none absolute bottom-0 left-4 text-yellow-300 opacity-20 text-8xl select-none">🥚</div>
-    <div className="pointer-events-none absolute top-1 left-10 text-green-300 opacity-15 text-6xl select-none">🐣</div>
-    <div className="pointer-events-none absolute bottom-0 right-24 text-purple-300 opacity-15 text-7xl select-none">🐰</div>
+    <style>{`
+      @keyframes floatAcross {
+        0%   { transform: translateX(-60px) translateY(0px); opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { transform: translateX(110vw) translateY(-20px); opacity: 0; }
+      }
+      .float-emoji {
+        position: absolute;
+        animation: floatAcross linear infinite;
+        pointer-events: none;
+        user-select: none;
+      }
+    `}</style>
+
+    {/* Floating emojis */}
+    <span className="float-emoji text-3xl" style={{ top: "10%", animationDuration: "7s", animationDelay: "0s" }}>🥚</span>
+    <span className="float-emoji text-2xl" style={{ top: "55%", animationDuration: "9s", animationDelay: "1.5s" }}>🐰</span>
+    <span className="float-emoji text-3xl" style={{ top: "25%", animationDuration: "11s", animationDelay: "3s" }}>🐣</span>
+    <span className="float-emoji text-2xl" style={{ top: "70%", animationDuration: "8s", animationDelay: "5s" }}>🌸</span>
+    <span className="float-emoji text-3xl" style={{ top: "40%", animationDuration: "10s", animationDelay: "2s" }}>🥚</span>
+    <span className="float-emoji text-2xl" style={{ top: "15%", animationDuration: "6s", animationDelay: "4s" }}>🐰</span>
+    <span className="float-emoji text-3xl" style={{ top: "80%", animationDuration: "12s", animationDelay: "0.5s" }}>🌸</span>
 
     <div className="relative z-10">
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-        {lang === "en" 
-          ? "🐰🌸 Happy Easter! 🌸🐣" 
+        {lang === "en"
+          ? "🐰🌸 Happy Easter! 🌸🐣"
           : "🐰🌸 ¡Feliz Pascua! 🌸🐣"}
       </p>
-
       <p className="mt-1 text-gray-600 text-sm font-medium">
-        {lang === "en" 
-          ? "From all of us at Garcia's Auto Sales RGV" 
+        {lang === "en"
+          ? "From all of us at Garcia's Auto Sales RGV"
           : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
       </p>
     </div>
