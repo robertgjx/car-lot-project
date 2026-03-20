@@ -183,7 +183,7 @@ function VinLookup({ lang }: VinLookupProps) {
 
 export default function Home() {
   const { lang } = useLang();
-  const [featured, setFeatured] = useState<Vehicle[]>(vehicles.slice(0, 3));
+  const [featured, setFeatured] = useState<Vehicle[]>(vehicles.filter((v) => v.status !== "sold").slice(0, 3));
 
   useEffect(() => {
     fetch("/api/track-view")
@@ -191,10 +191,10 @@ export default function Home() {
       .then(({ top }) => {
         if (top && top.length > 0) {
           const topVehicles = top
-            .map((id: string) => vehicles.find((v) => v.id === id))
-            .filter(Boolean) as Vehicle[];
+          .map((id: string) => vehicles.find((v) => v.id === id))
+          .filter((v): v is Vehicle => !!v && (v as Vehicle).status !== "sold");
           // Fill up to 3 with fallbacks if needed
-          const fallbacks = vehicles.filter((v) => !top.includes(v.id));
+          const fallbacks = vehicles.filter((v) => !top.includes(v.id) && v.status !== "sold");
           const combined = [...topVehicles, ...fallbacks].slice(0, 3);
           setFeatured(combined);
         }
