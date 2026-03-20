@@ -341,7 +341,7 @@ export default function Home() {
     </div>
   </div>
 </section>
-      {/* FEATURED VEHICLES */}
+      {/* FEATURED VEHICLES */} 
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
           <div>
