@@ -190,9 +190,12 @@ export default function Home() {
       .then((r) => r.json())
       .then(({ top }) => {
         if (top && top.length > 0) {
-          const topVehicles = top
-          .map((id: string) => vehicles.find((v) => v.id === id))
-          .filter((v): v is Vehicle => !!v && (v as Vehicle).status !== "sold");
+          const topVehicles: Vehicle[] = top
+  .reduce((acc: Vehicle[], id: string) => {
+    const found = vehicles.find((v) => v.id === id);
+    if (found && found.status !== "sold") acc.push(found);
+    return acc;
+  }, []);
           // Fill up to 3 with fallbacks if needed
           const fallbacks = vehicles.filter((v) => !top.includes(v.id) && v.status !== "sold");
           const combined = [...topVehicles, ...fallbacks].slice(0, 3);
