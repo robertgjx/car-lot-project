@@ -25,6 +25,32 @@
     "status": "available"
   },
   {
+    "id": "2021-ford-f-150-mkd57085",
+    "year": 2021,
+    "make": "Ford",
+    "model": "F-150",
+    "driveTrain": "4x4",
+    "price": 13900,
+    "down": 5000,
+    "vin": "1FTFX1E55MKD57085",
+    "miles": 207076,
+    "fuel": "Gasoline",
+    "engine": "5.0L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Extended Cab Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2021-ford-f-150-mkd57085/IMG_1477.jpeg",
+      "/cars/2021-ford-f-150-mkd57085/IMG_1476.jpeg",
+      "/cars/2021-ford-f-150-mkd57085/IMG_1478.jpeg",
+      "/cars/2021-ford-f-150-mkd57085/IMG_1479.jpeg",
+      "/cars/2021-ford-f-150-mkd57085/IMG_1482.jpeg"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2006-chevrolet-silverado-6z254735",
     "year": 2006,
     "make": "Chevrolet",
