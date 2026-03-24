@@ -2769,6 +2769,102 @@
         "/cars/2006-chevrolet-silverado-6g200515/IMG_1417.jpeg"
       ],
       "status": "sold"
+    },
+    {
+      "id": "2022-chevrolet-colorado-n1275202",
+      "year": 2022,
+      "make": "Chevrolet",
+      "model": "Colorado",
+      "trim": "LT",
+      "price": 11900,
+      "down": 4000,
+      "vin": "1GCHSCEA1N1275202",
+      "miles": 192410,
+      "fuel": "Gasoline",
+      "engine": "2.5L In-Line V4",
+      "transmission": "Automatic",
+      "bodyStyle": "Extended Pickup",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2022-chevrolet-colorado-n1275202/9139221344032358783.JPG",
+        "/cars/2022-chevrolet-colorado-n1275202/1663378228566604150.JPG",
+        "/cars/2022-chevrolet-colorado-n1275202/4905022824541260922.JPG",
+        "/cars/2022-chevrolet-colorado-n1275202/6752069053716946133.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2010-chevrolet-colorado-a8145670",
+      "year": 2010,
+      "make": "Chevrolet",
+      "miles":"EXPT",
+      "model": "Colorado",
+      "trim": "1LT",
+      "price": 9900,
+      "down": 3000,
+      "vin": "1GCDSCDE3A8145670",
+      "fuel": "Gasoline",
+      "engine": "3.7L In-Line V5",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Silver",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2010-chevrolet-colorado-a8145670/1927399126676508550.JPG",
+        "/cars/2010-chevrolet-colorado-a8145670/3665316889529642819.JPG",
+        "/cars/2010-chevrolet-colorado-a8145670/6047632722513602013.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2010-ford-ranger-apa35570",
+      "year": 2010,
+      "make": "Ford",
+      "model": "Ranger",
+      "miles":"EXPT",
+      "price": 8900,
+      "down": 3000,
+      "vin": "1FTKR1ED4APA35570",
+      "fuel": "Gasoline",
+      "engine": "2.3L In-Line V4",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Silver",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2010-ford-ranger-apa35570/5120982586710436715.JPG",
+        "/cars/2010-ford-ranger-apa35570/3645064665611860924.JPG",
+        "/cars/2010-ford-ranger-apa35570/3774964878248784511.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2022-dodge-ram-1500-ns170943",
+      "year": 2022,
+      "make": "Dodge",
+      "model": "Ram 1500",
+      "trim": "Tradesman",
+      "price": 13900,
+      "down": 6000,
+      "vin": "1C6RR6FG3NS170943",
+      "miles": 163311,
+      "fuel": "Gasoline",
+      "engine": "3.6L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Burgundy",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2022-dodge-ram-1500-ns170943/7999810387092643787.JPG",
+        "/cars/2022-dodge-ram-1500-ns170943/1738453123033362703.JPG",
+        "/cars/2022-dodge-ram-1500-ns170943/5493678103018407939.JPG"
+      ],
+      "status": "available"
     }
   
 ]
