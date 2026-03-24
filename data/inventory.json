@@ -51,6 +51,29 @@
     "status": "available"
   },
   {
+    "id": "2000-chevrolet-silverado-yz112793",
+    "year": 2000,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 8900,
+    "down": 3000,
+    "vin": "1GCEK14T3YZ112793",
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "term": 20,
+    "images": [
+      "/cars/2000-chevrolet-silverado-yz112793/5360205068346128754.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/561227918179147621.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/837921141702823783.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2006-chevrolet-silverado-6z254735",
     "year": 2006,
     "make": "Chevrolet",
