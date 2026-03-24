@@ -274,6 +274,14 @@ function InventoryInner() {
         <p className="mt-2 text-gray-500">
           {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
         </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+            💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-800 text-xs font-bold px-3 py-1.5 rounded-full">
+            ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
+          </span>
+        </div>
 
         {/* VIN Lookup — desktop only */}
         <div className="mt-6">

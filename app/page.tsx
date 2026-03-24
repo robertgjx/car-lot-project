@@ -224,7 +224,15 @@ export default function Home() {
           </p>
           <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
           {/* subtitle removed */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 inline-flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-2.5 text-sm font-extrabold text-white uppercase tracking-widest shadow-lg">
+              💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-2xl bg-white/20 border border-white/40 px-5 py-2.5 text-sm font-bold text-white">
+              ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
+            </span>
+          </div>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
               {t.hero.viewInv[lang]}
             </Link>
