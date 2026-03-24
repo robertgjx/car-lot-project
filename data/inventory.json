@@ -65,6 +65,7 @@
     "doors": 2,
     "color": "Red",
     "location": "Palma Vista",
+    "miles":"EXPT",
     "term": 20,
     "images": [
       "/cars/2000-chevrolet-silverado-yz112793/5360205068346128754.JPG",
