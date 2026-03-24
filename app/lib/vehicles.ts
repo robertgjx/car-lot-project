@@ -30,8 +30,13 @@ export type Vehicle = {
   images?: string[];
 
   // Location
+  // Location
   location?: string | null;
+
+  // Financing term in months
+  term?: number | null;
 };
+  
 
 const PLACEHOLDER = "/cars/placeholder.jpg";
 

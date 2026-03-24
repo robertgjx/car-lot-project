@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { vehicles } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 
@@ -12,10 +12,11 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-function calcMonthly(price: number | null | undefined, down: number | null | undefined): string {
+function calcMonthly(price: number | null | undefined, down: number | null | undefined, term?: number | null): string {
   if (price == null) return "N/A";
   const d = down ?? 0;
-  const monthly = ((price + 3000) - d) / 24;
+  const t = term ?? 24;
+  const monthly = ((price + 3000) - d) / t;
   return monthly.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
@@ -251,14 +252,12 @@ function InventoryInner() {
   const ITEMS_PER_PAGE = 27;
   const [page, setPage] = useState(1);
 
-  // Reset to page 1 when filters change
   useEffect(() => { setPage(1); }, [query, make, minPrice, maxPrice, location]);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
-  const estLabel   = lang === "en" ? "Est. Payment"                              : "Pago Est.";
-  const estNote    = lang === "en" ? "Based on listed down • 24 mo financing"    : "Con enganche indicado • 24 meses";
+  const estLabel = lang === "en" ? "Est. Payment" : "Pago Est.";
 
   return (
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
@@ -270,7 +269,6 @@ function InventoryInner() {
           </Link>
         </div>
 
-        {/* UPDATED subtitle */}
         <p className="mt-2 text-gray-500">
           {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
         </p>
@@ -283,7 +281,6 @@ function InventoryInner() {
           </span>
         </div>
 
-        {/* VIN Lookup — desktop only */}
         <div className="mt-6">
           <VinLookupBar lang={lang} />
         </div>
@@ -335,13 +332,11 @@ function InventoryInner() {
         </div>
 
         {/* Pagination Top */}
-{totalPages > 1 && (
-  <div className="mt-6 mb-4">
-    <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
-  </div>
-)}
-
-
+        {totalPages > 1 && (
+          <div className="mt-6 mb-4">
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+          </div>
+        )}
 
         {/* Vehicle Grid */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -350,22 +345,22 @@ function InventoryInner() {
             return (
               <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
                 <div className="relative w-full h-52 bg-gray-100">
-  <Image src={mainImg} alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`} fill className={`object-cover ${vehicle.status === "sold" ? "opacity-60 grayscale" : ""}`} />
-  {vehicle.status === "sold" && (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <span className="bg-red-600 text-white font-extrabold text-xl px-6 py-2 rounded-2xl shadow-lg rotate-[-12deg] tracking-widest uppercase">
-        {lang === "en" ? "Sold" : "Vendido"}
-      </span>
-    </div>
-  )}
-  {vehicle.status === "available" && (
-    <div className="absolute top-3 left-3">
-      <span className="bg-green-500 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow">
-        {lang === "en" ? "Available" : "Disponible"}
-      </span>
-    </div>
-  )}
-</div>
+                  <Image src={mainImg} alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`} fill className={`object-cover ${vehicle.status === "sold" ? "opacity-60 grayscale" : ""}`} />
+                  {vehicle.status === "sold" && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="bg-red-600 text-white font-extrabold text-xl px-6 py-2 rounded-2xl shadow-lg rotate-[-12deg] tracking-widest uppercase">
+                        {lang === "en" ? "Sold" : "Vendido"}
+                      </span>
+                    </div>
+                  )}
+                  {vehicle.status === "available" && (
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-green-500 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow">
+                        {lang === "en" ? "Available" : "Disponible"}
+                      </span>
+                    </div>
+                  )}
+                </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-2">
                     <h2 className="text-xl font-semibold text-gray-900">
@@ -381,14 +376,15 @@ function InventoryInner() {
                   <p className="mt-1 text-sm text-gray-500">
                     {t.inv.miles[lang]}{" "}{vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}
                   </p>
-
-                  {/* Est. Monthly Payment */}
                   <div className="mt-2 flex items-center gap-2">
                     <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
-                    <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}/mo</span>
+                    <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down, vehicle.term)}/mo</span>
                   </div>
-                  <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
-
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {lang === "en"
+                      ? `Based on listed down • ${vehicle.term ?? 24} mo financing`
+                      : `Con enganche indicado • ${vehicle.term ?? 24} meses`}
+                  </p>
                   <Link href={`/inventory/${encodeURIComponent(vehicle.id)}`} className="inline-block mt-4 rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                     {t.inv.viewDet[lang]}
                   </Link>
@@ -404,8 +400,7 @@ function InventoryInner() {
           </div>
         )}
 
-        {/* PAGINATION */}
-       
+        {/* Pagination Bottom */}
         {totalPages > 1 && (
           <div className="mt-10">
             <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />

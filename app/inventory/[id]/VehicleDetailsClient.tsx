@@ -11,10 +11,11 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-function calcMonthly(price: number | null | undefined, down: number | null | undefined): string {
+function calcMonthly(price: number | null | undefined, down: number | null | undefined, term?: number | null): string {
   if (price == null) return "N/A";
   const d = down ?? 0;
-  const monthly = ((price + 3000) - d) / 24;
+  const t = term ?? 24;
+  const monthly = ((price + 3000) - d) / t;
   return monthly.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
@@ -119,10 +120,9 @@ export default function VehicleDetailsClient({
     }
   }, [vehicle?.id]);
 
-  const estLabel   = lang === "en" ? "Est. Monthly Payment"                              : "Pago Mensual Est.";
-  const moLabel    = lang === "en" ? "/mo"                                               : "/mes";
-  const estNote    = lang === "en" ? "Based on listed down payment • 24 month financing" : "Con el enganche indicado • Financiamiento a 24 meses";
-  const contactBtn = lang === "en" ? "Contact Us About This Vehicle"                     : "Contáctanos Sobre Este Vehículo";
+  const estLabel = lang === "en" ? "Est. Monthly Payment" : "Pago Mensual Est.";
+  const moLabel  = lang === "en" ? "/mo" : "/mes";
+  const contactBtn = lang === "en" ? "Contact Us About This Vehicle" : "Contáctanos Sobre Este Vehículo";
 
   async function handleShare() {
     if (!vehicle) return;
@@ -164,6 +164,10 @@ export default function VehicleDetailsClient({
       ? [(vehicle as any).image]
       : ["/cars/placeholder.jpg"];
 
+  const estNote = lang === "en"
+    ? `Based on listed down payment • ${vehicle.term ?? 24} month financing`
+    : `Con el enganche indicado • Financiamiento a ${vehicle.term ?? 24} meses`;
+
   return (
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-5xl mx-auto">
@@ -204,7 +208,7 @@ export default function VehicleDetailsClient({
 
             <div className="mt-2 flex items-center gap-2">
               <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
-              <span className="text-lg font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down)}{moLabel}</span>
+              <span className="text-lg font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down, vehicle.term)}{moLabel}</span>
             </div>
             <p className="text-xs text-gray-400 mt-0.5">{estNote}</p>
 
