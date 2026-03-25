@@ -56,6 +56,7 @@
     "model": "Corvette",
     "price": 13900,
     "down": 6000,
+    "miles":"EXPT",
     "vin": "1G1YY22G125104304",
     "fuel": "Gasoline",
     "engine": "5.7L V-Shaped V8",
