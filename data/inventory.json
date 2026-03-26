@@ -3026,6 +3026,7 @@
       "model": "Frontier",
       "price": 8900,
       "down": 3000,
+      "miles":"EXPT",
       "vin": "1N6BD0CT0HN708554",
       "fuel": "Gasoline",
       "engine": "2.5L",

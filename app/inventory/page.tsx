@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo, useState, useEffect, Suspense, useCallback } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { vehicles } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 
@@ -210,16 +210,37 @@ function Pagination({ page, totalPages, lang, onPageChange }: { page: number; to
 function InventoryInner() {
   const { lang } = useLang();
   const searchParams = useSearchParams();
-  const [query, setQuery] = useState("");
-  const [make, setMake] = useState(() => searchParams.get("make") ?? "all");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [location, setLocation] = useState("all");
+  const router = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const m = searchParams.get("make");
-    if (m) setMake(m);
-  }, [searchParams]);
+  // Read all filters from URL
+  const query    = searchParams.get("q") ?? "";
+  const make     = searchParams.get("make") ?? "all";
+  const minPrice = searchParams.get("min") ?? "";
+  const maxPrice = searchParams.get("max") ?? "";
+  const location = searchParams.get("loc") ?? "all";
+  const page     = Number(searchParams.get("page") ?? "1");
+
+  // Update URL when filters change
+  const updateParams = useCallback((updates: Record<string, string>) => {
+    const params = new URLSearchParams(searchParams.toString());
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === "" || value === "all" || value === "1") {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [searchParams, router, pathname]);
+
+  const setQuery    = (v: string) => updateParams({ q: v, page: "1" });
+  const setMake     = (v: string) => updateParams({ make: v, page: "1" });
+  const setMinPrice = (v: string) => updateParams({ min: v, page: "1" });
+  const setMaxPrice = (v: string) => updateParams({ max: v, page: "1" });
+  const setLocation = (v: string) => updateParams({ loc: v, page: "1" });
+  const setPage     = (p: number) => { updateParams({ page: String(p) }); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const resetAll    = () => router.replace(pathname, { scroll: false });
 
   const makes = useMemo(() => {
     return Array.from(new Set(vehicles.map((v) => v.make))).sort();
@@ -235,29 +256,22 @@ function InventoryInner() {
     const min = minPrice.trim() === "" ? null : Number(minPrice);
     const max = maxPrice.trim() === "" ? null : Number(maxPrice);
 
-    const list = vehicles.filter((v) => {
+    return vehicles.filter((v) => {
       const haystack = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
-      const matchesQuery = q === "" ? true : haystack.includes(q);
-      const matchesMake = make === "all" ? true : v.make === make;
-      const price = v.price ?? null;
-      const matchesMin = min === null ? true : price !== null && price >= min;
-      const matchesMax = max === null ? true : price !== null && price <= max;
+      const matchesQuery    = q === "" ? true : haystack.includes(q);
+      const matchesMake     = make === "all" ? true : v.make === make;
+      const price           = v.price ?? null;
+      const matchesMin      = min === null ? true : price !== null && price >= min;
+      const matchesMax      = max === null ? true : price !== null && price <= max;
       const matchesLocation = location === "all" ? true : (v as any).location === location;
       return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLocation;
     });
-
-    return list;
   }, [query, make, minPrice, maxPrice, location]);
 
   const ITEMS_PER_PAGE = 27;
-  const [page, setPage] = useState(1);
-
-  useEffect(() => { setPage(1); }, [query, make, minPrice, maxPrice, location]);
-
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
-
-  const estLabel = lang === "en" ? "Est. Payment" : "Pago Est.";
+  const paginated  = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  const estLabel   = lang === "en" ? "Est. Payment" : "Pago Est.";
 
   return (
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
@@ -318,7 +332,7 @@ function InventoryInner() {
               <input value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} inputMode="numeric" placeholder={maxInventoryPrice.toLocaleString()} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
             <div className="md:col-span-2 flex items-end gap-3">
-              <button onClick={() => { setQuery(""); setMake("all"); setMinPrice(""); setMaxPrice(""); setLocation("all"); }} className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
+              <button onClick={resetAll} className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                 {t.inv.reset[lang]}
               </button>
               <div className="w-full text-sm text-gray-600">
@@ -334,7 +348,7 @@ function InventoryInner() {
         {/* Pagination Top */}
         {totalPages > 1 && (
           <div className="mt-6 mb-4">
-            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
           </div>
         )}
 
@@ -403,7 +417,7 @@ function InventoryInner() {
         {/* Pagination Bottom */}
         {totalPages > 1 && (
           <div className="mt-10">
-            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
           </div>
         )}
 
