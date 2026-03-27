@@ -172,9 +172,9 @@ export default function VehicleDetailsClient({
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between">
-          <Link href="/inventory" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.det.back[lang]}
-          </Link>
+        <button onClick={() => window.history.back()} className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
+          {t.det.back[lang]}
+          </button>
           <div className="flex items-center gap-2">
             {vehicle.status === "sold" ? (
               <span className="bg-red-600 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
