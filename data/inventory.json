@@ -3089,6 +3089,105 @@
         "/cars/2018-nissan-frontier-jn709841/31933.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "2011-dodge-grand-caravan-br732506",
+      "year": 2011,
+      "make": "Dodge",
+      "model": "Grand Caravan",
+      "trim": "Express",
+      "price": 8900,
+      "down": 3000,
+      "vin": "2D4RN4DG4BR732506",
+      "miles": 240447,
+      "fuel": "Gasoline",
+      "engine": "3.6L V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Minivan",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152831171.JPG",
+        "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152904914.JPG",
+        "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152908339.JPG",
+        "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152915537.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2012-dodge-grand-caravan-cr325000",
+      "year": 2012,
+      "make": "Dodge",
+      "model": "Grand Caravan",
+      "trim": "SE",
+      "price": 8900,
+      "down": 3000,
+      "vin": "2C4RDGBG0CR325000",
+      "miles": 289399,
+      "fuel": "Gasoline",
+      "engine": "3.6L V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Minivan",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174335143.JPG",
+        "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174344139.MP.JPG",
+        "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174349017.MP.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2022-buik-enclave-nj151832",
+      "year": 2022,
+      "make": "Buik",
+      "model": "Enclave",
+      "trim": "Essence",
+      "price": 14900,
+      "down": 6000,
+      "vin": "5GAERBKW3NJ151832",
+      "miles": 141000,
+      "fuel": "Gasoline",
+      "engine": "3.6L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2022-buik-enclave-nj151832/PXL_20260327_160930680.MP.JPG",
+        "/cars/2022-buik-enclave-nj151832/PXL_20260327_160941281.JPG",
+        "/cars/2022-buik-enclave-nj151832/PXL_20260327_160946841.JPG",
+        "/cars/2022-buik-enclave-nj151832/PXL_20260327_160954859.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2022-chevrolet-silverado-hd-nf337118",
+      "year": 2022,
+      "make": "Chevrolet",
+      "model": "Silverado HD",
+      "trim": "Custom",
+      "price": 32000,
+      "down": 15000,
+      "vin": "1GC4YMEY1NF337118",
+      "miles": 366427,
+      "fuel": "Diesel",
+      "engine": "6.6L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175322766.JPG",
+        "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175406010.JPG",
+        "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175435446.JPG",
+        "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175451046.MP.JPG"
+      ],
+      "status": "available"
     }
   
 ]
