@@ -3188,6 +3188,54 @@
         "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175451046.MP.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "2009-dodge-grand-caravan-9r681618",
+      "year": 2009,
+      "make": "Dodge",
+      "model": "Grand Caravan",
+      "trim": "SE",
+      "price": 8900,
+      "down": 3000,
+      "vin": "2D8HN44E79R681618",
+      "miles": 182471,
+      "fuel": "Gasoline",
+      "engine": "3.3L V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Minivan",
+      "doors": 4,
+      "color": "White",
+      "location": "Veterans Blvd",
+      "images": [
+        "/cars/2009-dodge-grand-caravan-9r681618/32105.JPG",
+        "/cars/2009-dodge-grand-caravan-9r681618/32106.JPG",
+        "/cars/2009-dodge-grand-caravan-9r681618/32108.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2019-ford-transit-kka14988",
+      "year": 2019,
+      "make": "Ford",
+      "model": "Transit",
+      "price": 11900,
+      "down": 3000,
+      "vin": "1FTYR2CM9KKA14988",
+      "miles": 248923,
+      "fuel": "Gasoline",
+      "engine": "3.7L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Cargo Van",
+      "doors": 5,
+      "color": "White",
+      "location": "Veterans Blvd",
+      "images": [
+        "/cars/2019-ford-transit-kka14988/8971139694114343074.JPG",
+        "/cars/2019-ford-transit-kka14988/32116.JPG",
+        "/cars/2019-ford-transit-kka14988/32118.JPG",
+        "/cars/2019-ford-transit-kka14988/32119.JPG"
+      ],
+      "status": "available"
     }
   
 ]
