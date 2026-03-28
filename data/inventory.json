@@ -606,6 +606,8 @@
     "model": "F-150",
     "driveTrain": null,
     "price": 6900,
+    "term": 12,
+    "color": "Tan",
     "down": 2000,
     "vin": "1FTDF1760VNA16337",
     "miles": 292701,
