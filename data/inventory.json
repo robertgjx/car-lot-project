@@ -150,29 +150,6 @@
     "status": "available"
   },
   {
-    "id": "2006-chevrolet-silverado-6z254735",
-    "year": 2006,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "driveTrain": "RWD",
-    "price": 9900,
-    "down": 4500,
-    "vin": "1GCEC14T56Z254735",
-    "miles": 211000,
-    "fuel": "Gasoline",
-    "engine": "5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "White",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2006-chevrolet-silverado-6z254735/3868205862239065632.JPG",
-      "/cars/2006-chevrolet-silverado-6z254735/387996076271283602.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2002-ford-f-150-2ca59466",
     "year": 2002,
     "make": "Ford",
@@ -224,54 +201,6 @@
     "status": "available"
   },
   {
-    "id": "2018-ford-f-150-jfd53995",
-    "year": 2018,
-    "make": "Ford",
-    "model": "F-150",
-    "driveTrain": "RWD",
-    "price": 12900,
-    "down": 5000,
-    "vin": "1FTEW1CB8JFD53995",
-    "miles": 256809,
-    "fuel": "Gasoline",
-    "engine": "3.3L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "White",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2018-ford-f-150-jfd53995/4756803182540111428.JPG",
-      "/cars/2018-ford-f-150-jfd53995/7715355648937591496.JPG",
-      "/cars/2018-ford-f-150-jfd53995/5170579345358578364.JPG"
-    ],
-    "status": "sold"
-  },
-  {
-    "id": "2005-chevrolet-silverado-51387048",
-    "year": 2005,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "driveTrain": "4x4",
-    "price": 8900,
-    "down": 3000,
-    "miles":"EXPT",
-    "vin": "2GCEK13TX51387048",
-    "fuel": "Gasoline",
-    "engine": "5.3L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Blue",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2005-chevrolet-silverado-51387048/2235353852438913484.JPG",
-      "/cars/2005-chevrolet-silverado-51387048/6379756818786336674.JPG",
-      "/cars/2005-chevrolet-silverado-51387048/4119071355169254302.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2014-ford-f-350-eeb45551",
     "year": 2014,
     "make": "Ford",
@@ -317,29 +246,6 @@
       "/cars/1999-chevrolet-tahoe-xg216263/1732624747300584253.JPG"
     ],
     "status": "available",
-    "location": "Palma Vista"
-  },
-  {
-    "id": "2003-chevrolet-silverado-3z337232",
-    "year": 2003,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "price": 11900,
-    "down": 4000,
-    "vin": "1GCEC14T63Z337232",
-    "fuel": "Gasoline",
-    "engine": "5.3L V-Shaped V8",
-    "miles": "EXPT",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Red",
-    "images": [
-      "/cars/2003-chevy-silverado-337232/7726227735366498104.JPG",
-      "/cars/2003-chevy-silverado-337232/2052932306780760723.JPG",
-      "/cars/2003-chevy-silverado-337232/1651421998123627961.JPG"
-    ],
-    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -837,29 +743,6 @@
     "location": "Palma Vista"
   },
   {
-    "id": "2018-ford-f-150-jfb09194",
-    "year": 2018,
-    "make": "Ford",
-    "model": "F-150",
-    "trim": "STX",
-    "price": 12900,
-    "down": 5000,
-    "vin": "1FTEX1CP3JFB09194",
-    "miles": 174224,
-    "fuel": "Gasoline",
-    "engine": "2.7L V-Shaped V6",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Blue",
-    "images": ["/cars/2018-ford-f-150-jfb09194/2345016168527339.JPG",
-               "/cars/2018-ford-f-150-jfb09194/6634701494939028951.JPG",
-               "/cars/2018-ford-f-150-jfb09194/2538732870139439095.JPG"
-  ],
-    
-    "status": "sold",
-    "location":"Palma Vista"
-  },
-  {
     "id": "2016-ford-f-550-gea66133",
     "year": 2016,
     "make": "Ford",
@@ -1027,30 +910,6 @@
     "location":"Veterans Blvd"
   },
   {
-    "id": "2019-ford-explorer-kga10598",
-    "year": 2019,
-    "make": "Ford",
-    "model": "Explorer",
-    "trim": "Limited",
-    "price": 12900,
-    "down": 4000,
-    "vin": "1FM5K8F8XKGA10598",
-    "miles": 153146,
-    "fuel": "Gasoline",
-    "engine": "3.5L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "Black",
-    "images": ["/cars/2019-ford-explorer-kga10598/5056235027122727755.JPG",
-               "/cars/2019-ford-explorer-kga10598/8735195159108981871.JPG",
-               "/cars/2019-ford-explorer-kga10598/3685626437765388121.JPG",
-               "/cars/2019-ford-explorer-kga10598/1337049678528097817.JPG"
-  ],
-    "status": "sold",
-    "location": "Veterans Blvd"
-  },
-  {
     "id": "2018-chevrolet-equinox-j6177577",
     "year": 2018,
     "make": "Chevrolet",
@@ -1096,29 +955,6 @@
                "/cars/2022-chevrolet-blazer-ns185707/1610252576632498009.JPG"
   ],
     "status": "available",
-    "location": "Veterans Blvd"
-  },
-  {
-    "id": "2020-chevrolet-equinox-l6214535",
-    "year": 2020,
-    "make": "Chevrolet",
-    "model": "Equinox",
-    "trim": "LS",
-    "price": 11900,
-    "down": 3000,
-    "vin": "2GNAXHEV3L6214535",
-    "miles": 151336,
-    "fuel": "Gasoline",
-    "engine": "1.5L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "Orange",
-    "images": ["/cars/2020-chevrolet-equinox-l6214535/2291573649979835275.JPG",
-               "/cars/2020-chevrolet-equinox-l6214535/6771497920387831384.JPG",
-               "/cars/2020-chevrolet-equinox-l6214535/8349090748791102165.JPG"
-],
-    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
@@ -1284,29 +1120,6 @@
     "status": "available",
     "location": "Veterans Blvd"
   },
-
-  {
-    "id": "2017-ford-mustang-h5210061",
-    "year": 2017,
-    "make": "Ford",
-    "model": "Mustang",
-    "trim": "I4 Coupe",
-    "price": 14900,
-    "down": 6000,
-    "vin": "1FA6P8TH2H5210061",
-    "miles": 144000,
-    "fuel": "Gasoline",
-    "engine": "2.3L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Coupe",
-    "doors": 2,
-    "color": "Blue",
-    "images": ["/cars/2017-ford-mustang-h5210061/4941785056994407743.JPG",
-               "/cars/2017-ford-mustang-h5210061/3646011756036662476.JPG"
-  ],
-    "status": "sold",
-    "location":"Veterans Blvd"
-  },
   {
     "id": "2016-chevrolet-impala-g1986042",
     "year": 2016,
@@ -1328,29 +1141,6 @@
                "/cars/2016-chevrolet-impala-g1986042/4669393042954978228.JPG"
   ],
     "status": "available",
-    "location": "Veterans Blvd"
-  },
-  {
-    "id": "2020-toyota-corolla-lp017671",
-    "year": 2020,
-    "make": "Toyota",
-    "model": "Corolla",
-    "trim": "LE, w/Premium Pkg",
-    "price": 10900,
-    "down": 4000,
-    "vin": "5YFHPRAEXLP017671",
-    "miles": 223078,
-    "fuel": "Gasoline",
-    "engine": "1.8L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sedan/Saloon",
-    "doors": 4,
-    "color": "Silver",
-    "images": ["/cars/2020-toyota-corolla-lp017671/6323030283567973957.JPG",
-               "/cars/2020-toyota-corolla-lp017671/5198240530893846910.JPG",
-               "/cars/2020-toyota-corolla-lp017671/3244671098297391929.JPG"
-  ],
-    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
@@ -1714,30 +1504,6 @@
     "location": "Veterans Blvd"
   },
   {
-    "id": "2019-ford-f-150-kkc92214",
-    "year": 2019,
-    "make": "Ford",
-    "model": "F-150",
-    "driveTrain": "4x4",
-    "price": 11900,
-    "down": 3500,
-    "vin": "1FTEX1EB6KKC92214",
-    "miles": 196888,
-    "fuel": "Gasoline",
-    "engine": "3.3L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup Extended Cab",
-    "doors": 2,
-    "color": "White",
-    "images": ["/cars/2019-ford-f-150-kkc92214/2260474345002277207.JPG",
-               "/cars/2019-ford-f-150-kkc92214/5349900062417963838.JPG",
-               "/cars/2019-ford-f-150-kkc92214/410357916327628512.JPG",
-               "/cars/2019-ford-f-150-kkc92214/1324003369657111850.JPG"
-  ],
-    "status": "sold",
-    "location": "Veterans Blvd"
-  },
-  {
     "id": "2016-ford-mustang-g5215619",
     "year": 2016,
     "make": "Ford",
@@ -1758,53 +1524,6 @@
   ],
     "status": "available",
     "location": "Veterans Blvd"
-  },
-  {
-    "id": "2020-gmc-terrain-ll327538",
-    "year": 2020,
-    "make": "GMC",
-    "model": "Terrain",
-    "trim": "Denali",
-    "price": 13900,
-    "down": 4000,
-    "vin": "3GKALSEX0LL327538",
-    "miles": 211207,
-    "fuel": "Gasoline",
-    "engine": "2.0L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "White",
-    "images": ["/cars/2020-gmc-terrain-ll327538/5605727382333922499.JPG",
-               "/cars/2020-gmc-terrain-ll327538/6382469771058106869.JPG",
-               "/cars/2020-gmc-terrain-ll327538/119530571429155753.JPG"
-  ],
-    "status": "sold",
-    "location":"Palma Vista"
-
-  },
-  {
-    "id": "2023-chevrolet-equinox-pl207812",
-    "year": 2023,
-    "make": "Chevrolet",
-    "model": "Equinox",
-    "trim": "LS",
-    "price": 13900,
-    "down": 5000,
-    "vin": "3GNAXHEG8PL207812",
-    "miles": 199282,
-    "fuel": "Gasoline",
-    "engine": "1.5L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "Grey",
-    "images": ["/cars/2023-chevrolet-equinox-pl207812/7380045924983497517.JPG",
-               "/cars/2023-chevrolet-equinox-pl207812/1953312907972679086.JPG",
-               "/cars/2023-chevrolet-equinox-pl207812/794057447884996756.JPG"
-  ],
-    "status": "sold",
-    "location":"Palma Vista"
   },
   {
     "id": "2021-toyota-tundra-mx965872",
@@ -1965,30 +1684,6 @@
                "/cars/2018-chevrolet-silverado-jg395349/7768928747376244831.JPG"
   ],
     "status": "available",
-    "location": "Palma Vista"
-  },
-  {
-    "id": "2015-chevrolet-colorado-f1252105",
-    "year": 2015,
-    "make": "Chevrolet",
-    "model": "Colorado",
-    "trim": "Work Truck",
-    "driveTrain": "4x4",
-    "price": 14900,
-    "down": 6000,
-    "vin": "1GCGTBE31F1252105",
-    "miles": 188768,
-    "fuel": "Gasoline",
-    "engine": "3.6L V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Brown",
-    "images": ["/cars/2015-chevrolet-colorado-f1252105/632964584252745421.JPG",
-               "/cars/2015-chevrolet-colorado-f1252105/1530793182283219531.JPG",
-               "/cars/2015-chevrolet-colorado-f1252105/1517323736141237988.JPG"
-  ],
-    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -2245,54 +1940,6 @@
     "status": "available"
   },
   {
-    "id": "2017-chevrolet-impala-h9105465",
-    "year": 2017,
-    "make": "Chevrolet",
-    "model": "Impala",
-    "trim": "LTZ (2LZ)",
-    "price": 7900,
-    "down": 2500,
-    "vin": "2G1145S39H9105465",
-    "miles": 226465,
-    "fuel": "Gasoline",
-    "engine": "3.6L V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Sedan/Saloon",
-    "doors": 4,
-    "color": "Dark Blue",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2017-chevrolet-impala-h9105465/5632123371721684105.JPG",
-      "/cars/2017-chevrolet-impala-h9105465/6892945721301625493.JPG",
-      "/cars/2017-chevrolet-impala-h9105465/1638399669802694674.JPG"
-    ],
-    "status": "sold"
-  },
-  {
-    "id": "2020-nissan-altima-lc144557",
-    "year": 2020,
-    "make": "Nissan",
-    "model": "Altima",
-    "trim": "SR",
-    "price": 9900,
-    "down": 3000,
-    "vin": "1N4BL4CVOLC144557",
-    "miles": 248367,
-    "fuel": "Gasoline",
-    "engine": "2.5L",
-    "transmission": "Automatic",
-    "bodyStyle": "Sedan/Saloon",
-    "doors": 4,
-    "color": "Silver",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2020-nissan-altima-lc144557/3066392064107651495.JPG",
-      "/cars/2020-nissan-altima-lc144557/2265469596674967418.JPG",
-      "/cars/2020-nissan-altima-lc144557/1244884964570102270.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2019-dodge-grand-caravan-kr682756",
     "year": 2019,
     "make": "Dodge",
@@ -2410,30 +2057,6 @@
       "/cars/1989-ford-bronco-kla94896/187152170313448762.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2020-chevrolet-equinox-l6191345",
-    "year": 2020,
-    "make": "Chevrolet",
-    "model": "Equinox",
-    "trim": "LT (2FL)",
-    "price": 11900,
-    "down": 3000,
-    "vin": "2GNAXJEV3L6191345",
-    "miles": 219732,
-    "fuel": "Gasoline",
-    "engine": "1.5L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "Silver",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2020-chevrolet-equinox-l6191345/6197483698250030905.JPG",
-      "/cars/2020-chevrolet-equinox-l6191345/8375666273741339765.JPG",
-      "/cars/2020-chevrolet-equinox-l6191345/3365621663109472752.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2006-gmc-sierra-61178325",
@@ -2838,28 +2461,6 @@
       "status": "available"
     },
     {
-      "id": "2006-chevrolet-silverado-6g200515",
-      "year": 2006,
-      "make": "Chevrolet",
-      "model": "Silverado",
-      "price": 9900,
-      "down": 3000,
-      "miles":"EXPT",
-      "vin": "3GCEC14V56G200515",
-      "fuel": "Gasoline",
-      "engine": "4.8L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 2,
-      "color": "Red",
-      "location": "Palma Vista",
-      "images": [
-        "/cars/2006-chevrolet-silverado-6g200515/IMG_1416.jpeg",
-        "/cars/2006-chevrolet-silverado-6g200515/IMG_1417.jpeg"
-      ],
-      "status": "sold"
-    },
-    {
       "id": "2022-chevrolet-colorado-n1275202",
       "year": 2022,
       "make": "Chevrolet",
@@ -3006,31 +2607,6 @@
         "/cars/2015-chevrolet-malibu-ff308214/31912.JPG"
       ],
       "status": "available"
-    },
-    {
-      "id": "2021-chevrolet-malibu-mf053638",
-      "year": 2021,
-      "make": "Chevrolet",
-      "model": "Malibu",
-      "trim": "LS (1FL)",
-      "price": 9900,
-      "down": 3000,
-      "vin": "1G1ZC5ST6MF053638",
-      "miles": 153247,
-      "fuel": "Gasoline",
-      "engine": "1.5L In-Line V4",
-      "transmission": "Continuously Variable Transmission (CVT)",
-      "bodyStyle": "Sedan/Saloon",
-      "doors": 4,
-      "color": "White",
-      "location": "Palma Vista",
-      "images": [
-        "/cars/2021-chevrolet-malibu-mf053638/IMG_1591.jpeg",
-        "/cars/2021-chevrolet-malibu-mf053638/IMG_1592.jpeg",
-        "/cars/2021-chevrolet-malibu-mf053638/IMG_1593.jpeg",
-        "/cars/2021-chevrolet-malibu-mf053638/IMG_1594.jpeg"
-      ],
-      "status": "sold"
     },
     {
       "id": "2017-nissan-frontier-hn708554",
