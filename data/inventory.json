@@ -195,7 +195,7 @@
       "/cars/2002-ford-f-150-2ca59466/3276307917352583788.JPG",
       "/cars/2002-ford-f-150-2ca59466/5174638685228658207.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2015-gmc-yukon-xl-fr538765",
@@ -548,6 +548,12 @@
     "vin": "1C6RR6LTXGS190143",
     "miles": 287282,
     "fuel": "GASOLINE",
+    "bodyStyle":"Pick Up",
+    "trim": "SLT", 
+    "engine": "5.7L V8",
+    "transmission":"Automatic",
+    "color":"Black",
+    "doors": 4,
     "images": [
       "/cars/2016-ram-1500-190143/IMG_0715.jpeg",
       "/cars/2016-ram-1500-190143/IMG_0716.jpeg",
@@ -1041,7 +1047,7 @@
                "/cars/2019-ford-explorer-kga10598/3685626437765388121.JPG",
                "/cars/2019-ford-explorer-kga10598/1337049678528097817.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
@@ -3024,7 +3030,7 @@
         "/cars/2021-chevrolet-malibu-mf053638/IMG_1593.jpeg",
         "/cars/2021-chevrolet-malibu-mf053638/IMG_1594.jpeg"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2017-nissan-frontier-hn708554",
