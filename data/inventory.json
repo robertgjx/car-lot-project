@@ -33,6 +33,7 @@
     "price": 6900,
     "down": 2500,
     "term": 12,
+    "fee": 0,
     "vin": "2C4RDGBG5GR194846",
     "miles": 174933,
     "fuel": "Gasoline",

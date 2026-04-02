@@ -35,6 +35,7 @@ export type Vehicle = {
 
   // Financing term in months
   term?: number | null;
+  fee?: number | null;
 };
   
 

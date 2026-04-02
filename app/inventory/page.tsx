@@ -12,11 +12,12 @@ function formatMoney(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-function calcMonthly(price: number | null | undefined, down: number | null | undefined, term?: number | null): string {
+function calcMonthly(price: number | null | undefined, down: number | null | undefined, term?: number | null, fee?: number | null): string {
   if (price == null) return "N/A";
   const d = down ?? 0;
   const t = term ?? 24;
-  const monthly = ((price + 3000) - d) / t;
+  const f = fee ?? 3000;
+  const monthly = ((price + f) - d) / t;
   return monthly.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
@@ -392,7 +393,7 @@ function InventoryInner() {
                   </p>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">{estLabel}</span>
-                    <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down, vehicle.term)}/mo</span>
+                    <span className="text-sm font-bold text-gray-900">{calcMonthly(vehicle.price, vehicle.down, vehicle.term, vehicle.fee)}/mo</span>
                   </div>
                   <p className="text-xs text-gray-400 mt-0.5">
                     {lang === "en"
