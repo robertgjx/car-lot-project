@@ -25,6 +25,30 @@
     "status": "available"
   },
   {
+    "id": "1972-ford-pk-ykm41422",
+    "year": 1972,
+    "make": "Ford",
+    "trim": "Flareside",
+    "bodyStyle": "Shortbed Pickup",
+    "color": "Blue",
+    "doors": 2,
+    "down": 3000,
+    "price": 9900,
+    "fuel": "Gasoline",
+    "transmission": "Automatic",
+    "miles":"EXPT",
+    "model": "F-100",
+    "location":"Veterans Blvd",
+    "images": [
+      "/cars/1972-ford-pk-ykm41422/IMG_1855.jpeg",
+      "/cars/1972-ford-pk-ykm41422/IMG_1856.jpeg",
+      "/cars/1972-ford-pk-ykm41422/A8921CE8-7889-4579-AF76-7125C4E4A1B7.JPG",
+      "/cars/1972-ford-pk-ykm41422/IMG_1854.jpeg"
+    ],
+    "status":"available"
+
+  },
+  {
     "id": "2016-dodge-grand-caravan-gr194846",
     "year": 2016,
     "make": "Dodge",
@@ -3246,6 +3270,80 @@
         "/cars/2017-gmc-yukon-hr261848/IMG_1775.jpeg",
         "/cars/2017-gmc-yukon-hr261848/IMG_1778.jpeg",
         "/cars/2017-gmc-yukon-hr261848/IMG_1779.jpeg"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "1995-chevrolet-gmt-400-s1275564",
+      "year": 1995,
+      "make": "Chevrolet",
+      "model": "GMT-400",
+      "driveTrain": "4x4",
+      "price": 9900,
+      "down": 3000,
+      "vin": "2GCEK19K2S1275564",
+      "fuel": "Gasoline",
+      "engine": "5.7L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Green",
+      "location": "Veterans Blvd",
+      "images": [
+        "/cars/1995-chevrolet-gmt-400-s1275564/IMG_1839.jpeg",
+        "/cars/1995-chevrolet-gmt-400-s1275564/IMG_1841.jpeg",
+        "/cars/1995-chevrolet-gmt-400-s1275564/IMG_1842.jpeg"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2001-ford-f-150-1ka83607",
+      "year": 2001,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "Imitation Harley",
+      "price": 8900,
+      "down": 2000,
+      "vin": "1FTRW07L61KA83607",
+      "fuel": "Gasoline",
+      "engine": "5.4L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Black",
+      "location": "Veterans Blvd",
+      "images": [
+        "/cars/2001-ford-f-150-1ka83607/IMG_1843.jpeg",
+        "/cars/2001-ford-f-150-1ka83607/IMG_1845.jpeg",
+        "/cars/2001-ford-f-150-1ka83607/IMG_1846.jpeg",
+        "/cars/2001-ford-f-150-1ka83607/IMG_1847.jpeg",
+        "/cars/2001-ford-f-150-1ka83607/IMG_1848.jpeg",
+        "/cars/2001-ford-f-150-1ka83607/IMG_1851.jpeg"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2019-gmc-sierra-kg120760",
+      "year": 2019,
+      "make": "GMC",
+      "model": "Sierra",
+      "trim": "Fleet/Base",
+      "price": 20000,
+      "down": 8000,
+      "vin": "3GTP8AEF7KG120760",
+      "miles": 213912,
+      "fuel": "Gasoline",
+      "engine": "5.3L V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2019-gmc-sierra-kg120760/32674.JPG",
+        "/cars/2019-gmc-sierra-kg120760/32676.JPG",
+        "/cars/2019-gmc-sierra-kg120760/32677.JPG",
+        "/cars/2019-gmc-sierra-kg120760/32680.JPG"
       ],
       "status": "available"
     }
