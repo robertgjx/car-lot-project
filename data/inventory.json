@@ -3305,6 +3305,7 @@
       "trim": "Imitation Harley",
       "price": 8900,
       "down": 2000,
+      "miles":"EXPT",
       "vin": "1FTRW07L61KA83607",
       "fuel": "Gasoline",
       "engine": "5.4L V-Shaped V8",
