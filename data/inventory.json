@@ -33,6 +33,7 @@
     "color": "Blue",
     "doors": 2,
     "down": 3000,
+    "vin": "F10YKM41422",
     "price": 9900,
     "fuel": "Gasoline",
     "transmission": "Automatic",
