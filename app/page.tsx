@@ -323,10 +323,6 @@ export default function Home() {
         0%, 100% { opacity: 0.1; transform: scale(0.8); }
         50% { opacity: 1; transform: scale(1.2); }
       }
-      @keyframes wave {
-        0%, 100% { transform: rotate(-8deg); }
-        50% { transform: rotate(8deg); }
-      }
       .glow-banner {
         animation: glowPulse 3s ease-in-out infinite;
       }
@@ -335,11 +331,6 @@ export default function Home() {
         pointer-events: none;
         user-select: none;
         animation: twinkle ease-in-out infinite;
-      }
-      .wave-flag {
-        display: inline-block;
-        animation: wave 2s ease-in-out infinite;
-        transform-origin: bottom left;
       }
     `}</style>
 
@@ -357,11 +348,6 @@ export default function Home() {
     <div className="glow-banner absolute inset-0 rounded-3xl pointer-events-none" />
 
     <div className="relative z-10">
-      {/* Waving flags */}
-      <div className="flex items-center justify-center gap-3 mb-2">
-        <span className="wave-flag text-3xl" style={{ animationDelay: "0.2s" }}>🇺🇸</span>
-        <span className="wave-flag text-3xl" style={{ animationDelay: "0.6s" }}>🇺🇸</span>
-      </div>
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
         {lang === "en"
           ? "🎖️ Honoring Memorial Day 🎖️"
