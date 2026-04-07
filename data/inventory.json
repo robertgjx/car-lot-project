@@ -2287,7 +2287,7 @@
       "/cars/2017-hyundai-tucson-hu594729/4692646546448499057.JPG",
       "/cars/2017-hyundai-tucson-hu594729/5889284546673771011.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2012-ford-f-150-cfa44378",
@@ -3398,6 +3398,108 @@
         "/cars/2019-gmc-sierra-kg120760/32676.JPG",
         "/cars/2019-gmc-sierra-kg120760/32677.JPG",
         "/cars/2019-gmc-sierra-kg120760/32680.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "1986-chevrolet-c/k-pickup-g1157110",
+      "year": 1986,
+      "make": "Chevrolet",
+      "model": "C/K Pickup",
+      "price": 9900,
+      "down": 3000,
+      "vin": "2GCDC14N7G1157110",
+      "fuel": "Gasoline",
+      "engine": "4.3L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Tan",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1941.jpeg",
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1939.jpeg",
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1940.jpeg",
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1942.jpeg",
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1943.jpeg",
+        "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1944.jpeg"
+
+    ],
+      "status": "available"
+    },
+    {
+      "id": "2023-chevrolet-silverado-pg364545",
+      "year": 2023,
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "trim": "Work Truck",
+      "price": 16900,
+      "down": 7000,
+      "vin": "3GCNAAEK6PG364545",
+      "miles": 219734,
+      "fuel": "Gasoline",
+      "engine": "2.7L In-Line V4",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2023-chevrolet-silverado-pg364545/IMG_1926.jpeg",
+        "/cars/2023-chevrolet-silverado-pg364545/IMG_1925.jpeg",
+        "/cars/2023-chevrolet-silverado-pg364545/IMG_1927.jpeg",
+        "/cars/2023-chevrolet-silverado-pg364545/IMG_1928.jpeg",
+        "/cars/2023-chevrolet-silverado-pg364545/IMG_1929 2.jpg"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2022-chevrolet-equinox-n6120107",
+      "year": 2022,
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "trim": "LT (1LT)",
+      "price": 11900,
+      "down": 3500,
+      "vin": "2GNAXUEV0N6120107",
+      "miles": 222823,
+      "fuel": "Gasoline",
+      "engine": "1.5L In-Line V4",
+      "transmission": "Automatic",
+      "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+      "doors": 4,
+      "color": "Black",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2022-chevrolet-equinox-n6120107/32866.JPG",
+        "/cars/2022-chevrolet-equinox-n6120107/32867.JPG",
+        "/cars/2022-chevrolet-equinox-n6120107/32870.JPG",
+        "/cars/2022-chevrolet-equinox-n6120107/32871.JPG"
+
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2014-ford-f-250-eea48936",
+      "year": 2014,
+      "make": "Ford",
+      "model": "F-250",
+      "price": 7900,
+      "down": 3000,
+      "vin": "1FT7X2A65EEA48936",
+      "miles": 381759,
+      "fuel": "Gasoline",
+      "engine": "6.2L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Extended Pickup",
+      "doors": 2,
+      "color": "White",
+      "location": "Veterans Blvd",
+      "images": [
+        "/cars/2014-ford-f-250-eea48936/32874.JPG",
+        "/cars/2014-ford-f-250-eea48936/32884.JPG",
+        "/cars/2014-ford-f-250-eea48936/32885.JPG"
+
       ],
       "status": "available"
     }
