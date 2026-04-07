@@ -227,7 +227,9 @@ function InventoryInner() {
   const updateParams = useCallback((updates: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString());
     Object.entries(updates).forEach(([key, value]) => {
-      if (value === "" || value === "all" || value === "1") {
+      if (value === "" || value === "all") {
+        params.delete(key);
+      } else if (key === "page" && value === "1") {
         params.delete(key);
       } else {
         params.set(key, value);
