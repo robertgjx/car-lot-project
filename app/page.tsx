@@ -312,39 +312,62 @@ export default function Home() {
 
       {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl border-2 border-blue-300 bg-gradient-to-br from-blue-100 via-white to-red-100 px-8 py-5 shadow-md text-center">
+  <div className="relative overflow-hidden rounded-3xl border-2 border-blue-400 bg-gradient-to-br from-blue-100 via-white to-red-100 px-8 py-6 shadow-md text-center">
 
     <style>{`
-      @keyframes floatAcross {
-        0%   { transform: translateX(-60px) translateY(0px); opacity: 0; }
-        10%  { opacity: 1; }
-        90%  { opacity: 1; }
-        100% { transform: translateX(110vw) translateY(-20px); opacity: 0; }
+      @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 8px 2px rgba(59,130,246,0.3); border-color: #93c5fd; }
+        50% { box-shadow: 0 0 22px 6px rgba(239,68,68,0.35); border-color: #f87171; }
       }
-      .float-emoji {
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.1; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes wave {
+        0%, 100% { transform: rotate(-8deg); }
+        50% { transform: rotate(8deg); }
+      }
+      .glow-banner {
+        animation: glowPulse 3s ease-in-out infinite;
+      }
+      .twinkle-star {
         position: absolute;
-        animation: floatAcross linear infinite;
         pointer-events: none;
         user-select: none;
+        animation: twinkle ease-in-out infinite;
+      }
+      .wave-flag {
+        display: inline-block;
+        animation: wave 2s ease-in-out infinite;
+        transform-origin: bottom left;
       }
     `}</style>
 
-    {/* Floating emojis */}
-    <span className="float-emoji text-3xl" style={{ top: "10%", animationDuration: "7s", animationDelay: "0s" }}>🇺🇸</span>
-    <span className="float-emoji text-2xl" style={{ top: "55%", animationDuration: "9s", animationDelay: "1.5s" }}>⭐</span>
-    <span className="float-emoji text-3xl" style={{ top: "25%", animationDuration: "11s", animationDelay: "3s" }}>🎖️</span>
-    <span className="float-emoji text-2xl" style={{ top: "70%", animationDuration: "8s", animationDelay: "5s" }}>🇺🇸</span>
-    <span className="float-emoji text-3xl" style={{ top: "40%", animationDuration: "10s", animationDelay: "2s" }}>⭐</span>
-    <span className="float-emoji text-2xl" style={{ top: "15%", animationDuration: "6s", animationDelay: "4s" }}>🎖️</span>
-    <span className="float-emoji text-3xl" style={{ top: "80%", animationDuration: "12s", animationDelay: "0.5s" }}>🇺🇸</span>
+    {/* Twinkling stars */}
+    <span className="twinkle-star text-lg" style={{ top: "10%", left: "2%", animationDuration: "2s", animationDelay: "0s" }}>⭐</span>
+    <span className="twinkle-star text-sm" style={{ top: "60%", left: "5%", animationDuration: "3s", animationDelay: "0.4s" }}>✨</span>
+    <span className="twinkle-star text-lg" style={{ top: "25%", left: "10%", animationDuration: "2.5s", animationDelay: "0.8s" }}>⭐</span>
+    <span className="twinkle-star text-sm" style={{ top: "75%", left: "3%", animationDuration: "3.5s", animationDelay: "1.2s" }}>✨</span>
+    <span className="twinkle-star text-lg" style={{ top: "10%", right: "2%", animationDuration: "2.8s", animationDelay: "0.2s" }}>⭐</span>
+    <span className="twinkle-star text-sm" style={{ top: "60%", right: "5%", animationDuration: "2s", animationDelay: "0.6s" }}>✨</span>
+    <span className="twinkle-star text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s", animationDelay: "1s" }}>⭐</span>
+    <span className="twinkle-star text-sm" style={{ top: "75%", right: "3%", animationDuration: "2.5s", animationDelay: "1.4s" }}>✨</span>
+
+    {/* Glowing border applied to inner div */}
+    <div className="glow-banner absolute inset-0 rounded-3xl pointer-events-none" />
 
     <div className="relative z-10">
+      {/* Waving flags */}
+      <div className="flex items-center justify-center gap-3 mb-2">
+        <span className="wave-flag text-3xl" style={{ animationDelay: "0.2s" }}>🇺🇸</span>
+        <span className="wave-flag text-3xl" style={{ animationDelay: "0.6s" }}>🇺🇸</span>
+      </div>
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
         {lang === "en"
-          ? "🎖️ Honoring Memorial Day 🇺🇸"
-          : "🎖️ Honrando el Día de los Caídos 🇺🇸"}
+          ? "🎖️ Honoring Memorial Day 🎖️"
+          : "🎖️ Honrando el Día de los Caídos 🎖️"}
       </p>
-      <p className="mt-1 text-gray-600 text-sm font-medium">
+      <p className="mt-2 text-gray-600 text-sm font-medium">
         {lang === "en"
           ? "We honor and remember all who gave everything for our freedom."
           : "Honramos y recordamos a todos los que lo dieron todo por nuestra libertad."}
