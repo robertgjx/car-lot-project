@@ -116,27 +116,27 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
 
 function VinLookupBar({ lang }: { lang: string }) {
   const [input, setInput] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
+  const [vinStatus, setVinStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
   const [result, setResult] = useState<VinResult | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   async function lookup() {
     if (input.length !== 17) return;
-    setStatus("loading"); setResult(null); setShowModal(false);
+    setVinStatus("loading"); setResult(null); setShowModal(false);
     try {
       const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${input}?format=json`);
       const data = await res.json();
       const get = (label: string) => data.Results.find((r: any) => r.Variable === label)?.Value || "";
       const year = get("Model Year"); const make = get("Make"); const model = get("Model");
-      if (!make || !year) { setStatus("notfound"); return; }
+      if (!make || !year) { setVinStatus("notfound"); return; }
       setResult({
         year, make, model, trim: get("Trim"),
         engine: [get("Displacement (L)") && `${get("Displacement (L)")}L`, get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`].filter(Boolean).join(" "),
         bodyStyle: get("Body Class"), driveType: get("Drive Type"),
         transmission: get("Transmission Style"), doors: get("Doors"), fuel: get("Fuel Type - Primary"),
       });
-      setStatus("found"); setShowModal(true);
-    } catch { setStatus("error"); }
+      setVinStatus("found"); setShowModal(true);
+    } catch { setVinStatus("error"); }
   }
 
   return (
@@ -152,22 +152,22 @@ function VinLookupBar({ lang }: { lang: string }) {
         <div className="flex gap-2">
           <input
             type="text" maxLength={17} value={input}
-            onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); }}
+            onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setVinStatus("idle"); }}
             onKeyDown={(e) => e.key === "Enter" && lookup()}
             placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
             className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
             autoCorrect="off" autoCapitalize="characters"
           />
-          <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
+          <button onClick={lookup} disabled={input.length !== 17 || vinStatus === "loading"}
             className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm whitespace-nowrap">
-            {status === "loading" ? (
+            {vinStatus === "loading" ? (
               <span className="flex items-center gap-1">
                 <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25"/><path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z"/></svg>
               </span>
             ) : (lang === "en" ? "Look Up →" : "Buscar →")}
           </button>
         </div>
-        {status === "found" && result && (
+        {vinStatus === "found" && result && (
           <button onClick={() => setShowModal(true)}
             className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group">
             <div className="text-left">
@@ -179,8 +179,8 @@ function VinLookupBar({ lang }: { lang: string }) {
             </svg>
           </button>
         )}
-        {status === "notfound" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>}
-        {status === "error" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>}
+        {vinStatus === "notfound" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>}
+        {vinStatus === "error" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>}
       </div>
     </>
   );
@@ -216,12 +216,13 @@ function InventoryInner() {
   const pathname = usePathname();
 
   // Read all filters from URL
-  const query  = searchParams.get("q") ?? "";
-  const make   = searchParams.get("make") ?? "all";
-  const minDown = searchParams.get("minDown") ?? "";
-  const maxDown = searchParams.get("maxDown") ?? "";
+  const query    = searchParams.get("q") ?? "";
+  const make     = searchParams.get("make") ?? "all";
+  const minDown  = searchParams.get("minDown") ?? "";
+  const maxDown  = searchParams.get("maxDown") ?? "";
   const location = searchParams.get("loc") ?? "all";
-  const page   = Number(searchParams.get("page") ?? "1");
+  const status   = searchParams.get("status") ?? "all";
+  const page     = Number(searchParams.get("page") ?? "1");
 
   // Update URL when filters change
   const updateParams = useCallback((updates: Record<string, string>) => {
@@ -243,6 +244,7 @@ function InventoryInner() {
   const setMinDown  = (v: string) => updateParams({ minDown: v, page: "1" });
   const setMaxDown  = (v: string) => updateParams({ maxDown: v, page: "1" });
   const setLocation = (v: string) => updateParams({ loc: v, page: "1" });
+  const setStatus   = (v: string) => updateParams({ status: v, page: "1" });
   const setPage     = (p: number) => { updateParams({ page: String(p) }); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const resetAll    = () => router.replace(pathname, { scroll: false });
 
@@ -268,9 +270,10 @@ function InventoryInner() {
       const matchesMin      = min === null ? true : down !== null && down >= min;
       const matchesMax      = max === null ? true : down !== null && down <= max;
       const matchesLocation = location === "all" ? true : (v as any).location === location;
-      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLocation;
+      const matchesStatus   = status === "all" ? true : v.status === status;
+      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLocation && matchesStatus;
     });
-  }, [query, make, minDown, maxDown, location]);
+  }, [query, make, minDown, maxDown, location, status]);
 
   const ITEMS_PER_PAGE = 27;
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -306,10 +309,14 @@ function InventoryInner() {
         {/* Filters Bar */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+
+            {/* Search */}
             <div className="md:col-span-2">
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.search[lang]}</label>
               <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.inv.searchPh[lang]} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
+
+            {/* Make */}
             <div>
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.make[lang]}</label>
               <select value={make} onChange={(e) => setMake(e.target.value)} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
@@ -317,6 +324,8 @@ function InventoryInner() {
                 {makes.map((m) => (<option key={m} value={m}>{m}</option>))}
               </select>
             </div>
+
+            {/* Location */}
             <div>
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
                 {lang === "en" ? "Location" : "Ubicación"}
@@ -327,18 +336,36 @@ function InventoryInner() {
                 <option value="Veterans Blvd">📍 Veterans Blvd</option>
               </select>
             </div>
+
+            {/* Status */}
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Status" : "Estado"}
+              </label>
+              <select value={status} onChange={(e) => setStatus(e.target.value)} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                <option value="all">{lang === "en" ? "All" : "Todos"}</option>
+                <option value="available">{lang === "en" ? "✅ Available" : "✅ Disponible"}</option>
+                <option value="sold">{lang === "en" ? "🔴 Sold" : "🔴 Vendido"}</option>
+              </select>
+            </div>
+
+            {/* Min Down */}
             <div>
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
                 {lang === "en" ? "Min Down Payment" : "Enganche Mínimo"}
               </label>
               <input value={minDown} onChange={(e) => setMinDown(e.target.value)} inputMode="numeric" placeholder="$0" className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
+
+            {/* Max Down */}
             <div>
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
                 {lang === "en" ? "Max Down Payment" : "Enganche Máximo"}
               </label>
               <input value={maxDown} onChange={(e) => setMaxDown(e.target.value)} inputMode="numeric" placeholder={`$${maxInventoryDown.toLocaleString()}`} className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
             </div>
+
+            {/* Reset + Count */}
             <div className="md:col-span-2 flex items-end gap-3">
               <button onClick={resetAll} className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
                 {t.inv.reset[lang]}
@@ -350,6 +377,7 @@ function InventoryInner() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
