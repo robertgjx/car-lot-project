@@ -312,7 +312,7 @@ export default function Home() {
 
       {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-200 via-yellow-100 to-green-200 px-8 py-5 shadow-md text-center">
+  <div className="relative overflow-hidden rounded-3xl border-2 border-blue-300 bg-gradient-to-br from-blue-100 via-white to-red-100 px-8 py-5 shadow-md text-center">
 
     <style>{`
       @keyframes floatAcross {
@@ -330,21 +330,26 @@ export default function Home() {
     `}</style>
 
     {/* Floating emojis */}
-    <span className="float-emoji text-3xl" style={{ top: "10%", animationDuration: "7s", animationDelay: "0s" }}>🥚</span>
-    <span className="float-emoji text-2xl" style={{ top: "55%", animationDuration: "9s", animationDelay: "1.5s" }}>🐰</span>
-    <span className="float-emoji text-3xl" style={{ top: "25%", animationDuration: "11s", animationDelay: "3s" }}>🐣</span>
-    <span className="float-emoji text-2xl" style={{ top: "70%", animationDuration: "8s", animationDelay: "5s" }}>🌸</span>
-    <span className="float-emoji text-3xl" style={{ top: "40%", animationDuration: "10s", animationDelay: "2s" }}>🥚</span>
-    <span className="float-emoji text-2xl" style={{ top: "15%", animationDuration: "6s", animationDelay: "4s" }}>🐰</span>
-    <span className="float-emoji text-3xl" style={{ top: "80%", animationDuration: "12s", animationDelay: "0.5s" }}>🌸</span>
+    <span className="float-emoji text-3xl" style={{ top: "10%", animationDuration: "7s", animationDelay: "0s" }}>🇺🇸</span>
+    <span className="float-emoji text-2xl" style={{ top: "55%", animationDuration: "9s", animationDelay: "1.5s" }}>⭐</span>
+    <span className="float-emoji text-3xl" style={{ top: "25%", animationDuration: "11s", animationDelay: "3s" }}>🎖️</span>
+    <span className="float-emoji text-2xl" style={{ top: "70%", animationDuration: "8s", animationDelay: "5s" }}>🇺🇸</span>
+    <span className="float-emoji text-3xl" style={{ top: "40%", animationDuration: "10s", animationDelay: "2s" }}>⭐</span>
+    <span className="float-emoji text-2xl" style={{ top: "15%", animationDuration: "6s", animationDelay: "4s" }}>🎖️</span>
+    <span className="float-emoji text-3xl" style={{ top: "80%", animationDuration: "12s", animationDelay: "0.5s" }}>🇺🇸</span>
 
     <div className="relative z-10">
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
         {lang === "en"
-          ? "🐰🌸 Happy Easter! 🌸🐣"
-          : "🐰🌸 ¡Feliz Pascua! 🌸🐣"}
+          ? "🎖️ Honoring Memorial Day 🇺🇸"
+          : "🎖️ Honrando el Día de los Caídos 🇺🇸"}
       </p>
       <p className="mt-1 text-gray-600 text-sm font-medium">
+        {lang === "en"
+          ? "We honor and remember all who gave everything for our freedom."
+          : "Honramos y recordamos a todos los que lo dieron todo por nuestra libertad."}
+      </p>
+      <p className="mt-1 text-gray-500 text-xs">
         {lang === "en"
           ? "From all of us at Garcia's Auto Sales RGV"
           : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
