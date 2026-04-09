@@ -2356,7 +2356,7 @@
       "/cars/2006-gmc-sierra-61178325/1845443236748205796.JPG",
       "/cars/2006-gmc-sierra-61178325/2336837176675512588.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-chevrolet-silverado-jg485046",
@@ -2979,7 +2979,7 @@
         "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152908339.JPG",
         "/cars/2011-dodge-grand-caravan-br732506/PXL_20260327_152915537.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2012-dodge-grand-caravan-cr325000",
@@ -3003,7 +3003,7 @@
         "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174344139.MP.JPG",
         "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174349017.MP.JPG"
       ],
-      "status": "sold"
+      "status": "available"
     },
     {
       "id": "2022-buick-enclave-nj151832",
