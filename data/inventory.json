@@ -3409,6 +3409,7 @@
       "price": 9900,
       "down": 3000,
       "vin": "2GCDC14N7G1157110",
+      "miles":"EXPT",
       "fuel": "Gasoline",
       "engine": "4.3L V-Shaped V6",
       "transmission": "Automatic",
@@ -3425,7 +3426,7 @@
         "/cars/1986-chevrolet-c:k-pickup-g1157110/IMG_1944.jpeg"
 
     ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2023-chevrolet-silverado-pg364545",
