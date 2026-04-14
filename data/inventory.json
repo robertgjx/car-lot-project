@@ -377,7 +377,7 @@
       "/cars/2016-chevrolet-impala-limited-g1136689/IMG_1824.jpeg",
       "/cars/2016-chevrolet-impala-limited-g1136689/IMG_1825.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2002-gmc-sierra-2f167706",
@@ -2464,29 +2464,6 @@
     "status": "available"
   },
   {
-    "id": "2006-gmc-sierra-61178325",
-    "year": 2006,
-    "make": "GMC",
-    "model": "Sierra",
-    "driveTrain": "4x4",
-    "price": 9900,
-    "down": 3000,
-    "vin": "2GTEK13T461178325",
-    "miles": 239678,
-    "engine": "5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Gray",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2006-gmc-sierra-61178325/4858892359029739374.JPG",
-      "/cars/2006-gmc-sierra-61178325/1845443236748205796.JPG",
-      "/cars/2006-gmc-sierra-61178325/2336837176675512588.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2018-chevrolet-silverado-jg485046",
     "year": 2018,
     "make": "Chevrolet",
@@ -2653,7 +2630,7 @@
                  "/cars/2019-ford-f-150-kke52378/4220609110259003075.JPG",
                  "/cars/2019-ford-f-150-kke52378/7557819590855370557.JPG"
     ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2017-ford-f-150-hkd34138",
@@ -2701,7 +2678,7 @@
                  "/cars/2020-ford-f-150-lkd53206/44566583586539644.JPG",
                  "/cars/2020-ford-f-150-lkd53206/117412151258500657.JPG"
     ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2019-ford-f-150-kke52380",
@@ -2863,7 +2840,7 @@
         "/cars/2004-gmc-sierra-41322832/5145608412079047445.JPG",
         "/cars/2004-gmc-sierra-41322832/7703613764440978383.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2022-chevrolet-colorado-n1275202",
@@ -3303,7 +3280,7 @@
         "/cars/2023-chevrolet-equinox-pl201953/32517.JPG",
         "/cars/2023-chevrolet-equinox-pl201953/32519.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2021-dodge-ram-2500-mg545186",
@@ -3452,7 +3429,7 @@
         "/cars/2017-gmc-yukon-hr261848/IMG_1778.jpeg",
         "/cars/2017-gmc-yukon-hr261848/IMG_1779.jpeg"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "1995-chevrolet-gmt-400-s1275564",
