@@ -352,7 +352,7 @@
       "/cars/2017-chevrolet-camaro-h0166770/IMG_1818.jpeg",
       "/cars/2017-chevrolet-camaro-h0166770/IMG_1821.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2016-chevrolet-impala-limited-g1136689",
@@ -1405,7 +1405,7 @@
                "/cars/2020-chevrolet-equinox-l6228625/975017346357746657.JPG",
                "/cars/2020-chevrolet-equinox-l6228625/6347286640092644068.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location": "Veterans Blvd"
   },
   {
@@ -2865,7 +2865,7 @@
         "/cars/2022-chevrolet-colorado-n1275202/4905022824541260922.JPG",
         "/cars/2022-chevrolet-colorado-n1275202/6752069053716946133.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2010-chevrolet-colorado-a8145670",
