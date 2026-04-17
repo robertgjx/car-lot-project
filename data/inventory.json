@@ -3608,6 +3608,36 @@
 
       ],
       "status": "available"
+    },
+    {
+      "id": "2009-chevrolet-colorado-98139435",
+      "year": 2009,
+      "make": "Chevrolet",
+      "model": "Colorado",
+      "price": 6300,
+      "down": 3000,
+      "vin": "1GBDS14E198139435",
+      "miles": 240617,
+      "fuel": "Gasoline",
+      "engine": "3.7L In-Line V5",
+      "transmission": "Automatic",
+      "bodyStyle": "Chassis Cab (Single Cab)",
+      "doors": 2,
+      "color": "White",
+      "term":12,
+      "fee":1200,
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2009-chevrolet-colorado-98139435/33651.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33652.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33653.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33654.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33655.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33657.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33658.JPG",
+        "/cars/2009-chevrolet-colorado-98139435/33659.JPG"
+      ],
+      "status": "available"
     }
   
 ]
