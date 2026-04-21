@@ -1,5 +1,30 @@
 [
   {
+    "id": "1989-ford-bronco-kla23876",
+    "year": 1989,
+    "make": "Ford",
+    "model": "Bronco",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1FMEU15N0KLA23876",
+    "fuel": "Gasoline",
+    "engine": "5L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1989-ford-bronco-kla23876/IMG_2193.jpeg",
+      "/cars/1989-ford-bronco-kla23876/IMG_2194.jpeg",
+      "/cars/1989-ford-bronco-kla23876/IMG_2195.jpeg",
+      "/cars/1989-ford-bronco-kla23876/IMG_2196.jpeg",
+      "/cars/1989-ford-bronco-kla23876/IMG_2197.jpeg",
+      "/cars/1989-ford-bronco-kla23876/IMG_2198.jpeg"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2015-chevrolet-silverado-fg475866",
     "year": 2015,
     "make": "Chevrolet",
@@ -1016,9 +1041,10 @@
     "miles": 233409,
     "fuel": "GASOLINE",
     "images": [
-      "/cars/2011-toyota-tundra-21341/IMG_0712.jpeg",
-      "/cars/2011-toyota-tundra-21341/IMG_0713.jpeg",
-      "/cars/2011-toyota-tundra-21341/IMG_0714.jpeg"
+      "/cars/2011-toyota-tundra-21341/IMG_2189.jpeg",
+      "/cars/2011-toyota-tundra-21341/IMG_2191.jpeg",
+      "/cars/2011-toyota-tundra-21341/IMG_2190.jpeg",
+      "/cars/2011-toyota-tundra-21341/IMG_2192.jpeg"
     ],
     "status": "available",
     "location": "Palma Vista"
