@@ -6,6 +6,7 @@
     "model": "Bronco",
     "price": 11900,
     "down": 4000,
+    "miles":"EXPT",
     "vin": "1FMEU15N0KLA23876",
     "fuel": "Gasoline",
     "engine": "5L V-Shaped V8",
