@@ -368,7 +368,7 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Tan",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2003-chevrolet-silverado-3500-3f224013/IMG_1866.jpeg",
       "/cars/2003-chevrolet-silverado-3500-3f224013/IMG_1867.jpeg",
@@ -393,13 +393,12 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Tan",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2003-chevrolet-silverado-3f249257/IMG_1873.jpeg",
       "/cars/2003-chevrolet-silverado-3f249257/IMG_1876.jpeg",
       "/cars/2003-chevrolet-silverado-3f249257/IMG_1877.jpeg",
       "/cars/2003-chevrolet-silverado-3f249257/IMG_1878.jpeg",
-      "/cars/2003-chevrolet-silverado-3f249257/32859.JPG",
       "/cars/2003-chevrolet-silverado-3f249257/32859.JPG",
       "/cars/2003-chevrolet-silverado-3f249257/32860.JPG"
     ],
