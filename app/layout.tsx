@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "./lib/LanguageContext";
 import NavBar from "./lib/NavBar";
+import SpotlightSidebar from "./lib/SpotlightSidebar";
 
 export const metadata: Metadata = {
   title: "Garcia's Auto Sales RGV | Used Trucks & Cars in Palmview, TX",
@@ -34,7 +35,16 @@ export default function RootLayout({
       <body className="bg-white text-gray-900 min-h-screen">
         <LanguageProvider>
           <NavBar />
-          <div className="max-w-6xl mx-auto px-6 md:px-10 py-8">{children}</div>
+          {/* On xl+ screens: spotlight sidebar left, content right */}
+          {/* On smaller screens: no sidebar, content full width as before */}
+          <div className="max-w-7xl mx-auto px-6 md:px-10 py-8">
+            <div className="flex gap-8 items-start">
+              <SpotlightSidebar />
+              <div className="flex-1 min-w-0">
+                {children}
+              </div>
+            </div>
+          </div>
         </LanguageProvider>
       </body>
     </html>
