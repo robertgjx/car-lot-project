@@ -11,8 +11,8 @@ function formatMoney(n: number | null | undefined) {
 }
 
 // ✏️ UPDATE THESE TWO LINES EACH MONTH
-const SPOTLIGHT_ID = "2004-chevrolet-silverado-41337270";
-const PRICE_BEFORE: number | null = 22000;
+const SPOTLIGHT_ID = "2010-ford-ranger-apa35570";
+const PRICE_BEFORE: number | null = 8900;
 
 export default function SpotlightSidebar() {
   const { lang } = useLang();
