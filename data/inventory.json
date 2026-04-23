@@ -3400,6 +3400,7 @@
       "price": 7500,
       "down": 2500,
       "term":16,
+      "fee":1600,
       "vin": "1FTKR1ED4APA35570",
       "fuel": "Gasoline",
       "engine": "2.3L In-Line V4",
