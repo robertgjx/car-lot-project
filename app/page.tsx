@@ -310,66 +310,67 @@ export default function Home() {
         </div>
       </section>
 
-     {/* SEASONAL ANNOUNCEMENT */}
+      {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl border-2 border-green-400 bg-gradient-to-br from-green-100 via-blue-50 to-green-200 px-8 py-6 shadow-md text-center">
+  <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 px-8 py-6 shadow-md text-center">
 
     <style>{`
-      @keyframes spinEarth {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      @keyframes floatHeart {
+        0% { transform: translateY(0px) rotate(-8deg); }
+        50% { transform: translateY(-8px) rotate(8deg); }
+        100% { transform: translateY(0px) rotate(-8deg); }
       }
-      @keyframes glowPulseGreen {
-        0%, 100% { box-shadow: 0 0 8px 2px rgba(34,197,94,0.3); border-color: #86efac; }
-        50% { box-shadow: 0 0 22px 6px rgba(59,130,246,0.3); border-color: #93c5fd; }
+      @keyframes glowPulsePink {
+        0%, 100% { box-shadow: 0 0 8px 2px rgba(244,114,182,0.3); border-color: #f9a8d4; }
+        50% { box-shadow: 0 0 22px 6px rgba(192,132,252,0.3); border-color: #d8b4fe; }
       }
-      @keyframes twinkleGreen {
+      @keyframes twinklePink {
         0%, 100% { opacity: 0.15; transform: scale(0.8); }
         50% { opacity: 1; transform: scale(1.2); }
       }
-      .spin-earth {
-        animation: spinEarth 12s linear infinite;
+      .float-heart {
+        animation: floatHeart 6s ease-in-out infinite;
         display: inline-block;
       }
-      .glow-green {
-        animation: glowPulseGreen 3s ease-in-out infinite;
+      .glow-pink {
+        animation: glowPulsePink 3s ease-in-out infinite;
       }
-      .twinkle-leaf {
+      .twinkle-petal {
         position: absolute;
         pointer-events: none;
         user-select: none;
-        animation: twinkleGreen ease-in-out infinite;
+        animation: twinklePink ease-in-out infinite;
       }
     `}</style>
 
     {/* Glowing border */}
-    <div className="glow-green absolute inset-0 rounded-3xl pointer-events-none" />
+    <div className="glow-pink absolute inset-0 rounded-3xl pointer-events-none" />
 
-    {/* Big spinning earth watermark */}
+    {/* Big floating heart watermark */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
-      <span className="spin-earth text-[220px] leading-none">🌍</span>
+      <span className="float-heart text-[220px] leading-none">🌸</span>
     </div>
 
-    {/* Twinkling leaves */}
-    <span className="twinkle-leaf text-lg" style={{ top: "10%", left: "2%", animationDuration: "2s", animationDelay: "0s" }}>🌿</span>
-    <span className="twinkle-leaf text-sm" style={{ top: "60%", left: "5%", animationDuration: "3s", animationDelay: "0.4s" }}>🍃</span>
-    <span className="twinkle-leaf text-lg" style={{ top: "25%", left: "10%", animationDuration: "2.5s", animationDelay: "0.8s" }}>🌱</span>
-    <span className="twinkle-leaf text-sm" style={{ top: "75%", left: "3%", animationDuration: "3.5s", animationDelay: "1.2s" }}>🍃</span>
-    <span className="twinkle-leaf text-lg" style={{ top: "10%", right: "2%", animationDuration: "2.8s", animationDelay: "0.2s" }}>🌿</span>
-    <span className="twinkle-leaf text-sm" style={{ top: "60%", right: "5%", animationDuration: "2s", animationDelay: "0.6s" }}>🍃</span>
-    <span className="twinkle-leaf text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s", animationDelay: "1s" }}>🌱</span>
-    <span className="twinkle-leaf text-sm" style={{ top: "75%", right: "3%", animationDuration: "2.5s", animationDelay: "1.4s" }}>🍃</span>
+    {/* Twinkling petals */}
+    <span className="twinkle-petal text-lg" style={{ top: "10%", left: "2%", animationDuration: "2s", animationDelay: "0s" }}>🌸</span>
+    <span className="twinkle-petal text-sm" style={{ top: "60%", left: "5%", animationDuration: "3s", animationDelay: "0.4s" }}>🌷</span>
+    <span className="twinkle-petal text-lg" style={{ top: "25%", left: "10%", animationDuration: "2.5s", animationDelay: "0.8s" }}>💐</span>
+    <span className="twinkle-petal text-sm" style={{ top: "75%", left: "3%", animationDuration: "3.5s", animationDelay: "1.2s" }}>🌺</span>
+    <span className="twinkle-petal text-lg" style={{ top: "10%", right: "2%", animationDuration: "2.8s", animationDelay: "0.2s" }}>🌸</span>
+    <span className="twinkle-petal text-sm" style={{ top: "60%", right: "5%", animationDuration: "2s", animationDelay: "0.6s" }}>🌷</span>
+    <span className="twinkle-petal text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s", animationDelay: "1s" }}>💐</span>
+    <span className="twinkle-petal text-sm" style={{ top: "75%", right: "3%", animationDuration: "2.5s", animationDelay: "1.4s" }}>🌺</span>
 
     <div className="relative z-10">
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
         {lang === "en"
-          ? "🌍 Happy Earth Day! 🌱"
-          : "🌍 ¡Feliz Día de la Tierra! 🌱"}
+          ? "🌸 Happy Mother's Day! 💐"
+          : "🌸 ¡Feliz Día de las Madres! 💐"}
       </p>
       <p className="mt-2 text-gray-600 text-sm font-medium">
         {lang === "en"
-          ? "Let's take care of our planet — one day at a time."
-          : "Cuidemos nuestro planeta — un día a la vez."}
+          ? "Celebrating all the incredible moms out there today and every day."
+          : "Celebrando a todas las mamás increíbles hoy y siempre."}
       </p>
       <p className="mt-1 text-gray-500 text-xs">
         {lang === "en"
@@ -379,6 +380,8 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
       {/* FEATURED VEHICLES */} 
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
