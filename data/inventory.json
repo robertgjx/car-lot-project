@@ -26,6 +26,56 @@
     "status": "available"
   },
   {
+    "id": "2004-chevrolet-silverado-41337270",
+    "year": 2004,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "trim": "SS",
+    "price": 20000,
+    "down": 7000,
+    "vin": "2GCEK19N441337270",
+    "miles": 264174,
+    "fuel": "Gasoline",
+    "engine": "6.0L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Extended Pickup",
+    "doors": 4,
+    "color": "Blue",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-chevrolet-silverado-41337270/PXL_20260423_183548918.JPG",
+      "/cars/2004-chevrolet-silverado-41337270/PXL_20260423_183556583.JPG",
+      "/cars/2004-chevrolet-silverado-41337270/PXL_20260423_183614378.JPG",
+      "/cars/2004-chevrolet-silverado-41337270/PXL_20260423_183625594.JPG",
+      "/cars/2004-chevrolet-silverado-41337270/PXL_20260423_183639259.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2004-chevrolet-silverado-4z224171",
+    "year": 2004,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1GCEC19V14Z224171",
+    "fuel": "Gasoline",
+    "engine": "4.8L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Blue",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-chevrolet-silverado-4z224171/PXL_20260423_184550980.JPG",
+      "/cars/2004-chevrolet-silverado-4z224171/PXL_20260423_184605352.JPG",
+      "/cars/2004-chevrolet-silverado-4z224171/PXL_20260423_184614222.MP.JPG",
+      "/cars/2004-chevrolet-silverado-4z224171/PXL_20260423_184625586.JPG",
+      "/cars/2004-chevrolet-silverado-4z224171/PXL_20260423_184633832.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2012-chevrolet-camaro-c9160060",
     "year": 2012,
     "make": "Chevrolet",
