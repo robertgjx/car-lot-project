@@ -288,10 +288,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VIN LOOKUP — desktop only */}
+      {/* VIN LOOKUP — desktop only 
       <section className="hidden md:block mt-6">
         <VinLookup lang={lang} />
       </section>
+      */}
 
       {/* WHY US */}
       <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -381,6 +382,128 @@ export default function Home() {
   </div>
 </section>
 
+{/* VEHICLE SPOTLIGHT */}
+{(() => {
+  // ✏️ UPDATE THIS EACH MONTH — just change the id and optional overrides
+  const spotlightId = "2004-chevrolet-silverado-41337270";
+  const priceBefore = 22000; // optional: crossed-out "was" price
+
+  const v = vehicles.find((v) => v.id === spotlightId && v.status !== "sold");
+  if (!v) return null;
+
+  const savings = priceBefore && v.price ? priceBefore - v.price : null;
+
+  return (
+    <section className="mt-6">
+      <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50">
+        <div className="p-7">
+
+          {/* Header row */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+              {lang === "en" ? "May 2025" : "Mayo 2025"}
+            </span>
+            <span className="inline-flex items-center gap-2 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-300 animate-pulse" />
+              {lang === "en" ? "Vehicle of the Month" : "Vehículo del Mes"}
+            </span>
+          </div>
+
+          {/* Image */}
+          <div className="relative rounded-2xl bg-white border border-gray-200 h-52 overflow-hidden mb-5">
+            <div className="absolute top-3.5 right-0 z-10 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-l shadow-md">
+              {lang === "en" ? "On Special" : "En Especial"}
+            </div>
+            <Image
+              src={v.images?.[0] ?? "/cars/placeholder.jpg"}
+              alt={`${v.year} ${v.make} ${v.model}`}
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Title + Price */}
+          <div className="flex items-start justify-between gap-3 mb-1">
+            <h2 className="text-xl font-extrabold text-gray-900 leading-tight">
+              {v.year} {v.make} {v.model}{v.trim ? ` ${v.trim}` : ""}
+            </h2>
+            <div className="text-right shrink-0">
+              {priceBefore && (
+                <p className="text-xs text-gray-400 line-through mb-0.5">
+                  {formatMoney(priceBefore)}
+                </p>
+              )}
+              <p className="text-[22px] font-extrabold text-red-600 leading-none">
+                {formatMoney(v.price)}
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[13px] text-gray-500 mb-3">
+            {v.miles != null && typeof v.miles === "number"
+              ? `${v.miles.toLocaleString()} ${lang === "en" ? "miles" : "millas"} · `
+              : ""}
+            {v.transmission ?? ""}{v.driveTrain ? ` · ${v.driveTrain}` : ""}
+          </p>
+
+          {/* Savings pill */}
+          {savings && savings > 0 && (
+            <div className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-lg px-3 py-1.5 text-[11px] font-bold text-red-600 mb-4">
+              🏷️ {lang === "en"
+                ? `You save ${formatMoney(savings)} this month`
+                : `Ahorras ${formatMoney(savings)} este mes`}
+            </div>
+          )}
+
+          <div className="h-px bg-gray-200 mb-4" />
+
+          {/* Specs */}
+          <div className="grid grid-cols-3 gap-2.5 mb-3.5">
+            {[
+              { label: lang === "en" ? "Engine"    : "Motor",        val: v.engine ?? "—" },
+              { label: lang === "en" ? "Color"     : "Color",        val: v.color  ?? "—" },
+              { label: lang === "en" ? "Drive"     : "Tracción",     val: v.driveTrain ?? v.bodyStyle ?? "—" },
+            ].map(({ label, val }) => (
+              <div key={label} className="bg-white border border-gray-200 rounded-2xl px-3 py-2.5">
+                <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">{label}</p>
+                <p className="text-[13px] font-bold text-gray-900">{val}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Down payment info */}
+          {v.down && (
+            <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 mb-4 flex items-center justify-between">
+              <span className="text-sm text-gray-500 font-medium">
+                {lang === "en" ? "Down payment" : "Enganche"}
+              </span>
+              <span className="text-sm font-extrabold text-gray-900">
+                {formatMoney(v.down)}
+              </span>
+            </div>
+          )}
+
+          {/* CTAs */}
+          <div className="flex gap-2.5">
+            <Link
+              href={`/inventory/${v.id}`}
+              className="flex-1 inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-2xl py-3.5 transition"
+            >
+              {lang === "en" ? "View This Vehicle →" : "Ver Vehículo →"}
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-sm rounded-2xl py-3.5 px-5 transition"
+            >
+              {lang === "en" ? "Contact Us" : "Contáctanos"}
+            </Link>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+})()}
 
       {/* FEATURED VEHICLES */} 
       <section className="mt-10">
