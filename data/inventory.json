@@ -1009,6 +1009,7 @@
     "driveTrain": "4x4",
     "price": 12900,
     "down": 6000,
+    "trim":"Z71",
     "vin": "1GCEK14T5Y7371611",
     "miles": 184666,
     "fuel": "Gasoline",
