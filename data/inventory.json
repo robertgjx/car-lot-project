@@ -172,6 +172,32 @@
     "status": "available"
   },
   {
+    "id": "2018-ford-f-150-jfe40611",
+    "year": 2018,
+    "make": "Ford",
+    "model": "F-150",
+    "driveTrain": "4x4",
+    "price": 13900,
+    "down": 5000,
+    "vin": "1FTEX1EP8JFE40611",
+    "miles": 202689,
+    "fuel": "Gasoline",
+    "engine": "2.7L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Extended Pickup",
+    "doors": 4,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213028544.JPG",
+      "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213039062.MP.JPG",
+      "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213041948.JPG",
+      "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213048425.MP.JPG",
+      "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213114078.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2004-chevrolet-silverado-4z224171",
     "year": 2004,
     "make": "Chevrolet",
