@@ -32,6 +32,7 @@
     "model": "F-150",
     "price": 8000,
     "down": 3000,
+    "term":20,
     "miles":"EXPT",
     "vin": "1FTRF18L6YNC06349",
     "fuel": "Gasoline",
@@ -4138,6 +4139,32 @@
         "/cars/2009-chevrolet-colorado-98139435/33657.JPG",
         "/cars/2009-chevrolet-colorado-98139435/33658.JPG",
         "/cars/2009-chevrolet-colorado-98139435/33659.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2012-chevrolet-silverado-cz140504",
+      "year": 2012,
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "trim": "Work Truck/Fleet/Base",
+      "price": 11900,
+      "down": 4000,
+      "vin": "1GCNCPEX8CZ140504",
+      "miles": 210280,
+      "fuel": "Gasoline",
+      "engine": "4.3L V-Shaped V6",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "Silver",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2012-chevrolet-silverado-cz140504/34300.JPG",
+        "/cars/2012-chevrolet-silverado-cz140504/34302.JPG",
+        "/cars/2012-chevrolet-silverado-cz140504/34303.JPG",
+        "/cars/2012-chevrolet-silverado-cz140504/34305.JPG",
+        "/cars/2012-chevrolet-silverado-cz140504/34306.JPG"
       ],
       "status": "available"
     }
