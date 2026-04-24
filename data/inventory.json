@@ -427,6 +427,7 @@
     "model": "F-150",
     "price": 12900,
     "down": 5500,
+    "trim":"Harley-Davidson",
     "miles":"EXPT",
     "vin": "1FTRW07383KD52516",
     "fuel": "Gasoline",
