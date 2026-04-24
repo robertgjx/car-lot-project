@@ -4167,6 +4167,59 @@
         "/cars/2012-chevrolet-silverado-cz140504/34306.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "1998-chevrolet-gmt-400-wz208178",
+      "year": 1998,
+      "make": "Chevrolet",
+      "model": "GMT-400",
+      "price": 12900,
+      "down": 5000,
+      "vin": "1GCEC14MXWZ208178",
+      "miles": 212200,
+      "fuel": "Gasoline",
+      "engine": "5L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 2,
+      "color": "White",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/1998-chevrolet-gmt-400-wz208178/34278.JPG",
+        "/cars/1998-chevrolet-gmt-400-wz208178/34311.JPG",
+        "/cars/1998-chevrolet-gmt-400-wz208178/34314.JPG",
+        "/cars/1998-chevrolet-gmt-400-wz208178/34315.JPG",
+        "/cars/1998-chevrolet-gmt-400-wz208178/34316.JPG"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "2013-toyota-tundra-dx317154",
+      "year": 2013,
+      "make": "Toyota",
+      "model": "Tundra",
+      "trim": "Limited",
+      "driveTrain": "4x4",
+      "price": 8900,
+      "down": 3000,
+      "vin": "5TFHW5F15DX317154",
+      "miles": 327559,
+      "fuel": "Gasoline",
+      "engine": "5.7L V-Shaped V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Black",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2013-toyota-tundra-dx317154/34320.JPG",
+        "/cars/2013-toyota-tundra-dx317154/34321.JPG",
+        "/cars/2013-toyota-tundra-dx317154/34323.JPG",
+        "/cars/2013-toyota-tundra-dx317154/34324.JPG",
+        "/cars/2013-toyota-tundra-dx317154/34325.JPG",
+        "/cars/2013-toyota-tundra-dx317154/34326.JPG"
+      ],
+      "status": "available"
     }
   
 ]
