@@ -1,16 +1,89 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useMemo, Suspense, useCallback } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { vehicles, VehicleType } from "@/app/lib/vehicles";
+import { useLang, t } from "@/app/lib/LanguageContext";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { vehicles, Vehicle } from "./lib/vehicles";
-import { useLang, t } from "./lib/LanguageContext";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
+
+function calcMonthly(
+  price: number | null | undefined,
+  down: number | null | undefined,
+  term?: number | null,
+  fee?: number | null
+): string {
+  if (price == null) return "N/A";
+  const d = down ?? 0;
+  const t = term ?? 24;
+  const f = fee ?? 3000;
+  const monthly = (price + f - d) / t;
+  return monthly.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+}
+
+const fullYear = (year?: number | null) => {
+  if (!year) return "";
+  if (year < 100) return year >= 90 ? 1900 + year : 2000 + year;
+  return year;
+};
+
+// ─── Vehicle type icons ───────────────────────────────────────────────────────
+
+const TypeIcon = ({ type, size = 18 }: { type: VehicleType; size?: number }) => {
+  const h = Math.round(size * 0.67);
+  switch (type) {
+    case "Truck":
+      return (
+        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
+          <rect x="0" y="4" width="8" height="6" rx="1.5" />
+          <path d="M3 4 L4.5 1 L8 1 L8 4Z" />
+          <rect x="9" y="5" width="9" height="5" rx="1.5" />
+          <circle cx="3.5" cy="10.5" r="1.5" />
+          <circle cx="14.5" cy="10.5" r="1.5" />
+        </svg>
+      );
+    case "SUV":
+      return (
+        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
+          <rect x="0" y="3" width="18" height="7" rx="2" />
+          <rect x="2" y="0" width="12" height="5" rx="1.5" />
+          <circle cx="4.5" cy="10.5" r="1.5" />
+          <circle cx="13.5" cy="10.5" r="1.5" />
+        </svg>
+      );
+    case "Van":
+      return (
+        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
+          <rect x="0" y="2" width="18" height="8" rx="2" />
+          <rect x="1" y="3.5" width="6" height="4" rx="1" fill="white" opacity="0.4" />
+          <rect x="8" y="3.5" width="6" height="4" rx="1" fill="white" opacity="0.4" />
+          <circle cx="4.5" cy="10.5" r="1.5" />
+          <circle cx="13.5" cy="10.5" r="1.5" />
+        </svg>
+      );
+    default:
+      return (
+        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
+          <rect x="0" y="4" width="18" height="6" rx="2" />
+          <path d="M3 4 L5.5 0 L12.5 0 L15 4Z" />
+          <circle cx="4.5" cy="10.5" r="1.5" />
+          <circle cx="13.5" cy="10.5" r="1.5" />
+        </svg>
+      );
+  }
+};
+
+// ─── VIN lookup ───────────────────────────────────────────────────────────────
 
 interface VinResult {
   year: string; make: string; model: string; trim: string;
@@ -21,16 +94,16 @@ interface VinResult {
 function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; result: VinResult; onClose: () => void }) {
   const inventoryMatch = vehicles.find((v) => v.vin?.toUpperCase() === vin.toUpperCase());
   const rows = [
-    { label: lang === "en" ? "Year" : "Año", value: result.year },
-    { label: lang === "en" ? "Make" : "Marca", value: result.make },
-    { label: lang === "en" ? "Model" : "Modelo", value: result.model },
-    { label: lang === "en" ? "Trim" : "Versión", value: result.trim },
-    { label: lang === "en" ? "Engine" : "Motor", value: result.engine },
-    { label: lang === "en" ? "Body Style" : "Carrocería", value: result.bodyStyle },
-    { label: lang === "en" ? "Drive Type" : "Tracción", value: result.driveType },
-    { label: lang === "en" ? "Transmission" : "Transmisión", value: result.transmission },
-    { label: lang === "en" ? "Doors" : "Puertas", value: result.doors },
-    { label: lang === "en" ? "Fuel" : "Combustible", value: result.fuel },
+    { label: lang === "en" ? "Year" : "Año",               value: result.year },
+    { label: lang === "en" ? "Make" : "Marca",              value: result.make },
+    { label: lang === "en" ? "Model" : "Modelo",            value: result.model },
+    { label: lang === "en" ? "Trim" : "Versión",            value: result.trim },
+    { label: lang === "en" ? "Engine" : "Motor",            value: result.engine },
+    { label: lang === "en" ? "Body Style" : "Carrocería",   value: result.bodyStyle },
+    { label: lang === "en" ? "Drive Type" : "Tracción",     value: result.driveType },
+    { label: lang === "en" ? "Transmission" : "Transmisión",value: result.transmission },
+    { label: lang === "en" ? "Doors" : "Puertas",           value: result.doors },
+    { label: lang === "en" ? "Fuel" : "Combustible",        value: result.fuel },
   ].filter((r) => r.value);
 
   useEffect(() => {
@@ -41,26 +114,26 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-      {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        {/* Header */}
+      <div
+        className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-start justify-between rounded-t-3xl">
           <div>
-            <h2 className="text-xl font-extrabold text-gray-900">{result.year} {result.make} {result.model}</h2>
+            <h2 className="text-xl font-extrabold text-gray-900">
+              {result.year} {result.make} {result.model}
+            </h2>
             {result.trim && <p className="text-sm text-gray-500 mt-0.5">{result.trim}</p>}
             <p className="text-xs font-mono text-gray-400 mt-1">VIN: {vin}</p>
           </div>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 transition ml-4 mt-1">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
-
         <div className="px-6 py-4 flex flex-col gap-4">
-          {/* Inventory status */}
           {inventoryMatch ? (
             <div className="rounded-2xl bg-green-50 border-2 border-green-400 p-4">
               <p className="font-bold text-green-700 text-sm mb-1">
@@ -74,18 +147,21 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
                   {lang === "en" ? "Down" : "Enganche"}: ${inventoryMatch.down.toLocaleString()}
                 </p>
               )}
-              <Link href={`/inventory/${inventoryMatch.id}`} onClick={onClose}
-                className="mt-3 inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition text-sm">
+              <Link
+                href={`/inventory/${inventoryMatch.id}`}
+                onClick={onClose}
+                className="mt-3 inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition text-sm"
+              >
                 {lang === "en" ? "View Our Listing →" : "Ver Nuestro Listado →"}
               </Link>
             </div>
           ) : (
             <div className="rounded-2xl bg-gray-50 border border-gray-200 px-4 py-3 text-sm text-gray-500">
-              {lang === "en" ? "This vehicle is not currently in our inventory." : "Este vehículo no está en nuestro inventario actualmente."}
+              {lang === "en"
+                ? "This vehicle is not currently in our inventory."
+                : "Este vehículo no está en nuestro inventario actualmente."}
             </div>
           )}
-
-          {/* Specs table */}
           <div className="rounded-2xl border border-gray-200 overflow-hidden">
             <p className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-400 bg-gray-50 border-b border-gray-200">
               {lang === "en" ? "Vehicle Specs" : "Especificaciones"}
@@ -97,9 +173,10 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
               </div>
             ))}
           </div>
-
-          <button onClick={onClose}
-            className="w-full border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition text-sm">
+          <button
+            onClick={onClose}
+            className="w-full border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition text-sm"
+          >
             {lang === "en" ? "Close" : "Cerrar"}
           </button>
         </div>
@@ -108,31 +185,32 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
   );
 }
 
-interface VinLookupProps { lang: string; }
-function VinLookup({ lang }: VinLookupProps) {
+function VinLookupBar({ lang }: { lang: string }) {
   const [input, setInput] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
+  const [vinStatus, setVinStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
   const [result, setResult] = useState<VinResult | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   async function lookup() {
     if (input.length !== 17) return;
-    setStatus("loading"); setResult(null); setShowModal(false);
+    setVinStatus("loading"); setResult(null); setShowModal(false);
     try {
       const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${input}?format=json`);
       const data = await res.json();
       const get = (label: string) => data.Results.find((r: any) => r.Variable === label)?.Value || "";
       const year = get("Model Year"); const make = get("Make"); const model = get("Model");
-      if (!make || !year) { setStatus("notfound"); return; }
+      if (!make || !year) { setVinStatus("notfound"); return; }
       setResult({
         year, make, model, trim: get("Trim"),
-        engine: [get("Displacement (L)") && `${get("Displacement (L)")}L`, get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`].filter(Boolean).join(" "),
+        engine: [
+          get("Displacement (L)") && `${get("Displacement (L)")}L`,
+          get("Engine Number of Cylinders") && `${get("Engine Number of Cylinders")} cyl`,
+        ].filter(Boolean).join(" "),
         bodyStyle: get("Body Class"), driveType: get("Drive Type"),
         transmission: get("Transmission Style"), doors: get("Doors"), fuel: get("Fuel Type - Primary"),
       });
-      setStatus("found");
-      setShowModal(true);
-    } catch { setStatus("error"); }
+      setVinStatus("found"); setShowModal(true);
+    } catch { setVinStatus("error"); }
   }
 
   return (
@@ -140,314 +218,486 @@ function VinLookup({ lang }: VinLookupProps) {
       {showModal && result && (
         <VinModal lang={lang} vin={input} result={result} onClose={() => setShowModal(false)} />
       )}
-      <div className="rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+      <div className="hidden md:block rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 mb-6">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
           {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+        </p>
+        <p className="text-xs text-gray-400 italic mb-3">
+          {lang === "en" ? "Added for your convenience" : "Agregado para su conveniencia"}
         </p>
         <div className="flex gap-2">
           <input
             type="text" maxLength={17} value={input}
-            onChange={(e) => { setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, "")); setStatus("idle"); }}
+            onChange={(e) => {
+              setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, ""));
+              setVinStatus("idle");
+            }}
             onKeyDown={(e) => e.key === "Enter" && lookup()}
             placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
             className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
             autoCorrect="off" autoCapitalize="characters"
           />
-          <button onClick={lookup} disabled={input.length !== 17 || status === "loading"}
-            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm">
-            {status === "loading" ? (
+          <button
+            onClick={lookup}
+            disabled={input.length !== 17 || vinStatus === "loading"}
+            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm whitespace-nowrap"
+          >
+            {vinStatus === "loading" ? (
               <span className="flex items-center gap-1">
-                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25"/><path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z"/></svg>
+                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
+                  <path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z" />
+                </svg>
               </span>
-            ) : (lang === "en" ? "Look Up →" : "Buscar →")}
+            ) : lang === "en" ? "Look Up →" : "Buscar →"}
           </button>
         </div>
-        {status === "found" && result && (
-          <button onClick={() => setShowModal(true)}
-            className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group">
+        {vinStatus === "found" && result && (
+          <button
+            onClick={() => setShowModal(true)}
+            className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group"
+          >
             <div className="text-left">
               <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
-              <p className="text-xs text-red-500 font-semibold mt-0.5">{lang === "en" ? "Click to view full details" : "Toca para ver detalles completos"}</p>
+              <p className="text-xs text-red-500 font-semibold mt-0.5">
+                {lang === "en" ? "Click to view full details" : "Clic para ver detalles completos"}
+              </p>
             </div>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-red-500 transition">
-              <polyline points="9 18 15 12 9 6"/>
+              <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
         )}
-        {status === "notfound" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado. Verifica e intenta de nuevo."}</p>}
-        {status === "error" && <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red. Intenta de nuevo."}</p>}
+        {vinStatus === "notfound" && (
+          <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>
+        )}
+        {vinStatus === "error" && (
+          <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>
+        )}
       </div>
     </>
   );
 }
 
-export default function Home() {
-  const { lang } = useLang();
-  const [featured, setFeatured] = useState<Vehicle[]>(vehicles.filter((v) => v.status !== "sold").slice(0, 3));
+// ─── Pagination ───────────────────────────────────────────────────────────────
 
-  useEffect(() => {
-    fetch("/api/track-view")
-      .then((r) => r.json())
-      .then(({ top }) => {
-        if (top && top.length > 0) {
-          const topVehicles: Vehicle[] = top
-  .reduce((acc: Vehicle[], id: string) => {
-    const found = vehicles.find((v) => v.id === id);
-    if (found && found.status !== "sold") acc.push(found);
-    return acc;
+function Pagination({ page, totalPages, lang, onPageChange }: {
+  page: number; totalPages: number; lang: string; onPageChange: (p: number) => void;
+}) {
+  if (totalPages <= 1) return null;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  return (
+    <div className="flex items-center justify-center gap-2 flex-wrap">
+      <button
+        onClick={() => onPageChange(Math.max(1, page - 1))} disabled={page === 1}
+        className="rounded-xl border border-gray-200 bg-white px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        ←
+      </button>
+      {pages.map((p) => (
+        <button key={p} onClick={() => onPageChange(p)}
+          className={`rounded-xl px-4 py-2 font-semibold transition ${p === page ? "bg-red-600 text-white" : "border border-gray-200 bg-white text-gray-900 hover:bg-gray-100"}`}
+        >
+          {p}
+        </button>
+      ))}
+      <button
+        onClick={() => onPageChange(Math.min(totalPages, page + 1))} disabled={page === totalPages}
+        className="rounded-xl border border-gray-200 bg-white px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        →
+      </button>
+    </div>
+  );
+}
+
+// ─── Main inventory component ─────────────────────────────────────────────────
+
+function InventoryInner() {
+  const { lang } = useLang();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // URL filter state
+  const query    = searchParams.get("q")      ?? "";
+  const make     = searchParams.get("make")   ?? "all";
+  const minDown  = searchParams.get("minDown") ?? "";
+  const maxDown  = searchParams.get("maxDown") ?? "";
+  const location = searchParams.get("loc")    ?? "all";
+  const status   = searchParams.get("status") ?? "all";
+  const type     = searchParams.get("type")   ?? "all";  // ← new
+  const page     = Number(searchParams.get("page") ?? "1");
+
+  const updateParams = useCallback((updates: Record<string, string>) => {
+    const params = new URLSearchParams(searchParams.toString());
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === "" || value === "all") {
+        params.delete(key);
+      } else if (key === "page" && value === "1") {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [searchParams, router, pathname]);
+
+  const setQuery    = (v: string) => updateParams({ q: v,       page: "1" });
+  const setMake     = (v: string) => updateParams({ make: v,    page: "1" });
+  const setMinDown  = (v: string) => updateParams({ minDown: v, page: "1" });
+  const setMaxDown  = (v: string) => updateParams({ maxDown: v, page: "1" });
+  const setLocation = (v: string) => updateParams({ loc: v,     page: "1" });
+  const setStatus   = (v: string) => updateParams({ status: v,  page: "1" });
+  const setType     = (v: string) => updateParams({ type: v,    page: "1" });  // ← new
+  const setPage     = (p: number) => {
+    updateParams({ page: String(p) });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const resetAll = () => router.replace(pathname, { scroll: false });
+
+  const makes = useMemo(() => {
+    return Array.from(new Set(vehicles.map((v) => v.make))).sort();
   }, []);
-          // Fill up to 3 with fallbacks if needed
-          const fallbacks = vehicles.filter((v) => !top.includes(v.id) && v.status !== "sold");
-          const combined = [...topVehicles, ...fallbacks].slice(0, 3);
-          setFeatured(combined);
-        }
-      })
-      .catch(() => {}); // fallback to default
+
+  const maxInventoryDown = useMemo(() => {
+    const downs = vehicles.map((v) => v.down).filter((d): d is number => d != null);
+    return downs.length > 0 ? Math.max(...downs) : 10000;
   }, []);
+
+  // Count per type across full inventory (not filtered) for tab badges
+  const typeCounts = useMemo(() => ({
+    all:   vehicles.length,
+    Car:   vehicles.filter((v) => v.type === "Car").length,
+    SUV:   vehicles.filter((v) => v.type === "SUV").length,
+    Truck: vehicles.filter((v) => v.type === "Truck").length,
+    Van:   vehicles.filter((v) => v.type === "Van").length,
+    Other: vehicles.filter((v) => v.type === "Other").length,
+  }), []);
+
+  const filtered = useMemo(() => {
+    const q   = query.trim().toLowerCase();
+    const min = minDown.trim() === "" ? null : Number(minDown);
+    const max = maxDown.trim() === "" ? null : Number(maxDown);
+
+    return vehicles.filter((v) => {
+      const haystack      = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
+      const matchesQuery  = q === "" || haystack.includes(q);
+      const matchesMake   = make === "all" || v.make === make;
+      const down          = v.down ?? null;
+      const matchesMin    = min === null || (down !== null && down >= min);
+      const matchesMax    = max === null || (down !== null && down <= max);
+      const matchesLoc    = location === "all" || (v as any).location === location;
+      const matchesStatus = status === "all" || v.status === status;
+      const matchesType   = type === "all" || v.type === type;  // ← new
+      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLoc && matchesStatus && matchesType;
+    });
+  }, [query, make, minDown, maxDown, location, status, type]);
+
+  const ITEMS_PER_PAGE = 27;
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const paginated  = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+
+  // Tab definitions
+  const typeTabs: { key: string; labelKey: keyof typeof t.inv; vtype?: VehicleType }[] = [
+    { key: "all",   labelKey: "typeAll" },
+    { key: "Car",   labelKey: "typeCar",   vtype: "Car" },
+    { key: "SUV",   labelKey: "typeSUV",   vtype: "SUV" },
+    { key: "Truck", labelKey: "typeTruck", vtype: "Truck" },
+    { key: "Van",   labelKey: "typeVan",   vtype: "Van" },
+    { key: "Other", labelKey: "typeOther", vtype: "Other" },
+  ];
 
   return (
-    <main className="min-h-screen bg-white text-gray-900">
-      {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border border-gray-200 p-8 md:p-14 min-h-[500px]">
-        <div className="absolute inset-0 z-10">
-          <img src="/garcias.png" alt="Background" className="h-full w-full object-cover opacity-90" />
-          <div className="absolute inset-0 bg-black/20" />
-        </div>
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
-        <div className="relative z-10">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm text-white">
-            <span className="h-2 w-2 rounded-full bg-green-400" />
-            {t.hero.badge[lang]}
-          </p>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">
-          {lang === "en" ? "Welcome to" : "Bienvenidos a"}
-          </p>
-          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
-          {/* subtitle removed */}
-          <div className="mt-6 inline-flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-2.5 text-sm font-extrabold text-white uppercase tracking-widest shadow-lg">
-              💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-2xl bg-white/20 border border-white/40 px-5 py-2.5 text-sm font-bold text-white">
-              ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
-            </span>
-          </div>
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-            <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
-              {t.hero.viewInv[lang]}
-            </Link>
-            <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
-              {t.hero.contactUs[lang]}
-            </Link>
-          </div>
-        </div>
-      </section>
+    <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
+      <div className="max-w-6xl mx-auto">
 
-      {/* BRAND STRIP */}
-      <section className="mt-6 rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          {lang === "en" ? "Shop by Brand" : "Buscar por Marca"}
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-4xl font-bold text-gray-900">{t.inv.title[lang]}</h1>
+          <Link href="/" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
+            {t.inv.backHome[lang]}
+          </Link>
+        </div>
+
+        <p className="mt-2 text-gray-500">
+          {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
         </p>
-        <div className="flex items-center justify-around gap-6 flex-wrap">
 
-          <Link href="/inventory?make=Chevrolet" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-chevrolet.jpg" alt="Chevrolet" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Chevrolet</span>
-          </Link>
-
-          <Link href="/inventory?make=Ford" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-ford.png" alt="Ford" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Ford</span>
-          </Link>
-
-          <Link href="/inventory?make=GMC" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-gmc.jpg" alt="GMC" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">GMC</span>
-          </Link>
-
-          <Link href="/inventory?make=Dodge" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-dodge.png" alt="Dodge" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Dodge</span>
-          </Link>
-
-          <Link href="/inventory?make=Toyota" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-toyota.png" alt="Toyota" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Toyota</span>
-          </Link>
-
+        <div className="mt-3 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+            💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-800 text-xs font-bold px-3 py-1.5 rounded-full">
+            ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
+          </span>
         </div>
-      </section>
 
-      {/* VIN LOOKUP — desktop only 
-      <section className="hidden md:block mt-6">
-        <VinLookup lang={lang} />
-      </section>
-      */}
-
-      {/* WHY US */}
-      <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
+        {/* VIN Lookup */}
+        <div className="mt-6">
+          <VinLookupBar lang={lang} />
         </div>
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.finDesc[lang]}</p>
+
+        {/* ── Vehicle Type Tabs ── */}
+        <div className="mt-2 flex gap-2 flex-wrap">
+          {typeTabs.map(({ key, labelKey, vtype }) => {
+            const count = typeCounts[key as keyof typeof typeCounts] ?? 0;
+            const isActive = type === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setType(key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full border font-semibold text-sm transition
+                  ${isActive
+                    ? "bg-red-600 border-red-600 text-white"
+                    : "bg-white border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900"
+                  }`}
+              >
+                <TypeIcon type={vtype ?? "Car"} size={18} />
+                {t.inv[labelKey][lang]}
+                <span className={`text-xs font-normal ${isActive ? "opacity-70" : "text-gray-400"}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.suppTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
-        </div>
-      </section>
 
-      {/* SEASONAL ANNOUNCEMENT */}
-<section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 px-8 py-6 shadow-md text-center">
+        {/* ── Filters Bar ── */}
+        <div className="mt-4 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
 
-    <style>{`
-      @keyframes floatHeart {
-        0% { transform: translateY(0px) rotate(-8deg); }
-        50% { transform: translateY(-8px) rotate(8deg); }
-        100% { transform: translateY(0px) rotate(-8deg); }
-      }
-      @keyframes glowPulsePink {
-        0%, 100% { box-shadow: 0 0 8px 2px rgba(244,114,182,0.3); border-color: #f9a8d4; }
-        50% { box-shadow: 0 0 22px 6px rgba(192,132,252,0.3); border-color: #d8b4fe; }
-      }
-      @keyframes twinklePink {
-        0%, 100% { opacity: 0.15; transform: scale(0.8); }
-        50% { opacity: 1; transform: scale(1.2); }
-      }
-      .float-heart {
-        animation: floatHeart 6s ease-in-out infinite;
-        display: inline-block;
-      }
-      .glow-pink {
-        animation: glowPulsePink 3s ease-in-out infinite;
-      }
-      .twinkle-petal {
-        position: absolute;
-        pointer-events: none;
-        user-select: none;
-        animation: twinklePink ease-in-out infinite;
-      }
-    `}</style>
+            <div className="md:col-span-2">
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.search[lang]}</label>
+              <input
+                value={query} onChange={(e) => setQuery(e.target.value)}
+                placeholder={t.inv.searchPh[lang]}
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400"
+              />
+            </div>
 
-    {/* Glowing border */}
-    <div className="glow-pink absolute inset-0 rounded-3xl pointer-events-none" />
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.make[lang]}</label>
+              <select value={make} onChange={(e) => setMake(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                <option value="all">{t.inv.all[lang]}</option>
+                {makes.map((m) => <option key={m} value={m}>{m}</option>)}
+              </select>
+            </div>
 
-    {/* Big floating heart watermark */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
-      <span className="float-heart text-[220px] leading-none">🌸</span>
-    </div>
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Location" : "Ubicación"}
+              </label>
+              <select value={location} onChange={(e) => setLocation(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                <option value="all">{lang === "en" ? "All Locations" : "Todas"}</option>
+                <option value="Palma Vista">📍 Palma Vista</option>
+                <option value="Veterans Blvd">📍 Veterans Blvd</option>
+              </select>
+            </div>
 
-    {/* Twinkling petals */}
-    <span className="twinkle-petal text-lg" style={{ top: "10%", left: "2%", animationDuration: "2s", animationDelay: "0s" }}>🌸</span>
-    <span className="twinkle-petal text-sm" style={{ top: "60%", left: "5%", animationDuration: "3s", animationDelay: "0.4s" }}>🌷</span>
-    <span className="twinkle-petal text-lg" style={{ top: "25%", left: "10%", animationDuration: "2.5s", animationDelay: "0.8s" }}>💐</span>
-    <span className="twinkle-petal text-sm" style={{ top: "75%", left: "3%", animationDuration: "3.5s", animationDelay: "1.2s" }}>🌺</span>
-    <span className="twinkle-petal text-lg" style={{ top: "10%", right: "2%", animationDuration: "2.8s", animationDelay: "0.2s" }}>🌸</span>
-    <span className="twinkle-petal text-sm" style={{ top: "60%", right: "5%", animationDuration: "2s", animationDelay: "0.6s" }}>🌷</span>
-    <span className="twinkle-petal text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s", animationDelay: "1s" }}>💐</span>
-    <span className="twinkle-petal text-sm" style={{ top: "75%", right: "3%", animationDuration: "2.5s", animationDelay: "1.4s" }}>🌺</span>
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Status" : "Estado"}
+              </label>
+              <select value={status} onChange={(e) => setStatus(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                <option value="all">{lang === "en" ? "All" : "Todos"}</option>
+                <option value="available">{lang === "en" ? "✅ Available" : "✅ Disponible"}</option>
+                <option value="sold">{lang === "en" ? "🔴 Sold" : "🔴 Vendido"}</option>
+              </select>
+            </div>
 
-    <div className="relative z-10">
-      <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-        {lang === "en"
-          ? "🌸 Happy Mother's Day! 💐"
-          : "🌸 ¡Feliz Día de las Madres! 💐"}
-      </p>
-      <p className="mt-2 text-gray-600 text-sm font-medium">
-        {lang === "en"
-          ? "Celebrating all the incredible moms out there today and every day."
-          : "Celebrando a todas las mamás increíbles hoy y siempre."}
-      </p>
-      <p className="mt-1 text-gray-500 text-xs">
-        {lang === "en"
-          ? "From all of us at Garcia's Auto Sales RGV"
-          : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
-      </p>
-    </div>
-  </div>
-</section>
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Min Down Payment" : "Enganche Mínimo"}
+              </label>
+              <input value={minDown} onChange={(e) => setMinDown(e.target.value)} inputMode="numeric" placeholder="$0"
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
+            </div>
 
-  
-      {/* FEATURED VEHICLES */} 
-      <section className="mt-10">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900">{t.featured.title[lang]}</h2>
-            <p className="mt-1 text-gray-600">{t.featured.sub[lang]}</p>
-          </div>
-          <Link href="/inventory" className="hidden md:inline-flex rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.featured.viewAll[lang]}
-          </Link>
-        </div>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {featured.map((v) => (
-            <div key={v.id} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-              <div className="relative h-52 w-full bg-gray-100">
-                <Image src={v.images?.[0] ?? (v as any).image ?? "/cars/placeholder.jpg"} alt={`${v.year} ${v.make} ${v.model}`} fill className="object-cover" />
-              </div>
-              <div className="p-6">
-                <p className="text-lg font-bold text-gray-900">{v.year} {v.make} {v.model}</p>
-                <p className="mt-1 text-red-600 font-semibold">{formatMoney(v.price)}</p>
-                <p className="mt-1 text-sm text-gray-500">{v.miles != null ? v.miles.toLocaleString() : "N/A"} {t.featured.miles[lang]}</p>
-                <Link href={`/inventory/${v.id}`} className="inline-flex mt-4 rounded-2xl bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700 transition">
-                  {t.featured.viewDet[lang]}
-                </Link>
+            <div>
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Max Down Payment" : "Enganche Máximo"}
+              </label>
+              <input value={maxDown} onChange={(e) => setMaxDown(e.target.value)} inputMode="numeric"
+                placeholder={`$${maxInventoryDown.toLocaleString()}`}
+                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
+            </div>
+
+            <div className="md:col-span-2 flex items-end gap-3">
+              <button onClick={resetAll}
+                className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
+                {t.inv.reset[lang]}
+              </button>
+              <div className="w-full text-sm text-gray-600">
+                <div className="bg-white border border-gray-200 rounded-xl px-4 py-3">
+                  {t.inv.showing[lang]}{" "}
+                  <span className="font-semibold text-gray-900">{filtered.length}</span>{" "}
+                  {t.inv.of[lang]}{" "}
+                  <span className="font-semibold text-gray-900">{vehicles.length}</span>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div className="mt-6 md:hidden">
-          <Link href="/inventory" className="inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.featured.viewAllMobile[lang]}
-          </Link>
-        </div>
-      </section>
 
-      {/* CONTACT */}
-      <section className="mt-10 rounded-3xl border border-gray-200 bg-gray-50 p-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900">{t.contact.title[lang]}</h2>
-            <p className="mt-2 text-gray-600">{t.contact.sub[lang]}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
-                {t.contact.page[lang]}
-              </Link>
-              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
-                {t.contact.browse[lang]}
-              </Link>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">{t.contact.details[lang]}</p>
-            <div className="mt-4 space-y-3 text-gray-700">
-              <p><span className="text-gray-400">{t.contact.phone[lang]}</span> (956) 581-0455</p>
-              <p><span className="text-gray-400">{t.contact.location[lang]}</span> Palmview, TX</p>
-              <p><span className="text-gray-400">{t.contact.hours[lang]}</span> {t.contact.hoursVal[lang]}</p>
-            </div>
           </div>
         </div>
-      </section>
 
-      {/* FOOTER */}
-      <footer className="mt-10 pb-10 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV LLC. {t.footer.rights[lang]}
-      </footer>
+        {/* Pagination top */}
+        {totalPages > 1 && (
+          <div className="mt-6 mb-4">
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
+          </div>
+        )}
+
+        {/* ── Vehicle Grid ── */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {paginated.map((vehicle) => {
+            const mainImg = vehicle.images?.[0] ?? "/cars/placeholder.jpg";
+            const isSold  = vehicle.status === "sold";
+
+            return (
+              <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+
+                {/* Image */}
+                <div className="relative w-full h-52 bg-gray-100 shrink-0">
+                  <Image
+                    src={mainImg}
+                    alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
+                    fill
+                    className={`object-cover ${isSold ? "opacity-50 grayscale" : ""}`}
+                  />
+                  {isSold ? (
+                    <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+                      {lang === "en" ? "Sold" : "Vendido"}
+                    </span>
+                  ) : (
+                    <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+                      {lang === "en" ? "Available" : "Disponible"}
+                    </span>
+                  )}
+                </div>
+
+                {/* Card body */}
+                <div className="p-5 flex flex-col flex-1">
+
+                  {/* Type pill + location */}
+                  <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                    {vehicle.type && vehicle.type !== "Other" && (
+                      <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-500 text-xs font-semibold px-2.5 py-1 rounded-full">
+                        <TypeIcon type={vehicle.type} size={13} />
+                        {vehicle.type === "Truck" ? (lang === "en" ? "Truck" : "Troca") :
+                         vehicle.type === "SUV"   ? "SUV" :
+                         vehicle.type === "Van"   ? "Van" :
+                         (lang === "en" ? "Car" : "Carro")}
+                      </span>
+                    )}
+                    {vehicle.location && (
+                      <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-400 text-xs px-2.5 py-1 rounded-full border border-gray-100">
+                        📍 {vehicle.location}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Name + trim */}
+                  <h2 className="text-lg font-semibold text-gray-900 leading-snug">
+                    {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
+                    {vehicle.trim && (
+                      <span className="text-gray-400 font-normal text-sm"> · {vehicle.trim}</span>
+                    )}
+                  </h2>
+
+                  {/* Price */}
+                  <p className={`mt-2 text-2xl font-bold ${isSold ? "text-gray-400" : "text-red-600"}`}>
+                    {formatMoney(vehicle.price)}
+                  </p>
+
+                  {/* Miles */}
+                  <p className="mt-1 text-sm text-gray-400">
+                    {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}{" "}
+                    {lang === "en" ? "miles" : "millas"}
+                  </p>
+
+                  <div className="mt-auto">
+                    <div className="my-3 border-t border-gray-100" />
+
+                    {/* Down + monthly or sold message */}
+                    {!isSold ? (
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <p className="text-xs text-gray-400 uppercase tracking-wide">
+                            {lang === "en" ? "Down" : "Enganche"}
+                          </p>
+                          <p className="text-sm font-semibold text-gray-700">
+                            {vehicle.down != null ? formatMoney(vehicle.down) : "—"}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-gray-400 uppercase tracking-wide">
+                            {lang === "en" ? "Est. monthly" : "Pago est."}
+                          </p>
+                          <p className="text-sm font-bold text-gray-900">
+                            {calcMonthly(vehicle.price, vehicle.down, vehicle.term, vehicle.fee)}/mo
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-400 text-center py-1">
+                        {lang === "en" ? "This vehicle has been sold" : "Este vehículo fue vendido"}
+                      </p>
+                    )}
+
+                    {/* CTA */}
+                    <Link
+                      href={`/inventory/${encodeURIComponent(vehicle.id)}`}
+                      className="mt-3 block w-full text-center rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition text-sm"
+                    >
+                      {t.inv.viewDet[lang]}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* No results */}
+        {filtered.length === 0 && (
+          <div className="mt-10 text-gray-500 bg-gray-50 border border-gray-200 rounded-2xl p-6">
+            {t.inv.noResults[lang]}
+          </div>
+        )}
+
+        {/* Pagination bottom */}
+        {totalPages > 1 && (
+          <div className="mt-10">
+            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
+          </div>
+        )}
+
+        {/* Coming soon banner */}
+        <div className="mt-12 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-8 text-center">
+          <p className="text-2xl mb-2">🚘</p>
+          <p className="text-lg font-bold text-gray-800">
+            {lang === "en" ? "More inventory coming soon!" : "¡Más inventario próximamente!"}
+          </p>
+          <p className="text-sm text-gray-500 mt-1">
+            {lang === "en"
+              ? "We're always adding new vehicles. Check back often or give us a call!"
+              : "Siempre estamos agregando vehículos nuevos. ¡Visítanos pronto o llámanos!"}
+          </p>
+        </div>
+
+      </div>
     </main>
+  );
+}
+
+export default function InventoryPage() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center text-gray-400">Loading...</div>}>
+      <InventoryInner />
+    </Suspense>
   );
 }

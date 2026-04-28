@@ -115,6 +115,13 @@ export const t = {
     viewDet:     { en: "View Details", es: "Ver Detalles" },
     noResults:   { en: "No vehicles match your filters. Try resetting.", es: "Ningún vehículo coincide con los filtros. Intenta restablecer." },
     backHome:    { en: "← Back Home",  es: "← Inicio" },
+    // Vehicle type tabs
+    typeAll:     { en: "All",    es: "Todos" },
+    typeCar:     { en: "Cars",   es: "Carros" },
+    typeSUV:     { en: "SUVs",   es: "SUVs" },
+    typeTruck:   { en: "Trucks", es: "Trocas" },
+    typeVan:     { en: "Vans",   es: "Vans" },
+    typeOther:   { en: "Other",  es: "Otros" },
   },
 
   // Vehicle details page
