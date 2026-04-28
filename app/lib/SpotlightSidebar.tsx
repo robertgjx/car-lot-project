@@ -25,30 +25,30 @@ export default function SpotlightSidebar() {
   return (
     <aside className="hidden xl:flex flex-col w-[260px] shrink-0">
       <style>{`
-        @keyframes glowPulse {
-          0%, 100% {
-            box-shadow:
-              0 0 8px 2px rgba(220,38,38,0.6),
-              0 0 25px 6px rgba(220,38,38,0.3),
-              0 0 55px 12px rgba(220,38,38,0.15),
-              inset 0 0 15px 2px rgba(220,38,38,0.06);
-            border-color: rgba(220,38,38,0.9);
-          }
-          50% {
-            box-shadow:
-              0 0 18px 5px rgba(251,191,36,0.7),
-              0 0 45px 14px rgba(251,191,36,0.35),
-              0 0 80px 22px rgba(220,38,38,0.2),
-              inset 0 0 28px 4px rgba(251,191,36,0.1);
-            border-color: rgba(251,191,36,0.95);
-          }
-        }
-        .sp-glow {
-          border: 2.5px solid rgba(220,38,38,0.9);
-          border-radius: 22px;
-          animation: glowPulse 2s ease-in-out infinite;
-        }
-      `}</style>
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow:
+        0 0 8px 2px rgba(220,38,38,0.6),
+        0 0 25px 6px rgba(220,38,38,0.3),
+        0 0 55px 12px rgba(220,38,38,0.15),
+        inset 0 0 15px 2px rgba(220,38,38,0.06);
+      border-color: rgba(220,38,38,0.9);
+    }
+    50% {
+      box-shadow:
+        0 0 18px 5px rgba(251,191,36,0.7),
+        0 0 45px 14px rgba(251,191,36,0.35),
+        0 0 80px 22px rgba(220,38,38,0.2),
+        inset 0 0 28px 4px rgba(251,191,36,0.1);
+      border-color: rgba(251,191,36,0.95);
+    }
+  }
+  .sp-glow {
+    border: 2.5px solid rgba(220,38,38,0.9);
+    border-radius: 22px;
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+`}</style>
 
       <div className="sticky top-8">
 
