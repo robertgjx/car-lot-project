@@ -312,7 +312,7 @@ export default function Home() {
       </section>
 
         
-        {/* SEASONAL ANNOUNCEMENT */}
+       {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
   <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #fdf2f8, #fce7f3, #f5f3ff)" }}>
 
@@ -387,7 +387,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
   
       {/* FEATURED VEHICLES */} 
       <section className="mt-10">
