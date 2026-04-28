@@ -311,30 +311,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEASONAL ANNOUNCEMENT */}
+        
+        {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl border-2 border-pink-300 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 px-8 py-6 shadow-md text-center">
+  <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #fdf2f8, #fce7f3, #f5f3ff)" }}>
 
     <style>{`
-      @keyframes floatHeart {
-        0% { transform: translateY(0px) rotate(-8deg); }
-        50% { transform: translateY(-8px) rotate(8deg); }
-        100% { transform: translateY(0px) rotate(-8deg); }
-      }
-      @keyframes glowPulsePink {
-        0%, 100% { box-shadow: 0 0 8px 2px rgba(244,114,182,0.3); border-color: #f9a8d4; }
-        50% { box-shadow: 0 0 22px 6px rgba(192,132,252,0.3); border-color: #d8b4fe; }
+      @keyframes glowPulse {
+        0%, 100% {
+          box-shadow:
+            0 0 10px 3px rgba(244,114,182,0.5),
+            0 0 30px 8px rgba(244,114,182,0.25),
+            0 0 60px 15px rgba(192,132,252,0.15),
+            inset 0 0 20px 2px rgba(244,114,182,0.08);
+          border-color: rgba(244,114,182,0.8);
+        }
+        50% {
+          box-shadow:
+            0 0 20px 6px rgba(192,132,252,0.7),
+            0 0 50px 16px rgba(192,132,252,0.35),
+            0 0 90px 25px rgba(244,114,182,0.2),
+            inset 0 0 35px 5px rgba(192,132,252,0.12);
+          border-color: rgba(192,132,252,0.9);
+        }
       }
       @keyframes twinklePink {
         0%, 100% { opacity: 0.15; transform: scale(0.8); }
         50% { opacity: 1; transform: scale(1.2); }
       }
-      .float-heart {
-        animation: floatHeart 6s ease-in-out infinite;
-        display: inline-block;
-      }
-      .glow-pink {
-        animation: glowPulsePink 3s ease-in-out infinite;
+      .glow-pulse-border {
+        animation: glowPulse 2.5s ease-in-out infinite;
+        border: 2px solid rgba(244,114,182,0.8);
+        border-radius: 1.5rem;
       }
       .twinkle-petal {
         position: absolute;
@@ -344,29 +352,27 @@ export default function Home() {
       }
     `}</style>
 
-    {/* Glowing border */}
-    <div className="glow-pink absolute inset-0 rounded-3xl pointer-events-none" />
+    {/* Glowing pulsing border overlay */}
+    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
 
-    {/* Big floating heart watermark */}
+    {/* Big floating watermark */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
-      <span className="float-heart text-[220px] leading-none">🌸</span>
+      <span className="text-[220px] leading-none">🌸</span>
     </div>
 
     {/* Twinkling petals */}
-    <span className="twinkle-petal text-lg" style={{ top: "10%", left: "2%", animationDuration: "2s", animationDelay: "0s" }}>🌸</span>
-    <span className="twinkle-petal text-sm" style={{ top: "60%", left: "5%", animationDuration: "3s", animationDelay: "0.4s" }}>🌷</span>
-    <span className="twinkle-petal text-lg" style={{ top: "25%", left: "10%", animationDuration: "2.5s", animationDelay: "0.8s" }}>💐</span>
-    <span className="twinkle-petal text-sm" style={{ top: "75%", left: "3%", animationDuration: "3.5s", animationDelay: "1.2s" }}>🌺</span>
-    <span className="twinkle-petal text-lg" style={{ top: "10%", right: "2%", animationDuration: "2.8s", animationDelay: "0.2s" }}>🌸</span>
-    <span className="twinkle-petal text-sm" style={{ top: "60%", right: "5%", animationDuration: "2s", animationDelay: "0.6s" }}>🌷</span>
-    <span className="twinkle-petal text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s", animationDelay: "1s" }}>💐</span>
-    <span className="twinkle-petal text-sm" style={{ top: "75%", right: "3%", animationDuration: "2.5s", animationDelay: "1.4s" }}>🌺</span>
+    <span className="twinkle-petal text-lg" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}>🌸</span>
+    <span className="twinkle-petal text-sm" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}>🌷</span>
+    <span className="twinkle-petal text-lg" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}>💐</span>
+    <span className="twinkle-petal text-sm" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}>🌺</span>
+    <span className="twinkle-petal text-lg" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}>🌸</span>
+    <span className="twinkle-petal text-sm" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}>🌷</span>
+    <span className="twinkle-petal text-lg" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}>💐</span>
+    <span className="twinkle-petal text-sm" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}>🌺</span>
 
     <div className="relative z-10">
       <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-        {lang === "en"
-          ? "🌸 Happy Mother's Day! 💐"
-          : "🌸 ¡Feliz Día de las Madres! 💐"}
+        {lang === "en" ? "🌸 Happy Mother's Day! 💐" : "🌸 ¡Feliz Día de las Madres! 💐"}
       </p>
       <p className="mt-2 text-gray-600 text-sm font-medium">
         {lang === "en"
