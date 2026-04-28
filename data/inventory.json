@@ -1350,7 +1350,7 @@
     "fuel": "Gasoline",
     "engine": "5L V-Shaped V8",
     "transmission": "Automatic",
-    "bodyStyle": "Pick Up",
+    "bodyStyle": "PickUp",
     "doors": 2,
     "color": "Brown",
     "images": [
