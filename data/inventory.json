@@ -1570,6 +1570,11 @@
     "vin": "3GCPCSE05CG288298",
     "miles": 167498,
     "fuel": "GASOLINE",
+    "bodyStyle":"PickUp",
+    "color":"Gray",
+    "engine": "5.3L V-Shaped V8",
+    "transmission":"Automatic",
+    "doors": 4,
     "images": [
       "/cars/2012-chevy-1500-288298/740498824427742733.JPG",
       "/cars/2012-chevy-1500-288298/1997179692403624817.JPG",
@@ -1635,6 +1640,9 @@
     "model": "Silverado",
     "color": "Black",
     "doors": "4",
+    "engine":"4.8L V-Shaped V8",
+    "transmission":"Automatic",
+    "bodyStyle":"PickUp",
     "driveTrain": null,
     "price": 9900,
     "down": 3000,
@@ -1665,7 +1673,7 @@
       "/cars/2010-chevy-silverado-132740/5416717634282343138.JPG",
       "/cars/2010-chevy-silverado-132740/2543430589790469914.JPG"
     ],
-    "status": "available",
+    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -3057,7 +3065,7 @@
       "/cars/2014-gmc-terrain-e6274500/8465442620216425739.JPG",
       "/cars/2014-gmc-terrain-e6274500/2164672123311977229.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2017-hyundai-tucson-hu594729",
