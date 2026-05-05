@@ -86,6 +86,7 @@
     "model": "Silverado",
     "price": 7900,
     "down": 3000,
+    "miles":"EXPT",
     "vin": "1GCEC14VX5Z249126",
     "fuel": "Gasoline",
     "engine": "4.8L V-Shaped V8",
