@@ -26,6 +26,33 @@
     "status": "available"
   },
   {
+    "id": "1995-ford-f-150-slc04946",
+    "year": 1995,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 12900,
+    "down": 4000,
+    "vin": "1FTEF15N4SLC04946",
+    "miles": 147000,
+    "fuel": "Gasoline",
+    "engine": "5L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Blue",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1995-ford-f-150-slc04946/IMG_2523.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2524.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2525.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2526.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2527.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2528.JPG",
+      "/cars/1995-ford-f-150-slc04946/IMG_2530.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1995-lincoln-town-car-sy683978",
     "year": 1995,
     "make": "Lincoln",
