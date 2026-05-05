@@ -26,6 +26,33 @@
     "status": "available"
   },
   {
+    "id": "1995-lincoln-town-car-sy683978",
+    "year": 1995,
+    "make": "Lincoln",
+    "model": "Town Car",
+    "trim": "Base/Executive",
+    "price": 8900,
+    "down": 3000,
+    "vin": "1LNLM81W7SY683978",
+    "fuel": "Gasoline",
+    "engine": "4.6L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Sedan/Saloon",
+    "doors": 4,
+    "color": "Silver",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2514.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2515.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2516.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2517.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2518.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2519.JPG",
+      "/cars/1995-lincoln-town-car-sy683978/IMG_2520.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2015-ford-f-150-fkd47563",
     "year": 2015,
     "make": "Ford",
