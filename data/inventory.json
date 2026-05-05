@@ -358,7 +358,7 @@
       "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213048425.MP.JPG",
       "/cars/2018-ford-f-150-jfe40611/PXL_20260423_213114078.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2004-chevrolet-silverado-4z224171",
@@ -1188,7 +1188,7 @@
       "/cars/2021-ford-f-150-mkd57085/IMG_1479.jpeg",
       "/cars/2021-ford-f-150-mkd57085/IMG_1482.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2000-chevrolet-silverado-yz112793",
@@ -3699,7 +3699,7 @@
         "/cars/2017-nissan-frontier-hn708554/PXL_20260326_184544582.MP.JPG",
         "/cars/2017-nissan-frontier-hn708554/PXL_20260326_184629202.MP.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2019-nissan-frontier-kn883020",
