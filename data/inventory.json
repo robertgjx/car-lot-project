@@ -2227,29 +2227,6 @@
     "location":"Palma Vista"
   },
   {
-    "id": "2012-ford-f-150-ckd94306",
-    "year": 2012,
-    "make": "Ford",
-    "model": "F-150",
-    "price": 12900,
-    "down": 3500,
-    "vin": "1FTEW1CM5CKD94306",
-    "miles": 108727,
-    "fuel": "Gasoline",
-    "engine": "3.7L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Grey",
-    "images": ["/cars/2012-ford-f-150-ckd94306/3074078190240320264.JPG",
-               "/cars/2012-ford-f-150-ckd94306/4919960423631743557.JPG",
-               "/cars/2012-ford-f-150-ckd94306/7688363524414479992.JPG",
-               "/cars/2012-ford-f-150-ckd94306/7798200517884168605.JPG"
-    ],
-    "status": "available",
-    "location": "Veterans Blvd"
-  },
-  {
     "id": "2022-gmc-terrain-nl118563",
     "year": 2022,
     "make": "GMC",
