@@ -378,7 +378,6 @@
     ],
     "status": "available"
   },
-  
   {
     "id": "2019-chevrolet-silverado-kg147528",
     "year": 2019,
@@ -607,7 +606,6 @@
     ],
     "status": "available"
   },
-  
   {
     "id": "2004-chevrolet-silverado-4z224171",
     "year": 2004,
@@ -830,7 +828,6 @@
     ],
     "status": "available"
   },
-  
   {
     "id": "2004-gmc-sierra-4z173039",
     "year": 2004,
@@ -1210,7 +1207,6 @@
     ],
     "status": "available"
   },
-  
   {
     "id": "2016-ford-f-150-gkg05587",
     "year": 2016,
@@ -3127,6 +3123,7 @@
     ],
       "status": "available"
     },
+
     {
       "id": "2017-ford-f-150-hkd34138",
       "year": 2017,
@@ -3996,30 +3993,30 @@
       ],
       "status": "available"
     },
-    {
-      "id": "2006-gmc-sierra-61193561",
-      "year": 2006,
-      "make": "GMC",
-      "model": "Sierra",
-      "trim": "Vortec MAX",
-      "driveTrain": "4x4",
-      "price": 9900,
-      "down": 3000,
-      "vin": "2GTEK13N161193561",
-      "miles": 155000,
-      "fuel": "Gasoline",
-      "engine": "6L V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup",
-      "doors": 4,
-      "color": "Pewter",
-      "location": "Palma Vista",
-      "images": [
-        "/cars/2006-gmc-sierra-61193561/PXL_20260507_162132932.JPG",
-        "/cars/2006-gmc-sierra-61193561/35277.JPG",
-        "/cars/2006-gmc-sierra-61193561/35278.JPG"
-      ],
-      "status": "available"
-    }
+      {
+    "id": "2006-gmc-sierra-61193561",
+    "year": 2006,
+    "make": "GMC",
+    "model": "Sierra",
+    "trim": "Vortec MAX",
+    "driveTrain": "4x4",
+    "price": 9900,
+    "down": 3000,
+    "vin": "2GTEK13N161193561",
+    "miles": 155000,
+    "fuel": "Gasoline",
+    "engine": "6L V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Pewter",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2006-gmc-sierra-61193561/PXL_20260507_162132932.JPG",
+      "/cars/2006-gmc-sierra-61193561/35277.JPG",
+      "/cars/2006-gmc-sierra-61193561/35278.JPG"
+    ],
+    "status": "available"
+  }
   
 ]
