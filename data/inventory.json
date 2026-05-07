@@ -4682,6 +4682,31 @@
         "/cars/2013-toyota-tundra-dx317154/34326.JPG"
       ],
       "status": "available"
+    },
+    {
+      "id": "2006-gmc-sierra-61193561",
+      "year": 2006,
+      "make": "GMC",
+      "model": "Sierra",
+      "trim": "Vortec MAX",
+      "driveTrain": "4x4",
+      "price": 9900,
+      "down": 3000,
+      "vin": "2GTEK13N161193561",
+      "miles": 155000,
+      "fuel": "Gasoline",
+      "engine": "6L V8",
+      "transmission": "Automatic",
+      "bodyStyle": "Pickup",
+      "doors": 4,
+      "color": "Pewter",
+      "location": "Palma Vista",
+      "images": [
+        "/cars/2006-gmc-sierra-61193561/PXL_20260507_162132932.JPG",
+        "/cars/2006-gmc-sierra-61193561/35277.JPG",
+        "/cars/2006-gmc-sierra-61193561/35278.JPG"
+      ],
+      "status": "available"
     }
   
 ]
