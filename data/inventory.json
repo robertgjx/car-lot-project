@@ -26,6 +26,33 @@
     "status": "available"
   },
   {
+    "id": "2017-chevrolet-camaro-h0201293",
+    "year": 2017,
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "trim": "RS",
+    "price": 14900,
+    "down": 6000,
+    "vin": "1G1FB1RSXH0201293",
+    "miles": 161520,
+    "fuel": "Gasoline",
+    "engine": "3.6L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Coupe",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2643.JPG",
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2644.JPG",
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2645.JPG",
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2646.JPG",
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2647.JPG",
+      "/cars/2017-chevrolet-camaro-h0201293/IMG_2649.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1989-ford-bronco-kla23876",
     "year": 1989,
     "make": "Ford",
