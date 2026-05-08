@@ -1,5 +1,31 @@
 [
   {
+    "id": "2003-ford-f-150-3kc56306",
+    "year": 2003,
+    "make": "Ford",
+    "model": "F-150",
+    "trim": "Harley Davidson",
+    "price": 14900,
+    "down": 6000,
+    "vin": "1FTRW073X3KC56306",
+    "fuel": "Gasoline",
+    "engine": "5.4L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Silver/Black",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2003-ford-f-150-3kc56306/IMG_2634.JPG",
+      "/cars/2003-ford-f-150-3kc56306/IMG_2635.JPG",
+      "/cars/2003-ford-f-150-3kc56306/IMG_2636.JPG",
+      "/cars/2003-ford-f-150-3kc56306/IMG_2637.JPG",
+      "/cars/2003-ford-f-150-3kc56306/IMG_2638.JPG",
+      "/cars/2003-ford-f-150-3kc56306/IMG_2639.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1989-ford-bronco-kla23876",
     "year": 1989,
     "make": "Ford",
