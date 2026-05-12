@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -11,7 +12,7 @@ function formatMoney(n: number | null | undefined) {
 }
 
 // ✏️ UPDATE THESE TWO LINES EACH MONTH
-const SPOTLIGHT_ID = "2010-ford-ranger-apa35570";
+const SPOTLIGHT_ID = "";
 const PRICE_BEFORE: number | null = 8900;
 
 export default function SpotlightSidebar() {
@@ -160,3 +161,4 @@ export default function SpotlightSidebar() {
     </aside>
   );
 }
+

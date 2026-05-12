@@ -25,9 +25,10 @@ export function useLang() {
 export const t = {
   // Navbar
   nav: {
-    home:      { en: "Home",      es: "Inicio" },
-    inventory: { en: "Inventory", es: "Inventario" },
-    contact:   { en: "Contact Us",es: "Contáctenos" },
+    home:      { en: "Home",        es: "Inicio" },
+    inventory: { en: "Inventory",   es: "Inventario" },
+    contact:   { en: "Contact Us",  es: "Contáctenos" },
+    customers: { en: "Customers",   es: "Clientes" },
   },
 
   // Homepage hero
@@ -115,7 +116,6 @@ export const t = {
     viewDet:     { en: "View Details", es: "Ver Detalles" },
     noResults:   { en: "No vehicles match your filters. Try resetting.", es: "Ningún vehículo coincide con los filtros. Intenta restablecer." },
     backHome:    { en: "← Back Home",  es: "← Inicio" },
-    // Vehicle type tabs
     typeAll:     { en: "All",    es: "Todos" },
     typeCar:     { en: "Cars",   es: "Carros" },
     typeSUV:     { en: "SUVs",   es: "SUVs" },
@@ -136,5 +136,23 @@ export const t = {
     photos:     { en: "More Photos",  es: "Más Fotos" },
     notFound:   { en: "Vehicle not found.", es: "Vehículo no encontrado." },
     triedId:    { en: "Tried ID:",    es: "ID buscado:" },
+  },
+
+  // Customers page
+  customers: {
+    title:    { en: "Customer Portal",   es: "Portal de Clientes" },
+    sub:      { en: "Manage your account and make payments quickly and securely.", es: "Administra tu cuenta y realiza pagos de forma rápida y segura." },
+    payTitle: { en: "Make a Payment",    es: "Realizar un Pago" },
+    payDesc:  { en: "Click the button below to access the secure Frazer Pay portal and make your payment online.", es: "Haz clic en el botón de abajo para acceder al portal seguro de Frazer Pay y realizar tu pago en línea." },
+    payBtn:   { en: "Make a Payment",    es: "Realizar un Pago" },
+    secured:  { en: "Secured by Frazer Pay", es: "Protegido por Frazer Pay" },
+    callUs:   { en: "Have questions? Call us:", es: "¿Tienes preguntas? Llámanos:" },
+    faqTitle: { en: "Frequently Asked Questions", es: "Preguntas Frecuentes" },
+    q1:       { en: "What payment methods are accepted?", es: "¿Qué métodos de pago se aceptan?" },
+    a1:       { en: "Frazer Pay accepts major debit and credit cards.", es: "Frazer Pay acepta las principales tarjetas de débito y crédito." },
+    q2:       { en: "Who do I contact about my account?", es: "¿Con quién me comunico sobre mi cuenta?" },
+    a2:       { en: "Call our office directly and we'll be happy to help.", es: "Llama directamente a nuestra oficina y con gusto te ayudamos." },
+    q3:       { en: "Is my payment information secure?", es: "¿Está segura mi información de pago?" },
+    a3:       { en: "Yes. Payments are processed through Frazer Pay's secure portal.", es: "Sí. Los pagos se procesan a través del portal seguro de Frazer Pay." },
   },
 };

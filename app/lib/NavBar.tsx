@@ -56,7 +56,6 @@ export default function NavBar() {
             />
           </Link>
           <div className="flex items-center gap-4 pr-1">
-            {/* VIN Scanner icon */}
             <Link href="/scan" className="text-gray-700 hover:text-red-600 transition" aria-label="VIN Scanner">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/>
@@ -65,13 +64,11 @@ export default function NavBar() {
                 <line x1="13" y1="8" x2="13" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/>
               </svg>
             </Link>
-            {/* Phone icon */}
             <a href="tel:9565810455" className="text-red-600 hover:text-red-700 transition">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
             </a>
-            {/* Hamburger */}
             <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-700 hover:text-gray-900 transition" aria-label="Toggle menu">
               {menuOpen ? (
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -100,6 +97,10 @@ export default function NavBar() {
             <Link href="/contact" onClick={() => setMenuOpen(false)}
               className="px-4 py-3 rounded-xl font-semibold text-gray-900 hover:bg-gray-100 transition">
               {t.nav.contact[lang]}
+            </Link>
+            <Link href="/customers" onClick={() => setMenuOpen(false)}
+              className="px-4 py-3 rounded-xl font-semibold text-gray-900 hover:bg-gray-100 transition">
+              {t.nav.customers[lang]}
             </Link>
             <button onClick={() => { toggle(); setMenuOpen(false); }}
               className="px-4 py-3 rounded-xl font-semibold text-white bg-red-600 hover:bg-red-700 transition text-left">
@@ -135,6 +136,9 @@ export default function NavBar() {
             </Link>
             <Link href="/contact" className="rounded-xl border border-gray-200 bg-white text-gray-900 px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:bg-gray-100 transition">
               {t.nav.contact[lang]}
+            </Link>
+            <Link href="/customers" className="rounded-xl border border-gray-200 bg-white text-gray-900 px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:bg-gray-100 transition">
+              {t.nav.customers[lang]}
             </Link>
             <button onClick={toggle}
               className="rounded-xl bg-red-600 text-white px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:bg-red-700 transition">
