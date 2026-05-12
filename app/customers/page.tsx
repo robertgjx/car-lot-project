@@ -1,6 +1,6 @@
 "use client";
 import { useLang, t } from "@/app/lib/LanguageContext";
-const FRAZER_PAY_URL = "YOUR_FRAZER_PAY_LINK_HERE";
+const FRAZER_PAY_URL = "https://garciasautosalesrgv.paymycar.com";
 export default function CustomersPage() {
   const { lang } = useLang();
   const faqs = [
