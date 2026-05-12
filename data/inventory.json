@@ -1243,7 +1243,7 @@
       "/cars/2006-chevrolet-silverado-61160061/33090.JPG",
       "/cars/2006-chevrolet-silverado-61160061/33091.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1972-ford-pk-ykm41422",
@@ -1962,7 +1962,7 @@
       "/cars/2012-gmc-sierra-311682/2013579358986810768.JPG",
       "/cars/2012-gmc-sierra-311682/1544185416305754225.JPG"
     ],
-    "status": "available",
+    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -3699,7 +3699,7 @@
         "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174344139.MP.JPG",
         "/cars/2012-dodge-grand-caravan-cr325000/PXL_20260327_174349017.MP.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2022-buick-enclave-nj151832",
@@ -4021,7 +4021,7 @@
         "/cars/2019-gmc-sierra-kg120760/32677.JPG",
         "/cars/2019-gmc-sierra-kg120760/32680.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2023-chevrolet-silverado-pg364545",
