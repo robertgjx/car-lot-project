@@ -131,7 +131,7 @@
       "/cars/2023-chevrolet-silverado-pg338234/IMG_2667.JPG",
       "/cars/2023-chevrolet-silverado-pg338234/IMG_2668.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-chevrolet-silverado-pg336959",
@@ -158,7 +158,7 @@
       "/cars/2023-chevrolet-silverado-pg336959/IMG_2678.jpg",
       "/cars/2023-chevrolet-silverado-pg336959/IMG_2679.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2004-chevrolet-silverado-41324153",
@@ -4231,7 +4231,7 @@
       "/cars/2006-gmc-sierra-61193561/35277.JPG",
       "/cars/2006-gmc-sierra-61193561/35278.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   }
   
 ]
