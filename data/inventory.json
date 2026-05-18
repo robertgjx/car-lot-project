@@ -337,7 +337,7 @@
       "/cars/2012-chevrolet-silverado-cg102198/IMG_2779.JPG",
       "/cars/2012-chevrolet-silverado-cg102198/IMG_2781.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-chevrolet-silverado-pg336959",
@@ -514,7 +514,7 @@
     "transmission": "Automatic",
     "bodyStyle": "Pickup",
     "doors": 2,
-    "color": "Whi te",
+    "color": "White",
     "location": "Palma Vista",
     "images": [
       "/cars/2005-chevrolet-silverado-5z249126/35077.JPG",
