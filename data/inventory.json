@@ -2373,6 +2373,32 @@
     "location":"Palma Vista"
   },
   {
+    "id": "2013-ford-f-150-dkf65371",
+    "year": 2013,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 10900,
+    "down": 3000,
+    "vin": "1FTFW1ET3DKF65371",
+    "miles": 253164,
+    "fuel": "Gasoline",
+    "engine": "3.5L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Silver",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2013-ford-f-150-dkf65371/IMG_2822.JPG",
+      "/cars/2013-ford-f-150-dkf65371/IMG_2821.JPG",
+      "/cars/2013-ford-f-150-dkf65371/IMG_2818.JPG",
+      "/cars/2013-ford-f-150-dkf65371/IMG_2817.JPG",
+      "/cars/2013-ford-f-150-dkf65371/IMG_2816.JPG",
+      "/cars/2013-ford-f-150-dkf65371/IMG_2815.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2018-chevrolet-silverado-jz274037",
     "year": 2018,
     "make": "Chevrolet",
