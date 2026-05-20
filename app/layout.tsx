@@ -32,12 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900 min-h-screen">
+      <body className="bg-white text-gray-900 min-h-screen overflow-x-hidden">
         <LanguageProvider>
           <NavBar />
-          <div className="flex gap-8 items-start max-w-7xl mx-auto">
+          <div className="flex items-start">
             <SpotlightSidebar />
-            <div className="flex-1 min-w-0 py-8">
+            <div className="flex-1 min-w-0">
               {children}
             </div>
           </div>

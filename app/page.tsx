@@ -199,13 +199,22 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
-      {/* HERO — edge to edge, bleeds out of parent padding */}
-      <section className="relative overflow-hidden -mx-[calc(50vw-50%)] md:-mx-10 -mt-8 min-h-[520px] flex items-center">
+      {/* HERO — true full width, no constraints */}
+      <section className="relative w-screen -ml-[var(--sidebar-w,0px)] min-h-[540px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-black/45" />
+          <img
+            src="/lot.PNG"
+            alt="Garcia's Auto Sales lot"
+            className="h-full w-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/30" />
+          {/* Bottom fade to white */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+          {/* Left red ombre */}
+          <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-16">
+        <div className="relative z-10 w-full px-8 md:px-16 py-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm text-white">
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
@@ -235,8 +244,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ALL OTHER CONTENT — padded */}
-      <div className="px-6 md:px-10">
+      {/* REST OF PAGE — constrained and padded */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* BRAND STRIP */}
         <section className="mt-8 rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
