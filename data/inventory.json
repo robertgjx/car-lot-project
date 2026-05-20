@@ -76,6 +76,31 @@
     "status": "available"
   },
   {
+    "id": "2004-gmc-sierra-4z323204",
+    "year": 2004,
+    "make": "GMC",
+    "model": "Sierra",
+    "price": 7900,
+    "down": 2500,
+    "vin": "1GTEC19T54Z323204",
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Black",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-gmc-sierra-4z323204/IMG_2867.JPG",
+      "/cars/2004-gmc-sierra-4z323204/IMG_2868.JPG",
+      "/cars/2004-gmc-sierra-4z323204/IMG_2869.JPG",
+      "/cars/2004-gmc-sierra-4z323204/IMG_2870.JPG",
+      "/cars/2004-gmc-sierra-4z323204/IMG_2871.JPG",
+      "/cars/2004-gmc-sierra-4z323204/IMG_2872.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2023-chevrolet-silverado-pg347804",
     "year": 2023,
     "make": "Chevrolet",
