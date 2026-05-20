@@ -1910,7 +1910,7 @@
     "make": "Chevrolet",
     "model": "Colorado",
     "driveTrain": null,
-    "price": 16000,
+    "price": 14900,
     "doors": 4,
     "color": "Black",
     "down": 4000,
@@ -1920,7 +1920,7 @@
     "trim": "Work Truck",
     "vin": "1GCGSBEN0H1235108",
     "miles": 236788,
-    "fuel": "GASOLINE",
+    "fuel": "Gasoline",
     "images": [
       "/cars/2017-chevy-colorado-235108/IMG_0702.jpg",
       "/cars/2017-chevy-colorado-235108/IMG_0707.jpg",
