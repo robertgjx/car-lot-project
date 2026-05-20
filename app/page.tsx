@@ -212,7 +212,7 @@ export default function Home() {
       {/* HERO */}
         <section className="relative overflow-hidden -mx-6 md:-mx-10 p-8 md:p-14 min-h-[500px]">
         <div className="absolute inset-0 z-10">
-          <img src="/garcias.png" alt="Background" className="h-full w-full object-cover opacity-90" />
+          <img src="/lot.PNG" alt="Background" className="h-full w-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-black/20" />
         </div>
         <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
