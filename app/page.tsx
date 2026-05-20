@@ -42,11 +42,8 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-      {/* Modal */}
       <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        {/* Header */}
         <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-start justify-between rounded-t-3xl">
           <div>
             <h2 className="text-xl font-extrabold text-gray-900">{result.year} {result.make} {result.model}</h2>
@@ -59,9 +56,7 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
             </svg>
           </button>
         </div>
-
         <div className="px-6 py-4 flex flex-col gap-4">
-          {/* Inventory status */}
           {inventoryMatch ? (
             <div className="rounded-2xl bg-green-50 border-2 border-green-400 p-4">
               <p className="font-bold text-green-700 text-sm mb-1">
@@ -85,8 +80,6 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
               {lang === "en" ? "This vehicle is not currently in our inventory." : "Este vehículo no está en nuestro inventario actualmente."}
             </div>
           )}
-
-          {/* Specs table */}
           <div className="rounded-2xl border border-gray-200 overflow-hidden">
             <p className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-400 bg-gray-50 border-b border-gray-200">
               {lang === "en" ? "Vehicle Specs" : "Especificaciones"}
@@ -98,7 +91,6 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
               </div>
             ))}
           </div>
-
           <button onClick={onClose}
             className="w-full border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-2xl hover:bg-gray-50 transition text-sm">
             {lang === "en" ? "Close" : "Cerrar"}
@@ -191,41 +183,39 @@ export default function Home() {
       .then((r) => r.json())
       .then(({ top }) => {
         if (top && top.length > 0) {
-          const topVehicles: Vehicle[] = top
-  .reduce((acc: Vehicle[], id: string) => {
-    const found = vehicles.find((v) => v.id === id);
-    if (found && found.status !== "sold") acc.push(found);
-    return acc;
-  }, []);
-          // Fill up to 3 with fallbacks if needed
+          const topVehicles: Vehicle[] = top.reduce((acc: Vehicle[], id: string) => {
+            const found = vehicles.find((v) => v.id === id);
+            if (found && found.status !== "sold") acc.push(found);
+            return acc;
+          }, []);
           const fallbacks = vehicles.filter((v) => !top.includes(v.id) && v.status !== "sold");
           const combined = [...topVehicles, ...fallbacks].slice(0, 3);
           setFeatured(combined);
         }
       })
-      .catch(() => {}); // fallback to default
+      .catch(() => {});
   }, []);
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
-      
-      {/* HERO */}
-        <section className="relative overflow-hidden -mx-6 md:-mx-10 p-8 md:p-14 min-h-[500px]">
-        <div className="absolute inset-0 z-10">
-          <img src="/lot.PNG" alt="Background" className="h-full w-full object-cover opacity-90" />
-          <div className="absolute inset-0 bg-black/20" />
+
+      {/* HERO — edge to edge, bleeds out of parent padding */}
+      <section className="relative overflow-hidden -mx-[calc(50vw-50%)] md:-mx-10 -mt-8 min-h-[520px] flex items-center">
+        <div className="absolute inset-0">
+          <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
-        <div className="relative z-10">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm text-white">
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
           </p>
           <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">
-          {lang === "en" ? "Welcome to" : "Bienvenidos a"}
+            {lang === "en" ? "Welcome to" : "Bienvenidos a"}
           </p>
-          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">Garcia&apos;s Auto Sales RGV</h1>
-          {/* subtitle removed */}
+          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+            Garcia&apos;s Auto Sales RGV
+          </h1>
           <div className="mt-6 inline-flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-2.5 text-sm font-extrabold text-white uppercase tracking-widest shadow-lg">
               💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
@@ -245,224 +235,199 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BRAND STRIP */}
-      <section className="mt-6 rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          {lang === "en" ? "Shop by Brand" : "Buscar por Marca"}
-        </p>
-        <div className="flex items-center justify-around gap-6 flex-wrap">
+      {/* ALL OTHER CONTENT — padded */}
+      <div className="px-6 md:px-10">
 
-          <Link href="/inventory?make=Chevrolet" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-chevrolet.jpg" alt="Chevrolet" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Chevrolet</span>
-          </Link>
-
-          <Link href="/inventory?make=Ford" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-ford.png" alt="Ford" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Ford</span>
-          </Link>
-
-          <Link href="/inventory?make=GMC" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-gmc.jpg" alt="GMC" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">GMC</span>
-          </Link>
-
-          <Link href="/inventory?make=Dodge" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-dodge.png" alt="Dodge" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Dodge</span>
-          </Link>
-
-          <Link href="/inventory?make=Toyota" className="flex flex-col items-center gap-2 group">
-            <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
-              <img src="/brand-toyota.png" alt="Toyota" className="w-full h-full object-contain" />
-            </div>
-            <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Toyota</span>
-          </Link>
-
-        </div>
-      </section>
-
-      {/* VIN LOOKUP — desktop only 
-      <section className="hidden md:block mt-6">
-        <VinLookup lang={lang} />
-      </section>
-      */}
-
-      {/* WHY US */}
-      <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
-        </div>
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.finDesc[lang]}</p>
-        </div>
-        <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-xl font-bold text-gray-900">{t.why.suppTitle[lang]}</h2>
-          <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
-        </div>
-      </section>
-
-        
-       {/* SEASONAL ANNOUNCEMENT */}
-<section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #f0f4ff, #e8edf8, #f0f0f8)" }}>
-
-    <style>{`
-      @keyframes glowPulse {
-        0%, 100% {
-          box-shadow:
-            0 0 10px 3px rgba(59,130,246,0.5),
-            0 0 30px 8px rgba(59,130,246,0.25),
-            0 0 60px 15px rgba(239,68,68,0.15),
-            inset 0 0 20px 2px rgba(59,130,246,0.08);
-          border-color: rgba(59,130,246,0.8);
-        }
-        50% {
-          box-shadow:
-            0 0 20px 6px rgba(239,68,68,0.6),
-            0 0 50px 16px rgba(239,68,68,0.3),
-            0 0 90px 25px rgba(59,130,246,0.2),
-            inset 0 0 35px 5px rgba(239,68,68,0.1);
-          border-color: rgba(239,68,68,0.8);
-        }
-      }
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.15; transform: scale(0.8); }
-        50% { opacity: 1; transform: scale(1.2); }
-      }
-      .glow-pulse-border {
-        animation: glowPulse 2.5s ease-in-out infinite;
-        border: 2px solid rgba(59,130,246,0.8);
-        border-radius: 1.5rem;
-      }
-      .twinkle-icon {
-        position: absolute;
-        pointer-events: none;
-        user-select: none;
-        animation: twinkle ease-in-out infinite;
-      }
-    `}</style>
-
-    {/* Glowing pulsing border overlay */}
-    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
-
-    {/* Big floating watermark */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-      <Star className="w-64 h-64 text-blue-400" fill="currentColor" />
-    </div>
-
-    {/* Twinkling icons */}
-    <span className="twinkle-icon" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}><Star className="w-5 h-5 text-blue-500" fill="currentColor" /></span>
-    <span className="twinkle-icon" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}><Heart className="w-4 h-4 text-red-500" fill="currentColor" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}><Shield className="w-5 h-5 text-blue-600" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}><Star className="w-4 h-4 text-red-400" fill="currentColor" /></span>
-    <span className="twinkle-icon" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}><Star className="w-5 h-5 text-blue-500" fill="currentColor" /></span>
-    <span className="twinkle-icon" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}><Heart className="w-4 h-4 text-red-500" fill="currentColor" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}><Shield className="w-5 h-5 text-blue-600" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}><Star className="w-4 h-4 text-red-400" fill="currentColor" /></span>
-
-    <div className="relative z-10">
-      <div className="flex items-center justify-center gap-2 mb-1">
-        <Star className="w-6 h-6 text-blue-600" fill="currentColor" />
-        <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-          {lang === "en" ? "Happy Memorial Day!" : "¡Feliz Día de los Caídos!"}
-        </p>
-        <Star className="w-6 h-6 text-red-500" fill="currentColor" />
-      </div>
-      <p className="mt-2 text-gray-600 text-sm font-medium">
-        {lang === "en"
-          ? "Honoring the brave men and women who gave everything for our freedom."
-          : "Honoring a los valientes hombres y mujeres que lo dieron todo por nuestra libertad."}
-      </p>
-      <div className="mt-3 inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
-        <Shield className="w-4 h-4" />
-        {lang === "en" ? "We'll be open Memorial Day!" : "¡Estaremos abiertos el Día de los Caídos!"}
-      </div>
-      <p className="mt-2 text-gray-500 text-xs">
-        {lang === "en"
-          ? "From all of us at Garcia's Auto Sales RGV"
-          : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
-      </p>
-    </div>
-  </div>
-</section>
-  
-      {/* FEATURED VEHICLES */} 
-      <section className="mt-10">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900">{t.featured.title[lang]}</h2>
-            <p className="mt-1 text-gray-600">{t.featured.sub[lang]}</p>
-          </div>
-          <Link href="/inventory" className="hidden md:inline-flex rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.featured.viewAll[lang]}
-          </Link>
-        </div>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {featured.map((v) => (
-            <div key={v.id} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-              <div className="relative h-52 w-full bg-gray-100">
-                <Image src={v.images?.[0] ?? (v as any).image ?? "/cars/placeholder.jpg"} alt={`${v.year} ${v.make} ${v.model}`} fill className="object-cover" />
+        {/* BRAND STRIP */}
+        <section className="mt-8 rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+            {lang === "en" ? "Shop by Brand" : "Buscar por Marca"}
+          </p>
+          <div className="flex items-center justify-around gap-6 flex-wrap">
+            <Link href="/inventory?make=Chevrolet" className="flex flex-col items-center gap-2 group">
+              <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+                <img src="/brand-chevrolet.jpg" alt="Chevrolet" className="w-full h-full object-contain" />
               </div>
-              <div className="p-6">
-                <p className="text-lg font-bold text-gray-900">{v.year} {v.make} {v.model}</p>
-                <p className="mt-1 text-red-600 font-semibold">{formatMoney(v.price)}</p>
-                <p className="mt-1 text-sm text-gray-500">{v.miles != null ? v.miles.toLocaleString() : "N/A"} {t.featured.miles[lang]}</p>
-                <Link href={`/inventory/${v.id}`} className="inline-flex mt-4 rounded-2xl bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700 transition">
-                  {t.featured.viewDet[lang]}
+              <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Chevrolet</span>
+            </Link>
+            <Link href="/inventory?make=Ford" className="flex flex-col items-center gap-2 group">
+              <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+                <img src="/brand-ford.png" alt="Ford" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Ford</span>
+            </Link>
+            <Link href="/inventory?make=GMC" className="flex flex-col items-center gap-2 group">
+              <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+                <img src="/brand-gmc.jpg" alt="GMC" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">GMC</span>
+            </Link>
+            <Link href="/inventory?make=Dodge" className="flex flex-col items-center gap-2 group">
+              <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+                <img src="/brand-dodge.png" alt="Dodge" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Dodge</span>
+            </Link>
+            <Link href="/inventory?make=Toyota" className="flex flex-col items-center gap-2 group">
+              <div className="flex items-center justify-center w-20 h-16 rounded-2xl border border-gray-200 bg-white shadow-sm group-hover:border-red-400 group-hover:shadow-md transition p-2">
+                <img src="/brand-toyota.png" alt="Toyota" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-xs font-semibold text-gray-500 group-hover:text-red-600 transition">Toyota</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* WHY US */}
+        <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+            <h2 className="text-xl font-bold text-gray-900">{t.why.familyTitle[lang]}</h2>
+            <p className="mt-2 text-gray-600">{t.why.familyDesc[lang]}</p>
+          </div>
+          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+            <h2 className="text-xl font-bold text-gray-900">{t.why.finTitle[lang]}</h2>
+            <p className="mt-2 text-gray-600">{t.why.finDesc[lang]}</p>
+          </div>
+          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+            <h2 className="text-xl font-bold text-gray-900">{t.why.suppTitle[lang]}</h2>
+            <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
+          </div>
+        </section>
+
+        {/* SEASONAL ANNOUNCEMENT */}
+        <section className="mt-6">
+          <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #f0f4ff, #e8edf8, #f0f0f8)" }}>
+            <style>{`
+              @keyframes glowPulse {
+                0%, 100% {
+                  box-shadow: 0 0 10px 3px rgba(59,130,246,0.5), 0 0 30px 8px rgba(59,130,246,0.25), 0 0 60px 15px rgba(239,68,68,0.15), inset 0 0 20px 2px rgba(59,130,246,0.08);
+                  border-color: rgba(59,130,246,0.8);
+                }
+                50% {
+                  box-shadow: 0 0 20px 6px rgba(239,68,68,0.6), 0 0 50px 16px rgba(239,68,68,0.3), 0 0 90px 25px rgba(59,130,246,0.2), inset 0 0 35px 5px rgba(239,68,68,0.1);
+                  border-color: rgba(239,68,68,0.8);
+                }
+              }
+              @keyframes twinkle {
+                0%, 100% { opacity: 0.15; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.2); }
+              }
+              .glow-pulse-border {
+                animation: glowPulse 2.5s ease-in-out infinite;
+                border: 2px solid rgba(59,130,246,0.8);
+                border-radius: 1.5rem;
+              }
+              .twinkle-icon {
+                position: absolute;
+                pointer-events: none;
+                user-select: none;
+                animation: twinkle ease-in-out infinite;
+              }
+            `}</style>
+            <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+              <Star className="w-64 h-64 text-blue-400" fill="currentColor" />
+            </div>
+            <span className="twinkle-icon" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}><Star className="w-5 h-5 text-blue-500" fill="currentColor" /></span>
+            <span className="twinkle-icon" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}><Heart className="w-4 h-4 text-red-500" fill="currentColor" /></span>
+            <span className="twinkle-icon" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}><Shield className="w-5 h-5 text-blue-600" /></span>
+            <span className="twinkle-icon" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}><Star className="w-4 h-4 text-red-400" fill="currentColor" /></span>
+            <span className="twinkle-icon" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}><Star className="w-5 h-5 text-blue-500" fill="currentColor" /></span>
+            <span className="twinkle-icon" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}><Heart className="w-4 h-4 text-red-500" fill="currentColor" /></span>
+            <span className="twinkle-icon" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}><Shield className="w-5 h-5 text-blue-600" /></span>
+            <span className="twinkle-icon" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}><Star className="w-4 h-4 text-red-400" fill="currentColor" /></span>
+            <div className="relative z-10">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Star className="w-6 h-6 text-blue-600" fill="currentColor" />
+                <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
+                  {lang === "en" ? "Happy Memorial Day!" : "¡Feliz Día de los Caídos!"}
+                </p>
+                <Star className="w-6 h-6 text-red-500" fill="currentColor" />
+              </div>
+              <p className="mt-2 text-gray-600 text-sm font-medium">
+                {lang === "en"
+                  ? "Honoring the brave men and women who gave everything for our freedom."
+                  : "Honoring a los valientes hombres y mujeres que lo dieron todo por nuestra libertad."}
+              </p>
+              <div className="mt-3 inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+                <Shield className="w-4 h-4" />
+                {lang === "en" ? "We'll be open Memorial Day!" : "¡Estaremos abiertos el Día de los Caídos!"}
+              </div>
+              <p className="mt-2 text-gray-500 text-xs">
+                {lang === "en"
+                  ? "From all of us at Garcia's Auto Sales RGV"
+                  : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURED VEHICLES */}
+        <section className="mt-10">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-extrabold text-gray-900">{t.featured.title[lang]}</h2>
+              <p className="mt-1 text-gray-600">{t.featured.sub[lang]}</p>
+            </div>
+            <Link href="/inventory" className="hidden md:inline-flex rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
+              {t.featured.viewAll[lang]}
+            </Link>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {featured.map((v) => (
+              <div key={v.id} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+                <div className="relative h-52 w-full bg-gray-100">
+                  <Image src={v.images?.[0] ?? (v as any).image ?? "/cars/placeholder.jpg"} alt={`${v.year} ${v.make} ${v.model}`} fill className="object-cover" />
+                </div>
+                <div className="p-6">
+                  <p className="text-lg font-bold text-gray-900">{v.year} {v.make} {v.model}</p>
+                  <p className="mt-1 text-red-600 font-semibold">{formatMoney(v.price)}</p>
+                  <p className="mt-1 text-sm text-gray-500">{v.miles != null ? v.miles.toLocaleString() : "N/A"} {t.featured.miles[lang]}</p>
+                  <Link href={`/inventory/${v.id}`} className="inline-flex mt-4 rounded-2xl bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700 transition">
+                    {t.featured.viewDet[lang]}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 md:hidden">
+            <Link href="/inventory" className="inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
+              {t.featured.viewAllMobile[lang]}
+            </Link>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="mt-10 rounded-3xl border border-gray-200 bg-gray-50 p-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-extrabold text-gray-900">{t.contact.title[lang]}</h2>
+              <p className="mt-2 text-gray-600">{t.contact.sub[lang]}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
+                  {t.contact.page[lang]}
+                </Link>
+                <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
+                  {t.contact.browse[lang]}
                 </Link>
               </div>
             </div>
-          ))}
-        </div>
-        <div className="mt-6 md:hidden">
-          <Link href="/inventory" className="inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.featured.viewAllMobile[lang]}
-          </Link>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section className="mt-10 rounded-3xl border border-gray-200 bg-gray-50 p-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900">{t.contact.title[lang]}</h2>
-            <p className="mt-2 text-gray-600">{t.contact.sub[lang]}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
-                {t.contact.page[lang]}
-              </Link>
-              <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-semibold text-white hover:bg-red-700 transition">
-                {t.contact.browse[lang]}
-              </Link>
+            <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">{t.contact.details[lang]}</p>
+              <div className="mt-4 space-y-3 text-gray-700">
+                <p><span className="text-gray-400">{t.contact.phone[lang]}</span> (956) 581-0455</p>
+                <p><span className="text-gray-400">{t.contact.location[lang]}</span> Palmview, TX</p>
+                <p><span className="text-gray-400">{t.contact.hours[lang]}</span> {t.contact.hoursVal[lang]}</p>
+              </div>
             </div>
           </div>
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">{t.contact.details[lang]}</p>
-            <div className="mt-4 space-y-3 text-gray-700">
-              <p><span className="text-gray-400">{t.contact.phone[lang]}</span> (956) 581-0455</p>
-              <p><span className="text-gray-400">{t.contact.location[lang]}</span> Palmview, TX</p>
-              <p><span className="text-gray-400">{t.contact.hours[lang]}</span> {t.contact.hoursVal[lang]}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FOOTER */}
-      <footer className="mt-10 pb-10 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV LLC. {t.footer.rights[lang]}
-      </footer>
+        {/* FOOTER */}
+        <footer className="mt-10 pb-10 text-center text-sm text-gray-400">
+          © {new Date().getFullYear()} Garcia&apos;s Auto Sales RGV LLC. {t.footer.rights[lang]}
+        </footer>
+
+      </div>
     </main>
   );
 }

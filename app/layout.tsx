@@ -37,7 +37,7 @@ export default function RootLayout({
           <NavBar />
           <div className="flex gap-8 items-start max-w-7xl mx-auto">
             <SpotlightSidebar />
-            <div className="flex-1 min-w-0 py-8 px-6 md:px-10">
+            <div className="flex-1 min-w-0 py-8">
               {children}
             </div>
           </div>
