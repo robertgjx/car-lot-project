@@ -208,8 +208,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
+      
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border border-gray-200 p-8 md:p-14 min-h-[500px]">
+        <section className="relative overflow-hidden -mx-6 md:-mx-10 p-8 md:p-14 min-h-[500px]">
         <div className="absolute inset-0 z-10">
           <img src="/garcias.png" alt="Background" className="h-full w-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-black/20" />
