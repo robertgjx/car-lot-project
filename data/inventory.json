@@ -205,7 +205,7 @@
       "/cars/2023-chevrolet-silverado-pg347804/IMG_2769.JPG",
       "/cars/2023-chevrolet-silverado-pg347804/IMG_2770.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2016-chevrolet-silverado-gz211835",
@@ -259,7 +259,7 @@
       "/cars/2023-chevrolet-silverado-pg360310/IMG_2797.JPG",
       "/cars/2023-chevrolet-silverado-pg360310/IMG_2796.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-chevrolet-silverado-pg351081",
@@ -930,7 +930,7 @@
       "/cars/2015-ford-f-150-fkd47563/34498.JPG",
       "/cars/2015-ford-f-150-fkd47563/34499.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2017-ford-f-150-hfa13568",
@@ -3654,7 +3654,7 @@
       "/cars/2011-ford-f-150-bfb69761/606557279464179351.JPG"
       
     ],
-    "status": "available"
+    "status": "sold"
   },
   
     {
@@ -4165,7 +4165,7 @@
         "/cars/2009-dodge-grand-caravan-9r681618/32106.JPG",
         "/cars/2009-dodge-grand-caravan-9r681618/32108.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2019-ford-transit-kka14988",
