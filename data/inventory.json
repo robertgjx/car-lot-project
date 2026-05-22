@@ -4829,7 +4829,7 @@
     "bodyStyle": "Van",
     "doors": 5,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2019-chevrolet-express-k1179370/IMG_2939.JPG",
       "/cars/2019-chevrolet-express-k1179370/IMG_2938.JPG",
@@ -4882,7 +4882,7 @@
     "bodyStyle": "Pickup",
     "doors": 2,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2023-chevrolet-silverado-pg338701/IMG_2950.JPG",
       "/cars/2023-chevrolet-silverado-pg338701/IMG_2948.JPG",
@@ -4907,7 +4907,7 @@
     "bodyStyle": "Cargo Van",
     "doors": 6,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2019-chevrolet-express-k1151044/IMG_2956.JPG",
       "/cars/2019-chevrolet-express-k1151044/IMG_2957.JPG",
@@ -4934,7 +4934,7 @@
     "bodyStyle": "Cargo Van",
     "doors": 5,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2016-dodge-ram-promaster-1500-ge106600/IMG_2965.JPG",
       "/cars/2016-dodge-ram-promaster-1500-ge106600/IMG_2966.JPG",
@@ -4963,7 +4963,7 @@
     "bodyStyle": "Pickup",
     "doors": 2,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2012-chevrolet-silverado-cz193170/IMG_2977.JPG",
       "/cars/2012-chevrolet-silverado-cz193170/IMG_2978.JPG",
@@ -4989,7 +4989,7 @@
     "bodyStyle": "Chassis Cab (Single Cab)",
     "doors": 2,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2019-dodge-ram-2500-kg602330/IMG_2987.JPG",
       "/cars/2019-dodge-ram-2500-kg602330/IMG_2988.JPG",
@@ -5016,7 +5016,7 @@
     "bodyStyle": "Pickup",
     "doors": 4,
     "color": "Red",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2007-chevrolet-silverado-71128684/IMG_2995.JPG",
       "/cars/2007-chevrolet-silverado-71128684/IMG_2996.JPG",
@@ -5042,7 +5042,7 @@
     "bodyStyle": "Pickup",
     "doors": 2,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2015-ford-f-250-fec64205/IMG_3003.JPG",
       "/cars/2015-ford-f-250-fec64205/IMG_3004.JPG",
@@ -5069,7 +5069,7 @@
     "bodyStyle": "Cargo Van",
     "doors": 5,
     "color": "White",
-    "location": "Palma Vista",
+    "location": "Veterans Blvd",
     "images": [
       "/cars/2017-dodge-ram-promaster-2500-he504003/IMG_3011.JPG",
       "/cars/2017-dodge-ram-promaster-2500-he504003/IMG_3012.JPG",
@@ -5078,6 +5078,34 @@
       "/cars/2017-dodge-ram-promaster-2500-he504003/IMG_3016.JPG",
       "/cars/2017-dodge-ram-promaster-2500-he504003/IMG_3017.JPG",
       "/cars/2017-dodge-ram-promaster-2500-he504003/IMG_3018.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2018-ford-f-250-jec18290",
+    "year": 2018,
+    "make": "Ford",
+    "model": "F-250",
+    "price": 11900,
+    "down": 3000,
+    "vin": "1FT7X2A69JEC18290",
+    "miles": 265758,
+    "fuel": "Gasoline",
+    "engine": "6.2L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "location": "Veterans Blvd",
+    "images": [
+      "/cars/2018-ford-f-250-jec18290/IMG_3020.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3021.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3023.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3024.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3028.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3029.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3031.JPG",
+      "/cars/2018-ford-f-250-jec18290/IMG_3032.JPG"
     ],
     "status": "available"
   }
