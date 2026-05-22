@@ -4847,6 +4847,8 @@
     "trim": "Limited",
     "price": 5900,
     "down": 2000,
+    "term":20,
+    "fee":2100,
     "vin": "1C3CCCAB9GN160613",
     "miles": 188972,
     "fuel": "Gasoline",
