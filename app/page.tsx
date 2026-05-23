@@ -348,7 +348,7 @@ export default function Home() {
               <div className="flex items-center justify-center gap-2 mb-1">
                 <Star className="w-6 h-6 text-blue-600" fill="currentColor" />
                 <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-                  {lang === "en" ? "Happy Memorial Day!" : "¡Feliz Día de los Caídos!"}
+                  {lang === "en" ? "Honoring Memorial Day!" : "¡Honrando el Día de los Caídos!"}
                 </p>
                 <Star className="w-6 h-6 text-red-500" fill="currentColor" />
               </div>
