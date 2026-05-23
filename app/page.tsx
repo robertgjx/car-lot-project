@@ -355,7 +355,7 @@ export default function Home() {
               <p className="mt-2 text-gray-600 text-sm font-medium">
                 {lang === "en"
                   ? "Honoring the brave men and women who gave everything for our freedom."
-                  : "Honoring a los valientes hombres y mujeres que lo dieron todo por nuestra libertad."}
+                  : "Honrando a los valientes hombres y mujeres que lo dieron todo por nuestra libertad."}
               </p>
               <div className="mt-3 inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
                 <Shield className="w-4 h-4" />
