@@ -348,13 +348,13 @@ export default function Home() {
               <div className="flex items-center justify-center gap-2 mb-1">
                 <Star className="w-6 h-6 text-blue-600" fill="currentColor" />
                 <p className="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
-                  {lang === "en" ? "Honoring Memorial Day!" : "¡Honrando el Día de los Caídos!"}
+                  {lang === "en" ? "Honoring those who served this Memorial Day!" : "¡Honrando a quienes sirvieron este Dia de los Caidos!"}
                 </p>
                 <Star className="w-6 h-6 text-red-500" fill="currentColor" />
               </div>
               <p className="mt-2 text-gray-600 text-sm font-medium">
                 {lang === "en"
-                  ? "Honoring the brave men and women who gave everything for our freedom."
+                  ? "Honoring the brave."
                   : "Honrando a los valientes hombres y mujeres que lo dieron todo por nuestra libertad."}
               </p>
               <div className="mt-3 inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
