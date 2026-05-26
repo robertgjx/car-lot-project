@@ -302,7 +302,6 @@ export default function Home() {
           </div>
         </section>
 
-
         {/* SEASONAL ANNOUNCEMENT */}
 <section className="mt-6">
   <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #fdf6ee, #f5e8d4, #ede0cc)" }}>
@@ -353,24 +352,15 @@ export default function Home() {
         </p>
         <Key className="w-6 h-6 text-amber-700" />
       </div>
-      <p className="mt-2 text-amber-800 text-sm font-medium">
+      <p className="mt-2 text-amber-700 text-sm font-medium">
         {lang === "en"
-          ? "Celebrating every dad who keeps things running."
-          : "Celebrando a todos los papás que mantienen todo en marcha."}
-      </p>
-      <div className="mt-3 inline-flex items-center gap-2 bg-amber-800 text-amber-50 text-sm font-semibold px-4 py-1.5 rounded-full">
-        <Car className="w-4 h-4" />
-        {lang === "en" ? "Find Dad the perfect ride!" : "¡Encuéntrale el auto perfecto a papá!"}
-      </div>
-      <p className="mt-2 text-amber-700 text-xs">
-        {lang === "en"
-          ? "From all of us at Garcia's Auto Sales RGV"
-          : "De parte de todo el equipo de Garcia's Auto Sales RGV"}
+          ? "— Garcia's Auto Sales RGV"
+          : "— Garcia's Auto Sales RGV"}
       </p>
     </div>
   </div>
 </section>
-
+        
         {/* FEATURED VEHICLES */}
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
