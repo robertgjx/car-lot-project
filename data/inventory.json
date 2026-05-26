@@ -46,7 +46,7 @@
       "/cars/2013-gmc-sierra-df120458/35864.JPG",
       "/cars/2013-gmc-sierra-df120458/35865.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1987-ford-f-150-hpa88938",
@@ -1786,7 +1786,7 @@
       "/cars/2015-dodge-challenger-fh713372/IMG_1811.jpeg",
       "/cars/2015-dodge-challenger-fh713372/IMG_1816.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2016-ford-f-150-gkg05587",
