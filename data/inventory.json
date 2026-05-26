@@ -711,7 +711,7 @@
       "/cars/2023-chevrolet-silverado-pg365682/35086.JPG",
       "/cars/2023-chevrolet-silverado-pg365682/35087.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2015-ford-f-350-fec32879",
@@ -4189,7 +4189,7 @@
         "/cars/2019-ford-transit-kka14988/32118.JPG",
         "/cars/2019-ford-transit-kka14988/32119.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2019-ford-mustang-k5174832",
