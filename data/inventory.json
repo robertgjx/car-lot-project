@@ -59,6 +59,8 @@
     "model": "Sierra",
     "price": 11900,
     "down": 5000,
+    "transmission":"Automatic",
+    "miles":200089,
     "vin": "1GTEC14T64Z210501",
     "fuel": "Gasoline",
     "engine": "5.3L V-Shaped V8",
