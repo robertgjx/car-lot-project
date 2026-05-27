@@ -3506,25 +3506,6 @@
     "location": "Palma Vista"
   },
   {
-    "id": "2019-ford-f-250-xl-g38888",
-    "year": 2019,
-    "make": "Ford",
-    "model": "F-250 XL",
-    "driveTrain": "4x4",
-    "price": 29000,
-    "down": 12000,
-    "vin": "G38888",
-    "miles": 136000,
-    "fuel": "GASOLINE",
-    "images": [
-      "/cars/2019-ford-f-250-xl-g38888/IMG_0978.jpeg",
-      "/cars/2019-ford-f-250-xl-g38888/IMG_0979.jpeg",
-      "/cars/2019-ford-f-250-xl-g38888/IMG_0980.jpeg"
-    ],
-    "status": "available",
-    "location": "Palma Vista"
-  },
-  {
     "id": "2017-ford-f-250-xl-d11316",
     "year": 2017,
     "make": "Ford",
