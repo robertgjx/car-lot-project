@@ -1,5 +1,32 @@
 [
   {
+    "id": "2019-ford-f-250-kec30027",
+    "year": 2019,
+    "make": "Ford",
+    "model": "F-250",
+    "price": 29000,
+    "down": 10000,
+    "vin": "1FT7W2BT9KEC30027",
+    "miles": 297226,
+    "fuel": "Diesel",
+    "engine": "6.7L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2019-ford-f-250-kec30027/36854.JPG",
+      "/cars/2019-ford-f-250-kec30027/36855.JPG",
+      "/cars/2019-ford-f-250-kec30027/36856.JPG",
+      "/cars/2019-ford-f-250-kec30027/36857.JPG",
+      "/cars/2019-ford-f-250-kec30027/36858.JPG",
+      "/cars/2019-ford-f-250-kec30027/36859.JPG",
+      "/cars/2019-ford-f-250-kec30027/36860.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2018-ford-f-150-jkc77610",
     "year": 2018,
     "make": "Ford",
