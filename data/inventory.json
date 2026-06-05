@@ -200,7 +200,7 @@
       "/cars/2006-chevrolet-silverado-6e272674/IMG_3369.JPG",
       "/cars/2006-chevrolet-silverado-6e272674/IMG_3371.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2015-chevrolet-impala-f9153422",
@@ -893,7 +893,7 @@
       "/cars/2004-gmc-sierra-4z210501/IMG_3090.JPG",
       "/cars/2004-gmc-sierra-4z210501/IMG_3091.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-chevrolet-colorado-j1124390",
@@ -5299,8 +5299,7 @@
     "down": 4000,
     "miles":222528,
     "vin": "1FDBF2A62FEC64205",
-    "fuel": "Gasoline",
-    "engine": "6.2L V-Shaped V8",
+    "fuel": "Gasoline", 
     "transmission": "Automatic",
     "bodyStyle": "Pickup",
     "doors": 2,
