@@ -74,6 +74,56 @@
     "status": "available"
   },
   {
+    "id": "2023-chevrolet-silverado-pg336975",
+    "year": 2023,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "trim": "Work Truck",
+    "price": 14900,
+    "down": 6000,
+    "vin": "1GCNAAEK1PG336975",
+    "miles": 179931,
+    "fuel": "Gasoline",
+    "engine": "2.7L In-Line V4",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2023-chevrolet-silverado-pg336975/IMG_3417.JPG",
+      "/cars/2023-chevrolet-silverado-pg336975/IMG_3418.JPG",
+      "/cars/2023-chevrolet-silverado-pg336975/IMG_3419.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2018-honda-cr-v-jh522492",
+    "year": 2018,
+    "make": "Honda",
+    "model": "CR-V",
+    "trim": "EX",
+    "price": 14900,
+    "down": 6000,
+    "miles":142507,
+    "vin": "2HKRW1H53JH522492",
+    "fuel": "Gasoline",
+    "engine": "1.5L In-Line V4",
+    "transmission": "Continuously Variable Transmission (CVT)",
+    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
+    "doors": 5,
+    "color": "Tan",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2018-honda-cr-v-jh522492/IMG_3422.JPG",
+      "/cars/2018-honda-cr-v-jh522492/IMG_3423.JPG",
+      "/cars/2018-honda-cr-v-jh522492/IMG_3425.JPG",
+      "/cars/2018-honda-cr-v-jh522492/IMG_3426.JPG",
+      "/cars/2018-honda-cr-v-jh522492/IMG_3427.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2013-chevrolet-silverado-dz239243",
     "year": 2013,
     "make": "Chevrolet",
