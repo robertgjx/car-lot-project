@@ -329,7 +329,7 @@
       "/cars/2019-gmc-sierra-kz140691/IMG_3407.JPG",
       "/cars/2019-gmc-sierra-kz140691/IMG_3408.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2004-chevrolet-silverado-4z120570",
@@ -2063,7 +2063,7 @@
       "/cars/2014-chevrolet-camaro-e9309654/IMG_2205.jpeg",
       "/cars/2014-chevrolet-camaro-e9309654/IMG_2206.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2019-kia-optima-kg378194",
@@ -4435,7 +4435,7 @@
                  "/cars/2019-ford-f-150-kke52385/5153354248203594388.JPG",
                  "/cars/2019-ford-f-150-kke52385/4504940835242490750.JPG"
     ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2017-ford-f-150-hke24070",
