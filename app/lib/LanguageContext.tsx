@@ -49,7 +49,7 @@ export const t = {
   // Why us
   why: {
     familyTitle: { en: "Family Owned and Operated", es: "Negocio Familiar" },
-    familyDesc:  { en: "Serving the city of Palmview since 1984. More than 40 years providing customers with quality vehicles.", es: "Sirviendo a la ciudad de Palmview desde 1984. Más de 40 años brindando vehículos de calidad a nuestros clientes." },
+    familyDesc:  { en: "Serving the city of Palmview since 1984. More than 40 years in the business.", es: "Sirviendo a la ciudad de Palmview desde 1984. Más de 40 años en negocio." },
     finTitle:    { en: "In-house financing",  es: "Financiamiento Propio" },
     finDesc:     { en: "We offer financing options designed to help you get approved and move forward.", es: "Ofrecemos opciones de financiamiento diseñadas para ayudarte a obtener aprobación y seguir adelante." },
     suppTitle:   { en: "Support",             es: "Apoyo" },
