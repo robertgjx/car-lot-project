@@ -131,6 +131,8 @@
     "price": 3200,
     "miles":"EXPT",
     "term":0,
+    "down":0,
+    "fee":0,
     "vin": "1G8JU52F41Y551665",
     "fuel": "Gasoline",
     "engine": "2.2L In-Line V4",
@@ -1162,7 +1164,7 @@
     "engine": "3.7L V-Shaped V6",
     "transmission": "Automatic",
     "bodyStyle": "Cargo Van",
-    "doors": 5,
+    "doors": 5, 
     "color": "White",
     "location": "Veterans Blvd",
     "images": [
