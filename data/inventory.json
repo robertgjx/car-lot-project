@@ -61,6 +61,30 @@
     "status": "available"
   },
   {
+    "id": "2016-gmc-canyon-g1115172",
+    "year": 2016,
+    "make": "GMC",
+    "model": "Canyon",
+    "trim": "SLE",
+    "price": 12900,
+    "down": 4000,
+    "vin": "1GTG5CE39G1115172",
+    "fuel": "Gasoline",
+    "engine": "3.6L V6",
+    "transmission": "Automatically",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Brown",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2016-gmc-canyon-g1115172/IMG_2879.jpeg",
+      "/cars/2016-gmc-canyon-g1115172/IMG_2880.jpeg",
+      "/cars/2016-gmc-canyon-g1115172/IMG_2881.jpeg",
+      "/cars/2016-gmc-canyon-g1115172/IMG_2882.jpeg"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1992-ford-f-150-nka73148",
     "year": 1992,
     "make": "Ford",
