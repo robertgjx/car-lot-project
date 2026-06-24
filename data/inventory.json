@@ -358,7 +358,7 @@
       "/cars/2006-chevrolet-silverado-6f141399/IMG_3473.JPG",
       "/cars/2006-chevrolet-silverado-6f141399/IMG_3548.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-chevrolet-colorado-j1161424",
@@ -633,7 +633,7 @@
       "/cars/2023-chevrolet-silverado-pg336975/IMG_3418.JPG",
       "/cars/2023-chevrolet-silverado-pg336975/IMG_3419.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-honda-cr-v-jh522492",
@@ -2473,7 +2473,7 @@
       "/cars/2019-kia-optima-kg378194/PXL_20260421_212502556.JPG",
       "/cars/2019-kia-optima-kg378194/PXL_20260421_212540938.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1996-ford-f-150-tla39472",
@@ -2548,7 +2548,7 @@
       "/cars/2014-chevrolet-silverado-eg170461/IMG_2153.jpeg",
       "/cars/2014-chevrolet-silverado-eg170461/IMG_2154.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2010-toyota-tacoma-az711159",
