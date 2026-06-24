@@ -86,6 +86,57 @@
     "status": "available"
   },
   {
+    "id": "2000-chevrolet-silverado-yz112793",
+    "year": 2000,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 9900,
+    "down": 3000,
+    "vin": "1GCEK14T3YZ112793",
+    "fuel": "Gasoline",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3927.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3928.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3930.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3931.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3932.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3933.JPG",
+      "/cars/2000-chevrolet-silverado-yz112793/IMG_3935.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2018-chevrolet-colorado-j1201537",
+    "year": 2018,
+    "make": "Chevrolet",
+    "model": "Colorado",
+    "trim": "LT",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1GCHSCEA0J1201537",
+    "fuel": "Gasoline",
+    "engine": "2.5L In-Line V4",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2018-chevrolet-colorado-j1201537/IMG_3941.jpg",
+      "/cars/2018-chevrolet-colorado-j1201537/IMG_3937.JPG",
+      "/cars/2018-chevrolet-colorado-j1201537/IMG_3938.JPG",
+      "/cars/2018-chevrolet-colorado-j1201537/IMG_3939.JPG",
+      "/cars/2018-chevrolet-colorado-j1201537/IMG_3940.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1992-ford-f-150-nka73148",
     "year": 1992,
     "make": "Ford",
