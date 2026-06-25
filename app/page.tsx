@@ -300,50 +300,65 @@ export default function Home() {
             <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
           </div>
         </section>
+
 {/* SEASONAL ANNOUNCEMENT — World Cup 2026 */}
 <section className="mt-6">
   <div className="relative overflow-hidden rounded-3xl h-32 md:h-40">
     <style>{`
       @keyframes glowPulse {
         0%, 100% {
-          box-shadow: 0 0 10px 3px rgba(22,163,74,0.5), 0 0 30px 8px rgba(22,163,74,0.25), 0 0 60px 15px rgba(220,38,38,0.15), inset 0 0 20px 2px rgba(22,163,74,0.08);
+          box-shadow: 0 0 0 2px rgba(22,163,74,0.8), 0 0 20px 6px rgba(22,163,74,0.35);
           border-color: rgba(22,163,74,0.8);
         }
         50% {
-          box-shadow: 0 0 20px 6px rgba(220,38,38,0.5), 0 0 50px 16px rgba(220,38,38,0.3), 0 0 90px 25px rgba(22,163,74,0.2), inset 0 0 35px 5px rgba(220,38,38,0.1);
+          box-shadow: 0 0 0 2px rgba(220,38,38,0.8), 0 0 20px 6px rgba(220,38,38,0.35);
           border-color: rgba(220,38,38,0.8);
         }
       }
-      .glow-pulse-border {
+      .wc-glow-border {
         animation: glowPulse 2.5s ease-in-out infinite;
         border: 2px solid rgba(22,163,74,0.8);
         border-radius: 1.5rem;
       }
     `}</style>
 
-    {/* Combined flag image — fills entire banner */}
-    <img
-      src="/flags/usa-mexico.jpg"
-      alt="USA and Mexico flags"
-      className="absolute inset-0 w-full h-full object-cover"
+    {/* USA flag — left diagonal */}
+    <div className="absolute inset-0" style={{ clipPath: "polygon(0 0, 62% 0, 38% 100%, 0 100%)" }}>
+      <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/10" />
+    </div>
+
+    {/* Mexico flag — right diagonal */}
+    <div className="absolute inset-0" style={{ clipPath: "polygon(62% 0, 100% 0, 100% 100%, 38% 100%)" }}>
+      <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/10" />
+    </div>
+
+    {/* Soft blend zone in the middle */}
+    <div
+      className="absolute inset-0"
+      style={{
+        clipPath: "polygon(58% 0, 66% 0, 42% 100%, 34% 100%)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        background: "linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
+      }}
     />
 
-    {/* Dark overlay for text legibility */}
-    <div className="absolute inset-0 bg-black/35" />
-
     {/* Glow border */}
-    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
+    <div className="wc-glow-border absolute inset-0 pointer-events-none" />
 
     {/* Center text */}
-    <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+    <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-1">
       <div className="flex items-center gap-3">
-        <FontAwesomeIcon icon={faTrophy} className="text-yellow-300 drop-shadow-lg" style={{ fontSize: "1.4rem" }} />
-        <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-lg">
+        <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.4rem", color: "#FBBF24", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }} />
+        <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight"
+          style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8)" }}>
           {lang === "en" ? "World Cup Season ⚽" : "Temporada del Mundial ⚽"}
         </p>
-        <FontAwesomeIcon icon={faTrophy} className="text-yellow-300 drop-shadow-lg" style={{ fontSize: "1.4rem" }} />
+        <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.4rem", color: "#FBBF24", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }} />
       </div>
-      <p className="mt-1 text-white/80 text-sm font-medium drop-shadow">
+      <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)", textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}>
         {lang === "en" ? "— Garcia's Auto Sales RGV" : "— Garcia's Auto Sales RGV"}
       </p>
     </div>
