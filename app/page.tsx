@@ -334,16 +334,17 @@ export default function Home() {
       <div className="absolute inset-0 bg-black/10" />
     </div>
 
+    
     {/* Soft blend zone in the middle */}
-    <div
-      className="absolute inset-0"
-      style={{
-        clipPath: "polygon(58% 0, 66% 0, 42% 100%, 34% 100%)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        background: "linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
-      }}
-    />
+<div
+  className="absolute inset-0"
+  style={{
+    clipPath: "polygon(58% 0, 66% 0, 42% 100%, 34% 100%)",
+    backdropFilter: "blur(2px)",
+    WebkitBackdropFilter: "blur(2px)",
+    background: "linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)",
+  }}
+/>
 
     {/* Glow border */}
     <div className="wc-glow-border absolute inset-0 pointer-events-none" />
