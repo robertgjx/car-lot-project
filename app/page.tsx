@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
-import { Star, Heart, Shield, Car, Wrench, Key } from "lucide-react";
+import { Star, Heart, Shield, Car } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFutbol, faTrophy, faStar } from "@fortawesome/free-solid-svg-icons";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -199,7 +201,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
-      {/* HERO — true full width, no constraints */}
+      {/* HERO */}
       <section className="relative w-screen -ml-[var(--sidebar-w,0px)] min-h-[540px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -207,11 +209,8 @@ export default function Home() {
             alt="Garcia's Auto Sales lot"
             className="h-full w-full object-cover"
           />
-          {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/30" />
-          {/* Bottom fade to white */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
-          {/* Left red ombre */}
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 w-full px-8 md:px-16 py-16">
@@ -244,7 +243,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REST OF PAGE — constrained and padded */}
+      {/* REST OF PAGE */}
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* BRAND STRIP */}
@@ -302,65 +301,80 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SEASONAL ANNOUNCEMENT */}
-<section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #fdf6ee, #f5e8d4, #ede0cc)" }}>
-    <style>{`
-      @keyframes glowPulse {
-        0%, 100% {
-          box-shadow: 0 0 10px 3px rgba(180,120,60,0.5), 0 0 30px 8px rgba(180,120,60,0.25), 0 0 60px 15px rgba(120,80,40,0.15), inset 0 0 20px 2px rgba(180,120,60,0.08);
-          border-color: rgba(180,120,60,0.8);
-        }
-        50% {
-          box-shadow: 0 0 20px 6px rgba(120,80,40,0.6), 0 0 50px 16px rgba(120,80,40,0.3), 0 0 90px 25px rgba(180,120,60,0.2), inset 0 0 35px 5px rgba(120,80,40,0.1);
-          border-color: rgba(120,80,40,0.8);
-        }
-      }
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.15; transform: scale(0.8); }
-        50% { opacity: 1; transform: scale(1.2); }
-      }
-      .glow-pulse-border {
-        animation: glowPulse 2.5s ease-in-out infinite;
-        border: 2px solid rgba(180,120,60,0.8);
-        border-radius: 1.5rem;
-      }
-      .twinkle-icon {
-        position: absolute;
-        pointer-events: none;
-        user-select: none;
-        animation: twinkle ease-in-out infinite;
-      }
-    `}</style>
-    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-      <Car className="w-64 h-64 text-amber-800" />
-    </div>
-    <span className="twinkle-icon" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}><Wrench className="w-5 h-5 text-amber-700" /></span>
-    <span className="twinkle-icon" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}><Key className="w-4 h-4 text-yellow-700" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}><Car className="w-5 h-5 text-amber-800" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}><Wrench className="w-4 h-4 text-yellow-600" /></span>
-    <span className="twinkle-icon" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}><Key className="w-5 h-5 text-amber-700" /></span>
-    <span className="twinkle-icon" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}><Wrench className="w-4 h-4 text-yellow-700" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}><Car className="w-5 h-5 text-amber-800" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}><Key className="w-4 h-4 text-yellow-600" /></span>
-    <div className="relative z-10">
-      <div className="flex items-center justify-center gap-2 mb-1">
-        <Wrench className="w-6 h-6 text-amber-800" />
-        <p className="text-3xl md:text-4xl font-extrabold text-amber-900 tracking-tight">
-          {lang === "en" ? "Happy Father's Day!" : "¡Feliz Día del Padre!"}
-        </p>
-        <Key className="w-6 h-6 text-amber-700" />
-      </div>
-      <p className="mt-2 text-amber-700 text-sm font-medium">
-        {lang === "en"
-          ? "— Garcia's Auto Sales RGV"
-          : "— Garcia's Auto Sales RGV"}
-      </p>
-    </div>
-  </div>
-</section>
-        
+        {/* SEASONAL ANNOUNCEMENT — World Cup 2026 */}
+        <section className="mt-6">
+          <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #e8f5e9, #f5fff5, #fce4ec)" }}>
+            <style>{`
+              @keyframes glowPulse {
+                0%, 100% {
+                  box-shadow: 0 0 10px 3px rgba(22,163,74,0.5), 0 0 30px 8px rgba(22,163,74,0.25), 0 0 60px 15px rgba(220,38,38,0.15), inset 0 0 20px 2px rgba(22,163,74,0.08);
+                  border-color: rgba(22,163,74,0.8);
+                }
+                50% {
+                  box-shadow: 0 0 20px 6px rgba(220,38,38,0.5), 0 0 50px 16px rgba(220,38,38,0.3), 0 0 90px 25px rgba(22,163,74,0.2), inset 0 0 35px 5px rgba(220,38,38,0.1);
+                  border-color: rgba(220,38,38,0.8);
+                }
+              }
+              @keyframes twinkle {
+                0%, 100% { opacity: 0.15; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.2); }
+              }
+              @keyframes spin-slow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+              }
+              .glow-pulse-border {
+                animation: glowPulse 2.5s ease-in-out infinite;
+                border: 2px solid rgba(22,163,74,0.8);
+                border-radius: 1.5rem;
+              }
+              .twinkle-icon {
+                position: absolute;
+                pointer-events: none;
+                user-select: none;
+                animation: twinkle ease-in-out infinite;
+              }
+              .spin-slow {
+                animation: spin-slow 8s linear infinite;
+              }
+            `}</style>
+            <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
+
+            {/* Big background soccer ball watermark */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+              <FontAwesomeIcon icon={faFutbol} className="w-64 h-64 text-green-800 spin-slow" style={{ fontSize: "12rem" }} />
+            </div>
+
+            {/* Twinkle icons — left */}
+            <span className="twinkle-icon" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}><FontAwesomeIcon icon={faFutbol}  className="w-5 h-5 text-green-600" /></span>
+            <span className="twinkle-icon" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}><FontAwesomeIcon icon={faTrophy}  className="w-4 h-4 text-red-600"   /></span>
+            <span className="twinkle-icon" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}><FontAwesomeIcon icon={faStar}    className="w-5 h-5 text-green-700" /></span>
+            <span className="twinkle-icon" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}><FontAwesomeIcon icon={faFutbol}  className="w-4 h-4 text-red-500"   /></span>
+
+            {/* Twinkle icons — right */}
+            <span className="twinkle-icon" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}><FontAwesomeIcon icon={faTrophy}  className="w-5 h-5 text-red-600"   /></span>
+            <span className="twinkle-icon" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}><FontAwesomeIcon icon={faFutbol}  className="w-4 h-4 text-green-600" /></span>
+            <span className="twinkle-icon" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}><FontAwesomeIcon icon={faStar}    className="w-5 h-5 text-red-700"   /></span>
+            <span className="twinkle-icon" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}><FontAwesomeIcon icon={faTrophy}  className="w-4 h-4 text-green-500" /></span>
+
+            <div className="relative z-10">
+              <div className="flex items-center justify-center gap-3 mb-1">
+                <FontAwesomeIcon icon={faFutbol} className="w-6 h-6 text-green-700" style={{ fontSize: "1.5rem" }} />
+                <p className="text-3xl md:text-4xl font-extrabold text-green-900 tracking-tight">
+                  {lang === "en" ? "World Cup 2026! 🇲🇽" : "¡Copa del Mundo 2026! 🇲🇽"}
+                </p>
+                <FontAwesomeIcon icon={faTrophy} className="w-6 h-6 text-red-600" style={{ fontSize: "1.5rem" }} />
+              </div>
+              <p className="mt-1 text-green-800 font-bold text-base">
+                {lang === "en" ? "Hosted right here in the USA! ⚽🔥" : "¡Sede aquí en los Estados Unidos! ⚽🔥"}
+              </p>
+              <p className="mt-2 text-green-700 text-sm font-medium">
+                {lang === "en" ? "Let's go! — Garcia's Auto Sales RGV" : "¡Vamos! — Garcia's Auto Sales RGV"}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FEATURED VEHICLES */}
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
