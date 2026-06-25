@@ -8,7 +8,7 @@ import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
 import { Star, Heart, Shield, Car } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFutbol, faTrophy, faStar, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faTrophy, faStar, } from "@fortawesome/free-solid-svg-icons";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -300,7 +300,6 @@ export default function Home() {
             <p className="mt-2 text-gray-600">{t.why.suppDesc[lang]}</p>
           </div>
         </section>
-
 {/* SEASONAL ANNOUNCEMENT — World Cup 2026 */}
 <section className="mt-6">
   <div className="relative overflow-hidden rounded-3xl h-32 md:h-40">
@@ -315,66 +314,27 @@ export default function Home() {
           border-color: rgba(220,38,38,0.8);
         }
       }
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.6; transform: scale(0.9); }
-        50% { opacity: 1; transform: scale(1.1); }
-      }
-      @keyframes spin-slow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
       .glow-pulse-border {
         animation: glowPulse 2.5s ease-in-out infinite;
         border: 2px solid rgba(22,163,74,0.8);
         border-radius: 1.5rem;
       }
-      .twinkle-ball {
-        position: absolute;
-        pointer-events: none;
-        user-select: none;
-        animation: twinkle ease-in-out infinite;
-      }
-      .spin-slow {
-        animation: spin-slow 8s linear infinite;
-      }
     `}</style>
 
-    {/* USA flag — left half, clipped diagonally */}
-    <div className="absolute inset-0" style={{ clipPath: "polygon(0 0, 58% 0, 42% 100%, 0 100%)" }}>
-      <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-black/20" />
-    </div>
+    {/* Combined flag image — fills entire banner */}
+    <img
+      src="/flags/usa-mexico.jpg"
+      alt="USA and Mexico flags"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
 
-    {/* Mexico flag — right half, clipped diagonally */}
-    <div className="absolute inset-0" style={{ clipPath: "polygon(58% 0, 100% 0, 100% 100%, 42% 100%)" }}>
-      <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-black/20" />
-    </div>
-
-    {/* Diagonal edge glow */}
-    <div className="absolute inset-0" style={{
-      clipPath: "polygon(55% 0, 59% 0, 43% 100%, 39% 100%)",
-      background: "linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2))"
-    }} />
+    {/* Dark overlay for text legibility */}
+    <div className="absolute inset-0 bg-black/35" />
 
     {/* Glow border */}
     <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
 
-    {/* Twinkle soccer balls */}
-    <span className="twinkle-ball" style={{ top: "15%", left: "8%",  animationDuration: "2s",   animationDelay: "0s"   }}>
-      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "1.1rem", opacity: 0.85 }} />
-    </span>
-    <span className="twinkle-ball" style={{ top: "60%", left: "14%", animationDuration: "3s",   animationDelay: "0.5s" }}>
-      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "0.85rem", opacity: 0.7 }} />
-    </span>
-    <span className="twinkle-ball" style={{ top: "20%", right: "8%", animationDuration: "2.5s", animationDelay: "0.3s" }}>
-      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "1.1rem", opacity: 0.85 }} />
-    </span>
-    <span className="twinkle-ball" style={{ top: "65%", right: "14%",animationDuration: "3.5s", animationDelay: "0.8s" }}>
-      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "0.85rem", opacity: 0.7 }} />
-    </span>
-
-    {/* Center text overlay */}
+    {/* Center text */}
     <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
       <div className="flex items-center gap-3">
         <FontAwesomeIcon icon={faTrophy} className="text-yellow-300 drop-shadow-lg" style={{ fontSize: "1.4rem" }} />
