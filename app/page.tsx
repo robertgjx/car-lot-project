@@ -303,7 +303,7 @@ export default function Home() {
 
 {/* SEASONAL ANNOUNCEMENT — World Cup 2026 */}
 <section className="mt-6">
-  <div className="relative overflow-hidden rounded-3xl px-8 py-6 text-center" style={{ background: "linear-gradient(135deg, #e8f5e9, #f5fff5, #fce4ec)" }}>
+  <div className="relative overflow-hidden rounded-3xl h-32 md:h-40">
     <style>{`
       @keyframes glowPulse {
         0%, 100% {
@@ -316,8 +316,8 @@ export default function Home() {
         }
       }
       @keyframes twinkle {
-        0%, 100% { opacity: 0.15; transform: scale(0.8); }
-        50% { opacity: 1; transform: scale(1.2); }
+        0%, 100% { opacity: 0.6; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.1); }
       }
       @keyframes spin-slow {
         from { transform: rotate(0deg); }
@@ -328,7 +328,7 @@ export default function Home() {
         border: 2px solid rgba(22,163,74,0.8);
         border-radius: 1.5rem;
       }
-      .twinkle-icon {
+      .twinkle-ball {
         position: absolute;
         pointer-events: none;
         user-select: none;
@@ -338,36 +338,52 @@ export default function Home() {
         animation: spin-slow 8s linear infinite;
       }
     `}</style>
-    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
 
-    {/* Background watermark */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-      <FontAwesomeIcon icon={faFutbol} className="text-green-800 spin-slow" style={{ fontSize: "12rem" }} />
+    {/* USA flag — left half, clipped diagonally */}
+    <div className="absolute inset-0" style={{ clipPath: "polygon(0 0, 58% 0, 42% 100%, 0 100%)" }}>
+      <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/20" />
     </div>
 
-    {/* Twinkle icons — left */}
-    <span className="twinkle-icon" style={{ top: "10%", left: "2%",   animationDuration: "2s",   animationDelay: "0s"   }}><FontAwesomeIcon icon={faFutbol} className="w-5 h-5 text-green-600" /></span>
-    <span className="twinkle-icon" style={{ top: "60%", left: "5%",   animationDuration: "3s",   animationDelay: "0.4s" }}><FontAwesomeIcon icon={faSun}    className="w-4 h-4 text-yellow-500" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", left: "10%",  animationDuration: "2.5s", animationDelay: "0.8s" }}><FontAwesomeIcon icon={faTrophy} className="w-5 h-5 text-green-700" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", left: "3%",   animationDuration: "3.5s", animationDelay: "1.2s" }}><FontAwesomeIcon icon={faSun}    className="w-4 h-4 text-red-400"    /></span>
+    {/* Mexico flag — right half, clipped diagonally */}
+    <div className="absolute inset-0" style={{ clipPath: "polygon(58% 0, 100% 0, 100% 100%, 42% 100%)" }}>
+      <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/20" />
+    </div>
 
-    {/* Twinkle icons — right */}
-    <span className="twinkle-icon" style={{ top: "10%", right: "2%",  animationDuration: "2.8s", animationDelay: "0.2s" }}><FontAwesomeIcon icon={faTrophy} className="w-5 h-5 text-red-600"   /></span>
-    <span className="twinkle-icon" style={{ top: "60%", right: "5%",  animationDuration: "2s",   animationDelay: "0.6s" }}><FontAwesomeIcon icon={faFutbol} className="w-4 h-4 text-green-600" /></span>
-    <span className="twinkle-icon" style={{ top: "25%", right: "10%", animationDuration: "3s",   animationDelay: "1s"   }}><FontAwesomeIcon icon={faSun}    className="w-5 h-5 text-yellow-500" /></span>
-    <span className="twinkle-icon" style={{ top: "75%", right: "3%",  animationDuration: "2.5s", animationDelay: "1.4s" }}><FontAwesomeIcon icon={faTrophy} className="w-4 h-4 text-green-500" /></span>
+    {/* Diagonal edge glow */}
+    <div className="absolute inset-0" style={{
+      clipPath: "polygon(55% 0, 59% 0, 43% 100%, 39% 100%)",
+      background: "linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2))"
+    }} />
 
-    <div className="relative z-10">
-      <div className="flex items-center justify-center gap-3 mb-1">
-        <FontAwesomeIcon icon={faSun}    className="text-yellow-500" style={{ fontSize: "1.4rem" }} />
-        <p className="text-3xl md:text-4xl font-extrabold text-green-900 tracking-tight">
-          {lang === "en"
-            ? "Summer's here & so is the World Cup! ⚽🔥"
-            : "¡Llegó el verano y el Mundial! ⚽🔥"}
+    {/* Glow border */}
+    <div className="glow-pulse-border absolute inset-0 pointer-events-none" />
+
+    {/* Twinkle soccer balls */}
+    <span className="twinkle-ball" style={{ top: "15%", left: "8%",  animationDuration: "2s",   animationDelay: "0s"   }}>
+      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "1.1rem", opacity: 0.85 }} />
+    </span>
+    <span className="twinkle-ball" style={{ top: "60%", left: "14%", animationDuration: "3s",   animationDelay: "0.5s" }}>
+      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "0.85rem", opacity: 0.7 }} />
+    </span>
+    <span className="twinkle-ball" style={{ top: "20%", right: "8%", animationDuration: "2.5s", animationDelay: "0.3s" }}>
+      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "1.1rem", opacity: 0.85 }} />
+    </span>
+    <span className="twinkle-ball" style={{ top: "65%", right: "14%",animationDuration: "3.5s", animationDelay: "0.8s" }}>
+      <FontAwesomeIcon icon={faFutbol} className="text-white drop-shadow" style={{ fontSize: "0.85rem", opacity: 0.7 }} />
+    </span>
+
+    {/* Center text overlay */}
+    <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+      <div className="flex items-center gap-3">
+        <FontAwesomeIcon icon={faTrophy} className="text-yellow-300 drop-shadow-lg" style={{ fontSize: "1.4rem" }} />
+        <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-lg">
+          {lang === "en" ? "World Cup Season ⚽" : "Temporada del Mundial ⚽"}
         </p>
-        <FontAwesomeIcon icon={faFutbol} className="text-green-700" style={{ fontSize: "1.4rem" }} />
+        <FontAwesomeIcon icon={faTrophy} className="text-yellow-300 drop-shadow-lg" style={{ fontSize: "1.4rem" }} />
       </div>
-      <p className="mt-2 text-green-700 text-sm font-medium">
+      <p className="mt-1 text-white/80 text-sm font-medium drop-shadow">
         {lang === "en" ? "— Garcia's Auto Sales RGV" : "— Garcia's Auto Sales RGV"}
       </p>
     </div>
