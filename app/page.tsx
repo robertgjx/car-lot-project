@@ -370,8 +370,12 @@ export default function Home() {
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-extrabold text-gray-900">{t.featured.title[lang]}</h2>
-              <p className="mt-1 text-gray-600">{t.featured.sub[lang]}</p>
+              <h2 className="text-2xl font-extrabold text-gray-900">
+                {lang === "en" ? "Check Out Our Most Viewed Vehicles" : "Mira Nuestros Vehículos Más Vistos"}
+              </h2>
+              <p className="mt-1 text-gray-600">
+                {lang === "en" ? "The vehicles catching the most attention right now." : "Los vehículos que más atención están recibiendo ahora mismo."}
+              </p>
             </div>
             <Link href="/inventory" className="hidden md:inline-flex rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
               {t.featured.viewAll[lang]}
