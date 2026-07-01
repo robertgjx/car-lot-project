@@ -231,16 +231,16 @@ function VinLookupBar({ lang }: { lang: string }) {
         {!expanded ? (
           <button
             onClick={() => setExpanded(true)}
-            className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-4 rounded-2xl transition text-sm uppercase tracking-widest shadow-sm"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2.5 rounded-xl transition text-xs uppercase tracking-widest shadow-sm"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
             {lang === "en" ? "Look Up by VIN" : "Buscar por VIN"}
           </button>
         ) : (
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 shadow-sm">
             <div className="flex items-start justify-between mb-1">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
