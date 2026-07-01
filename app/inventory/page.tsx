@@ -186,6 +186,7 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
 }
 
 function VinLookupBar({ lang }: { lang: string }) {
+  const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState("");
   const [vinStatus, setVinStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
   const [result, setResult] = useState<VinResult | null>(null);
@@ -213,66 +214,102 @@ function VinLookupBar({ lang }: { lang: string }) {
     } catch { setVinStatus("error"); }
   }
 
+  function collapse() {
+    setExpanded(false);
+    setInput("");
+    setVinStatus("idle");
+    setResult(null);
+    setShowModal(false);
+  }
+
   return (
     <>
       {showModal && result && (
         <VinModal lang={lang} vin={input} result={result} onClose={() => setShowModal(false)} />
       )}
-      <div className="hidden md:block rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 mb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
-          {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
-        </p>
-        <p className="text-xs text-gray-400 italic mb-3">
-          {lang === "en" ? "Added for your convenience" : "Agregado para su conveniencia"}
-        </p>
-        <div className="flex gap-2">
-          <input
-            type="text" maxLength={17} value={input}
-            onChange={(e) => {
-              setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, ""));
-              setVinStatus("idle");
-            }}
-            onKeyDown={(e) => e.key === "Enter" && lookup()}
-            placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
-            className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
-            autoCorrect="off" autoCapitalize="characters"
-          />
+      <div className="hidden md:block mb-6">
+        {!expanded ? (
           <button
-            onClick={lookup}
-            disabled={input.length !== 17 || vinStatus === "loading"}
-            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm whitespace-nowrap"
+            onClick={() => setExpanded(true)}
+            className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-4 rounded-2xl transition text-sm uppercase tracking-widest shadow-sm"
           >
-            {vinStatus === "loading" ? (
-              <span className="flex items-center gap-1">
-                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
-                  <path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z" />
-                </svg>
-              </span>
-            ) : lang === "en" ? "Look Up →" : "Buscar →"}
-          </button>
-        </div>
-        {vinStatus === "found" && result && (
-          <button
-            onClick={() => setShowModal(true)}
-            className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group"
-          >
-            <div className="text-left">
-              <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
-              <p className="text-xs text-red-500 font-semibold mt-0.5">
-                {lang === "en" ? "Click to view full details" : "Clic para ver detalles completos"}
-              </p>
-            </div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-red-500 transition">
-              <polyline points="9 18 15 12 9 6" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
+            {lang === "en" ? "Look Up by VIN" : "Buscar por VIN"}
           </button>
-        )}
-        {vinStatus === "notfound" && (
-          <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>
-        )}
-        {vinStatus === "error" && (
-          <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>
+        ) : (
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4">
+            <div className="flex items-start justify-between mb-1">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
+                  {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+                </p>
+                <p className="text-xs text-gray-400 italic">
+                  {lang === "en" ? "Added for your convenience" : "Agregado para su conveniencia"}
+                </p>
+              </div>
+              <button
+                onClick={collapse}
+                className="text-gray-400 hover:text-gray-700 transition text-xs font-semibold flex items-center gap-1 mt-0.5"
+              >
+                {lang === "en" ? "Close" : "Cerrar"}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex gap-2 mt-3">
+              <input
+                type="text" maxLength={17} value={input} autoFocus
+                onChange={(e) => {
+                  setInput(e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, ""));
+                  setVinStatus("idle");
+                }}
+                onKeyDown={(e) => e.key === "Enter" && lookup()}
+                placeholder={lang === "en" ? "Enter 17-character VIN..." : "Ingresa el VIN de 17 caracteres..."}
+                className="flex-1 border-2 border-gray-200 focus:border-red-500 rounded-xl px-4 py-3 text-sm font-mono tracking-widest outline-none transition bg-white"
+                autoCorrect="off" autoCapitalize="characters"
+              />
+              <button
+                onClick={lookup}
+                disabled={input.length !== 17 || vinStatus === "loading"}
+                className="bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-bold px-5 py-3 rounded-xl transition text-sm whitespace-nowrap"
+              >
+                {vinStatus === "loading" ? (
+                  <span className="flex items-center gap-1">
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
+                      <path fill="currentColor" className="opacity-75" d="M4 12a8 8 0 018-8v8z" />
+                    </svg>
+                  </span>
+                ) : lang === "en" ? "Look Up →" : "Buscar →"}
+              </button>
+            </div>
+            {vinStatus === "found" && result && (
+              <button
+                onClick={() => setShowModal(true)}
+                className="mt-3 w-full flex items-center justify-between bg-white border border-gray-200 hover:border-red-400 rounded-xl px-4 py-3 transition group"
+              >
+                <div className="text-left">
+                  <p className="font-bold text-gray-900">{result.year} {result.make} {result.model}</p>
+                  <p className="text-xs text-red-500 font-semibold mt-0.5">
+                    {lang === "en" ? "Click to view full details" : "Clic para ver detalles completos"}
+                  </p>
+                </div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-red-500 transition">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            )}
+            {vinStatus === "notfound" && (
+              <p className="mt-2 text-sm text-red-500">{lang === "en" ? "VIN not found. Check and try again." : "VIN no encontrado."}</p>
+            )}
+            {vinStatus === "error" && (
+              <p className="mt-2 text-sm text-red-500">{lang === "en" ? "Network error. Try again." : "Error de red."}</p>
+            )}
+          </div>
         )}
       </div>
     </>
@@ -307,6 +344,124 @@ function Pagination({ page, totalPages, lang, onPageChange }: {
       >
         →
       </button>
+    </div>
+  );
+}
+
+// ─── Vehicle card ───────────────────────────────────────────────────────────────
+
+function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof vehicles)[number]; lang: "en" | "es"; highlight?: boolean }) {
+  const mainImg = vehicle.images?.[0] ?? "/cars/placeholder.jpg";
+  const isSold  = vehicle.status === "sold";
+
+  return (
+    <div
+      className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col ${
+        highlight ? "border-2 border-red-500 ring-2 ring-red-100" : "border border-gray-200"
+      }`}
+    >
+      {/* Image */}
+      <div className="relative w-full h-52 bg-gray-100 shrink-0">
+        <Image
+          src={mainImg}
+          alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
+          fill
+          className={`object-cover ${isSold ? "opacity-50 grayscale" : ""}`}
+        />
+        {highlight && (
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-full shadow uppercase tracking-wide">
+            {lang === "en" ? "New" : "Nuevo"}
+          </span>
+        )}
+        {isSold ? (
+          <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+            {lang === "en" ? "Sold" : "Vendido"}
+          </span>
+        ) : (
+          <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+            {lang === "en" ? "Available" : "Disponible"}
+          </span>
+        )}
+      </div>
+
+      {/* Card body */}
+      <div className="p-5 flex flex-col flex-1">
+
+        {/* Type pill + location */}
+        <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+          {vehicle.type && vehicle.type !== "Other" && (
+            <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-500 text-xs font-semibold px-2.5 py-1 rounded-full">
+              <TypeIcon type={vehicle.type} size={13} />
+              {vehicle.type === "Truck" ? (lang === "en" ? "Truck" : "Troca") :
+               vehicle.type === "SUV"   ? "SUV" :
+               vehicle.type === "Van"   ? "Van" :
+               (lang === "en" ? "Car" : "Carro")}
+            </span>
+          )}
+          {vehicle.location && (
+            <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-400 text-xs px-2.5 py-1 rounded-full border border-gray-100">
+              📍 {vehicle.location}
+            </span>
+          )}
+        </div>
+
+        {/* Name + trim */}
+        <h2 className="text-lg font-semibold text-gray-900 leading-snug">
+          {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
+          {vehicle.trim && (
+            <span className="text-gray-400 font-normal text-sm"> · {vehicle.trim}</span>
+          )}
+        </h2>
+
+        {/* Price */}
+        <p className={`mt-2 text-2xl font-bold ${isSold ? "text-gray-400" : "text-red-600"}`}>
+          {formatMoney(vehicle.price)}
+        </p>
+
+        {/* Miles */}
+        <p className="mt-1 text-sm text-gray-400">
+          {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}{" "}
+          {lang === "en" ? "miles" : "millas"}
+        </p>
+
+        <div className="mt-auto">
+          <div className="my-3 border-t border-gray-100" />
+
+          {/* Down + monthly or sold message */}
+          {!isSold ? (
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wide">
+                  {lang === "en" ? "Down" : "Enganche"}
+                </p>
+                <p className="text-sm font-semibold text-gray-700">
+                  {vehicle.down != null ? formatMoney(vehicle.down) : "—"}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-400 uppercase tracking-wide">
+                  {lang === "en" ? "Est. monthly" : "Pago est."}
+                </p>
+                <p className="text-sm font-bold text-gray-900">
+                  {calcMonthly(vehicle.price, vehicle.down, vehicle.term, vehicle.fee)}/mo
+                </p>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-gray-400 text-center py-1">
+              {lang === "en" ? "This vehicle has been sold" : "Este vehículo fue vendido"}
+            </p>
+          )}
+
+          {/* CTA */}
+          <Link
+            href={`/inventory/${encodeURIComponent(vehicle.id)}`}
+            className="mt-3 block w-full text-center rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition text-sm"
+          >
+            {t.inv.viewDet[lang]}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
@@ -365,6 +520,10 @@ function InventoryInner() {
     return downs.length > 0 ? Math.max(...downs) : 10000;
   }, []);
 
+  // First 3 vehicles in inventory.json order → "New Inventory"
+  const newInventory = useMemo(() => vehicles.slice(0, 3), []);
+  const newInventoryIds = useMemo(() => new Set(newInventory.map((v) => v.id)), [newInventory]);
+
   // Count per type across full inventory (not filtered) for tab badges
   const typeCounts = useMemo(() => ({
     all:   vehicles.length,
@@ -381,6 +540,7 @@ function InventoryInner() {
     const max = maxDown.trim() === "" ? null : Number(maxDown);
 
     return vehicles.filter((v) => {
+      if (newInventoryIds.has(v.id)) return false; // shown separately above
       const haystack      = `${v.year ?? ""} ${v.make ?? ""} ${v.model ?? ""}`.toLowerCase();
       const matchesQuery  = q === "" || haystack.includes(q);
       const matchesMake   = make === "all" || v.make === make;
@@ -392,7 +552,7 @@ function InventoryInner() {
       const matchesType   = type === "all" || v.type === type;  // ← new
       return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLoc && matchesStatus && matchesType;
     });
-  }, [query, make, minDown, maxDown, location, status, type]);
+  }, [query, make, minDown, maxDown, location, status, type, newInventoryIds]);
 
   const ITEMS_PER_PAGE = 27;
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -437,6 +597,23 @@ function InventoryInner() {
         <div className="mt-6">
           <VinLookupBar lang={lang} />
         </div>
+
+        {/* ── New Inventory ── */}
+        {newInventory.length > 0 && (
+          <div className="mt-2 mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm whitespace-nowrap">
+                🆕 {lang === "en" ? "New Inventory" : "Inventario Nuevo"}
+              </span>
+              <div className="h-px flex-1 bg-gray-200" />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {newInventory.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} highlight />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── Vehicle Type Tabs ── */}
         <div className="mt-2 flex gap-2 flex-wrap">
@@ -553,113 +730,9 @@ function InventoryInner() {
 
         {/* ── Vehicle Grid ── */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paginated.map((vehicle) => {
-            const mainImg = vehicle.images?.[0] ?? "/cars/placeholder.jpg";
-            const isSold  = vehicle.status === "sold";
-
-            return (
-              <div key={vehicle.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
-
-                {/* Image */}
-                <div className="relative w-full h-52 bg-gray-100 shrink-0">
-                  <Image
-                    src={mainImg}
-                    alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
-                    fill
-                    className={`object-cover ${isSold ? "opacity-50 grayscale" : ""}`}
-                  />
-                  {isSold ? (
-                    <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                      {lang === "en" ? "Sold" : "Vendido"}
-                    </span>
-                  ) : (
-                    <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                      {lang === "en" ? "Available" : "Disponible"}
-                    </span>
-                  )}
-                </div>
-
-                {/* Card body */}
-                <div className="p-5 flex flex-col flex-1">
-
-                  {/* Type pill + location */}
-                  <div className="flex items-center gap-1.5 mb-2 flex-wrap">
-                    {vehicle.type && vehicle.type !== "Other" && (
-                      <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-500 text-xs font-semibold px-2.5 py-1 rounded-full">
-                        <TypeIcon type={vehicle.type} size={13} />
-                        {vehicle.type === "Truck" ? (lang === "en" ? "Truck" : "Troca") :
-                         vehicle.type === "SUV"   ? "SUV" :
-                         vehicle.type === "Van"   ? "Van" :
-                         (lang === "en" ? "Car" : "Carro")}
-                      </span>
-                    )}
-                    {vehicle.location && (
-                      <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-400 text-xs px-2.5 py-1 rounded-full border border-gray-100">
-                        📍 {vehicle.location}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Name + trim */}
-                  <h2 className="text-lg font-semibold text-gray-900 leading-snug">
-                    {fullYear(vehicle.year)} {vehicle.make} {vehicle.model}
-                    {vehicle.trim && (
-                      <span className="text-gray-400 font-normal text-sm"> · {vehicle.trim}</span>
-                    )}
-                  </h2>
-
-                  {/* Price */}
-                  <p className={`mt-2 text-2xl font-bold ${isSold ? "text-gray-400" : "text-red-600"}`}>
-                    {formatMoney(vehicle.price)}
-                  </p>
-
-                  {/* Miles */}
-                  <p className="mt-1 text-sm text-gray-400">
-                    {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}{" "}
-                    {lang === "en" ? "miles" : "millas"}
-                  </p>
-
-                  <div className="mt-auto">
-                    <div className="my-3 border-t border-gray-100" />
-
-                    {/* Down + monthly or sold message */}
-                    {!isSold ? (
-                      <div className="flex items-end justify-between">
-                        <div>
-                          <p className="text-xs text-gray-400 uppercase tracking-wide">
-                            {lang === "en" ? "Down" : "Enganche"}
-                          </p>
-                          <p className="text-sm font-semibold text-gray-700">
-                            {vehicle.down != null ? formatMoney(vehicle.down) : "—"}
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-xs text-gray-400 uppercase tracking-wide">
-                            {lang === "en" ? "Est. monthly" : "Pago est."}
-                          </p>
-                          <p className="text-sm font-bold text-gray-900">
-                            {calcMonthly(vehicle.price, vehicle.down, vehicle.term, vehicle.fee)}/mo
-                          </p>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="text-sm text-gray-400 text-center py-1">
-                        {lang === "en" ? "This vehicle has been sold" : "Este vehículo fue vendido"}
-                      </p>
-                    )}
-
-                    {/* CTA */}
-                    <Link
-                      href={`/inventory/${encodeURIComponent(vehicle.id)}`}
-                      className="mt-3 block w-full text-center rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition text-sm"
-                    >
-                      {t.inv.viewDet[lang]}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {paginated.map((vehicle) => (
+            <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} />
+          ))}
         </div>
 
         {/* No results */}
