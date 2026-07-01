@@ -44,7 +44,7 @@ export default function NavBar() {
 
         {/* MOBILE NAV */}
         <div className="flex md:hidden items-center justify-between px-3 py-1">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="hover:opacity-80 transition">
+          <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
             <Image
               src="/logo.jpg"
               alt="Garcia's Auto Sales RGV"
@@ -115,7 +115,7 @@ export default function NavBar() {
 
         {/* DESKTOP NAV */}
         <div className="hidden md:flex max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-2 items-center justify-between">
-          <Link href="/" className="hover:opacity-80 transition flex flex-col">
+          <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
             <Image
               src="/logo.jpg"
               alt="Garcia's Auto Sales RGV"

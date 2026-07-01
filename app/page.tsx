@@ -214,17 +214,55 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 w-full px-8 md:px-16 py-16">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm text-white">
+          <style>{`
+            @keyframes heroFadeUp {
+              from { opacity: 0; transform: translateY(14px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+            .hero-in {
+              opacity: 0;
+              animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            @keyframes nameShimmer {
+              0%, 100% { background-position: 0% 50%; }
+              50%      { background-position: 100% 50%; }
+            }
+            .hero-name-shimmer {
+              background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #ffd9d9 50%, #ffffff 60%, #ffffff 100%);
+              background-size: 220% 100%;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: nameShimmer 6s ease-in-out infinite;
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .hero-in { opacity: 1; animation: none; }
+              .hero-name-shimmer { animation: none; -webkit-background-clip: unset; background-clip: unset; color: white; }
+            }
+          `}</style>
+          <p
+            className="hero-in inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm text-white"
+            style={{ animationDelay: "0ms" }}
+          >
             <span className="h-2 w-2 rounded-full bg-green-400" />
             {t.hero.badge[lang]}
           </p>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-white/70">
+          <p
+            className="hero-in mt-6 text-sm font-semibold uppercase tracking-widest text-white/70"
+            style={{ animationDelay: "120ms" }}
+          >
             {lang === "en" ? "Welcome to" : "Bienvenidos a"}
           </p>
-          <h1 className="mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+          <h1
+            className="hero-in hero-name-shimmer mt-1 text-4xl font-extrabold tracking-tight md:text-6xl"
+            style={{ animationDelay: "240ms" }}
+          >
             Garcia&apos;s Auto Sales RGV
           </h1>
-          <div className="mt-6 inline-flex flex-wrap items-center gap-3">
+          <div
+            className="hero-in mt-6 inline-flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "380ms" }}
+          >
             <span className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-2.5 text-sm font-extrabold text-white uppercase tracking-widest shadow-lg">
               💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
             </span>
@@ -232,7 +270,10 @@ export default function Home() {
               ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
             </span>
           </div>
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+          <div
+            className="hero-in mt-4 flex flex-col gap-3 sm:flex-row"
+            style={{ animationDelay: "500ms" }}
+          >
             <Link href="/inventory" className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/30 px-6 py-4 text-base font-semibold text-white hover:bg-black/50 transition">
               {t.hero.viewInv[lang]}
             </Link>
