@@ -61,31 +61,6 @@
     "status": "available"
   },
   {
-    "id": "2016-gmc-canyon-g1115172",
-    "year": 2016,
-    "make": "GMC",
-    "model": "Canyon",
-    "trim": "SLE",
-    "price": 12900,
-    "down": 4000,
-    "miles":"175000",
-    "vin": "1GTG5CE39G1115172",
-    "fuel": "Gasoline",
-    "engine": "3.6L V6",
-    "transmission": "Automatically",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Brown",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2016-gmc-canyon-g1115172/IMG_2879.jpeg",
-      "/cars/2016-gmc-canyon-g1115172/IMG_2880.jpeg",
-      "/cars/2016-gmc-canyon-g1115172/IMG_2881.jpeg",
-      "/cars/2016-gmc-canyon-g1115172/IMG_2882.jpeg"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2000-chevrolet-silverado-yz112793",
     "year": 2000,
     "make": "Chevrolet",
@@ -187,30 +162,6 @@
       "/cars/1998-chevrolet-gmt-400-wz177433/IMG_3310.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "1997-gmc-sierra-vz522749",
-    "year": 1997,
-    "make": "GMC",
-    "model": "Sierra",
-    "price": 9900,
-    "down": 3000,
-    "miles":"EXPT",
-    "vin": "1GTEC14W8VZ522749",
-    "fuel": "Gasoline",
-    "engine": "4.3L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Red",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/1997-gmc-sierra-vz522749/IMG_3312.JPG",
-      "/cars/1997-gmc-sierra-vz522749/IMG_3313.JPG",
-      "/cars/1997-gmc-sierra-vz522749/IMG_3314.JPG",
-      "/cars/1997-gmc-sierra-vz522749/IMG_3316.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "1996-ford-f-150-tna28634",
@@ -336,30 +287,6 @@
     "status": "available"
   },
   {
-    "id": "2013-chevrolet-silverado-dz105196",
-    "year": 2013,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "Work Truck",
-    "price": 11900,
-    "down": 4000,
-    "vin": "1GCNCPEA6DZ105196",
-    "miles": 201959,
-    "fuel": "Gasoline",
-    "engine": "4.8L V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Silver",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2013-chevrolet-silverado-dz105196/IMG_3614.JPG",
-      "/cars/2013-chevrolet-silverado-dz105196/IMG_3615.JPG",
-      "/cars/2013-chevrolet-silverado-dz105196/IMG_3616.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2015-jeep-patriot-fd372101",
     "year": 2015,
     "make": "Jeep",
@@ -411,32 +338,6 @@
       "/cars/2001-saturn-ls1-1y551665/IMG_3629.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2006-chevrolet-silverado-6f141399",
-    "year": 2006,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "driveTrain": "4x4",
-    "price": 11900,
-    "down": 4000,
-    "vin": "1GCHK23D76F141399",
-    "fuel": "Diesel",
-    "engine": "2.2L V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "White",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3469.JPG",
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3470.JPG",
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3471.JPG",
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3472.JPG",
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3473.JPG",
-      "/cars/2006-chevrolet-silverado-6f141399/IMG_3548.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2018-chevrolet-colorado-j1161424",
@@ -690,56 +591,6 @@
     "status": "available"
   },
   {
-    "id": "2023-chevrolet-silverado-pg336975",
-    "year": 2023,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "Work Truck",
-    "price": 14900,
-    "down": 6000,
-    "vin": "1GCNAAEK1PG336975",
-    "miles": 179931,
-    "fuel": "Gasoline",
-    "engine": "2.7L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "White",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2023-chevrolet-silverado-pg336975/IMG_3417.JPG",
-      "/cars/2023-chevrolet-silverado-pg336975/IMG_3418.JPG",
-      "/cars/2023-chevrolet-silverado-pg336975/IMG_3419.JPG"
-    ],
-    "status": "sold"
-  },
-  {
-    "id": "2018-honda-cr-v-jh522492",
-    "year": 2018,
-    "make": "Honda",
-    "model": "CR-V",
-    "trim": "EX",
-    "price": 14900,
-    "down": 6000,
-    "miles":142507,
-    "vin": "2HKRW1H53JH522492",
-    "fuel": "Gasoline",
-    "engine": "1.5L In-Line V4",
-    "transmission": "Continuously Variable Transmission (CVT)",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 5,
-    "color": "Tan",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2018-honda-cr-v-jh522492/IMG_3422.JPG",
-      "/cars/2018-honda-cr-v-jh522492/IMG_3423.JPG",
-      "/cars/2018-honda-cr-v-jh522492/IMG_3425.JPG",
-      "/cars/2018-honda-cr-v-jh522492/IMG_3426.JPG",
-      "/cars/2018-honda-cr-v-jh522492/IMG_3427.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2013-chevrolet-silverado-dz239243",
     "year": 2013,
     "make": "Chevrolet",
@@ -765,32 +616,6 @@
       "/cars/2013-chevrolet-silverado-dz239243/IMG_3403.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2019-gmc-sierra-kz140691",
-    "year": 2019,
-    "make": "GMC",
-    "model": "Sierra",
-    "trim": "SLT",
-    "price": 22000,
-    "down": 10000,
-    "vin": "1GTU9DED4KZ140691",
-    "miles": 201231,
-    "fuel": "Gasoline",
-    "engine": "5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Gray",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2019-gmc-sierra-kz140691/IMG_3404.JPG",
-      "/cars/2019-gmc-sierra-kz140691/IMG_3405.JPG",
-      "/cars/2019-gmc-sierra-kz140691/IMG_3406.JPG",
-      "/cars/2019-gmc-sierra-kz140691/IMG_3407.JPG",
-      "/cars/2019-gmc-sierra-kz140691/IMG_3408.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2004-chevrolet-silverado-4z120570",
@@ -845,30 +670,6 @@
     "status": "available"
   },
   {
-    "id": "2006-chevrolet-silverado-6e272674",
-    "year": 2006,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "price": 10900,
-    "down": 3000,
-    "vin": "1GBJC34D46E272674",
-    "miles": 325800,
-    "fuel": "Diesel",
-    "engine": "2.2L V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Flat bed",
-    "doors": 2,
-    "color": "White",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2006-chevrolet-silverado-6e272674/IMG_3367.JPG",
-      "/cars/2006-chevrolet-silverado-6e272674/IMG_3368.JPG",
-      "/cars/2006-chevrolet-silverado-6e272674/IMG_3369.JPG",
-      "/cars/2006-chevrolet-silverado-6e272674/IMG_3371.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2015-chevrolet-impala-f9153422",
     "year": 2015,
     "make": "Chevrolet",
@@ -892,33 +693,6 @@
       "/cars/2015-chevrolet-impala-f9153422/IMG_3376.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2018-chevrolet-silverado-jg530997",
-    "year": 2018,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "LT",
-    "driveTrain": "4x4",
-    "price": 17900,
-    "down": 7000,
-    "vin": "3GCUKREC7JG530997",
-    "miles": 166042,
-    "fuel": "Gasoline",
-    "engine": "5.3L V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Black",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2018-chevrolet-silverado-jg530997/IMG_3255.JPG",
-      "/cars/2018-chevrolet-silverado-jg530997/IMG_3256.JPG",
-      "/cars/2018-chevrolet-silverado-jg530997/IMG_3257.JPG",
-      "/cars/2018-chevrolet-silverado-jg530997/IMG_3260.JPG",
-      "/cars/2018-chevrolet-silverado-jg530997/IMG_3261.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2019-ford-f-350-keg40513",
@@ -1023,33 +797,6 @@
       "/cars/2018-chevrolet-colorado-j1329271/IMG_3289.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2015-gmc-sierra-ff137837",
-    "year": 2015,
-    "make": "GMC",
-    "model": "Sierra",
-    "trim": "SLE",
-    "price": 15900,
-    "down": 7000,
-    "vin": "1GT422C85FF137837",
-    "miles": 307542,
-    "fuel": "Diesel",
-    "engine": "6.6L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Tan",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2015-gmc-sierra-ff137837/37071.JPG",
-      "/cars/2015-gmc-sierra-ff137837/37072.JPG",
-      "/cars/2015-gmc-sierra-ff137837/37074.JPG",
-      "/cars/2015-gmc-sierra-ff137837/37075.JPG",
-      "/cars/2015-gmc-sierra-ff137837/37076.JPG",
-      "/cars/2015-gmc-sierra-ff137837/37077.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2019-ford-f-250-kec30027",
@@ -1414,31 +1161,6 @@
     "status": "available"
   },
   {
-    "id": "2019-ford-transit-kkb46370",
-    "year": 2019,
-    "make": "Ford",
-    "model": "Transit",
-    "price": 11900,
-    "down": 5000,
-    "vin": "1FTYE1YM3KKB46370",
-    "miles": 215008,
-    "fuel": "Gasoline",
-    "engine": "3.7L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Cargo Van",
-    "doors": 5, 
-    "color": "White",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2019-ford-transit-kkb46370/IMG_3107.JPG",
-      "/cars/2019-ford-transit-kkb46370/IMG_3108.JPG",
-      "/cars/2019-ford-transit-kkb46370/IMG_3111.JPG",
-      "/cars/2019-ford-transit-kkb46370/IMG_3112.JPG",
-      "/cars/2019-ford-transit-kkb46370/IMG_3113.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2008-ford-f-250-8ed57718",
     "year": 2008,
     "make": "Ford",
@@ -1537,31 +1259,6 @@
     "status": "available"
   },
   {
-    "id": "2004-gmc-sierra-4z210501",
-    "year": 2004,
-    "make": "GMC",
-    "model": "Sierra",
-    "price": 11900,
-    "down": 5000,
-    "transmission":"Automatic",
-    "miles":200089,
-    "vin": "1GTEC14T64Z210501",
-    "fuel": "Gasoline",
-    "engine": "5.3L V-Shaped V8",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Red",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2004-gmc-sierra-4z210501/IMG_3087.JPG",
-      "/cars/2004-gmc-sierra-4z210501/IMG_3088.JPG",
-      "/cars/2004-gmc-sierra-4z210501/IMG_3089.JPG",
-      "/cars/2004-gmc-sierra-4z210501/IMG_3090.JPG",
-      "/cars/2004-gmc-sierra-4z210501/IMG_3091.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2018-chevrolet-colorado-j1124390",
     "year": 2018,
     "make": "Chevrolet",
@@ -1585,31 +1282,6 @@
       "/cars/2018-chevrolet-colorado-j1124390/IMG_3096.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "1993-chevrolet-gmt-400-pz111601",
-    "year": 1993,
-    "make": "Chevrolet",
-    "model": "GMT-400",
-    "price": 21000,
-    "down": 8000,
-    "miles":"EXPT",
-    "vin": "1GCDC14Z2PZ111601",
-    "fuel": "Gasoline",
-    "engine": "4.3L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Blue",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/1993-chevrolet-gmt-400-pz111601/IMG_2641.JPG",
-      "/cars/1993-chevrolet-gmt-400-pz111601/IMG_2632.JPG",
-      "/cars/1993-chevrolet-gmt-400-pz111601/IMG_2762.JPG",
-      "/cars/1993-chevrolet-gmt-400-pz111601/IMG_2763.JPG",
-      "/cars/1993-chevrolet-gmt-400-pz111601/IMG_2764.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "1987-ford-f-150-hpa88938",
@@ -1692,58 +1364,6 @@
       "/cars/2000-ford-ranger-ypb85030/IMG_2884.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2011-ford-ranger-bpa79873",
-    "year": 2011,
-    "make": "Ford",
-    "model": "Ranger",
-    "price": 6900,
-    "down": 2500,
-    "term":15,
-    "fee":1500,
-    "vin": "1FTKR1ED9BPA79873",
-    "miles": 268930,
-    "fuel": "Gasoline",
-    "engine": "2.3L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "White",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2011-ford-ranger-bpa79873/IMG_2886.JPG",
-      "/cars/2011-ford-ranger-bpa79873/IMG_2887.JPG",
-      "/cars/2011-ford-ranger-bpa79873/IMG_2888.JPG",
-      "/cars/2011-ford-ranger-bpa79873/IMG_2890.JPG"
-    ],
-    "status": "sold"
-  },
-  {
-    "id": "2004-gmc-sierra-4z323204",
-    "year": 2004,
-    "make": "GMC",
-    "model": "Sierra",
-    "price": 7900,
-    "down": 2500,
-    "miles":"EXPT",
-    "vin": "1GTEC19T54Z323204",
-    "fuel": "Gasoline",
-    "engine": "5.3L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Black",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2004-gmc-sierra-4z323204/IMG_2867.JPG",
-      "/cars/2004-gmc-sierra-4z323204/IMG_2868.JPG",
-      "/cars/2004-gmc-sierra-4z323204/IMG_2869.JPG",
-      "/cars/2004-gmc-sierra-4z323204/IMG_2870.JPG",
-      "/cars/2004-gmc-sierra-4z323204/IMG_2871.JPG",
-      "/cars/2004-gmc-sierra-4z323204/IMG_2872.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2016-chevrolet-silverado-gz211835",
@@ -1846,33 +1466,6 @@
       "/cars/1994-chevrolet-k1500-rz206908/IMG_2743.JPG"
     ],
     "status": "available"
-  },
-  
-  {
-    "id": "2003-ford-f-150-3kc56306",
-    "year": 2003,
-    "make": "Ford",
-    "model": "F-150",
-    "trim": "Harley Davidson",
-    "price": 14900,
-    "down": 6000,
-    "vin": "1FTRW073X3KC56306",
-    "fuel": "Gasoline",
-    "engine": "5.4L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Silver/Black",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2003-ford-f-150-3kc56306/IMG_2634.JPG",
-      "/cars/2003-ford-f-150-3kc56306/IMG_2635.JPG",
-      "/cars/2003-ford-f-150-3kc56306/IMG_2636.JPG",
-      "/cars/2003-ford-f-150-3kc56306/IMG_2637.JPG",
-      "/cars/2003-ford-f-150-3kc56306/IMG_2638.JPG",
-      "/cars/2003-ford-f-150-3kc56306/IMG_2639.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2017-chevrolet-camaro-h0201293",
@@ -2503,57 +2096,6 @@
     "status": "available"
   },
   {
-    "id": "2014-chevrolet-camaro-e9309654",
-    "year": 2014,
-    "make": "Chevrolet",
-    "model": "Camaro",
-    "trim": "2LS",
-    "price": 11900,
-    "down": 4000,
-    "vin": "2G1FA1E34E9309654",
-    "miles": 172272,
-    "fuel": "Gasoline",
-    "engine": "3.6L V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Coupe",
-    "doors": 2,
-    "color": "Black",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2014-chevrolet-camaro-e9309654/IMG_2204.jpeg",
-      "/cars/2014-chevrolet-camaro-e9309654/IMG_2205.jpeg",
-      "/cars/2014-chevrolet-camaro-e9309654/IMG_2206.jpeg"
-    ],
-    "status": "sold"
-  },
-  {
-    "id": "2019-kia-optima-kg378194",
-    "year": 2019,
-    "make": "KIA",
-    "model": "Optima",
-    "trim": "LX, S",
-    "price": 8900,
-    "down": 3000,
-    "fee": 2100,
-    "term":20,
-    "vin": "5XXGT4L32KG378194",
-    "miles": 190259,
-    "fuel": "Gasoline",
-    "engine": "2.4L V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sedan/Saloon",
-    "doors": 4,
-    "color": "Black",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2019-kia-optima-kg378194/PXL_20260421_212436721.JPG",
-      "/cars/2019-kia-optima-kg378194/PXL_20260421_212453302.JPG",
-      "/cars/2019-kia-optima-kg378194/PXL_20260421_212502556.JPG",
-      "/cars/2019-kia-optima-kg378194/PXL_20260421_212540938.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "1996-ford-f-150-tla39472",
     "year": 1996,
     "make": "Ford",
@@ -2602,31 +2144,6 @@
       "/cars/2015-chevrolet-silverado-fg475866/IMG_2141.jpg"
     ],
     "status": "available"
-  },
-  {
-    "id": "2014-chevrolet-silverado-eg170461",
-    "year": 2014,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "LT",
-    "price": 13900,
-    "down": 5000,
-    "vin": "3GCPCREH1EG170461",
-    "miles": 261718,
-    "fuel": "Gasoline",
-    "engine": "4.3L V-Shaped V6",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 4,
-    "color": "Blue",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2014-chevrolet-silverado-eg170461/IMG_2151.jpeg",
-      "/cars/2014-chevrolet-silverado-eg170461/IMG_2152.jpeg",
-      "/cars/2014-chevrolet-silverado-eg170461/IMG_2153.jpeg",
-      "/cars/2014-chevrolet-silverado-eg170461/IMG_2154.jpeg"
-    ],
-    "status": "sold"
   },
   {
     "id": "2010-toyota-tacoma-az711159",
@@ -2904,32 +2421,6 @@
     "status": "available"
   },
   {
-    "id": "2021-gmc-acadia-mz138844",
-    "year": 2021,
-    "make": "GMC",
-    "model": "Acadia",
-    "trim": "SLE",
-    "price": 14900,
-    "down": 6000,
-    "vin": "1GKKNKLA5MZ138844",
-    "miles": 216056,
-    "fuel": "Gasoline",
-    "engine": "2.5L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)",
-    "doors": 4,
-    "color": "Red",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2021-gmc-acadia-mz138844/IMG_1796.jpeg",
-      "/cars/2021-gmc-acadia-mz138844/IMG_1797.jpeg",
-      "/cars/2021-gmc-acadia-mz138844/IMG_1798.jpeg",
-      "/cars/2021-gmc-acadia-mz138844/IMG_1802.jpeg",
-      "/cars/2021-gmc-acadia-mz138844/IMG_1803.jpeg"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2017-gmc-acadia-hj191714",
     "year": 2017,
     "make": "GMC",
@@ -3003,31 +2494,6 @@
       "/cars/2021-ford-expedition-mea05933/IMG_1550.jpg"
     ],
     "status": "available"
-  },
-  {
-    "id": "1994-ford-f-150-rnb16296",
-    "year": 1994,
-    "make": "Ford",
-    "model": "F-150",
-    "trim": "XLT",
-    "price": 7900,
-    "down": 3000,
-    "miles": "EXPT",
-    "vin": "1FTEF14N0RNB16296",
-    "fuel": "Gasoline",
-    "engine": "5L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Long Bed Pickup",
-    "doors": 2,
-    "color": "Blue/White",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/1994-ford-f-150-rnb16296/IMG_1391.jpeg",
-      "/cars/1994-ford-f-150-rnb16296/IMG_1389.jpeg",
-      "/cars/1994-ford-f-150-rnb16296/IMG_1394.jpeg",
-      "/cars/1994-ford-f-150-rnb16296/IMG_1395.jpeg"
-    ],
-    "status": "sold"
   },
   {
     "id": "2015-gmc-yukon-xl-fr538765",
@@ -4876,29 +4342,6 @@
       "status": "available"
     },
     {
-      "id": "2019-ford-f-150-kke52385",
-      "year": 2019,
-      "make": "Ford",
-      "model": "F-150",
-      "price": 11900,
-      "down": 4000,
-      "vin": "1FTEX1C55KKE52385",
-      "miles": 180797,
-      "fuel": "Gasoline",
-      "engine": "5L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Extended Pickup",
-      "doors": 2,
-      "color": "White",
-      "location": "Palma Vista",
-      "images": ["/cars/2019-ford-f-150-kke52385/3390250352705748392.JPG",
-                 "/cars/2019-ford-f-150-kke52385/4802003560786055564.JPG",
-                 "/cars/2019-ford-f-150-kke52385/5153354248203594388.JPG",
-                 "/cars/2019-ford-f-150-kke52385/4504940835242490750.JPG"
-    ],
-      "status": "sold"
-    },
-    {
       "id": "2017-ford-f-150-hke24070",
       "year": 2017,
       "make": "Ford",
@@ -5500,31 +4943,6 @@
       "status": "available"
     },
     {
-      "id": "1998-chevrolet-gmt-400-wz208178",
-      "year": 1998,
-      "make": "Chevrolet",
-      "model": "GMT-400",
-      "price": 12900,
-      "down": 5000,
-      "vin": "1GCEC14MXWZ208178",
-      "miles": 212200,
-      "fuel": "Gasoline",
-      "engine": "5L V-Shaped V8",
-      "transmission": "Automatic",
-      "bodyStyle": "Pickup(Salvage Title)",
-      "doors": 2,
-      "color": "White",
-      "location": "Palma Vista",
-      "images": [
-        "/cars/1998-chevrolet-gmt-400-wz208178/34278.JPG",
-        "/cars/1998-chevrolet-gmt-400-wz208178/34311.JPG",
-        "/cars/1998-chevrolet-gmt-400-wz208178/34314.JPG",
-        "/cars/1998-chevrolet-gmt-400-wz208178/34315.JPG",
-        "/cars/1998-chevrolet-gmt-400-wz208178/34316.JPG"
-      ],
-      "status": "sold"
-    },
-    {
       "id": "2013-toyota-tundra-dx317154",
       "year": 2013,
       "make": "Toyota",
@@ -5689,32 +5107,6 @@
     "status": "available"
   },
   {
-    "id": "2008-chevrolet-silverado-8e172472",
-    "year": 2008,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "LT",
-    "price": 8900,
-    "down": 2500,
-    "miles":"EXPT",
-    "vin": "1GCHC24668E172472",
-    "fuel": "Diesel",
-    "engine": "6.6L V-Shaped V8",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "Red",
-    "location": "Palma Vista",
-    "images": [
-      "/cars/2008-chevrolet-silverado-8e172472/36487.JPG",
-      "/cars/2008-chevrolet-silverado-8e172472/36490.JPG",
-      "/cars/2008-chevrolet-silverado-8e172472/36494.JPG",
-      "/cars/2008-chevrolet-silverado-8e172472/36495.JPG",
-      "/cars/2008-chevrolet-silverado-8e172472/36496.JPG"
-    ],
-    "status": "sold"
-  },
-  {
     "id": "2016-ford-f-250-geb41704",
     "year": 2016,
     "make": "Ford",
@@ -5794,32 +5186,6 @@
       "/cars/2016-chrysler-200-gn160613/IMG_2907.JPG"
     ],
     "status": "available"
-  },
-  {
-    "id": "2023-chevrolet-silverado-pg338701",
-    "year": 2023,
-    "make": "Chevrolet",
-    "model": "Silverado",
-    "trim": "Work Truck",
-    "price": 14900,
-    "down": 6000,
-    "miles":199278,
-    "vin": "3GCNAAEK7PG338701",
-    "fuel": "Gasoline",
-    "engine": "2.7L In-Line V4",
-    "transmission": "Automatic",
-    "bodyStyle": "Pickup",
-    "doors": 2,
-    "color": "White",
-    "location": "Veterans Blvd",
-    "images": [
-      "/cars/2023-chevrolet-silverado-pg338701/IMG_2950.JPG",
-      "/cars/2023-chevrolet-silverado-pg338701/IMG_2948.JPG",
-      "/cars/2023-chevrolet-silverado-pg338701/IMG_2951.JPG",
-      "/cars/2023-chevrolet-silverado-pg338701/IMG_2952.JPG",
-      "/cars/2023-chevrolet-silverado-pg338701/IMG_2954.JPG"
-    ],
-    "status": "sold"
   },
   {
     "id": "2019-chevrolet-express-k1151044",
