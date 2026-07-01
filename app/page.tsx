@@ -223,21 +223,8 @@ export default function Home() {
               opacity: 0;
               animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
-            @keyframes nameShimmer {
-              0%, 100% { background-position: 0% 50%; }
-              50%      { background-position: 100% 50%; }
-            }
-            .hero-name-shimmer {
-              background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #ffd9d9 50%, #ffffff 60%, #ffffff 100%);
-              background-size: 220% 100%;
-              -webkit-background-clip: text;
-              background-clip: text;
-              color: transparent;
-              animation: nameShimmer 6s ease-in-out infinite;
-            }
             @media (prefers-reduced-motion: reduce) {
               .hero-in { opacity: 1; animation: none; }
-              .hero-name-shimmer { animation: none; -webkit-background-clip: unset; background-clip: unset; color: white; }
             }
           `}</style>
           <p
@@ -254,7 +241,7 @@ export default function Home() {
             {lang === "en" ? "Welcome to" : "Bienvenidos a"}
           </p>
           <h1
-            className="hero-in hero-name-shimmer mt-1 text-4xl font-extrabold tracking-tight md:text-6xl"
+            className="hero-in mt-1 text-4xl font-extrabold tracking-tight text-white md:text-6xl"
             style={{ animationDelay: "240ms" }}
           >
             Garcia&apos;s Auto Sales RGV
