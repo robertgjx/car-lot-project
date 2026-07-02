@@ -1,5 +1,11 @@
-import { getVehicleById } from "@/app/lib/vehicles";
+import { getVehicleById, getAllVehicles } from "@/app/lib/vehicles";
 import VehicleDetailsClient from "./VehicleDetailsClient";
+
+export const revalidate = 3600; // regenerate pages every hour
+
+export async function generateStaticParams() {
+  return getAllVehicles().map((v) => ({ id: v.id }));
+}
 
 export default async function VehicleDetailsPage({
   params,

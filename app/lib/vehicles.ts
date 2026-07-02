@@ -74,3 +74,4 @@ export const getVehicleById = (id: string) => {
   const target = decodeURIComponent(id).trim();
   return vehicles.find((v) => v.id.trim() === target);
 };
+export const getAllVehicles = () => vehicles;
