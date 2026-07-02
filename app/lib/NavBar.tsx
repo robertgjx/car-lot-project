@@ -46,79 +46,96 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes ballRollMobile {
-                0%   { transform: translate(-56px, 6px) rotate(0deg); opacity: 1; }
-                12%  { transform: translate(-30px, 6px) rotate(120deg); }
-                30%  { transform: translate(18px, 6px) rotate(340deg); }
-                46%  { transform: translate(44px, 6px) rotate(520deg); }
-                52%  { transform: translate(50px, -16px) rotate(590deg); }
-                60%  { transform: translate(58px, 6px) rotate(660deg); }
-                66%  { transform: translate(63px, -8px) rotate(710deg); }
-                74%  { transform: translate(70px, 6px) rotate(770deg); }
-                86%  { transform: translate(105px, 6px) rotate(920deg); opacity: 1; }
-                100% { transform: translate(165px, 6px) rotate(1080deg); opacity: 0; }
+              @keyframes ballWrapXMobile {
+                0%   { transform: translateX(-76px); opacity: 0; animation-timing-function: ease-out; }
+                5%   { opacity: 1; }
+                20%  { transform: translateX(-9px); animation-timing-function: ease; }
+                46%  { transform: translateX(46px); animation-timing-function: ease; }
+                63%  { transform: translateX(61px); animation-timing-function: ease-in; }
+                88%  { transform: translateX(150px); opacity: 1; }
+                100% { transform: translateX(182px); opacity: 0; }
               }
-              @keyframes ballShadowMobile {
-                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
-                52% { opacity: 0.08; transform: translateX(6px) scaleX(0.6); }
-                66% { opacity: 0.1; transform: translateX(6px) scaleX(0.7); }
+              @keyframes ballBounceYMobile {
+                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-out; }
+                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: ease-out; }
+                33%  { transform: translateY(-41px) rotate(430deg); animation-timing-function: ease-in; }
+                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: ease-out; }
+                55%  { transform: translateY(-17px) rotate(620deg); animation-timing-function: ease-in; }
+                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: linear; }
+                100% { transform: translateY(0) rotate(1080deg); }
               }
-              .soccer-ball-mobile {
+              @keyframes ballShadowScaleMobile {
+                0%   { opacity: 0; transform: scaleX(0.7); }
+                18%  { opacity: 0.16; transform: scaleX(1); }
+                33%  { opacity: 0.03; transform: scaleX(0.4); }
+                46%  { opacity: 0.16; transform: scaleX(1); }
+                55%  { opacity: 0.06; transform: scaleX(0.55); }
+                63%  { opacity: 0.15; transform: scaleX(1); }
+                88%  { opacity: 0.14; transform: scaleX(1); }
+                100% { opacity: 0; transform: scaleX(0.8); }
+              }
+              .ball-wrap-mobile {
                 position: absolute;
                 left: 0;
                 top: 50%;
-                width: 15px;
-                height: 15px;
-                margin-top: -7.5px;
-                animation: ballRollMobile 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
+                width: 24px;
+                height: 24px;
+                margin-top: -12px;
+                animation: ballWrapXMobile 3.8s 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
-              .soccer-ball-shadow-mobile {
+              .ball-inner-mobile {
+                width: 100%;
+                height: 100%;
+                animation: ballBounceYMobile 3.8s 500ms 1 forwards;
+              }
+              .ball-shadow-mobile {
                 position: absolute;
                 left: 3px;
-                top: 50%;
-                width: 12px;
-                height: 4px;
-                margin-top: 8px;
+                bottom: -5px;
+                width: 18px;
+                height: 5px;
                 border-radius: 9999px;
                 background: black;
-                animation: ballShadowMobile 4.2s ease-in-out 500ms 1 forwards;
-                pointer-events: none;
-                z-index: 19;
+                animation: ballShadowScaleMobile 3.8s 500ms 1 forwards;
               }
-              @keyframes logoBumpMobile {
-                0%, 48% { transform: scale(1) rotate(0deg); }
-                52% { transform: scale(1.05) rotate(-2deg); }
-                58% { transform: scale(0.97) rotate(2deg); }
-                65% { transform: scale(1.02) rotate(-1deg); }
-                100% { transform: scale(1) rotate(0deg); }
+              @keyframes logoReactMobile {
+                0%, 43%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                46%  { transform: translateY(2px) rotate(-1.5deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: linear; }
+                60%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                63%  { transform: translateY(1px) rotate(-0.8deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                70%  { transform: translateY(0) rotate(0deg); }
+                100% { transform: translateY(0) rotate(0deg); }
               }
               .logo-bump-mobile {
-                animation: logoBumpMobile 4.2s ease-out 500ms 1;
-                transform-origin: center;
+                animation: logoReactMobile 3.8s 500ms 1;
+                transform-origin: bottom center;
               }
               @media (prefers-reduced-motion: reduce) {
-                .soccer-ball-mobile, .soccer-ball-shadow-mobile { animation: none; opacity: 0; }
+                .ball-wrap-mobile, .ball-shadow-mobile { animation: none; opacity: 0; }
                 .logo-bump-mobile { animation: none; }
               }
             `}</style>
-            <div className="soccer-ball-shadow-mobile" aria-hidden="true" />
-            <div className="soccer-ball-mobile" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="15" height="15">
-                <defs>
-                  <radialGradient id="redBallGradMobile" cx="35%" cy="30%" r="75%">
-                    <stop offset="0%" stopColor="#fca5a5" />
-                    <stop offset="45%" stopColor="#dc2626" />
-                    <stop offset="100%" stopColor="#7f1d1d" />
-                  </radialGradient>
-                </defs>
-                <circle cx="50" cy="50" r="46" fill="url(#redBallGradMobile)" stroke="#7f1d1d" strokeWidth="2" />
-                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
-                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
-                  stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
-                <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
-              </svg>
+            <div className="ball-wrap-mobile" aria-hidden="true">
+              <div className="ball-shadow-mobile" />
+              <div className="ball-inner-mobile">
+                <svg viewBox="0 0 100 100" width="24" height="24">
+                  <defs>
+                    <radialGradient id="redBallGradMobile" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fca5a5" />
+                      <stop offset="45%" stopColor="#dc2626" />
+                      <stop offset="100%" stopColor="#7f1d1d" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="50" cy="50" r="46" fill="url(#redBallGradMobile)" stroke="#7f1d1d" strokeWidth="2" />
+                  <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
+                  <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                    stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
+                  <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
+                </svg>
+              </div>
             </div>
             <Link href="/" onClick={() => setMenuOpen(false)} className="logo-bump-mobile inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
               <Image
@@ -194,79 +211,96 @@ export default function NavBar() {
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <div className="relative">
             <style>{`
-              @keyframes ballRoll {
-                0%   { transform: translate(-90px, 8px) rotate(0deg); opacity: 1; }
-                12%  { transform: translate(-48px, 8px) rotate(120deg); }
-                30%  { transform: translate(28px, 8px) rotate(340deg); }
-                46%  { transform: translate(68px, 8px) rotate(520deg); }
-                52%  { transform: translate(78px, -24px) rotate(590deg); }
-                60%  { transform: translate(90px, 8px) rotate(660deg); }
-                66%  { transform: translate(98px, -12px) rotate(710deg); }
-                74%  { transform: translate(108px, 8px) rotate(770deg); }
-                86%  { transform: translate(165px, 8px) rotate(920deg); opacity: 1; }
-                100% { transform: translate(260px, 8px) rotate(1080deg); opacity: 0; }
+              @keyframes ballWrapX {
+                0%   { transform: translateX(-120px); opacity: 0; animation-timing-function: ease-out; }
+                5%   { opacity: 1; }
+                20%  { transform: translateX(-14px); animation-timing-function: ease; }
+                46%  { transform: translateX(72px); animation-timing-function: ease; }
+                63%  { transform: translateX(96px); animation-timing-function: ease-in; }
+                88%  { transform: translateX(235px); opacity: 1; }
+                100% { transform: translateX(285px); opacity: 0; }
               }
-              @keyframes ballShadow {
-                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
-                52% { opacity: 0.08; transform: translateX(9px) scaleX(0.6); }
-                66% { opacity: 0.1; transform: translateX(9px) scaleX(0.7); }
+              @keyframes ballBounceY {
+                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-out; }
+                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: ease-out; }
+                33%  { transform: translateY(-64px) rotate(430deg); animation-timing-function: ease-in; }
+                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: ease-out; }
+                55%  { transform: translateY(-26px) rotate(620deg); animation-timing-function: ease-in; }
+                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: linear; }
+                100% { transform: translateY(0) rotate(1080deg); }
               }
-              .soccer-ball {
+              @keyframes ballShadowScale {
+                0%   { opacity: 0; transform: scaleX(0.7); }
+                18%  { opacity: 0.16; transform: scaleX(1); }
+                33%  { opacity: 0.03; transform: scaleX(0.4); }
+                46%  { opacity: 0.16; transform: scaleX(1); }
+                55%  { opacity: 0.06; transform: scaleX(0.55); }
+                63%  { opacity: 0.15; transform: scaleX(1); }
+                88%  { opacity: 0.14; transform: scaleX(1); }
+                100% { opacity: 0; transform: scaleX(0.8); }
+              }
+              .ball-wrap {
                 position: absolute;
                 left: 0;
                 top: 50%;
-                width: 22px;
-                height: 22px;
-                margin-top: -11px;
-                animation: ballRoll 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
+                width: 34px;
+                height: 34px;
+                margin-top: -17px;
+                animation: ballWrapX 3.8s 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
-              .soccer-ball-shadow {
+              .ball-inner {
+                width: 100%;
+                height: 100%;
+                animation: ballBounceY 3.8s 500ms 1 forwards;
+              }
+              .ball-shadow {
                 position: absolute;
-                left: 5px;
-                top: 50%;
-                width: 18px;
-                height: 5px;
-                margin-top: 11px;
+                left: 4px;
+                bottom: -7px;
+                width: 26px;
+                height: 7px;
                 border-radius: 9999px;
                 background: black;
-                animation: ballShadow 4.2s ease-in-out 500ms 1 forwards;
-                pointer-events: none;
-                z-index: 19;
+                animation: ballShadowScale 3.8s 500ms 1 forwards;
               }
-              @keyframes logoBump {
-                0%, 48% { transform: scale(1) rotate(0deg); }
-                52% { transform: scale(1.05) rotate(-2deg); }
-                58% { transform: scale(0.97) rotate(2deg); }
-                65% { transform: scale(1.02) rotate(-1deg); }
-                100% { transform: scale(1) rotate(0deg); }
+              @keyframes logoReact {
+                0%, 43%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                46%  { transform: translateY(3px) rotate(-1.5deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: linear; }
+                60%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                63%  { transform: translateY(1.5px) rotate(-0.8deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                70%  { transform: translateY(0) rotate(0deg); }
+                100% { transform: translateY(0) rotate(0deg); }
               }
               .logo-bump {
-                animation: logoBump 4.2s ease-out 500ms 1;
-                transform-origin: center;
+                animation: logoReact 3.8s 500ms 1;
+                transform-origin: bottom center;
               }
               @media (prefers-reduced-motion: reduce) {
-                .soccer-ball, .soccer-ball-shadow { animation: none; opacity: 0; }
+                .ball-wrap, .ball-shadow { animation: none; opacity: 0; }
                 .logo-bump { animation: none; }
               }
             `}</style>
-            <div className="soccer-ball-shadow" aria-hidden="true" />
-            <div className="soccer-ball" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="22" height="22">
-                <defs>
-                  <radialGradient id="redBallGradDesktop" cx="35%" cy="30%" r="75%">
-                    <stop offset="0%" stopColor="#fca5a5" />
-                    <stop offset="45%" stopColor="#dc2626" />
-                    <stop offset="100%" stopColor="#7f1d1d" />
-                  </radialGradient>
-                </defs>
-                <circle cx="50" cy="50" r="46" fill="url(#redBallGradDesktop)" stroke="#7f1d1d" strokeWidth="2" />
-                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
-                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
-                  stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
-                <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
-              </svg>
+            <div className="ball-wrap" aria-hidden="true">
+              <div className="ball-shadow" />
+              <div className="ball-inner">
+                <svg viewBox="0 0 100 100" width="34" height="34">
+                  <defs>
+                    <radialGradient id="redBallGradDesktop" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fca5a5" />
+                      <stop offset="45%" stopColor="#dc2626" />
+                      <stop offset="100%" stopColor="#7f1d1d" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="50" cy="50" r="46" fill="url(#redBallGradDesktop)" stroke="#7f1d1d" strokeWidth="2" />
+                  <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
+                  <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                    stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
+                  <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
+                </svg>
+              </div>
             </div>
             <Link href="/" className="logo-bump inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
               <Image
