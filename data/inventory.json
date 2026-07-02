@@ -626,7 +626,7 @@
     "price": 14900,
     "down": 7000,
     "vin": "1GCEK14T94Z120570",
-    "miles": -4,
+    "miles": "EXPT",
     "fuel": "Gasoline",
     "engine": "5.3L V-Shaped V8",
     "transmission": "Automatic",
