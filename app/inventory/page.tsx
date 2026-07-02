@@ -7,6 +7,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { vehicles, VehicleType } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 import { useState, useEffect } from "react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -351,8 +352,21 @@ function Pagination({ page, totalPages, lang, onPageChange }: {
 // ─── Vehicle card ───────────────────────────────────────────────────────────────
 
 function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof vehicles)[number]; lang: "en" | "es"; highlight?: boolean }) {
-  const mainImg = vehicle.images?.[0] ?? "/cars/placeholder.jpg";
+  const images = vehicle.images && vehicle.images.length > 0 ? vehicle.images : ["/cars/placeholder.jpg"];
+  const [imgIndex, setImgIndex] = useState(0);
   const isSold  = vehicle.status === "sold";
+  const hasMultiple = images.length > 1;
+
+  const prevImage = (e: ReactMouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setImgIndex((i) => (i - 1 + images.length) % images.length);
+  };
+  const nextImage = (e: ReactMouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setImgIndex((i) => (i + 1) % images.length);
+  };
 
   return (
     <div
@@ -361,13 +375,42 @@ function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof ve
       }`}
     >
       {/* Image */}
-      <div className="relative w-full h-52 bg-gray-100 shrink-0">
+      <div className="relative w-full h-52 bg-gray-100 shrink-0 group/img overflow-hidden">
         <Image
-          src={mainImg}
+          src={images[imgIndex]}
           alt={`${fullYear(vehicle.year)} ${vehicle.make} ${vehicle.model}`}
           fill
-          className={`object-cover ${isSold ? "opacity-50 grayscale" : ""}`}
+          className={`object-cover transition-opacity duration-150 ${isSold ? "opacity-50 grayscale" : ""}`}
         />
+
+        {hasMultiple && (
+          <>
+            <button
+              type="button"
+              onClick={prevImage}
+              aria-label={lang === "en" ? "Previous photo" : "Foto anterior"}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 text-white opacity-0 group-hover/img:opacity-100 hover:bg-black/60 transition"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={nextImage}
+              aria-label={lang === "en" ? "Next photo" : "Siguiente foto"}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 text-white opacity-0 group-hover/img:opacity-100 hover:bg-black/60 transition"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+            <span className="absolute bottom-2 right-2 z-10 bg-black/55 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full">
+              {imgIndex + 1}/{images.length}
+            </span>
+          </>
+        )}
+
         {highlight && (
           <span className="absolute top-3 right-3 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-full shadow uppercase tracking-wide">
             {lang === "en" ? "New" : "Nuevo"}
