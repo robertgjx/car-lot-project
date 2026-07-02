@@ -46,64 +46,81 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes ballGroupRollMobile {
-                0%   { transform: translateX(0); opacity: 0; }
-                6%   { transform: translateX(0); opacity: 1; }
-                45%  { transform: translateX(0); opacity: 1; }
-                78%  { transform: translateX(-165px); opacity: 1; }
-                92%  { transform: translateX(-185px); opacity: 0; }
-                100% { transform: translateX(-185px); opacity: 0; }
+              @keyframes ballRollMobile {
+                0%   { transform: translate(-56px, 6px) rotate(0deg); opacity: 1; }
+                12%  { transform: translate(-30px, 6px) rotate(120deg); }
+                30%  { transform: translate(18px, 6px) rotate(340deg); }
+                46%  { transform: translate(44px, 6px) rotate(520deg); }
+                52%  { transform: translate(50px, -16px) rotate(590deg); }
+                60%  { transform: translate(58px, 6px) rotate(660deg); }
+                66%  { transform: translate(63px, -8px) rotate(710deg); }
+                74%  { transform: translate(70px, 6px) rotate(770deg); }
+                86%  { transform: translate(105px, 6px) rotate(920deg); opacity: 1; }
+                100% { transform: translate(165px, 6px) rotate(1080deg); opacity: 0; }
               }
-              @keyframes ballSpinMobile {
-                0%, 45%  { transform: rotate(0deg); }
-                78% { transform: rotate(-620deg); }
-                100% { transform: rotate(-620deg); }
+              @keyframes ballShadowMobile {
+                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
+                52% { opacity: 0.08; transform: translateX(6px) scaleX(0.6); }
+                66% { opacity: 0.1; transform: translateX(6px) scaleX(0.7); }
               }
-              @keyframes trailFadeMobile {
-                0%, 42% { opacity: 0; }
-                55% { opacity: 0.9; }
-                78% { opacity: 0.5; }
-                100% { opacity: 0; }
-              }
-              .ball-group-mobile {
+              .soccer-ball-mobile {
                 position: absolute;
-                left: 100%;
-                margin-left: 8px;
+                left: 0;
                 top: 50%;
-                margin-top: -8px;
-                width: 16px;
-                height: 16px;
-                animation: ballGroupRollMobile 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
+                width: 15px;
+                height: 15px;
+                margin-top: -7.5px;
+                animation: ballRollMobile 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
-              .ball-emoji-mobile {
-                display: block;
-                font-size: 15px;
-                line-height: 1;
-                animation: ballSpinMobile 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
-              }
-              .ball-trail-mobile {
+              .soccer-ball-shadow-mobile {
                 position: absolute;
-                right: 100%;
+                left: 3px;
                 top: 50%;
-                width: 55px;
-                height: 3px;
-                margin-top: -1.5px;
-                margin-right: 3px;
+                width: 12px;
+                height: 4px;
+                margin-top: 8px;
                 border-radius: 9999px;
-                background: linear-gradient(to left, rgba(37,99,235,0.55), rgba(37,99,235,0));
-                animation: trailFadeMobile 3.2s ease-in-out 500ms 1 forwards;
+                background: black;
+                animation: ballShadowMobile 4.2s ease-in-out 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 19;
+              }
+              @keyframes logoBumpMobile {
+                0%, 48% { transform: scale(1) rotate(0deg); }
+                52% { transform: scale(1.05) rotate(-2deg); }
+                58% { transform: scale(0.97) rotate(2deg); }
+                65% { transform: scale(1.02) rotate(-1deg); }
+                100% { transform: scale(1) rotate(0deg); }
+              }
+              .logo-bump-mobile {
+                animation: logoBumpMobile 4.2s ease-out 500ms 1;
+                transform-origin: center;
               }
               @media (prefers-reduced-motion: reduce) {
-                .ball-group-mobile, .ball-emoji-mobile, .ball-trail-mobile { animation: none; opacity: 0; }
+                .soccer-ball-mobile, .soccer-ball-shadow-mobile { animation: none; opacity: 0; }
+                .logo-bump-mobile { animation: none; }
               }
             `}</style>
-            <div className="ball-group-mobile" aria-hidden="true">
-              <div className="ball-trail-mobile" />
-              <span className="ball-emoji-mobile select-none">⚽</span>
+            <div className="soccer-ball-shadow-mobile" aria-hidden="true" />
+            <div className="soccer-ball-mobile" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="15" height="15">
+                <defs>
+                  <radialGradient id="redBallGradMobile" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stopColor="#fca5a5" />
+                    <stop offset="45%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#7f1d1d" />
+                  </radialGradient>
+                </defs>
+                <circle cx="50" cy="50" r="46" fill="url(#redBallGradMobile)" stroke="#7f1d1d" strokeWidth="2" />
+                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
+                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                  stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
+                <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
+              </svg>
             </div>
-            <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="logo-bump-mobile inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
               <Image
                 src="/logo.jpg"
                 alt="Garcia's Auto Sales RGV"
@@ -177,64 +194,81 @@ export default function NavBar() {
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <div className="relative">
             <style>{`
-              @keyframes ballGroupRoll {
-                0%   { transform: translateX(0); opacity: 0; }
-                6%   { transform: translateX(0); opacity: 1; }
-                45%  { transform: translateX(0); opacity: 1; }
-                78%  { transform: translateX(-270px); opacity: 1; }
-                92%  { transform: translateX(-300px); opacity: 0; }
-                100% { transform: translateX(-300px); opacity: 0; }
+              @keyframes ballRoll {
+                0%   { transform: translate(-90px, 8px) rotate(0deg); opacity: 1; }
+                12%  { transform: translate(-48px, 8px) rotate(120deg); }
+                30%  { transform: translate(28px, 8px) rotate(340deg); }
+                46%  { transform: translate(68px, 8px) rotate(520deg); }
+                52%  { transform: translate(78px, -24px) rotate(590deg); }
+                60%  { transform: translate(90px, 8px) rotate(660deg); }
+                66%  { transform: translate(98px, -12px) rotate(710deg); }
+                74%  { transform: translate(108px, 8px) rotate(770deg); }
+                86%  { transform: translate(165px, 8px) rotate(920deg); opacity: 1; }
+                100% { transform: translate(260px, 8px) rotate(1080deg); opacity: 0; }
               }
-              @keyframes ballSpin {
-                0%, 45%  { transform: rotate(0deg); }
-                78% { transform: rotate(-620deg); }
-                100% { transform: rotate(-620deg); }
+              @keyframes ballShadow {
+                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
+                52% { opacity: 0.08; transform: translateX(9px) scaleX(0.6); }
+                66% { opacity: 0.1; transform: translateX(9px) scaleX(0.7); }
               }
-              @keyframes trailFade {
-                0%, 42% { opacity: 0; }
-                55% { opacity: 0.9; }
-                78% { opacity: 0.5; }
-                100% { opacity: 0; }
-              }
-              .ball-group {
+              .soccer-ball {
                 position: absolute;
-                left: 100%;
-                margin-left: 10px;
+                left: 0;
                 top: 50%;
-                margin-top: -12px;
-                width: 24px;
-                height: 24px;
-                animation: ballGroupRoll 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
+                width: 22px;
+                height: 22px;
+                margin-top: -11px;
+                animation: ballRoll 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
-              .ball-emoji {
-                display: block;
-                font-size: 22px;
-                line-height: 1;
-                animation: ballSpin 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
-              }
-              .ball-trail {
+              .soccer-ball-shadow {
                 position: absolute;
-                right: 100%;
+                left: 5px;
                 top: 50%;
-                width: 90px;
-                height: 4px;
-                margin-top: -2px;
-                margin-right: 4px;
+                width: 18px;
+                height: 5px;
+                margin-top: 11px;
                 border-radius: 9999px;
-                background: linear-gradient(to left, rgba(37,99,235,0.55), rgba(37,99,235,0));
-                animation: trailFade 3.2s ease-in-out 500ms 1 forwards;
+                background: black;
+                animation: ballShadow 4.2s ease-in-out 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 19;
+              }
+              @keyframes logoBump {
+                0%, 48% { transform: scale(1) rotate(0deg); }
+                52% { transform: scale(1.05) rotate(-2deg); }
+                58% { transform: scale(0.97) rotate(2deg); }
+                65% { transform: scale(1.02) rotate(-1deg); }
+                100% { transform: scale(1) rotate(0deg); }
+              }
+              .logo-bump {
+                animation: logoBump 4.2s ease-out 500ms 1;
+                transform-origin: center;
               }
               @media (prefers-reduced-motion: reduce) {
-                .ball-group, .ball-emoji, .ball-trail { animation: none; opacity: 0; }
+                .soccer-ball, .soccer-ball-shadow { animation: none; opacity: 0; }
+                .logo-bump { animation: none; }
               }
             `}</style>
-            <div className="ball-group" aria-hidden="true">
-              <div className="ball-trail" />
-              <span className="ball-emoji select-none">⚽</span>
+            <div className="soccer-ball-shadow" aria-hidden="true" />
+            <div className="soccer-ball" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="22" height="22">
+                <defs>
+                  <radialGradient id="redBallGradDesktop" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stopColor="#fca5a5" />
+                    <stop offset="45%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#7f1d1d" />
+                  </radialGradient>
+                </defs>
+                <circle cx="50" cy="50" r="46" fill="url(#redBallGradDesktop)" stroke="#7f1d1d" strokeWidth="2" />
+                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="none" stroke="white" strokeWidth="3.2" opacity="0.9" />
+                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                  stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round" opacity="0.75" />
+                <ellipse cx="38" cy="32" rx="11" ry="7" fill="white" opacity="0.35" />
+              </svg>
             </div>
-            <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
+            <Link href="/" className="logo-bump inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
               <Image
                 src="/logo.jpg"
                 alt="Garcia's Auto Sales RGV"
