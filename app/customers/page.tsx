@@ -21,7 +21,7 @@ export default function CustomersPage() {
   ];
 
   return (
-    <main className="min-h-screen max-w-6xl mx-auto px-4 md:px-10 py-8">
+    <main className="min-h-screen max-w-[1800px] mx-auto px-4 md:px-6 py-8">
 
       {/* HEADER BANNER */}
       <div className="mb-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-600 to-red-800 px-6 py-9 md:px-10 md:py-12 shadow-sm">

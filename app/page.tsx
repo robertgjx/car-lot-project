@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* REST OF PAGE */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div className="max-w-[1800px] mx-auto px-4 md:px-6">
 
         {/* BRAND STRIP */}
         <section className="mt-8 rounded-3xl border border-gray-200 bg-gray-50 px-6 py-5">

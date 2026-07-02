@@ -13,7 +13,7 @@ export default function NavBar() {
     <>
       {/* TOP INFO BAR — desktop only */}
       <div className="hidden md:block bg-red-600 text-white text-xs">
-        <div className="max-w-6xl mx-auto px-4 md:px-10 py-2 flex flex-wrap items-center justify-between gap-y-1 gap-x-4">
+        <div className="max-w-[1800px] mx-auto px-4 md:px-6 py-2 flex flex-wrap items-center justify-between gap-y-1 gap-x-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="flex items-center gap-1">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -114,7 +114,7 @@ export default function NavBar() {
         )}
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex max-w-6xl mx-auto pl-2 pr-6 md:pr-10 py-2 items-center justify-between">
+        <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
             <Image
               src="/logo.jpg"

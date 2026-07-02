@@ -749,8 +749,8 @@ function InventoryInner() {
   ];
 
   return (
-    <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
-      <div className="max-w-6xl mx-auto">
+    <main className="min-h-screen bg-white text-gray-900 p-4 md:p-6">
+      <div className="max-w-[1800px] mx-auto">
 
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -795,7 +795,7 @@ function InventoryInner() {
               </span>
               <div className="h-px flex-1 bg-gray-200" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {newInventory.map((vehicle) => (
                 <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} highlight />
               ))}
@@ -931,7 +931,7 @@ function InventoryInner() {
         )}
 
         {/* ── Vehicle Grid ── */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {paginated.map((vehicle) => (
             <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} />
           ))}
