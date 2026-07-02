@@ -44,17 +44,88 @@ export default function NavBar() {
 
         {/* MOBILE NAV */}
         <div className="flex md:hidden items-center justify-between px-3 py-1">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
-            <Image
-              src="/logo.jpg"
-              alt="Garcia's Auto Sales RGV"
-              width={220}
-              height={88}
-              className="object-contain w-36"
-              style={{ maxHeight: '52px' }}
-              priority
-            />
-          </Link>
+          <div className="relative">
+            <style>{`
+              @keyframes ballRollMobile {
+                0%   { transform: translate(-56px, 6px) rotate(0deg); opacity: 1; }
+                12%  { transform: translate(-30px, 6px) rotate(120deg); }
+                30%  { transform: translate(18px, 6px) rotate(340deg); }
+                46%  { transform: translate(44px, 6px) rotate(520deg); }
+                52%  { transform: translate(50px, -16px) rotate(590deg); }
+                60%  { transform: translate(58px, 6px) rotate(660deg); }
+                66%  { transform: translate(63px, -8px) rotate(710deg); }
+                74%  { transform: translate(70px, 6px) rotate(770deg); }
+                86%  { transform: translate(105px, 6px) rotate(920deg); opacity: 1; }
+                100% { transform: translate(165px, 6px) rotate(1080deg); opacity: 0; }
+              }
+              @keyframes ballShadowMobile {
+                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
+                52% { opacity: 0.08; transform: translateX(6px) scaleX(0.6); }
+                66% { opacity: 0.1; transform: translateX(6px) scaleX(0.7); }
+              }
+              .soccer-ball-mobile {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 15px;
+                height: 15px;
+                margin-top: -7.5px;
+                animation: ballRollMobile 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 20;
+              }
+              .soccer-ball-shadow-mobile {
+                position: absolute;
+                left: 3px;
+                top: 50%;
+                width: 12px;
+                height: 4px;
+                margin-top: 8px;
+                border-radius: 9999px;
+                background: black;
+                animation: ballShadowMobile 4.2s ease-in-out 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 19;
+              }
+              @keyframes logoBumpMobile {
+                0%, 48% { transform: scale(1) rotate(0deg); }
+                52% { transform: scale(1.05) rotate(-2deg); }
+                58% { transform: scale(0.97) rotate(2deg); }
+                65% { transform: scale(1.02) rotate(-1deg); }
+                100% { transform: scale(1) rotate(0deg); }
+              }
+              .logo-bump-mobile {
+                animation: logoBumpMobile 4.2s ease-out 500ms 1;
+                transform-origin: center;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .soccer-ball-mobile, .soccer-ball-shadow-mobile { animation: none; opacity: 0; }
+                .logo-bump-mobile { animation: none; }
+              }
+            `}</style>
+            <div className="soccer-ball-shadow-mobile" aria-hidden="true" />
+            <div className="soccer-ball-mobile" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="15" height="15">
+                <circle cx="50" cy="50" r="46" fill="white" stroke="#1a1a1a" strokeWidth="4" />
+                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="#1a1a1a" />
+                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                  stroke="#1a1a1a" strokeWidth="4" fill="none" strokeLinecap="round" />
+                <path d="M50,10 L36,4 M50,10 L64,4 M84,29 L96,20 M84,29 L96,40 M67,82 L60,96 M67,82 L82,90 M33,82 L40,96 M33,82 L18,90 M16,29 L4,20 M16,29 L4,40"
+                  stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.75" />
+              </svg>
+            </div>
+            <Link href="/" onClick={() => setMenuOpen(false)} className="logo-bump-mobile inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
+              <Image
+                src="/logo.jpg"
+                alt="Garcia's Auto Sales RGV"
+                width={220}
+                height={88}
+                className="object-contain w-36"
+                style={{ maxHeight: '52px' }}
+                priority
+              />
+            </Link>
+          </div>
           <div className="flex items-center gap-4 pr-1">
             <Link href="/scan" className="text-gray-700 hover:text-red-600 transition" aria-label="VIN Scanner">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -118,13 +189,21 @@ export default function NavBar() {
           <div className="relative">
             <style>{`
               @keyframes ballRoll {
-                0%   { transform: translate(-70px, 6px) rotate(0deg); opacity: 1; }
-                44%  { transform: translate(64px, 6px) rotate(480deg); }
-                50%  { transform: translate(78px, -20px) rotate(560deg); }
-                58%  { transform: translate(94px, 6px) rotate(650deg); }
-                64%  { transform: translate(104px, -9px) rotate(710deg); }
-                72%  { transform: translate(118px, 6px) rotate(780deg); }
-                100% { transform: translate(260px, 6px) rotate(1080deg); opacity: 0; }
+                0%   { transform: translate(-90px, 8px) rotate(0deg); opacity: 1; }
+                12%  { transform: translate(-48px, 8px) rotate(120deg); }
+                30%  { transform: translate(28px, 8px) rotate(340deg); }
+                46%  { transform: translate(68px, 8px) rotate(520deg); }
+                52%  { transform: translate(78px, -24px) rotate(590deg); }
+                60%  { transform: translate(90px, 8px) rotate(660deg); }
+                66%  { transform: translate(98px, -12px) rotate(710deg); }
+                74%  { transform: translate(108px, 8px) rotate(770deg); }
+                86%  { transform: translate(165px, 8px) rotate(920deg); opacity: 1; }
+                100% { transform: translate(260px, 8px) rotate(1080deg); opacity: 0; }
+              }
+              @keyframes ballShadow {
+                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
+                52% { opacity: 0.08; transform: translateX(9px) scaleX(0.6); }
+                66% { opacity: 0.1; transform: translateX(9px) scaleX(0.7); }
               }
               .soccer-ball {
                 position: absolute;
@@ -133,31 +212,48 @@ export default function NavBar() {
                 width: 22px;
                 height: 22px;
                 margin-top: -11px;
-                animation: ballRoll 2.6s cubic-bezier(0.33, 0.1, 0.4, 1) 500ms 1 forwards;
+                animation: ballRoll 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
+              .soccer-ball-shadow {
+                position: absolute;
+                left: 5px;
+                top: 50%;
+                width: 18px;
+                height: 5px;
+                margin-top: 11px;
+                border-radius: 9999px;
+                background: black;
+                animation: ballShadow 4.2s ease-in-out 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 19;
+              }
               @keyframes logoBump {
-                0%, 46% { transform: scale(1) rotate(0deg); }
-                50% { transform: scale(1.05) rotate(-2deg); }
-                56% { transform: scale(0.97) rotate(2deg); }
-                62% { transform: scale(1.02) rotate(-1deg); }
+                0%, 48% { transform: scale(1) rotate(0deg); }
+                52% { transform: scale(1.05) rotate(-2deg); }
+                58% { transform: scale(0.97) rotate(2deg); }
+                65% { transform: scale(1.02) rotate(-1deg); }
                 100% { transform: scale(1) rotate(0deg); }
               }
               .logo-bump {
-                animation: logoBump 2.6s ease-out 500ms 1;
+                animation: logoBump 4.2s ease-out 500ms 1;
                 transform-origin: center;
               }
               @media (prefers-reduced-motion: reduce) {
-                .soccer-ball { animation: none; opacity: 0; }
+                .soccer-ball, .soccer-ball-shadow { animation: none; opacity: 0; }
                 .logo-bump { animation: none; }
               }
             `}</style>
+            <div className="soccer-ball-shadow" aria-hidden="true" />
             <div className="soccer-ball" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="22" height="22">
-                <circle cx="16" cy="16" r="14.5" fill="white" stroke="#1a1a1a" strokeWidth="1.4" />
-                <polygon points="16,7 21.5,11 19.5,17.3 12.5,17.3 10.5,11" fill="#1a1a1a" />
-                <path d="M16 7 L11.5 4 M16 7 L20.5 4 M12.5 17.3 L10 23 M19.5 17.3 L22 23 M10.5 11 L4 10 M21.5 11 L28 10" stroke="#1a1a1a" strokeWidth="1.1" fill="none" />
+              <svg viewBox="0 0 100 100" width="22" height="22">
+                <circle cx="50" cy="50" r="46" fill="white" stroke="#1a1a1a" strokeWidth="4" />
+                <polygon points="50,28 68,41 61,62 39,62 32,41" fill="#1a1a1a" />
+                <path d="M50,28 L50,10 M68,41 L84,29 M61,62 L67,82 M39,62 L33,82 M32,41 L16,29"
+                  stroke="#1a1a1a" strokeWidth="4" fill="none" strokeLinecap="round" />
+                <path d="M50,10 L36,4 M50,10 L64,4 M84,29 L96,20 M84,29 L96,40 M67,82 L60,96 M67,82 L82,90 M33,82 L40,96 M33,82 L18,90 M16,29 L4,20 M16,29 L4,40"
+                  stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.75" />
               </svg>
             </div>
             <Link href="/" className="logo-bump inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
