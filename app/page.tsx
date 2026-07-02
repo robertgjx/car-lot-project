@@ -62,8 +62,12 @@ function VinModal({ lang, vin, result, onClose }: { lang: string; vin: string; r
         <div className="px-6 py-4 flex flex-col gap-4">
           {inventoryMatch ? (
             <div className="rounded-2xl bg-green-50 border-2 border-green-400 p-4">
-              <p className="font-bold text-green-700 text-sm mb-1">
-                ✅ {lang === "en" ? "We have this vehicle in stock!" : "¡Tenemos este vehículo en inventario!"}
+              <p className="flex items-center gap-1.5 font-bold text-green-700 text-sm mb-1">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                  <circle cx="12" cy="12" r="9" />
+                  <polyline points="8 12.5 10.5 15 16 9" />
+                </svg>
+                {lang === "en" ? "We have this vehicle in stock!" : "¡Tenemos este vehículo en inventario!"}
               </p>
               <p className="text-green-800 font-extrabold text-2xl">
                 {inventoryMatch.price ? `$${inventoryMatch.price.toLocaleString()}` : lang === "en" ? "Call for price" : "Llame para precio"}
@@ -260,10 +264,18 @@ export default function Home() {
             style={{ animationDelay: "380ms" }}
           >
             <span className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-5 py-2.5 text-sm font-extrabold text-white uppercase tracking-widest shadow-lg">
-              💳 {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <rect x="1" y="4" width="22" height="16" rx="2" />
+                <line x1="1" y1="10" x2="23" y2="10" />
+              </svg>
+              {lang === "en" ? "Buy Here Pay Here" : "Compra Aquí Paga Aquí"}
             </span>
             <span className="inline-flex items-center gap-2 rounded-2xl bg-white/20 border border-white/40 px-5 py-2.5 text-sm font-bold text-white">
-              ✅ {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="8 12.5 10.5 15 16 9" />
+              </svg>
+              {lang === "en" ? "No Credit? No Problem!" : "¿Sin Crédito? ¡No Hay Problema!"}
             </span>
           </div>
           <div
