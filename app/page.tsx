@@ -428,26 +428,30 @@ export default function Home() {
   </div>
 </section>
 
-        {/* SEASONAL PROMO — July $50 Meat Market flyer */}
-        <section className="mt-6">
-          <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg max-w-md mx-auto">
-            <Image
-              src="/july-meat-market-promo.png"
-              alt={lang === "en"
-                ? "Get $50 towards the meat market at Carnes Finas Del Valle when you buy any vehicle from Garcia's Auto Sales RGV in July"
-                : "Recibe $50 para la carnicería Carnes Finas Del Valle al comprar cualquier vehículo de Garcia's Auto Sales RGV en julio"}
-              width={1114}
-              height={1400}
-              className="w-full h-auto"
-              priority={false}
-            />
-          </div>
-          <p className="mt-4 text-center text-sm text-gray-500">
-            {lang === "en"
-              ? "Offer valid throughout July with any vehicle purchase. Ask us for details."
-              : "Oferta válida durante todo julio con la compra de cualquier vehículo. Pregúntanos por los detalles."}
-          </p>
-        </section>
+      </div>
+      {/* ↑ container closed early so the promo below can go full-bleed, like the hero ↑ */}
+
+      {/* SEASONAL PROMO — July $50 Meat Market flyer (full-bleed, edge-to-edge) */}
+      <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
+        <Image
+          src="/july-meat-market-promo.png"
+          alt={lang === "en"
+            ? "Get $50 towards the meat market at Carnes Finas Del Valle when you buy any vehicle from Garcia's Auto Sales RGV in July"
+            : "Recibe $50 para la carnicería Carnes Finas Del Valle al comprar cualquier vehículo de Garcia's Auto Sales RGV en julio"}
+          width={1114}
+          height={1400}
+          className="w-full h-auto"
+          priority={false}
+        />
+      </section>
+
+      {/* container reopened for the rest of the page */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <p className="mt-4 text-center text-sm text-gray-500">
+          {lang === "en"
+            ? "Offer valid throughout July with any vehicle purchase. Ask us for details."
+            : "Oferta válida durante todo julio con la compra de cualquier vehículo. Pregúntanos por los detalles."}
+        </p>
 
         {/* FEATURED VEHICLES */}
         <section className="mt-10">
