@@ -115,18 +115,64 @@ export default function NavBar() {
 
         {/* DESKTOP NAV */}
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
-          <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
-            <Image
-              src="/logo.jpg"
-              alt="Garcia's Auto Sales RGV"
-              width={220}
-              height={88}
-              className="object-contain w-56 md:w-72"
-              style={{ maxHeight: '80px' }}
-              priority
-            />
-            <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
-          </Link>
+          <div className="relative">
+            <style>{`
+              @keyframes ballRoll {
+                0%   { transform: translate(-70px, 6px) rotate(0deg); opacity: 1; }
+                44%  { transform: translate(64px, 6px) rotate(480deg); }
+                50%  { transform: translate(78px, -20px) rotate(560deg); }
+                58%  { transform: translate(94px, 6px) rotate(650deg); }
+                64%  { transform: translate(104px, -9px) rotate(710deg); }
+                72%  { transform: translate(118px, 6px) rotate(780deg); }
+                100% { transform: translate(260px, 6px) rotate(1080deg); opacity: 0; }
+              }
+              .soccer-ball {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 22px;
+                height: 22px;
+                margin-top: -11px;
+                animation: ballRoll 2.6s cubic-bezier(0.33, 0.1, 0.4, 1) 500ms 1 forwards;
+                pointer-events: none;
+                z-index: 20;
+              }
+              @keyframes logoBump {
+                0%, 46% { transform: scale(1) rotate(0deg); }
+                50% { transform: scale(1.05) rotate(-2deg); }
+                56% { transform: scale(0.97) rotate(2deg); }
+                62% { transform: scale(1.02) rotate(-1deg); }
+                100% { transform: scale(1) rotate(0deg); }
+              }
+              .logo-bump {
+                animation: logoBump 2.6s ease-out 500ms 1;
+                transform-origin: center;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .soccer-ball { animation: none; opacity: 0; }
+                .logo-bump { animation: none; }
+              }
+            `}</style>
+            <div className="soccer-ball" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="22" height="22">
+                <circle cx="16" cy="16" r="14.5" fill="white" stroke="#1a1a1a" strokeWidth="1.4" />
+                <polygon points="16,7 21.5,11 19.5,17.3 12.5,17.3 10.5,11" fill="#1a1a1a" />
+                <path d="M16 7 L11.5 4 M16 7 L20.5 4 M12.5 17.3 L10 23 M19.5 17.3 L22 23 M10.5 11 L4 10 M21.5 11 L28 10" stroke="#1a1a1a" strokeWidth="1.1" fill="none" />
+              </svg>
+            </div>
+            <Link href="/" className="logo-bump inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
+              <Image
+                src="/logo.jpg"
+                alt="Garcia's Auto Sales RGV"
+                width={220}
+                height={88}
+                className="object-contain w-56 md:w-72"
+                style={{ maxHeight: '80px' }}
+                priority
+              />
+              <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
+            </Link>
+          </div>
           <nav className="flex items-center gap-1 md:gap-2">
             <Link href="/" className="rounded-xl border border-gray-200 bg-white text-gray-900 px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm hover:bg-gray-100 transition">
               {t.nav.home[lang]}
