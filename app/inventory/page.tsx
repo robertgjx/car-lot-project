@@ -575,11 +575,8 @@ function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof ve
 
         {/* Miles */}
         <p className="mt-1 text-sm text-gray-400">
-          {vehicle.milesExempt
-            ? (lang === "en" ? "Mileage Exempt" : "Millaje Exento")
-            : vehicle.miles != null
-            ? `${vehicle.miles.toLocaleString()} ${lang === "en" ? "miles" : "millas"}`
-            : "N/A"}
+          {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}{" "}
+          {lang === "en" ? "miles" : "millas"}
         </p>
 
         <div className="mt-auto">
@@ -806,153 +803,166 @@ function InventoryInner() {
           </div>
         )}
 
-        {/* ── Vehicle Type Tabs ── */}
-        <div className="mt-2 flex gap-2 flex-wrap">
-          {typeTabs.map(({ key, labelKey, vtype }) => {
-            const count = typeCounts[key as keyof typeof typeCounts] ?? 0;
-            const isActive = type === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setType(key)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full border font-semibold text-sm transition
-                  ${isActive
-                    ? "bg-red-600 border-red-600 text-white"
-                    : "bg-white border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900"
-                  }`}
-              >
-                <TypeIcon type={vtype ?? "Car"} size={18} />
-                {t.inv[labelKey][lang]}
-                <span className={`text-xs font-normal ${isActive ? "opacity-70" : "text-gray-400"}`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Two-column layout: sidebar filters + main content */}
+        <div className="mt-4 lg:flex lg:gap-6 lg:items-start">
 
-        {/* ── Filters Bar ── */}
-        <div className="mt-4 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          {/* ── Sidebar Filters ── */}
+          <aside className="lg:w-72 xl:w-80 lg:shrink-0 mb-6 lg:mb-0">
+            <div className="lg:sticky lg:top-6 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-5">
 
-            <div className="md:col-span-4 bg-white border border-gray-200 rounded-xl px-4 py-3">
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                {lang === "en" ? "Price Range" : "Rango de Precio"}
-              </label>
-              <div className="mt-3">
-                <PriceRangeSlider
-                  bounds={priceBounds}
-                  value={priceRange}
-                  onChange={setPriceRange}
-                  lang={lang}
-                />
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-600">
+                  <span className="font-bold text-gray-900">{filtered.length}</span>{" "}
+                  {lang === "en" ? "matches" : "resultados"}
+                </p>
+                <button onClick={resetAll} className="text-sm font-semibold text-red-600 hover:underline">
+                  {t.inv.reset[lang]}
+                </button>
               </div>
-            </div>
 
-            <div className="md:col-span-2">
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.search[lang]}</label>
-              <input
-                value={query} onChange={(e) => setQuery(e.target.value)}
-                placeholder={t.inv.searchPh[lang]}
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.make[lang]}</label>
-              <select value={make} onChange={(e) => setMake(e.target.value)}
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
-                <option value="all">{t.inv.all[lang]}</option>
-                {makes.map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                {lang === "en" ? "Location" : "Ubicación"}
-              </label>
-              <select value={location} onChange={(e) => setLocation(e.target.value)}
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
-                <option value="all">{lang === "en" ? "All Locations" : "Todas"}</option>
-                <option value="Palma Vista">📍 Palma Vista</option>
-                <option value="Veterans Blvd">📍 Veterans Blvd</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                {lang === "en" ? "Status" : "Estado"}
-              </label>
-              <select value={status} onChange={(e) => setStatus(e.target.value)}
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
-                <option value="all">{lang === "en" ? "All" : "Todos"}</option>
-                <option value="available">{lang === "en" ? "✅ Available" : "✅ Disponible"}</option>
-                <option value="sold">{lang === "en" ? "🔴 Sold" : "🔴 Vendido"}</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                {lang === "en" ? "Min Down Payment" : "Enganche Mínimo"}
-              </label>
-              <input value={minDown} onChange={(e) => setMinDown(e.target.value)} inputMode="numeric" placeholder="$0"
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
-            </div>
-
-            <div>
-              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                {lang === "en" ? "Max Down Payment" : "Enganche Máximo"}
-              </label>
-              <input value={maxDown} onChange={(e) => setMaxDown(e.target.value)} inputMode="numeric"
-                placeholder={`$${maxInventoryDown.toLocaleString()}`}
-                className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
-            </div>
-
-            <div className="md:col-span-2 flex items-end gap-3">
-              <button onClick={resetAll}
-                className="w-full rounded-xl bg-red-600 text-white px-5 py-3 font-semibold hover:bg-red-700 transition">
-                {t.inv.reset[lang]}
-              </button>
-              <div className="w-full text-sm text-gray-600">
-                <div className="bg-white border border-gray-200 rounded-xl px-4 py-3">
-                  {t.inv.showing[lang]}{" "}
-                  <span className="font-semibold text-gray-900">{filtered.length}</span>{" "}
-                  {t.inv.of[lang]}{" "}
-                  <span className="font-semibold text-gray-900">{vehicles.length}</span>
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                  {lang === "en" ? "Price Range" : "Rango de Precio"}
+                </label>
+                <div className="mt-3">
+                  <PriceRangeSlider
+                    bounds={priceBounds}
+                    value={priceRange}
+                    onChange={setPriceRange}
+                    lang={lang}
+                  />
                 </div>
               </div>
+
+              <hr className="border-gray-100" />
+
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.make[lang]}</label>
+                <select value={make} onChange={(e) => setMake(e.target.value)}
+                  className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                  <option value="all">{t.inv.all[lang]}</option>
+                  {makes.map((m) => <option key={m} value={m}>{m}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                  {lang === "en" ? "Location" : "Ubicación"}
+                </label>
+                <select value={location} onChange={(e) => setLocation(e.target.value)}
+                  className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                  <option value="all">{lang === "en" ? "All Locations" : "Todas"}</option>
+                  <option value="Palma Vista">📍 Palma Vista</option>
+                  <option value="Veterans Blvd">📍 Veterans Blvd</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                  {lang === "en" ? "Status" : "Estado"}
+                </label>
+                <select value={status} onChange={(e) => setStatus(e.target.value)}
+                  className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
+                  <option value="all">{lang === "en" ? "All" : "Todos"}</option>
+                  <option value="available">{lang === "en" ? "✅ Available" : "✅ Disponible"}</option>
+                  <option value="sold">{lang === "en" ? "🔴 Sold" : "🔴 Vendido"}</option>
+                </select>
+              </div>
+
+              <hr className="border-gray-100" />
+
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                  {lang === "en" ? "Min Down Payment" : "Enganche Mínimo"}
+                </label>
+                <input value={minDown} onChange={(e) => setMinDown(e.target.value)} inputMode="numeric" placeholder="$0"
+                  className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
+              </div>
+
+              <div>
+                <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                  {lang === "en" ? "Max Down Payment" : "Enganche Máximo"}
+                </label>
+                <input value={maxDown} onChange={(e) => setMaxDown(e.target.value)} inputMode="numeric"
+                  placeholder={`$${maxInventoryDown.toLocaleString()}`}
+                  className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400" />
+              </div>
+
+            </div>
+          </aside>
+
+          {/* ── Main content ── */}
+          <div className="flex-1 min-w-0">
+
+            {/* Search bar */}
+            <input
+              value={query} onChange={(e) => setQuery(e.target.value)}
+              placeholder={t.inv.searchPh[lang]}
+              className="w-full rounded-xl bg-white border border-gray-200 px-5 py-4 text-gray-900 outline-none focus:border-red-400 transition placeholder-gray-400 shadow-sm"
+            />
+
+            <p className="mt-3 text-sm text-gray-600">
+              {t.inv.showing[lang]}{" "}
+              <span className="font-semibold text-gray-900">{filtered.length}</span>{" "}
+              {t.inv.of[lang]}{" "}
+              <span className="font-semibold text-gray-900">{vehicles.length}</span>
+            </p>
+
+            {/* ── Vehicle Type Tabs ── */}
+            <div className="mt-3 flex gap-2 flex-wrap">
+              {typeTabs.map(({ key, labelKey, vtype }) => {
+                const count = typeCounts[key as keyof typeof typeCounts] ?? 0;
+                const isActive = type === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setType(key)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border font-semibold text-sm transition
+                      ${isActive
+                        ? "bg-red-600 border-red-600 text-white"
+                        : "bg-white border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900"
+                      }`}
+                  >
+                    <TypeIcon type={vtype ?? "Car"} size={18} />
+                    {t.inv[labelKey][lang]}
+                    <span className={`text-xs font-normal ${isActive ? "opacity-70" : "text-gray-400"}`}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
+            {/* Pagination top */}
+            {totalPages > 1 && (
+              <div className="mt-6 mb-4">
+                <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
+              </div>
+            )}
+
+            {/* ── Vehicle Grid ── */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+              {paginated.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} />
+              ))}
+            </div>
+
+            {/* No results */}
+            {filtered.length === 0 && (
+              <div className="mt-10 text-gray-500 bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                {t.inv.noResults[lang]}
+              </div>
+            )}
+
+            {/* Pagination bottom */}
+            {totalPages > 1 && (
+              <div className="mt-10">
+                <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
+              </div>
+            )}
+
           </div>
         </div>
-
-        {/* Pagination top */}
-        {totalPages > 1 && (
-          <div className="mt-6 mb-4">
-            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
-          </div>
-        )}
-
-        {/* ── Vehicle Grid ── */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {paginated.map((vehicle) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle} lang={lang} />
-          ))}
-        </div>
-
-        {/* No results */}
-        {filtered.length === 0 && (
-          <div className="mt-10 text-gray-500 bg-gray-50 border border-gray-200 rounded-2xl p-6">
-            {t.inv.noResults[lang]}
-          </div>
-        )}
-
-        {/* Pagination bottom */}
-        {totalPages > 1 && (
-          <div className="mt-10">
-            <Pagination page={page} totalPages={totalPages} lang={lang} onPageChange={setPage} />
-          </div>
-        )}
 
         {/* Coming soon banner */}
         <div className="mt-12 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-8 text-center">
