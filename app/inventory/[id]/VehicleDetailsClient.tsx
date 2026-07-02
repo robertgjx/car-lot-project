@@ -168,6 +168,12 @@ export default function VehicleDetailsClient({
     ? `Based on listed down payment • ${vehicle.term ?? 24} month financing`
     : `Con el enganche indicado • Financiamiento a ${vehicle.term ?? 24} meses`;
 
+  const milesDisplay = vehicle.milesExempt
+    ? (lang === "en" ? "Exempt" : "Exento")
+    : vehicle.miles != null
+    ? vehicle.miles.toLocaleString()
+    : "N/A";
+
   return (
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-5xl mx-auto">
@@ -228,7 +234,7 @@ export default function VehicleDetailsClient({
               </p>
               <div className="space-y-2">
                 <Row label="VIN" value={val(vehicle.vin)} />
-                <Row label={lang === "en" ? "Miles" : "Millas"} value={vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"} />
+                <Row label={lang === "en" ? "Miles" : "Millas"} value={milesDisplay} />
                 <Row label={lang === "en" ? "Trim" : "Versión"} value={val(vehicle.trim)} />
                 <Row label={lang === "en" ? "Body Style" : "Tipo de Carrocería"} value={val(vehicle.bodyStyle)} />
                 <Row label={lang === "en" ? "Doors" : "Puertas"} value={val(vehicle.doors)} />

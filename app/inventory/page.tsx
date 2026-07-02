@@ -575,8 +575,11 @@ function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof ve
 
         {/* Miles */}
         <p className="mt-1 text-sm text-gray-400">
-          {vehicle.miles != null ? vehicle.miles.toLocaleString() : "N/A"}{" "}
-          {lang === "en" ? "miles" : "millas"}
+          {vehicle.milesExempt
+            ? (lang === "en" ? "Mileage Exempt" : "Millaje Exento")
+            : vehicle.miles != null
+            ? `${vehicle.miles.toLocaleString()} ${lang === "en" ? "miles" : "millas"}`
+            : "N/A"}
         </p>
 
         <div className="mt-auto">
