@@ -6,7 +6,9 @@ export default function ContactPage() {
   const { lang } = useLang();
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white text-gray-900 p-4 md:p-6">
+      <div className="max-w-[1800px] mx-auto">
+
       <h1 className="text-4xl font-bold text-gray-900">{t.nav.contact[lang]}</h1>
       <p className="mt-2 text-gray-500">
         {lang === "en"
@@ -142,6 +144,8 @@ export default function ContactPage() {
 
       {/* FOOTER SPACE */}
       <div className="pb-10" />
+
+      </div>
     </main>
   );
 }
