@@ -185,6 +185,7 @@ export default function Home() {
   const { lang } = useLang();
   const router = useRouter();
   const [heroQuery, setHeroQuery] = useState("");
+  const [showFlyer, setShowFlyer] = useState(false);
   const [featured, setFeatured] = useState<Vehicle[]>(vehicles.filter((v) => v.status !== "sold").slice(0, 3));
 
   const handleHeroSearch = (e: FormEvent) => {
@@ -380,12 +381,31 @@ export default function Home() {
 
       {/* TWO-PANEL PROMO BANNER — World Cup + July Meat Market offer */}
       <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
+        <style>{`
+          @keyframes emblemFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+          }
+          .flag-emblem { animation: emblemFloat 3s ease-in-out infinite; }
+        `}</style>
         <div className="grid grid-cols-1 md:grid-cols-2">
 
           {/* Left panel — World Cup Season */}
           <div className="relative overflow-hidden bg-gradient-to-br from-red-700 to-red-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
-            <div className="flex items-center justify-center w-16 h-16 rounded-full border-2 border-white/30">
-              <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.6rem", color: "#FBBF24" }} />
+            <div className="flex items-center justify-center gap-3">
+              <div
+                className="flag-emblem w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-lg"
+                style={{ animationDelay: "0ms" }}
+              >
+                <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
+              </div>
+              <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.5rem", color: "#FBBF24" }} />
+              <div
+                className="flag-emblem w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-lg"
+                style={{ animationDelay: "500ms" }}
+              >
+                <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
+              </div>
             </div>
             <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
               {lang === "en" ? "World Cup Season is here ⚽" : "¡Ya llegó la Temporada del Mundial! ⚽"}
@@ -419,19 +439,54 @@ export default function Home() {
                 ? "Buy any vehicle in July and get $50 to Carnes Finas Del Valle. Local dealer, real savings."
                 : "Compra cualquier vehículo en julio y recibe $50 para Carnes Finas Del Valle. Distribuidor local, ahorros reales."}
             </p>
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={() => setShowFlyer(true)}
               className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
             >
-              {lang === "en" ? "Ask About This Offer" : "Pregunta Por Esta Oferta"}
+              {lang === "en" ? "View Offer" : "Ver Oferta"}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
-            </Link>
+            </button>
           </div>
 
         </div>
       </section>
+
+      {/* July flyer popup */}
+      {showFlyer && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowFlyer(false)}
+        >
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div
+            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowFlyer(false)}
+              aria-label={lang === "en" ? "Close" : "Cerrar"}
+              className="absolute top-3 right-3 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <Image
+              src="/july-meat-market-promo.png"
+              alt={lang === "en"
+                ? "Get $50 towards the meat market at Carnes Finas Del Valle when you buy any vehicle from Garcia's Auto Sales RGV in July"
+                : "Recibe $50 para la carnicería Carnes Finas Del Valle al comprar cualquier vehículo de Garcia's Auto Sales RGV en julio"}
+              width={1114}
+              height={1400}
+              className="w-full h-auto rounded-3xl"
+            />
+          </div>
+        </div>
+      )}
+
 
       {/* container reopened for the rest of the page */}
       <div className="max-w-[1800px] mx-auto px-4 md:px-6">
