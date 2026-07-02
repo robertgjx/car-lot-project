@@ -375,90 +375,66 @@ export default function Home() {
           </div>
         </section>
 
-{/* SEASONAL ANNOUNCEMENT — World Cup 2026 + July Promo, side by side */}
-<section className="mt-6">
-  <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-stretch">
-
-    <div className="relative overflow-hidden rounded-3xl h-40 md:h-56">
-      <style>{`
-        @keyframes glowPulse {
-          0%, 100% {
-            box-shadow: 0 0 0 2px rgba(22,163,74,0.8), 0 0 20px 6px rgba(22,163,74,0.35);
-            border-color: rgba(22,163,74,0.8);
-          }
-          50% {
-            box-shadow: 0 0 0 2px rgba(220,38,38,0.8), 0 0 20px 6px rgba(220,38,38,0.35);
-            border-color: rgba(220,38,38,0.8);
-          }
-        }
-        .wc-glow-border {
-          animation: glowPulse 2.5s ease-in-out infinite;
-          border: 2px solid rgba(22,163,74,0.8);
-          border-radius: 1.5rem;
-        }
-      `}</style>
-
-      {/* USA flag — left diagonal */}
-      <div className="absolute inset-0" style={{ clipPath: "polygon(0 0, 62% 0, 38% 100%, 0 100%)" }}>
-        <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/10" />
       </div>
+      {/* ↑ container closed so this banner can go full-bleed edge-to-edge, like the hero ↑ */}
 
-      {/* Mexico flag — right diagonal */}
-      <div className="absolute inset-0" style={{ clipPath: "polygon(62% 0, 100% 0, 100% 100%, 38% 100%)" }}>
-        <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/10" />
-      </div>
+      {/* TWO-PANEL PROMO BANNER — World Cup + July Meat Market offer */}
+      <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2">
 
-      {/* Soft blend zone in the middle */}
-      <div
-        className="absolute inset-0"
-        style={{
-          clipPath: "polygon(58% 0, 66% 0, 42% 100%, 34% 100%)",
-          backdropFilter: "blur(2px)",
-          WebkitBackdropFilter: "blur(2px)",
-          background: "linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)",
-        }}
-      />
+          {/* Left panel — World Cup Season */}
+          <div className="relative overflow-hidden bg-gradient-to-br from-red-700 to-red-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full border-2 border-white/30">
+              <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.6rem", color: "#FBBF24" }} />
+            </div>
+            <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
+              {lang === "en" ? "World Cup Season is here ⚽" : "¡Ya llegó la Temporada del Mundial! ⚽"}
+            </p>
+            <p className="text-white/75 max-w-sm">
+              {lang === "en"
+                ? "Celebrate with us — check out our full lineup of trucks, SUVs, and cars."
+                : "Celebra con nosotros — mira toda nuestra selección de trocas, SUVs y carros."}
+            </p>
+            <Link
+              href="/inventory"
+              className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
+            >
+              {lang === "en" ? "View Inventory" : "Ver Inventario"}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </Link>
+          </div>
 
-      {/* Glow border */}
-      <div className="wc-glow-border absolute inset-0 pointer-events-none" />
+          {/* Right panel — July $50 Meat Market offer */}
+          <div className="relative overflow-hidden bg-gray-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full border-2 border-white/30">
+              <span className="text-white font-extrabold text-sm">$50</span>
+            </div>
+            <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
+              {lang === "en" ? "$50 Towards the Meat Market" : "$50 Para la Carnicería"}
+            </p>
+            <p className="text-white/70 max-w-sm">
+              {lang === "en"
+                ? "Buy any vehicle in July and get $50 to Carnes Finas Del Valle. Local dealer, real savings."
+                : "Compra cualquier vehículo en julio y recibe $50 para Carnes Finas Del Valle. Distribuidor local, ahorros reales."}
+            </p>
+            <Link
+              href="/contact"
+              className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
+            >
+              {lang === "en" ? "Ask About This Offer" : "Pregunta Por Esta Oferta"}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </Link>
+          </div>
 
-      {/* Center text */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-1">
-        <div className="flex items-center gap-3">
-          <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.4rem", color: "#FBBF24", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }} />
-          <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight"
-            style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8)" }}>
-            {lang === "en" ? "World Cup Season ⚽" : "Temporada del Mundial ⚽"}
-          </p>
-          <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.4rem", color: "#FBBF24", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }} />
         </div>
-        <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)", textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}>
-          {lang === "en" ? "— Garcia's Auto Sales RGV" : "— Garcia's Auto Sales RGV"}
-        </p>
-      </div>
-    </div>
+      </section>
 
-    {/* July $50 Meat Market promo — sized to match the banner beside it */}
-    <div className="relative w-full md:w-36 h-40 md:h-56 mx-auto rounded-3xl overflow-hidden border border-gray-200 shadow-md bg-black">
-      <Image
-        src="/july-meat-market-promo.png"
-        alt={lang === "en"
-          ? "Get $50 towards the meat market at Carnes Finas Del Valle when you buy any vehicle from Garcia's Auto Sales RGV in July"
-          : "Recibe $50 para la carnicería Carnes Finas Del Valle al comprar cualquier vehículo de Garcia's Auto Sales RGV en julio"}
-        fill
-        className="object-contain"
-      />
-    </div>
-
-  </div>
-  <p className="mt-3 text-center text-sm text-gray-500">
-    {lang === "en"
-      ? "July offer: $50 towards the meat market at Carnes Finas Del Valle with any vehicle purchase. Ask us for details."
-      : "Oferta de julio: $50 para la carnicería Carnes Finas Del Valle con la compra de cualquier vehículo. Pregúntanos por los detalles."}
-  </p>
-</section>
+      {/* container reopened for the rest of the page */}
+      <div className="max-w-[1800px] mx-auto px-4 md:px-6">
 
         {/* FEATURED VEHICLES */}
         <section className="mt-10">
