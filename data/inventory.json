@@ -88,6 +88,33 @@
     "status": "available"
   },
   {
+    "id": "2003-ford-ranger-3pa16969",
+    "year": 2003,
+    "make": "Ford",
+    "model": "Ranger",
+    "driveTrain": "4x4",
+    "price": 6500,
+    "down": 2000,
+    "miles":"EXPT",
+    "vin": "1FTZR45E13PA16969",
+    "fuel": "Gasoline",
+    "engine": "4.0L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 4,
+    "color": "Silver",
+    "location": "Veterans Blvd",
+    "images": [
+      "/cars/2003-ford-ranger-3pa16969/IMG_4283.JPG",
+      "/cars/2003-ford-ranger-3pa16969/IMG_4284.JPG",
+      "/cars/2003-ford-ranger-3pa16969/IMG_4285.JPG",
+      "/cars/2003-ford-ranger-3pa16969/IMG_4286.JPG",
+      "/cars/2003-ford-ranger-3pa16969/IMG_4287.JPG",
+      "/cars/2003-ford-ranger-3pa16969/IMG_4289.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2013-gmc-sierra-df120458",
     "year": 2013,
     "make": "GMC",
