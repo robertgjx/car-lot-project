@@ -46,68 +46,64 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes ballRollMobile {
-                0%   { transform: translate(-56px, 6px) rotate(0deg); opacity: 1; }
-                12%  { transform: translate(-30px, 6px) rotate(120deg); }
-                30%  { transform: translate(18px, 6px) rotate(340deg); }
-                46%  { transform: translate(44px, 6px) rotate(520deg); }
-                52%  { transform: translate(50px, -16px) rotate(590deg); }
-                60%  { transform: translate(58px, 6px) rotate(660deg); }
-                66%  { transform: translate(63px, -8px) rotate(710deg); }
-                74%  { transform: translate(70px, 6px) rotate(770deg); }
-                86%  { transform: translate(105px, 6px) rotate(920deg); opacity: 1; }
-                100% { transform: translate(165px, 6px) rotate(1080deg); opacity: 0; }
+              @keyframes ballGroupRollMobile {
+                0%   { transform: translateX(0); opacity: 0; }
+                6%   { transform: translateX(0); opacity: 1; }
+                45%  { transform: translateX(0); opacity: 1; }
+                78%  { transform: translateX(-165px); opacity: 1; }
+                92%  { transform: translateX(-185px); opacity: 0; }
+                100% { transform: translateX(-185px); opacity: 0; }
               }
-              @keyframes ballShadowMobile {
-                0%, 100% { opacity: 0.18; transform: translateX(0) scaleX(1); }
-                52% { opacity: 0.08; transform: translateX(6px) scaleX(0.6); }
-                66% { opacity: 0.1; transform: translateX(6px) scaleX(0.7); }
+              @keyframes ballSpinMobile {
+                0%, 45%  { transform: rotate(0deg); }
+                78% { transform: rotate(-620deg); }
+                100% { transform: rotate(-620deg); }
               }
-              .soccer-ball-mobile {
+              @keyframes trailFadeMobile {
+                0%, 42% { opacity: 0; }
+                55% { opacity: 0.9; }
+                78% { opacity: 0.5; }
+                100% { opacity: 0; }
+              }
+              .ball-group-mobile {
                 position: absolute;
-                left: 0;
+                left: 100%;
+                margin-left: 8px;
                 top: 50%;
-                width: 15px;
-                height: 15px;
-                margin-top: -7.5px;
-                animation: ballRollMobile 4.2s cubic-bezier(0.4, 0.05, 0.35, 1) 500ms 1 forwards;
+                margin-top: -8px;
+                width: 16px;
+                height: 16px;
+                animation: ballGroupRollMobile 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
-              .soccer-ball-shadow-mobile {
+              .ball-emoji-mobile {
+                display: block;
+                font-size: 15px;
+                line-height: 1;
+                animation: ballSpinMobile 3.2s cubic-bezier(0.5, 0.05, 0.4, 1) 500ms 1 forwards;
+              }
+              .ball-trail-mobile {
                 position: absolute;
-                left: 3px;
+                right: 100%;
                 top: 50%;
-                width: 12px;
-                height: 4px;
-                margin-top: 8px;
+                width: 55px;
+                height: 3px;
+                margin-top: -1.5px;
+                margin-right: 3px;
                 border-radius: 9999px;
-                background: black;
-                animation: ballShadowMobile 4.2s ease-in-out 500ms 1 forwards;
-                pointer-events: none;
-                z-index: 19;
-              }
-              @keyframes logoBumpMobile {
-                0%, 48% { transform: scale(1) rotate(0deg); }
-                52% { transform: scale(1.05) rotate(-2deg); }
-                58% { transform: scale(0.97) rotate(2deg); }
-                65% { transform: scale(1.02) rotate(-1deg); }
-                100% { transform: scale(1) rotate(0deg); }
-              }
-              .logo-bump-mobile {
-                animation: logoBumpMobile 4.2s ease-out 500ms 1;
-                transform-origin: center;
+                background: linear-gradient(to left, rgba(37,99,235,0.55), rgba(37,99,235,0));
+                animation: trailFadeMobile 3.2s ease-in-out 500ms 1 forwards;
               }
               @media (prefers-reduced-motion: reduce) {
-                .soccer-ball-mobile, .soccer-ball-shadow-mobile { animation: none; opacity: 0; }
-                .logo-bump-mobile { animation: none; }
+                .ball-group-mobile, .ball-emoji-mobile, .ball-trail-mobile { animation: none; opacity: 0; }
               }
             `}</style>
-            <div className="soccer-ball-shadow-mobile" aria-hidden="true" />
-            <div className="soccer-ball-mobile" aria-hidden="true">
-              <span style={{ fontSize: 15, lineHeight: 1, display: "block" }} className="select-none">⚽</span>
+            <div className="ball-group-mobile" aria-hidden="true">
+              <div className="ball-trail-mobile" />
+              <span className="ball-emoji-mobile select-none">⚽</span>
             </div>
-            <Link href="/" onClick={() => setMenuOpen(false)} className="logo-bump-mobile inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
               <Image
                 src="/logo.jpg"
                 alt="Garcia's Auto Sales RGV"
@@ -202,7 +198,8 @@ export default function NavBar() {
               }
               .ball-group {
                 position: absolute;
-                left: 0;
+                left: 100%;
+                margin-left: 10px;
                 top: 50%;
                 margin-top: -12px;
                 width: 24px;
