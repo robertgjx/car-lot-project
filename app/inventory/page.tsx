@@ -7,7 +7,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { vehicles, VehicleType } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 import { useState, useEffect } from "react";
-import type { MouseEvent as ReactMouseEvent } from "react";
+import type { MouseEvent as ReactMouseEvent, ChangeEvent } from "react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -349,6 +349,114 @@ function Pagination({ page, totalPages, lang, onPageChange }: {
   );
 }
 
+// ─── Price range slider ────────────────────────────────────────────────────────
+
+function PriceRangeSlider({
+  bounds, value, onChange, lang,
+}: {
+  bounds: [number, number];
+  value: [number, number];
+  onChange: (min: number, max: number) => void;
+  lang: "en" | "es";
+}) {
+  const [boundMin, boundMax] = bounds;
+  const [valMin, valMax] = value;
+  const span = Math.max(boundMax - boundMin, 1);
+  const step = span > 20000 ? 500 : 100;
+
+  const minPercent = ((valMin - boundMin) / span) * 100;
+  const maxPercent = ((valMax - boundMin) / span) * 100;
+
+  const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const next = Math.min(Number(e.target.value), valMax - step);
+    onChange(next, valMax);
+  };
+  const handleMaxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const next = Math.max(Number(e.target.value), valMin + step);
+    onChange(valMin, next);
+  };
+
+  return (
+    <div>
+      <style>{`
+        .price-slider-wrap input[type="range"] {
+          -webkit-appearance: none;
+          appearance: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 20px;
+          margin: 0;
+          background: transparent;
+          pointer-events: none;
+        }
+        .price-slider-wrap input[type="range"]::-webkit-slider-runnable-track {
+          -webkit-appearance: none;
+          height: 20px;
+          background: transparent;
+        }
+        .price-slider-wrap input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          pointer-events: auto;
+          width: 18px;
+          height: 18px;
+          margin-top: 1px;
+          border-radius: 9999px;
+          background: #dc2626;
+          border: 3px solid white;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+          cursor: pointer;
+        }
+        .price-slider-wrap input[type="range"]::-moz-range-track {
+          height: 20px;
+          background: transparent;
+          border: none;
+        }
+        .price-slider-wrap input[type="range"]::-moz-range-thumb {
+          pointer-events: auto;
+          width: 18px;
+          height: 18px;
+          border-radius: 9999px;
+          background: #dc2626;
+          border: 3px solid white;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+          cursor: pointer;
+        }
+      `}</style>
+      <div className="price-slider-wrap relative h-5">
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full bg-gray-200" />
+        <div
+          className="absolute top-1/2 -translate-y-1/2 h-1.5 rounded-full bg-red-500"
+          style={{ left: `${minPercent}%`, right: `${100 - maxPercent}%` }}
+        />
+        <input
+          type="range"
+          min={boundMin}
+          max={boundMax}
+          step={step}
+          value={valMin}
+          onChange={handleMinChange}
+          aria-label={lang === "en" ? "Minimum price" : "Precio mínimo"}
+        />
+        <input
+          type="range"
+          min={boundMin}
+          max={boundMax}
+          step={step}
+          value={valMax}
+          onChange={handleMaxChange}
+          aria-label={lang === "en" ? "Maximum price" : "Precio máximo"}
+        />
+      </div>
+      <div className="mt-2 flex items-center justify-between text-sm font-bold text-gray-800">
+        <span>{formatMoney(valMin)}</span>
+        <span>{formatMoney(valMax)}</span>
+      </div>
+    </div>
+  );
+}
+
 // ─── Vehicle card ───────────────────────────────────────────────────────────────
 
 function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof vehicles)[number]; lang: "en" | "es"; highlight?: boolean }) {
@@ -525,6 +633,8 @@ function InventoryInner() {
   const location = searchParams.get("loc")    ?? "all";
   const status   = searchParams.get("status") ?? "all";
   const type     = searchParams.get("type")   ?? "all";  // ← new
+  const minPriceParam = searchParams.get("minPrice");
+  const maxPriceParam = searchParams.get("maxPrice");
   const page     = Number(searchParams.get("page") ?? "1");
 
   const updateParams = useCallback((updates: Record<string, string>) => {
@@ -548,6 +658,13 @@ function InventoryInner() {
   const setLocation = (v: string) => updateParams({ loc: v,     page: "1" });
   const setStatus   = (v: string) => updateParams({ status: v,  page: "1" });
   const setType     = (v: string) => updateParams({ type: v,    page: "1" });  // ← new
+  const setPriceRange = (nextMin: number, nextMax: number) => {
+    updateParams({
+      minPrice: nextMin <= priceBounds[0] ? "" : String(nextMin),
+      maxPrice: nextMax >= priceBounds[1] ? "" : String(nextMax),
+      page: "1",
+    });
+  };
   const setPage     = (p: number) => {
     updateParams({ page: String(p) });
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -562,6 +679,21 @@ function InventoryInner() {
     const downs = vehicles.map((v) => v.down).filter((d): d is number => d != null);
     return downs.length > 0 ? Math.max(...downs) : 10000;
   }, []);
+
+  // Price range bounds across whole inventory, for the price slider
+  const priceBounds = useMemo<[number, number]>(() => {
+    const prices = vehicles.map((v) => v.price).filter((p): p is number => p != null);
+    if (prices.length === 0) return [0, 50000];
+    const lo = Math.floor(Math.min(...prices) / 500) * 500;
+    const hi = Math.ceil(Math.max(...prices) / 500) * 500;
+    return [lo, hi];
+  }, []);
+
+  const priceRange: [number, number] = [
+    minPriceParam ? Number(minPriceParam) : priceBounds[0],
+    maxPriceParam ? Number(maxPriceParam) : priceBounds[1],
+  ];
+  const isPriceFilterActive = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1];
 
   // First 3 vehicles in inventory.json order → "New Inventory"
   const newInventory = useMemo(() => vehicles.slice(0, 3), []);
@@ -593,9 +725,10 @@ function InventoryInner() {
       const matchesLoc    = location === "all" || (v as any).location === location;
       const matchesStatus = status === "all" || v.status === status;
       const matchesType   = type === "all" || v.type === type;  // ← new
-      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLoc && matchesStatus && matchesType;
+      const matchesPrice  = !isPriceFilterActive || (v.price != null && v.price >= priceRange[0] && v.price <= priceRange[1]);
+      return matchesQuery && matchesMake && matchesMin && matchesMax && matchesLoc && matchesStatus && matchesType && matchesPrice;
     });
-  }, [query, make, minDown, maxDown, location, status, type, newInventoryIds]);
+  }, [query, make, minDown, maxDown, location, status, type, newInventoryIds, isPriceFilterActive, priceRange[0], priceRange[1]]);
 
   const ITEMS_PER_PAGE = 27;
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -686,6 +819,20 @@ function InventoryInner() {
         {/* ── Filters Bar ── */}
         <div className="mt-4 bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+
+            <div className="md:col-span-4 bg-white border border-gray-200 rounded-xl px-4 py-3">
+              <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
+                {lang === "en" ? "Price Range" : "Rango de Precio"}
+              </label>
+              <div className="mt-3">
+                <PriceRangeSlider
+                  bounds={priceBounds}
+                  value={priceRange}
+                  onChange={setPriceRange}
+                  lang={lang}
+                />
+              </div>
+            </div>
 
             <div className="md:col-span-2">
               <label className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{t.inv.search[lang]}</label>
