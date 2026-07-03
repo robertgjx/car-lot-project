@@ -88,6 +88,35 @@
     "status": "available"
   },
   {
+    "id": "2016-dodge-ram-3500-gg258971",
+    "year": 2016,
+    "make": "Dodge",
+    "model": "RAM 3500",
+    "price": 22900,
+    "down": 9000,
+    "vin": "3C7WRTCL9GG258971",
+    "miles": 256397,
+    "fuel": "Diesel",
+    "engine": "6.7L V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Flatbed",
+    "doors": 4,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4318.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4319.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4320.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4321.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4322.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4323.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4324.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4327.JPG",
+      "/cars/2016-dodge-ram-3500-gg258971/IMG_4328.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2003-ford-ranger-3pa16969",
     "year": 2003,
     "make": "Ford",
