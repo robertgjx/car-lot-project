@@ -47,32 +47,32 @@ export default function NavBar() {
           <div className="relative">
             <style>{`
               @keyframes ballWrapXMobile {
-                0%   { transform: translateX(-76px); opacity: 0; animation-timing-function: ease-out; }
+                0%   { transform: translateX(-76px); opacity: 0; animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
                 5%   { opacity: 1; }
-                20%  { transform: translateX(-9px); animation-timing-function: ease; }
-                46%  { transform: translateX(46px); animation-timing-function: ease; }
-                63%  { transform: translateX(61px); animation-timing-function: ease-in; }
-                88%  { transform: translateX(150px); opacity: 1; }
+                20%  { transform: translateX(-9px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                46%  { transform: translateX(46px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                63%  { transform: translateX(61px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                88%  { transform: translateX(150px); opacity: 1; animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
                 100% { transform: translateX(182px); opacity: 0; }
               }
               @keyframes ballBounceYMobile {
-                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-out; }
-                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: ease-out; }
-                33%  { transform: translateY(-41px) rotate(430deg); animation-timing-function: ease-in; }
-                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: ease-out; }
-                55%  { transform: translateY(-17px) rotate(620deg); animation-timing-function: ease-in; }
-                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: linear; }
+                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-in-out; }
+                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                33%  { transform: translateY(-41px) rotate(430deg); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                55%  { transform: translateY(-17px) rotate(620deg); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: ease-out; }
                 100% { transform: translateY(0) rotate(1080deg); }
               }
               @keyframes ballShadowScaleMobile {
-                0%   { opacity: 0; transform: scaleX(0.7); }
-                18%  { opacity: 0.16; transform: scaleX(1); }
-                33%  { opacity: 0.03; transform: scaleX(0.4); }
-                46%  { opacity: 0.16; transform: scaleX(1); }
-                55%  { opacity: 0.06; transform: scaleX(0.55); }
-                63%  { opacity: 0.15; transform: scaleX(1); }
-                88%  { opacity: 0.14; transform: scaleX(1); }
-                100% { opacity: 0; transform: scaleX(0.8); }
+                0%   { opacity: 0; transform: translateX(-50%) scaleX(0.7); animation-timing-function: ease-out; }
+                8%   { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
+                33%  { opacity: 0.05; transform: translateX(-50%) scaleX(0.42); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                46%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                55%  { opacity: 0.09; transform: translateX(-50%) scaleX(0.6); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                63%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); animation-timing-function: ease-out; }
+                88%  { opacity: 0.18; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0; transform: translateX(-50%) scaleX(0.75); }
               }
               .ball-wrap-mobile {
                 position: absolute;
@@ -81,36 +81,37 @@ export default function NavBar() {
                 width: 24px;
                 height: 24px;
                 margin-top: -12px;
-                animation: ballWrapXMobile 3.8s 500ms 1 forwards;
+                animation: ballWrapXMobile 3.9s 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
               .ball-inner-mobile {
                 width: 100%;
                 height: 100%;
-                animation: ballBounceYMobile 3.8s 500ms 1 forwards;
+                animation: ballBounceYMobile 3.9s 500ms 1 forwards;
               }
               .ball-shadow-mobile {
                 position: absolute;
-                left: 3px;
-                bottom: -5px;
-                width: 18px;
-                height: 5px;
+                left: 50%;
+                bottom: -6px;
+                width: 21px;
+                height: 6px;
                 border-radius: 9999px;
-                background: black;
-                animation: ballShadowScaleMobile 3.8s 500ms 1 forwards;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0) 80%);
+                filter: blur(1.2px);
+                animation: ballShadowScaleMobile 3.9s 500ms 1 forwards;
               }
               @keyframes logoReactMobile {
                 0%, 43%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 46%  { transform: translateY(2px) rotate(-1.5deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: linear; }
+                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: ease-out; }
                 60%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 63%  { transform: translateY(1px) rotate(-0.8deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 70%  { transform: translateY(0) rotate(0deg); }
                 100% { transform: translateY(0) rotate(0deg); }
               }
               .logo-bump-mobile {
-                animation: logoReactMobile 3.8s 500ms 1;
+                animation: logoReactMobile 3.9s 500ms 1;
                 transform-origin: bottom center;
               }
               @media (prefers-reduced-motion: reduce) {
@@ -212,32 +213,32 @@ export default function NavBar() {
           <div className="relative">
             <style>{`
               @keyframes ballWrapX {
-                0%   { transform: translateX(-120px); opacity: 0; animation-timing-function: ease-out; }
+                0%   { transform: translateX(-120px); opacity: 0; animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
                 5%   { opacity: 1; }
-                20%  { transform: translateX(-14px); animation-timing-function: ease; }
-                46%  { transform: translateX(72px); animation-timing-function: ease; }
-                63%  { transform: translateX(96px); animation-timing-function: ease-in; }
-                88%  { transform: translateX(235px); opacity: 1; }
+                20%  { transform: translateX(-14px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                46%  { transform: translateX(72px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                63%  { transform: translateX(96px); animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
+                88%  { transform: translateX(235px); opacity: 1; animation-timing-function: cubic-bezier(0.42, 0, 0.2, 1); }
                 100% { transform: translateX(285px); opacity: 0; }
               }
               @keyframes ballBounceY {
-                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-out; }
-                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: ease-out; }
-                33%  { transform: translateY(-64px) rotate(430deg); animation-timing-function: ease-in; }
-                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: ease-out; }
-                55%  { transform: translateY(-26px) rotate(620deg); animation-timing-function: ease-in; }
-                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: linear; }
+                0%   { transform: translateY(0) rotate(0deg); animation-timing-function: ease-in-out; }
+                20%  { transform: translateY(0) rotate(340deg); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                33%  { transform: translateY(-64px) rotate(430deg); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                46%  { transform: translateY(0) rotate(560deg); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                55%  { transform: translateY(-26px) rotate(620deg); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                63%  { transform: translateY(0) rotate(680deg); animation-timing-function: ease-out; }
                 100% { transform: translateY(0) rotate(1080deg); }
               }
               @keyframes ballShadowScale {
-                0%   { opacity: 0; transform: scaleX(0.7); }
-                18%  { opacity: 0.16; transform: scaleX(1); }
-                33%  { opacity: 0.03; transform: scaleX(0.4); }
-                46%  { opacity: 0.16; transform: scaleX(1); }
-                55%  { opacity: 0.06; transform: scaleX(0.55); }
-                63%  { opacity: 0.15; transform: scaleX(1); }
-                88%  { opacity: 0.14; transform: scaleX(1); }
-                100% { opacity: 0; transform: scaleX(0.8); }
+                0%   { opacity: 0; transform: translateX(-50%) scaleX(0.7); animation-timing-function: ease-out; }
+                8%   { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
+                33%  { opacity: 0.05; transform: translateX(-50%) scaleX(0.42); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                46%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1); }
+                55%  { opacity: 0.09; transform: translateX(-50%) scaleX(0.6); animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.3); }
+                63%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); animation-timing-function: ease-out; }
+                88%  { opacity: 0.18; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0; transform: translateX(-50%) scaleX(0.75); }
               }
               .ball-wrap {
                 position: absolute;
@@ -246,36 +247,37 @@ export default function NavBar() {
                 width: 34px;
                 height: 34px;
                 margin-top: -17px;
-                animation: ballWrapX 3.8s 500ms 1 forwards;
+                animation: ballWrapX 3.9s 500ms 1 forwards;
                 pointer-events: none;
                 z-index: 20;
               }
               .ball-inner {
                 width: 100%;
                 height: 100%;
-                animation: ballBounceY 3.8s 500ms 1 forwards;
+                animation: ballBounceY 3.9s 500ms 1 forwards;
               }
               .ball-shadow {
                 position: absolute;
-                left: 4px;
-                bottom: -7px;
-                width: 26px;
-                height: 7px;
+                left: 50%;
+                bottom: -8px;
+                width: 30px;
+                height: 9px;
                 border-radius: 9999px;
-                background: black;
-                animation: ballShadowScale 3.8s 500ms 1 forwards;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0) 80%);
+                filter: blur(1.5px);
+                animation: ballShadowScale 3.9s 500ms 1 forwards;
               }
               @keyframes logoReact {
                 0%, 43%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 46%  { transform: translateY(3px) rotate(-1.5deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: linear; }
+                52%  { transform: translateY(0) rotate(0.6deg); animation-timing-function: ease-out; }
                 60%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 63%  { transform: translateY(1.5px) rotate(-0.8deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
                 70%  { transform: translateY(0) rotate(0deg); }
                 100% { transform: translateY(0) rotate(0deg); }
               }
               .logo-bump {
-                animation: logoReact 3.8s 500ms 1;
+                animation: logoReact 3.9s 500ms 1;
                 transform-origin: bottom center;
               }
               @media (prefers-reduced-motion: reduce) {
