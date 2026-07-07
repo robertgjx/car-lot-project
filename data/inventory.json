@@ -114,6 +114,29 @@
     "status": "available"
   },
   {
+    "id": "2006-chevrolet-silverado-6g246196",
+    "year": 2006,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 10900,
+    "down": 6000,
+    "vin": "3GCEC14ZX6G246196",
+    "engine": "5.3L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2006-chevrolet-silverado-6g246196/IMG_4403.JPG",
+      "/cars/2006-chevrolet-silverado-6g246196/IMG_4404.JPG",
+      "/cars/2006-chevrolet-silverado-6g246196/IMG_4405.JPG",
+      "/cars/2006-chevrolet-silverado-6g246196/IMG_4406.JPG",
+      "/cars/2006-chevrolet-silverado-6g246196/IMG_4408.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2016-dodge-ram-3500-gg258971",
     "year": 2016,
     "make": "Dodge",
