@@ -120,6 +120,7 @@
     "model": "Silverado",
     "price": 10900,
     "down": 6000,
+    "miles":"EXPT",
     "vin": "3GCEC14ZX6G246196",
     "engine": "5.3L V-Shaped V8",
     "transmission": "Automatic",
