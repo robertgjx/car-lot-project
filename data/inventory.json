@@ -88,6 +88,32 @@
     "status": "available"
   },
   {
+    "id": "2013-gmc-acadia-dj209971",
+    "year": 2013,
+    "make": "GMC",
+    "model": "Acadia",
+    "trim": "SLE 2",
+    "price": 4900,
+    "down": 1500,
+    "vin": "1GKKRPKD1DJ209971",
+    "miles": 254444,
+    "fuel": "Gasoline",
+    "engine": "3.6L V-Shaped V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
+    "doors": 4,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2013-gmc-acadia-dj209971/39599.JPG",
+      "/cars/2013-gmc-acadia-dj209971/39600.JPG",
+      "/cars/2013-gmc-acadia-dj209971/39601.JPG",
+      "/cars/2013-gmc-acadia-dj209971/39602.JPG",
+      "/cars/2013-gmc-acadia-dj209971/39603.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2016-dodge-ram-3500-gg258971",
     "year": 2016,
     "make": "Dodge",
