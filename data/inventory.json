@@ -141,7 +141,7 @@
       "/cars/2003-ford-ranger-3pa16969/IMG_4287.JPG",
       "/cars/2003-ford-ranger-3pa16969/IMG_4289.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2013-gmc-sierra-df120458",
@@ -342,7 +342,7 @@
       "/cars/2018-chevrolet-colorado-j1201537/IMG_3939.JPG",
       "/cars/2018-chevrolet-colorado-j1201537/IMG_3940.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1992-ford-f-150-nka73148",
@@ -846,7 +846,7 @@
       "/cars/2013-chevrolet-silverado-dz239243/IMG_3401.JPG",
       "/cars/2013-chevrolet-silverado-dz239243/IMG_3403.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2004-chevrolet-silverado-4z120570",
@@ -1103,7 +1103,7 @@
       "/cars/2018-ford-f-150-jkf07251/IMG_3228.JPG",
       "/cars/2018-ford-f-150-jkf07251/IMG_3231.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2013-ford-f-150-dfa29651",
@@ -4640,7 +4640,7 @@
         "/cars/2018-gmc-acadia-jz243972/8177060518051649203.JPG",
         "/cars/2018-gmc-acadia-jz243972/9036542501948491542.JPG"
       ],
-      "status": "available"
+      "status": "sols"
     },
     {
       "id": "2010-chevrolet-colorado-a8145670",
@@ -4965,7 +4965,7 @@
         "/cars/2017-ford-f-150-hkc47733/PXL_20260402_195216437.MP.JPG",
         "/cars/2017-ford-f-150-hkc47733/PXL_20260402_195223984.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2014-chevrolet-silverado-ez290825",
