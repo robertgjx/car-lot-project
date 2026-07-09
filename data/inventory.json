@@ -2189,6 +2189,7 @@
     "down": 2500,
     "fee":2500,
     "term":20,
+    "driveTrain":"4x4",
     "miles":"EXPT",
     "vin": "1FTRF18L6YNC06349",
     "fuel": "Gasoline",
