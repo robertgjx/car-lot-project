@@ -87,6 +87,32 @@
     "status": "available"
   },
   {
+    "id": "1983-ford-f-150-dka06220",
+    "year": 1983,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 6900,
+    "down": 3000,
+    "miles":"EXPT",
+    "term":24,
+    "vin": "1FTDF15G1DKA06220",
+    "fuel": "Gasoline",
+    "engine": "5.8L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Brown",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1983-ford-f-150-dka06220/IMG_4440.JPG",
+      "/cars/1983-ford-f-150-dka06220/IMG_4441.JPG",
+      "/cars/1983-ford-f-150-dka06220/IMG_4442.JPG",
+      "/cars/1983-ford-f-150-dka06220/IMG_4443.JPG",
+      "/cars/1983-ford-f-150-dka06220/IMG_4444.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2000-chevrolet-silverado-yz112793",
     "year": 2000,
     "make": "Chevrolet",
