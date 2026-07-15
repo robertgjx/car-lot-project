@@ -186,7 +186,7 @@
       "/cars/1983-ford-f-150-dka06220/IMG_4443.JPG",
       "/cars/1983-ford-f-150-dka06220/IMG_4444.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2000-chevrolet-silverado-yz112793",
@@ -520,7 +520,7 @@
       "/cars/1992-ford-f-150-nka73148/IMG_3305.JPG",
       "/cars/1992-ford-f-150-nka73148/IMG_3306.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1998-chevrolet-gmt-400-wz177433",
