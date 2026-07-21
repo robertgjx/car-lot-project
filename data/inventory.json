@@ -76,6 +76,57 @@
     "status": "available"
   },
   {
+    "id": "2004-chevrolet-silverado-4z251639",
+    "year": 2004,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 11900,
+    "down": 4000,
+    "vin": "1GCEC14V74Z251639",
+    "miles": 245000,
+    "fuel": "Gasoline",
+    "engine": "4.8L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-chevrolet-silverado-4z251639/IMG_4637.JPG",
+      "/cars/2004-chevrolet-silverado-4z251639/IMG_4638.JPG",
+      "/cars/2004-chevrolet-silverado-4z251639/IMG_4639.JPG",
+      "/cars/2004-chevrolet-silverado-4z251639/IMG_4640.JPG"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2023-kia-soul-p7193403",
+    "year": 2023,
+    "make": "KIA",
+    "model": "Soul",
+    "trim": "GT Line",
+    "price": 12900,
+    "down": 4000,
+    "vin": "KNDJ53AU5P7193403",
+    "miles": 164289,
+    "fuel": "Gasoline",
+    "engine": "2.0L V4",
+    "transmission": "Continuously Variable Transmission (CVT)",
+    "bodyStyle": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
+    "doors": 4,
+    "color": "Blue",
+    "location": "Veterans Blvd",
+    "images": [
+      "/cars/2023-kia-soul-p7193403/IMG_4060.JPEG",
+      "/cars/2023-kia-soul-p7193403/IMG_4061.JPEG",
+      "/cars/2023-kia-soul-p7193403/IMG_4062.JPEG",
+      "/cars/2023-kia-soul-p7193403/IMG_4063.JPEG",
+      "/cars/2023-kia-soul-p7193403/IMG_4064.JPEG",
+      "/cars/2023-kia-soul-p7193403/IMG_4065.JPEG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2023-chevrolet-silverado-pg350938",
     "year": 2023,
     "make": "Chevrolet",
