@@ -361,6 +361,7 @@
     "trim": "SLE 2",
     "price": 4900,
     "down": 1500,
+    "term":12,
     "vin": "1GKKRPKD1DJ209971",
     "miles": 254444,
     "fuel": "Gasoline",
