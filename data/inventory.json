@@ -263,6 +263,7 @@
     "price": 4900,
     "down": 2000,
     "miles":112350,
+    "term":15,
     "vin": "2G4WD582591175570",
     "fuel": "Gasoline",
     "engine": "3.8L V-Shaped V6",
