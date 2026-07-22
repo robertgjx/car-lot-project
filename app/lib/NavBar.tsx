@@ -49,12 +49,12 @@ export default function NavBar() {
               @keyframes appleDropMobile {
                 0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
                 6%   { opacity: 1; }
-                42%  { transform: translateY(0) rotate(160deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                55%  { transform: translateY(-22px) rotate(200deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                68%  { transform: translateY(0) rotate(230deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                78%  { transform: translateY(-8px) rotate(250deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                88%  { transform: translateY(0) rotate(260deg); animation-timing-function: ease-out; }
-                100% { transform: translateY(0) rotate(260deg); }
+                42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: translateY(-22px) rotate(277deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                68%  { transform: translateY(0) rotate(319deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                78%  { transform: translateY(-8px) rotate(346deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
+                100% { transform: translateY(0) rotate(360deg); }
               }
               @keyframes appleShadowSettleMobile {
                 0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
@@ -63,36 +63,15 @@ export default function NavBar() {
                 68%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
               }
-              @keyframes rulerDropMobile {
-                0%   { transform: translateY(-90px) rotate(45deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                6%   { opacity: 1; }
-                50%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                63%  { transform: translateY(-10px) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                78%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                100% { transform: translateY(0) rotate(0deg); }
-              }
-              @keyframes rulerShadowSettleMobile {
-                0%, 46% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
-                50%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
-                63%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.7); }
-                78%  { opacity: 0.18; transform: translateX(-50%) scaleX(1); }
-                100% { opacity: 0.14; transform: translateX(-50%) scaleX(0.9); }
-              }
-              .floor-duo-mobile {
+              .apple-drop-wrap-mobile {
                 position: absolute;
                 left: 100%;
                 bottom: 20%;
-                margin-left: 3px;
-                display: flex;
-                align-items: flex-end;
-                gap: 4px;
-                pointer-events: none;
-                z-index: 20;
-              }
-              .apple-drop-wrap-mobile {
-                position: relative;
+                margin-left: -22px;
                 width: 26px;
                 height: 26px;
+                pointer-events: none;
+                z-index: 20;
               }
               .apple-drop-inner-mobile {
                 width: 100%;
@@ -110,67 +89,28 @@ export default function NavBar() {
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: appleShadowSettleMobile 1.9s 300ms 1 both;
               }
-              .ruler-drop-wrap-mobile {
-                position: relative;
-                width: 32px;
-                height: 12px;
-                margin-bottom: 3px;
-              }
-              .ruler-drop-inner-mobile {
-                width: 100%;
-                height: 100%;
-                animation: rulerDropMobile 1.8s 650ms 1 both;
-                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-              }
-              .ruler-drop-shadow-mobile {
-                position: absolute;
-                left: 50%;
-                bottom: -4px;
-                width: 26px;
-                height: 5px;
-                border-radius: 9999px;
-                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: rulerShadowSettleMobile 1.8s 650ms 1 both;
-              }
               @media (prefers-reduced-motion: reduce) {
-                .apple-drop-inner-mobile, .apple-drop-shadow-mobile, .ruler-drop-inner-mobile, .ruler-drop-shadow-mobile { animation: none; }
-                .apple-drop-shadow-mobile, .ruler-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
+                .apple-drop-inner-mobile, .apple-drop-shadow-mobile { animation: none; }
+                .apple-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="floor-duo-mobile" aria-hidden="true">
-              <div className="apple-drop-wrap-mobile">
-                <div className="apple-drop-shadow-mobile" />
-                <div className="apple-drop-inner-mobile">
-                  <svg viewBox="0 0 100 100" width="26" height="26">
-                    <defs>
-                      <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
-                        <stop offset="0%" stopColor="#fca5a5" />
-                        <stop offset="45%" stopColor="#dc2626" />
-                        <stop offset="100%" stopColor="#7f1d1d" />
-                      </radialGradient>
-                    </defs>
-                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
-                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                  </svg>
-                </div>
-              </div>
-              <div className="ruler-drop-wrap-mobile">
-                <div className="ruler-drop-shadow-mobile" />
-                <div className="ruler-drop-inner-mobile">
-                  <svg viewBox="0 0 100 34" width="32" height="12">
-                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                  </svg>
-                </div>
+            <div className="apple-drop-wrap-mobile" aria-hidden="true">
+              <div className="apple-drop-shadow-mobile" />
+              <div className="apple-drop-inner-mobile">
+                <svg viewBox="0 0 100 100" width="26" height="26">
+                  <defs>
+                    <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fca5a5" />
+                      <stop offset="45%" stopColor="#dc2626" />
+                      <stop offset="100%" stopColor="#7f1d1d" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
+                  <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                  <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                  <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                </svg>
               </div>
             </div>
             <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
@@ -250,12 +190,12 @@ export default function NavBar() {
               @keyframes appleDrop {
                 0%   { transform: translateY(-150px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
                 6%   { opacity: 1; }
-                42%  { transform: translateY(0) rotate(160deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                55%  { transform: translateY(-32px) rotate(200deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                68%  { transform: translateY(0) rotate(230deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                78%  { transform: translateY(-11px) rotate(250deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                88%  { transform: translateY(0) rotate(260deg); animation-timing-function: ease-out; }
-                100% { transform: translateY(0) rotate(260deg); }
+                42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: translateY(-32px) rotate(277deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                68%  { transform: translateY(0) rotate(319deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                78%  { transform: translateY(-11px) rotate(346deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
+                100% { transform: translateY(0) rotate(360deg); }
               }
               @keyframes appleShadowSettle {
                 0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
@@ -264,36 +204,15 @@ export default function NavBar() {
                 68%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.18; transform: translateX(-50%) scaleX(0.9); }
               }
-              @keyframes rulerDrop {
-                0%   { transform: translateY(-130px) rotate(45deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                6%   { opacity: 1; }
-                50%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                63%  { transform: translateY(-14px) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                78%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                100% { transform: translateY(0) rotate(0deg); }
-              }
-              @keyframes rulerShadowSettle {
-                0%, 46% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
-                50%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
-                63%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.7); }
-                78%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
-                100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
-              }
-              .floor-duo {
+              .apple-drop-wrap {
                 position: absolute;
                 left: 100%;
                 bottom: 16%;
-                margin-left: 6px;
-                display: flex;
-                align-items: flex-end;
-                gap: 6px;
-                pointer-events: none;
-                z-index: 20;
-              }
-              .apple-drop-wrap {
-                position: relative;
+                margin-left: -34px;
                 width: 38px;
                 height: 38px;
+                pointer-events: none;
+                z-index: 20;
               }
               .apple-drop-inner {
                 width: 100%;
@@ -311,67 +230,28 @@ export default function NavBar() {
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: appleShadowSettle 1.9s 300ms 1 both;
               }
-              .ruler-drop-wrap {
-                position: relative;
-                width: 48px;
-                height: 17px;
-                margin-bottom: 4px;
-              }
-              .ruler-drop-inner {
-                width: 100%;
-                height: 100%;
-                animation: rulerDrop 1.8s 650ms 1 both;
-                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
-              }
-              .ruler-drop-shadow {
-                position: absolute;
-                left: 50%;
-                bottom: -5px;
-                width: 40px;
-                height: 8px;
-                border-radius: 9999px;
-                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: rulerShadowSettle 1.8s 650ms 1 both;
-              }
               @media (prefers-reduced-motion: reduce) {
-                .apple-drop-inner, .apple-drop-shadow, .ruler-drop-inner, .ruler-drop-shadow { animation: none; }
-                .apple-drop-shadow, .ruler-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
+                .apple-drop-inner, .apple-drop-shadow { animation: none; }
+                .apple-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="floor-duo" aria-hidden="true">
-              <div className="apple-drop-wrap">
-                <div className="apple-drop-shadow" />
-                <div className="apple-drop-inner">
-                  <svg viewBox="0 0 100 100" width="38" height="38">
-                    <defs>
-                      <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
-                        <stop offset="0%" stopColor="#fca5a5" />
-                        <stop offset="45%" stopColor="#dc2626" />
-                        <stop offset="100%" stopColor="#7f1d1d" />
-                      </radialGradient>
-                    </defs>
-                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
-                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                  </svg>
-                </div>
-              </div>
-              <div className="ruler-drop-wrap">
-                <div className="ruler-drop-shadow" />
-                <div className="ruler-drop-inner">
-                  <svg viewBox="0 0 100 34" width="48" height="17">
-                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                  </svg>
-                </div>
+            <div className="apple-drop-wrap" aria-hidden="true">
+              <div className="apple-drop-shadow" />
+              <div className="apple-drop-inner">
+                <svg viewBox="0 0 100 100" width="38" height="38">
+                  <defs>
+                    <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fca5a5" />
+                      <stop offset="45%" stopColor="#dc2626" />
+                      <stop offset="100%" stopColor="#7f1d1d" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
+                  <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                  <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                  <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                </svg>
               </div>
             </div>
             <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
