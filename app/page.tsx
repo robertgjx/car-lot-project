@@ -413,15 +413,38 @@ export default function Home() {
                 ? "Get ready for the new school year — check out our full lineup of trucks, SUVs, and cars."
                 : "Prepárate para el nuevo ciclo escolar — mira toda nuestra selección de trocas, SUVs y carros."}
             </p>
-            <Link
-              href="/inventory"
-              className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
-            >
-              {lang === "en" ? "View Inventory" : "Ver Inventario"}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
+            <div className="mt-1 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/30 px-4 py-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-white shrink-0">
+                <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
               </svg>
-            </Link>
+              <span className="text-white text-sm font-semibold">
+                {lang === "en"
+                  ? "Giveaway live now — 2 winners announced August 5th!"
+                  : "¡Sorteo activo ahora — 2 ganadores el 5 de agosto!"}
+              </span>
+            </div>
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/inventory"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
+              >
+                {lang === "en" ? "View Inventory" : "Ver Inventario"}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </Link>
+              <a
+                href="https://www.facebook.com/GarciasAutoSalesRGV"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white text-red-700 font-semibold px-6 py-3 hover:bg-white/90 transition"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                  <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
+                </svg>
+                {lang === "en" ? "Check Out Our Giveaway" : "Ver Nuestro Sorteo"}
+              </a>
+            </div>
           </div>
 
           {/* Right panel — July $50 Meat Market offer */}
