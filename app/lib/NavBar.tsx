@@ -78,18 +78,21 @@ export default function NavBar() {
                 78%  { opacity: 0.18; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.14; transform: translateX(-50%) scaleX(0.9); }
               }
-              .logo-img-frame-mobile {
-                position: relative;
-                display: inline-block;
-              }
-              .apple-drop-wrap-mobile {
+              .floor-duo-mobile {
                 position: absolute;
-                left: 30%;
-                top: 24%;
-                width: 26px;
-                height: 26px;
+                left: 100%;
+                bottom: 20%;
+                margin-left: 3px;
+                display: flex;
+                align-items: flex-end;
+                gap: 4px;
                 pointer-events: none;
                 z-index: 20;
+              }
+              .apple-drop-wrap-mobile {
+                position: relative;
+                width: 26px;
+                height: 26px;
               }
               .apple-drop-inner-mobile {
                 width: 100%;
@@ -108,13 +111,10 @@ export default function NavBar() {
                 animation: appleShadowSettleMobile 1.9s 300ms 1 both;
               }
               .ruler-drop-wrap-mobile {
-                position: absolute;
-                left: 44%;
-                top: 33%;
+                position: relative;
                 width: 32px;
                 height: 12px;
-                pointer-events: none;
-                z-index: 20;
+                margin-bottom: 3px;
               }
               .ruler-drop-inner-mobile {
                 width: 100%;
@@ -137,52 +137,52 @@ export default function NavBar() {
                 .apple-drop-shadow-mobile, .ruler-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
-              <div className="logo-img-frame-mobile">
-                <div className="apple-drop-wrap-mobile" aria-hidden="true">
-                  <div className="apple-drop-shadow-mobile" />
-                  <div className="apple-drop-inner-mobile">
-                    <svg viewBox="0 0 100 100" width="26" height="26">
-                      <defs>
-                        <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
-                          <stop offset="0%" stopColor="#fca5a5" />
-                          <stop offset="45%" stopColor="#dc2626" />
-                          <stop offset="100%" stopColor="#7f1d1d" />
-                        </radialGradient>
-                      </defs>
-                      <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
-                      <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                      <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                      <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                      <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                    </svg>
-                  </div>
+            <div className="floor-duo-mobile" aria-hidden="true">
+              <div className="apple-drop-wrap-mobile">
+                <div className="apple-drop-shadow-mobile" />
+                <div className="apple-drop-inner-mobile">
+                  <svg viewBox="0 0 100 100" width="26" height="26">
+                    <defs>
+                      <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
+                        <stop offset="0%" stopColor="#fca5a5" />
+                        <stop offset="45%" stopColor="#dc2626" />
+                        <stop offset="100%" stopColor="#7f1d1d" />
+                      </radialGradient>
+                    </defs>
+                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
+                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  </svg>
                 </div>
-                <div className="ruler-drop-wrap-mobile" aria-hidden="true">
-                  <div className="ruler-drop-shadow-mobile" />
-                  <div className="ruler-drop-inner-mobile">
-                    <svg viewBox="0 0 100 34" width="32" height="12">
-                      <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                      <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                    </svg>
-                  </div>
-                </div>
-                <Image
-                  src="/logo.jpg"
-                  alt="Garcia's Auto Sales RGV"
-                  width={220}
-                  height={88}
-                  className="object-contain w-36"
-                  style={{ maxHeight: '52px' }}
-                  priority
-                />
               </div>
+              <div className="ruler-drop-wrap-mobile">
+                <div className="ruler-drop-shadow-mobile" />
+                <div className="ruler-drop-inner-mobile">
+                  <svg viewBox="0 0 100 34" width="32" height="12">
+                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
+                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
+              <Image
+                src="/logo.jpg"
+                alt="Garcia's Auto Sales RGV"
+                width={220}
+                height={88}
+                className="object-contain w-36"
+                style={{ maxHeight: '52px' }}
+                priority
+              />
             </Link>
           </div>
           <div className="flex items-center gap-4 pr-1">
@@ -279,18 +279,21 @@ export default function NavBar() {
                 78%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
               }
-              .logo-img-frame {
-                position: relative;
-                display: inline-block;
-              }
-              .apple-drop-wrap {
+              .floor-duo {
                 position: absolute;
-                left: 30%;
-                top: 24%;
-                width: 38px;
-                height: 38px;
+                left: 100%;
+                bottom: 16%;
+                margin-left: 6px;
+                display: flex;
+                align-items: flex-end;
+                gap: 6px;
                 pointer-events: none;
                 z-index: 20;
+              }
+              .apple-drop-wrap {
+                position: relative;
+                width: 38px;
+                height: 38px;
               }
               .apple-drop-inner {
                 width: 100%;
@@ -309,13 +312,10 @@ export default function NavBar() {
                 animation: appleShadowSettle 1.9s 300ms 1 both;
               }
               .ruler-drop-wrap {
-                position: absolute;
-                left: 44%;
-                top: 33%;
+                position: relative;
                 width: 48px;
                 height: 17px;
-                pointer-events: none;
-                z-index: 20;
+                margin-bottom: 4px;
               }
               .ruler-drop-inner {
                 width: 100%;
@@ -338,52 +338,52 @@ export default function NavBar() {
                 .apple-drop-shadow, .ruler-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
-              <div className="logo-img-frame">
-                <div className="apple-drop-wrap" aria-hidden="true">
-                  <div className="apple-drop-shadow" />
-                  <div className="apple-drop-inner">
-                    <svg viewBox="0 0 100 100" width="38" height="38">
-                      <defs>
-                        <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
-                          <stop offset="0%" stopColor="#fca5a5" />
-                          <stop offset="45%" stopColor="#dc2626" />
-                          <stop offset="100%" stopColor="#7f1d1d" />
-                        </radialGradient>
-                      </defs>
-                      <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
-                      <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                      <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                      <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                      <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                    </svg>
-                  </div>
+            <div className="floor-duo" aria-hidden="true">
+              <div className="apple-drop-wrap">
+                <div className="apple-drop-shadow" />
+                <div className="apple-drop-inner">
+                  <svg viewBox="0 0 100 100" width="38" height="38">
+                    <defs>
+                      <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
+                        <stop offset="0%" stopColor="#fca5a5" />
+                        <stop offset="45%" stopColor="#dc2626" />
+                        <stop offset="100%" stopColor="#7f1d1d" />
+                      </radialGradient>
+                    </defs>
+                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
+                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  </svg>
                 </div>
-                <div className="ruler-drop-wrap" aria-hidden="true">
-                  <div className="ruler-drop-shadow" />
-                  <div className="ruler-drop-inner">
-                    <svg viewBox="0 0 100 34" width="48" height="17">
-                      <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                      <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                    </svg>
-                  </div>
-                </div>
-                <Image
-                  src="/logo.jpg"
-                  alt="Garcia's Auto Sales RGV"
-                  width={220}
-                  height={88}
-                  className="object-contain w-56 md:w-72"
-                  style={{ maxHeight: '80px' }}
-                  priority
-                />
               </div>
+              <div className="ruler-drop-wrap">
+                <div className="ruler-drop-shadow" />
+                <div className="ruler-drop-inner">
+                  <svg viewBox="0 0 100 34" width="48" height="17">
+                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
+                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
+              <Image
+                src="/logo.jpg"
+                alt="Garcia's Auto Sales RGV"
+                width={220}
+                height={88}
+                className="object-contain w-56 md:w-72"
+                style={{ maxHeight: '80px' }}
+                priority
+              />
               <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase pl-1">Est. 1984</span>
             </Link>
           </div>
