@@ -76,6 +76,32 @@
     "status": "available"
   },
   {
+    "id": "2004-chevrolet-silverado-4z110438",
+    "year": 2004,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "price": 12900,
+    "down": 5000,
+    "vin": "1GCEC14V54Z110438",
+    "miles": 189000,
+    "fuel": "Gasoline",
+    "engine": "4.8L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Red",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4146.JPEG",
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4147.JPEG",
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4150.JPEG",
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4151.JPEG",
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4152.JPEG",
+      "/cars/2004-chevrolet-silverado-4z110438/IMG_4153.JPEG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2004-chevrolet-silverado-4z251639",
     "year": 2004,
     "make": "Chevrolet",
