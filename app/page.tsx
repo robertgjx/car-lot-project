@@ -7,9 +7,7 @@ import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
-import { Star, Heart, Shield, Car } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrophy, faStar, } from "@fortawesome/free-solid-svg-icons";
+import { Star, Heart, Shield, Car, GraduationCap, Backpack, BookOpen } from "lucide-react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -379,7 +377,7 @@ export default function Home() {
       </div>
       {/* ↑ container closed so this banner can go full-bleed edge-to-edge, like the hero ↑ */}
 
-      {/* TWO-PANEL PROMO BANNER — World Cup + July Meat Market offer */}
+      {/* TWO-PANEL PROMO BANNER — Back to School + July Meat Market offer */}
       <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
         <style>{`
           @keyframes emblemFloat {
@@ -390,30 +388,30 @@ export default function Home() {
         `}</style>
         <div className="grid grid-cols-1 md:grid-cols-2">
 
-          {/* Left panel — World Cup Season */}
+          {/* Left panel — Back to School Season */}
           <div className="relative overflow-hidden bg-gradient-to-br from-red-700 to-red-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
             <div className="flex items-center justify-center gap-3">
               <div
-                className="flag-emblem w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-lg"
+                className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "0ms" }}
               >
-                <img src="/flags/usa.jpg" alt="USA" className="w-full h-full object-cover" />
+                <Backpack className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
-              <FontAwesomeIcon icon={faTrophy} style={{ fontSize: "1.5rem", color: "#FBBF24" }} />
+              <GraduationCap className="w-8 h-8 text-amber-400" strokeWidth={2} />
               <div
-                className="flag-emblem w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-lg"
+                className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "500ms" }}
               >
-                <img src="/flags/mexico.jpg" alt="Mexico" className="w-full h-full object-cover" />
+                <BookOpen className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
             </div>
             <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
-              {lang === "en" ? "World Cup Season is here ⚽" : "¡Ya llegó la Temporada del Mundial! ⚽"}
+              {lang === "en" ? "Back to School Season is here 🎒" : "¡Ya llegó la Temporada de Regreso a Clases! 🎒"}
             </p>
             <p className="text-white/75 max-w-sm">
               {lang === "en"
-                ? "Celebrate with us — check out our full lineup of trucks, SUVs, and cars."
-                : "Celebra con nosotros — mira toda nuestra selección de trocas, SUVs y carros."}
+                ? "Get ready for the new school year — check out our full lineup of trucks, SUVs, and cars."
+                : "Prepárate para el nuevo ciclo escolar — mira toda nuestra selección de trocas, SUVs y carros."}
             </p>
             <Link
               href="/inventory"
