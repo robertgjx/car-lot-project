@@ -46,93 +46,130 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes orbitFadeInMobile {
-                from { opacity: 0; }
-                to   { opacity: 1; }
+              @keyframes appleDropMobile {
+                0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                6%   { opacity: 1; }
+                42%  { transform: translateY(0) rotate(160deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: translateY(-22px) rotate(200deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                68%  { transform: translateY(0) rotate(230deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                78%  { transform: translateY(-8px) rotate(250deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                88%  { transform: translateY(0) rotate(260deg); animation-timing-function: ease-out; }
+                100% { transform: translateY(0) rotate(260deg); }
               }
-              @keyframes orbitSpinMobile {
-                from { transform: rotate(0deg); }
-                to   { transform: rotate(360deg); }
+              @keyframes appleShadowSettleMobile {
+                0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
+                46%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
+                55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
+                68%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
               }
-              @keyframes orbitCounterSpinMobile {
-                from { transform: rotate(0deg); }
-                to   { transform: rotate(-360deg); }
+              @keyframes rulerDropMobile {
+                0%   { transform: translateY(-90px) rotate(45deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                6%   { opacity: 1; }
+                50%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                63%  { transform: translateY(-10px) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                78%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                100% { transform: translateY(0) rotate(0deg); }
               }
-              .logo-hood-orbit-mobile {
+              @keyframes rulerShadowSettleMobile {
+                0%, 46% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
+                50%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
+                63%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.7); }
+                78%  { opacity: 0.18; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0.14; transform: translateX(-50%) scaleX(0.9); }
+              }
+              .floor-duo-mobile {
                 position: absolute;
-                top: 0px;
-                right: 8px;
-                width: 0;
-                height: 0;
+                left: 100%;
+                bottom: -2px;
+                margin-left: 2px;
+                display: flex;
+                align-items: flex-end;
+                gap: 4px;
                 pointer-events: none;
                 z-index: 20;
-                opacity: 0;
-                animation: orbitFadeInMobile 0.8s ease-out 300ms forwards;
               }
-              .orbit-ring-mobile {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 38px;
-                height: 38px;
-                margin-left: -19px;
-                margin-top: -19px;
-                animation: orbitSpinMobile 6.5s linear infinite;
+              .apple-drop-wrap-mobile {
+                position: relative;
+                width: 26px;
+                height: 26px;
               }
-              .orbit-item-mobile {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 16px;
-                height: 16px;
-                margin: -8px;
-              }
-              .orbit-item-apple-mobile { transform: translateY(-16px); }
-              .orbit-item-ruler-mobile { transform: translateY(16px); }
-              .orbit-counter-mobile {
+              .apple-drop-inner-mobile {
                 width: 100%;
                 height: 100%;
-                animation: orbitCounterSpinMobile 6.5s linear infinite;
-                filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+                animation: appleDropMobile 1.9s 300ms 1 both;
+                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+              }
+              .apple-drop-shadow-mobile {
+                position: absolute;
+                left: 50%;
+                bottom: -3px;
+                width: 20px;
+                height: 5px;
+                border-radius: 9999px;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
+                animation: appleShadowSettleMobile 1.9s 300ms 1 both;
+              }
+              .ruler-drop-wrap-mobile {
+                position: relative;
+                width: 32px;
+                height: 12px;
+                margin-bottom: 3px;
+              }
+              .ruler-drop-inner-mobile {
+                width: 100%;
+                height: 100%;
+                animation: rulerDropMobile 1.8s 650ms 1 both;
+                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+              }
+              .ruler-drop-shadow-mobile {
+                position: absolute;
+                left: 50%;
+                bottom: -4px;
+                width: 26px;
+                height: 5px;
+                border-radius: 9999px;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
+                animation: rulerShadowSettleMobile 1.8s 650ms 1 both;
               }
               @media (prefers-reduced-motion: reduce) {
-                .logo-hood-orbit-mobile { animation: none; opacity: 0; }
-                .orbit-ring-mobile, .orbit-counter-mobile { animation: none; }
+                .apple-drop-inner-mobile, .apple-drop-shadow-mobile, .ruler-drop-inner-mobile, .ruler-drop-shadow-mobile { animation: none; }
+                .apple-drop-shadow-mobile, .ruler-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="logo-hood-orbit-mobile" aria-hidden="true">
-              <div className="orbit-ring-mobile">
-                <div className="orbit-item-mobile orbit-item-apple-mobile">
-                  <div className="orbit-counter-mobile">
-                    <svg viewBox="0 0 100 100" width="16" height="16">
-                      <defs>
-                        <radialGradient id="appleGradOrbitMobile" cx="35%" cy="30%" r="75%">
-                          <stop offset="0%" stopColor="#fca5a5" />
-                          <stop offset="45%" stopColor="#dc2626" />
-                          <stop offset="100%" stopColor="#7f1d1d" />
-                        </radialGradient>
-                      </defs>
-                      <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradOrbitMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
-                      <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                      <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                      <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                      <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                    </svg>
-                  </div>
+            <div className="floor-duo-mobile" aria-hidden="true">
+              <div className="apple-drop-wrap-mobile">
+                <div className="apple-drop-shadow-mobile" />
+                <div className="apple-drop-inner-mobile">
+                  <svg viewBox="0 0 100 100" width="26" height="26">
+                    <defs>
+                      <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
+                        <stop offset="0%" stopColor="#fca5a5" />
+                        <stop offset="45%" stopColor="#dc2626" />
+                        <stop offset="100%" stopColor="#7f1d1d" />
+                      </radialGradient>
+                    </defs>
+                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
+                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  </svg>
                 </div>
-                <div className="orbit-item-mobile orbit-item-ruler-mobile">
-                  <div className="orbit-counter-mobile">
-                    <svg viewBox="0 0 100 34" width="16" height="6">
-                      <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                      <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                    </svg>
-                  </div>
+              </div>
+              <div className="ruler-drop-wrap-mobile">
+                <div className="ruler-drop-shadow-mobile" />
+                <div className="ruler-drop-inner-mobile">
+                  <svg viewBox="0 0 100 34" width="32" height="12">
+                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
+                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -210,93 +247,130 @@ export default function NavBar() {
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <div className="relative">
             <style>{`
-              @keyframes orbitFadeIn {
-                from { opacity: 0; }
-                to   { opacity: 1; }
+              @keyframes appleDrop {
+                0%   { transform: translateY(-150px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                6%   { opacity: 1; }
+                42%  { transform: translateY(0) rotate(160deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: translateY(-32px) rotate(200deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                68%  { transform: translateY(0) rotate(230deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                78%  { transform: translateY(-11px) rotate(250deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                88%  { transform: translateY(0) rotate(260deg); animation-timing-function: ease-out; }
+                100% { transform: translateY(0) rotate(260deg); }
               }
-              @keyframes orbitSpin {
-                from { transform: rotate(0deg); }
-                to   { transform: rotate(360deg); }
+              @keyframes appleShadowSettle {
+                0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
+                46%  { opacity: 0.25; transform: translateX(-50%) scaleX(1); }
+                55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
+                68%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0.18; transform: translateX(-50%) scaleX(0.9); }
               }
-              @keyframes orbitCounterSpin {
-                from { transform: rotate(0deg); }
-                to   { transform: rotate(-360deg); }
+              @keyframes rulerDrop {
+                0%   { transform: translateY(-130px) rotate(45deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                6%   { opacity: 1; }
+                50%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                63%  { transform: translateY(-14px) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+                78%  { transform: translateY(0) rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                100% { transform: translateY(0) rotate(0deg); }
               }
-              .logo-hood-orbit {
+              @keyframes rulerShadowSettle {
+                0%, 46% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
+                50%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
+                63%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.7); }
+                78%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
+                100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
+              }
+              .floor-duo {
                 position: absolute;
-                top: 4px;
-                right: 30px;
-                width: 0;
-                height: 0;
+                left: 100%;
+                bottom: -2px;
+                margin-left: 4px;
+                display: flex;
+                align-items: flex-end;
+                gap: 6px;
                 pointer-events: none;
                 z-index: 20;
-                opacity: 0;
-                animation: orbitFadeIn 0.8s ease-out 300ms forwards;
               }
-              .orbit-ring {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 56px;
-                height: 56px;
-                margin-left: -28px;
-                margin-top: -28px;
-                animation: orbitSpin 7s linear infinite;
+              .apple-drop-wrap {
+                position: relative;
+                width: 38px;
+                height: 38px;
               }
-              .orbit-item {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 22px;
-                height: 22px;
-                margin: -11px;
-              }
-              .orbit-item-apple { transform: translateY(-24px); }
-              .orbit-item-ruler { transform: translateY(24px); }
-              .orbit-counter {
+              .apple-drop-inner {
                 width: 100%;
                 height: 100%;
-                animation: orbitCounterSpin 7s linear infinite;
-                filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+                animation: appleDrop 1.9s 300ms 1 both;
+                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
+              }
+              .apple-drop-shadow {
+                position: absolute;
+                left: 50%;
+                bottom: -4px;
+                width: 30px;
+                height: 8px;
+                border-radius: 9999px;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
+                animation: appleShadowSettle 1.9s 300ms 1 both;
+              }
+              .ruler-drop-wrap {
+                position: relative;
+                width: 48px;
+                height: 17px;
+                margin-bottom: 4px;
+              }
+              .ruler-drop-inner {
+                width: 100%;
+                height: 100%;
+                animation: rulerDrop 1.8s 650ms 1 both;
+                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
+              }
+              .ruler-drop-shadow {
+                position: absolute;
+                left: 50%;
+                bottom: -5px;
+                width: 40px;
+                height: 8px;
+                border-radius: 9999px;
+                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
+                animation: rulerShadowSettle 1.8s 650ms 1 both;
               }
               @media (prefers-reduced-motion: reduce) {
-                .logo-hood-orbit { animation: none; opacity: 0; }
-                .orbit-ring, .orbit-counter { animation: none; }
+                .apple-drop-inner, .apple-drop-shadow, .ruler-drop-inner, .ruler-drop-shadow { animation: none; }
+                .apple-drop-shadow, .ruler-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="logo-hood-orbit" aria-hidden="true">
-              <div className="orbit-ring">
-                <div className="orbit-item orbit-item-apple">
-                  <div className="orbit-counter">
-                    <svg viewBox="0 0 100 100" width="22" height="22">
-                      <defs>
-                        <radialGradient id="appleGradOrbitDesktop" cx="35%" cy="30%" r="75%">
-                          <stop offset="0%" stopColor="#fca5a5" />
-                          <stop offset="45%" stopColor="#dc2626" />
-                          <stop offset="100%" stopColor="#7f1d1d" />
-                        </radialGradient>
-                      </defs>
-                      <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradOrbitDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
-                      <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                      <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                      <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                      <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
-                    </svg>
-                  </div>
+            <div className="floor-duo" aria-hidden="true">
+              <div className="apple-drop-wrap">
+                <div className="apple-drop-shadow" />
+                <div className="apple-drop-inner">
+                  <svg viewBox="0 0 100 100" width="38" height="38">
+                    <defs>
+                      <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
+                        <stop offset="0%" stopColor="#fca5a5" />
+                        <stop offset="45%" stopColor="#dc2626" />
+                        <stop offset="100%" stopColor="#7f1d1d" />
+                      </radialGradient>
+                    </defs>
+                    <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
+                    <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+                    <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
+                    <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  </svg>
                 </div>
-                <div className="orbit-item orbit-item-ruler">
-                  <div className="orbit-counter">
-                    <svg viewBox="0 0 100 34" width="22" height="8">
-                      <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
-                      <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
-                      <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
-                      <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
-                    </svg>
-                  </div>
+              </div>
+              <div className="ruler-drop-wrap">
+                <div className="ruler-drop-shadow" />
+                <div className="ruler-drop-inner">
+                  <svg viewBox="0 0 100 34" width="48" height="17">
+                    <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
+                    <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="36" y1="6" x2="36" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="48" y1="6" x2="48" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="60" y1="6" x2="60" y2="19" stroke="#92400e" strokeWidth="2" />
+                    <line x1="72" y1="6" x2="72" y2="14" stroke="#92400e" strokeWidth="1.5" />
+                    <line x1="84" y1="6" x2="84" y2="19" stroke="#92400e" strokeWidth="2" />
+                  </svg>
                 </div>
               </div>
             </div>
