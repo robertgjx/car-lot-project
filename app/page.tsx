@@ -434,7 +434,7 @@ export default function Home() {
                 </svg>
               </Link>
               <a
-                href="https://www.facebook.com/GarciasAutoSalesRGV"
+                href="https://www.facebook.com/share/1D9egL6Rxf/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white text-red-700 font-semibold px-6 py-3 hover:bg-white/90 transition"
