@@ -84,10 +84,10 @@ export default function NavBar() {
               }
               .apple-drop-wrap-mobile {
                 position: absolute;
-                left: 19%;
-                top: 20%;
-                width: 15px;
-                height: 15px;
+                left: 30%;
+                top: 24%;
+                width: 26px;
+                height: 26px;
                 pointer-events: none;
                 z-index: 20;
               }
@@ -95,24 +95,24 @@ export default function NavBar() {
                 width: 100%;
                 height: 100%;
                 animation: appleDropMobile 1.9s 300ms 1 both;
-                filter: drop-shadow(0 1.5px 1.5px rgba(0,0,0,0.2));
+                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
               }
               .apple-drop-shadow-mobile {
                 position: absolute;
                 left: 50%;
-                bottom: -2px;
-                width: 12px;
-                height: 3px;
+                bottom: -3px;
+                width: 20px;
+                height: 5px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: appleShadowSettleMobile 1.9s 300ms 1 both;
               }
               .ruler-drop-wrap-mobile {
                 position: absolute;
-                left: 32%;
-                top: 27%;
-                width: 19px;
-                height: 7px;
+                left: 44%;
+                top: 33%;
+                width: 32px;
+                height: 12px;
                 pointer-events: none;
                 z-index: 20;
               }
@@ -120,14 +120,14 @@ export default function NavBar() {
                 width: 100%;
                 height: 100%;
                 animation: rulerDropMobile 1.8s 650ms 1 both;
-                filter: drop-shadow(0 1.5px 1.5px rgba(0,0,0,0.2));
+                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
               }
               .ruler-drop-shadow-mobile {
                 position: absolute;
                 left: 50%;
-                bottom: -2px;
-                width: 15px;
-                height: 3px;
+                bottom: -4px;
+                width: 26px;
+                height: 5px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: rulerShadowSettleMobile 1.8s 650ms 1 both;
@@ -142,7 +142,7 @@ export default function NavBar() {
                 <div className="apple-drop-wrap-mobile" aria-hidden="true">
                   <div className="apple-drop-shadow-mobile" />
                   <div className="apple-drop-inner-mobile">
-                    <svg viewBox="0 0 100 100" width="15" height="15">
+                    <svg viewBox="0 0 100 100" width="26" height="26">
                       <defs>
                         <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
                           <stop offset="0%" stopColor="#fca5a5" />
@@ -161,7 +161,7 @@ export default function NavBar() {
                 <div className="ruler-drop-wrap-mobile" aria-hidden="true">
                   <div className="ruler-drop-shadow-mobile" />
                   <div className="ruler-drop-inner-mobile">
-                    <svg viewBox="0 0 100 34" width="19" height="7">
+                    <svg viewBox="0 0 100 34" width="32" height="12">
                       <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
                       <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
                       <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
@@ -285,10 +285,10 @@ export default function NavBar() {
               }
               .apple-drop-wrap {
                 position: absolute;
-                left: 19%;
-                top: 20%;
-                width: 24px;
-                height: 24px;
+                left: 30%;
+                top: 24%;
+                width: 38px;
+                height: 38px;
                 pointer-events: none;
                 z-index: 20;
               }
@@ -296,24 +296,24 @@ export default function NavBar() {
                 width: 100%;
                 height: 100%;
                 animation: appleDrop 1.9s 300ms 1 both;
-                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
               }
               .apple-drop-shadow {
                 position: absolute;
                 left: 50%;
-                bottom: -3px;
-                width: 19px;
-                height: 5px;
+                bottom: -4px;
+                width: 30px;
+                height: 8px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: appleShadowSettle 1.9s 300ms 1 both;
               }
               .ruler-drop-wrap {
                 position: absolute;
-                left: 32%;
-                top: 27%;
-                width: 30px;
-                height: 11px;
+                left: 44%;
+                top: 33%;
+                width: 48px;
+                height: 17px;
                 pointer-events: none;
                 z-index: 20;
               }
@@ -321,14 +321,14 @@ export default function NavBar() {
                 width: 100%;
                 height: 100%;
                 animation: rulerDrop 1.8s 650ms 1 both;
-                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
               }
               .ruler-drop-shadow {
                 position: absolute;
                 left: 50%;
-                bottom: -3px;
-                width: 24px;
-                height: 5px;
+                bottom: -5px;
+                width: 40px;
+                height: 8px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
                 animation: rulerShadowSettle 1.8s 650ms 1 both;
@@ -343,7 +343,7 @@ export default function NavBar() {
                 <div className="apple-drop-wrap" aria-hidden="true">
                   <div className="apple-drop-shadow" />
                   <div className="apple-drop-inner">
-                    <svg viewBox="0 0 100 100" width="24" height="24">
+                    <svg viewBox="0 0 100 100" width="38" height="38">
                       <defs>
                         <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
                           <stop offset="0%" stopColor="#fca5a5" />
@@ -362,7 +362,7 @@ export default function NavBar() {
                 <div className="ruler-drop-wrap" aria-hidden="true">
                   <div className="ruler-drop-shadow" />
                   <div className="ruler-drop-inner">
-                    <svg viewBox="0 0 100 34" width="30" height="11">
+                    <svg viewBox="0 0 100 34" width="48" height="17">
                       <rect x="2" y="6" width="96" height="22" rx="3" fill="#fbbf24" stroke="#92400e" strokeWidth="2" />
                       <line x1="12" y1="6" x2="12" y2="19" stroke="#92400e" strokeWidth="2" />
                       <line x1="24" y1="6" x2="24" y2="14" stroke="#92400e" strokeWidth="1.5" />
