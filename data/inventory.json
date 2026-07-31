@@ -1,5 +1,31 @@
 [
   {
+    "id": "2004-toyota-tacoma-4z407436",
+    "year": 2004,
+    "make": "TOYOTA",
+    "model": "Tacoma",
+    "trim": "DELUXE",
+    "price": 5900,
+    "fee":1500,
+    "term":12,
+    "down":3000,
+    "vin": "5TEWM72N24Z407436",
+    "fuel": "Gasoline",
+    "engine": "2.7L In-Line V4",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Silver",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/2004-toyota-tacoma-4z407436/IMG_4905.JPG",
+      "/cars/2004-toyota-tacoma-4z407436/IMG_4906.JPG",
+      "/cars/2004-toyota-tacoma-4z407436/IMG_4907.JPG",
+      "/cars/2004-toyota-tacoma-4z407436/IMG_4908.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "2008-chevrolet-silverado-81125157",
     "year": 2008,
     "make": "Chevrolet",
