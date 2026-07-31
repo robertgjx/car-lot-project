@@ -1104,7 +1104,7 @@
       "/cars/2019-chevrolet-silverado-kg165961/IMG_3539.JPG",
       "/cars/2019-chevrolet-silverado-kg165961/IMG_3540.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2002-chevrolet-silverado-2z209696",
@@ -1513,7 +1513,7 @@
       "/cars/2018-chevrolet-colorado-j1329271/IMG_3288.JPG",
       "/cars/2018-chevrolet-colorado-j1329271/IMG_3289.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2019-ford-f-250-kec30027",
@@ -1998,7 +1998,7 @@
       "/cars/2018-chevrolet-colorado-j1124390/IMG_3095.JPG",
       "/cars/2018-chevrolet-colorado-j1124390/IMG_3096.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1987-ford-f-150-hpa88938",
@@ -2054,7 +2054,7 @@
       "/cars/2013-chevrolet-silverado-dz373282/IMG_2878.JPG",
       "/cars/2013-chevrolet-silverado-dz373282/IMG_2880.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2000-ford-ranger-ypb85030",
@@ -2910,7 +2910,7 @@
       "/cars/2015-chevrolet-silverado-fz260545/34018.JPG",
       "/cars/2015-chevrolet-silverado-fz260545/34019.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2004-gmc-sierra-4z173039",
@@ -2934,7 +2934,7 @@
       "/cars/2004-gmc-sierra-4z173039/PXL_20260421_182346507.JPG",
       "/cars/2004-gmc-sierra-4z173039/PXL_20260421_182351396.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2005-chevrolet-silverado-5z139410",
@@ -3729,7 +3729,7 @@
       "/cars/2013-gmc-sierra-218380/5693138798056657399.JPG",
       "/cars/2013-gmc-sierra-218380/8984474973402979846.JPG"
     ],
-    "status": "available",
+    "status": "sold",
     "location": "Palma Vista"
   },
   {
@@ -4987,7 +4987,7 @@
                  "/cars/2019-ford-f-250-kef69437/2517404896149939604.JPG",
                  "/cars/2019-ford-f-250-kef69437/846644069375747472.JPG"
     ],
-      "status": "available"
+      "status": "sold"
     },
 
     {
@@ -5128,7 +5128,7 @@
         "/cars/2018-gmc-acadia-jz243972/8177060518051649203.JPG",
         "/cars/2018-gmc-acadia-jz243972/9036542501948491542.JPG"
       ],
-      "status": "sols"
+      "status": "sold"
     },
     {
       "id": "2010-chevrolet-colorado-a8145670",
@@ -5328,7 +5328,7 @@
         "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175435446.JPG",
         "/cars/2022-chevrolet-silverado-hd-nf337118/PXL_20260327_175451046.MP.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2019-ford-mustang-k5174832",
@@ -5579,7 +5579,7 @@
         "/cars/2022-chevrolet-equinox-n6120107/32871.JPG"
 
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2014-ford-f-250-eea48936",
@@ -6120,7 +6120,7 @@
       "/cars/2018-ford-f-250-jec18290/IMG_3031.JPG",
       "/cars/2018-ford-f-250-jec18290/IMG_3032.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   }
   
 ]
