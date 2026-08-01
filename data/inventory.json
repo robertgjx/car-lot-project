@@ -23,7 +23,7 @@
       "/cars/2004-toyota-tacoma-4z407436/IMG_4907.JPG",
       "/cars/2004-toyota-tacoma-4z407436/IMG_4908.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2008-chevrolet-silverado-81125157",
@@ -1636,7 +1636,7 @@
       "/cars/2015-chevrolet-colorado-f1225760/IMG_3083.JPG",
       "/cars/2015-chevrolet-colorado-f1225760/IMG_3086.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1987-ford-f-150-hpa88938",
