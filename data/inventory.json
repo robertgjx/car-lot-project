@@ -1003,6 +1003,8 @@
     "model": "F-250",
     "price": 18000,
     "down": 7000,
+    "miles":173574,
+    "trim": "King Ranch",
     "vin": "1FT7W2BT0BEC10524",
     "fuel": "Diesel",
     "engine": "6.7L V-Shaped V8",
