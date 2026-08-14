@@ -49,7 +49,7 @@
       "/cars/2008-chevrolet-silverado-81125157/IMG_4487.JPG",
       "/cars/2008-chevrolet-silverado-81125157/IMG_4489.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2003-ford-f-150-harley-davidson-3kc50282",
@@ -642,7 +642,7 @@
       "/cars/2023-chevrolet-silverado-pg350775/IMG_4241.JPG",
       "/cars/2023-chevrolet-silverado-pg350775/IMG_4242.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1998-chevrolet-gmt-400-wz177433",
@@ -1070,7 +1070,7 @@
       "/cars/2001-ford-f-150-1kc27366/IMG_3465.JPG",
       "/cars/2001-ford-f-150-1kc27366/IMG_3466.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-chevrolet-camaro-j0125773",
@@ -2117,7 +2117,7 @@
       "/cars/2019-chevrolet-silverado-ld-k1100392/34484.JPG",
       "/cars/2019-chevrolet-silverado-ld-k1100392/34485.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2000-ford-f-150-ync06349",
@@ -2166,7 +2166,7 @@
       "/cars/1988-chevrolet-gmt-400-jz151817/PXL_20260423_200931855.JPG",
       "/cars/1988-chevrolet-gmt-400-jz151817/PXL_20260423_200943047.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1997-chevrolet-gmt-400-vz167775",
@@ -4172,7 +4172,7 @@
     "images": ["/cars/2017-ford-f-150-hfb30429/7833603073853829.JPG",
                "/cars/2017-ford-f-150-hfb30429/9005154774810394043.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location":"Palma Vista"
   },
   {
@@ -4976,7 +4976,7 @@
       "/cars/2020-chevrolet-express-l1266888/IMG_2855.JPG",
       "/cars/2020-chevrolet-express-l1266888/IMG_2856.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2022-ford-transit-nka41315",
@@ -5029,7 +5029,7 @@
       "/cars/2015-chevrolet-silverado-fz529725/36483.JPG",
       "/cars/2015-chevrolet-silverado-fz529725/36485.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2016-ford-f-250-geb41704",
