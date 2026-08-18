@@ -39,6 +39,9 @@ export default function ContactPage() {
             </p>
             <p className="text-gray-900 font-medium">1800 W Veterans Blvd.</p>
             <p className="text-gray-500 text-sm">Palmview, TX 78572</p>
+            <a href="tel:9565999025" className="mt-2 inline-block text-red-600 font-semibold hover:underline text-sm">
+              (956) 599-9025
+            </a>
           </div>
         </div>
 
