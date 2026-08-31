@@ -22,20 +22,6 @@ export default function ContactPage() {
               ? "Call to ask about a vehicle or in-house financing."
               : "Llama para preguntar sobre un vehículo o financiamiento propio."}
           </p>
-          <a
-            href="tel:9565810455"
-            className="mt-6 inline-flex items-center gap-3 rounded-2xl bg-red-600 hover:bg-red-700 transition px-6 py-4"
-          >
-            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white/15">
-              <Phone className="w-4 h-4 text-white" strokeWidth={2} />
-            </span>
-            <span className="text-left">
-              <span className="block text-xs text-white/70 uppercase tracking-wide">
-                {lang === "en" ? "Office Phone" : "Teléfono de oficina"}
-              </span>
-              <span className="block text-white font-bold text-lg">(956) 581-0455</span>
-            </span>
-          </a>
         </div>
       </section>
 
@@ -43,51 +29,51 @@ export default function ContactPage() {
 
         {/* LOCATIONS */}
         <section className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <a
-            href="https://maps.google.com/?q=1801+W+Palma+Vista+Dr+Palmview+TX+78572"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 p-6 hover:border-red-300 hover:shadow-md transition"
-          >
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-600" />
-            <div className="flex items-start justify-between">
-              <span className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-red-600 shrink-0">
-                <MapPin className="w-5 h-5" strokeWidth={2} />
-              </span>
-              <Navigation className="w-5 h-5 text-gray-300 group-hover:text-red-500 transition mt-2" strokeWidth={2} />
-            </div>
-            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-red-500">
-              {lang === "en" ? "Location 1" : "Ubicación 1"}
-            </p>
-            <p className="mt-1 text-gray-900 font-bold text-lg">1801 W Palma Vista Dr.</p>
-            <p className="text-gray-500 text-sm">Palmview, TX 78572</p>
-          </a>
-
-          <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 p-6">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-600" />
-            <div className="flex items-start justify-between">
-              <span className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-red-600 shrink-0">
-                <MapPin className="w-5 h-5" strokeWidth={2} />
-              </span>
-              <a
-                href="https://maps.google.com/?q=1800+W+Veterans+Blvd+Palmview+TX+78572"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-red-500 transition mt-2"
-              >
-                <Navigation className="w-5 h-5" strokeWidth={2} />
+          {[
+            {
+              key: "loc1",
+              label: lang === "en" ? "Location 1" : "Ubicación 1",
+              address: "1801 W Palma Vista Dr.",
+              cityState: "Palmview, TX 78572",
+              phone: "9565810455",
+              phoneDisplay: "(956) 581-0455",
+              mapsQuery: "1801+W+Palma+Vista+Dr+Palmview+TX+78572",
+            },
+            {
+              key: "loc2",
+              label: lang === "en" ? "Location 2" : "Ubicación 2",
+              address: "1800 W Veterans Blvd.",
+              cityState: "Palmview, TX 78572",
+              phone: "9565999025",
+              phoneDisplay: "(956) 599-9025",
+              mapsQuery: "1800+W+Veterans+Blvd+Palmview+TX+78572",
+            },
+          ].map((loc) => (
+            <div key={loc.key} className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 p-6">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-600" />
+              <div className="flex items-start justify-between">
+                <span className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-red-600 shrink-0">
+                  <MapPin className="w-5 h-5" strokeWidth={2} />
+                </span>
+                <a
+                  href={`https://maps.google.com/?q=${loc.mapsQuery}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-red-500 transition mt-2"
+                  aria-label={lang === "en" ? "Get directions" : "Cómo llegar"}
+                >
+                  <Navigation className="w-5 h-5" strokeWidth={2} />
+                </a>
+              </div>
+              <p className="mt-4 text-xs font-bold uppercase tracking-widest text-red-500">{loc.label}</p>
+              <p className="mt-1 text-gray-900 font-bold text-lg">{loc.address}</p>
+              <p className="text-gray-500 text-sm">{loc.cityState}</p>
+              <a href={`tel:${loc.phone}`} className="mt-3 inline-flex items-center gap-1.5 text-red-600 font-bold hover:underline text-sm">
+                <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
+                {loc.phoneDisplay}
               </a>
             </div>
-            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-red-500">
-              {lang === "en" ? "Location 2" : "Ubicación 2"}
-            </p>
-            <p className="mt-1 text-gray-900 font-bold text-lg">1800 W Veterans Blvd.</p>
-            <p className="text-gray-500 text-sm">Palmview, TX 78572</p>
-            <a href="tel:9565999025" className="mt-3 inline-flex items-center gap-1.5 text-red-600 font-bold hover:underline text-sm">
-              <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
-              (956) 599-9025
-            </a>
-          </div>
+          ))}
         </section>
 
         {/* HOURS + INVENTORY ASSOCIATES */}
