@@ -5,6 +5,34 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLang, t } from "./LanguageContext";
 
+function PumpkinIcon({ id }: { id: string }) {
+  return (
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+      <defs>
+        <radialGradient id={id} cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stopColor="#fdba74" />
+          <stop offset="45%" stopColor="#ea580c" />
+          <stop offset="100%" stopColor="#7c2d12" />
+        </radialGradient>
+      </defs>
+      {/* vine curl */}
+      <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
+      {/* small leaf */}
+      <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
+      {/* stem */}
+      <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
+      {/* pumpkin body */}
+      <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill={`url(#${id})`} stroke="#7c2d12" strokeWidth="2.5" />
+      {/* ridges */}
+      <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+      <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+      <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+      {/* shine */}
+      <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
+    </svg>
+  );
+}
+
 export default function NavBar() {
   const { lang, toggle } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,81 +74,52 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes pumpkinDropMobile {
-                0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                6%   { opacity: 1; }
-                42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                55%  { transform: translateY(-22px) rotate(277deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                68%  { transform: translateY(0) rotate(319deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                78%  { transform: translateY(-8px) rotate(346deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
-                100% { transform: translateY(0) rotate(360deg); }
+              @keyframes pumpkinPatchPop {
+                0%   { transform: scale(0) rotate(-10deg); opacity: 0; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: scale(1.14) rotate(5deg); opacity: 1; }
+                75%  { transform: scale(0.94) rotate(-2deg); }
+                100% { transform: scale(1) rotate(0deg); opacity: 1; }
               }
-              @keyframes pumpkinShadowSettleMobile {
-                0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
-                46%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
-                55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
-                68%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
-                100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
+              @keyframes pumpkinPatchGroundFade {
+                0%, 30% { opacity: 0; }
+                100% { opacity: 1; }
               }
-              .pumpkin-drop-wrap-mobile {
+              .patch-wrap-mobile {
                 position: absolute;
                 left: 100%;
-                bottom: 20%;
-                margin-left: -22px;
-                width: 26px;
+                bottom: 4%;
+                margin-left: -38px;
+                width: 42px;
                 height: 26px;
                 pointer-events: none;
                 z-index: 20;
               }
-              .pumpkin-drop-inner-mobile {
-                width: 100%;
-                height: 100%;
-                animation: pumpkinDropMobile 1.9s 300ms 1 both;
-                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-              }
-              .pumpkin-drop-shadow-mobile {
+              .patch-vine-mobile {
                 position: absolute;
-                left: 50%;
-                bottom: -3px;
-                width: 20px;
-                height: 5px;
-                border-radius: 9999px;
-                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: pumpkinShadowSettleMobile 1.9s 300ms 1 both;
+                left: 0; right: 0; bottom: 1px;
+                width: 100%; height: 8px;
+                animation: pumpkinPatchGroundFade 0.6s 900ms both;
               }
+              .patch-pumpkin-mobile {
+                position: absolute;
+                bottom: 0;
+                transform-origin: 50% 100%;
+                filter: drop-shadow(0 1.5px 1.5px rgba(0,0,0,0.2));
+              }
+              .patch-pumpkin-mobile.small  { left: 0px;   width: 11px; height: 11px; animation: pumpkinPatchPop 0.65s 300ms both; }
+              .patch-pumpkin-mobile.medium { left: 11px;  width: 15px; height: 15px; animation: pumpkinPatchPop 0.65s 520ms both; }
+              .patch-pumpkin-mobile.large  { left: 24px;  width: 20px; height: 20px; animation: pumpkinPatchPop 0.65s 740ms both; }
               @media (prefers-reduced-motion: reduce) {
-                .pumpkin-drop-inner-mobile, .pumpkin-drop-shadow-mobile { animation: none; }
-                .pumpkin-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
+                .patch-pumpkin-mobile, .patch-vine-mobile { animation: none !important; opacity: 1 !important; transform: none !important; }
               }
             `}</style>
-            <div className="pumpkin-drop-wrap-mobile" aria-hidden="true">
-              <div className="pumpkin-drop-shadow-mobile" />
-              <div className="pumpkin-drop-inner-mobile">
-                <svg viewBox="0 0 100 100" width="26" height="26">
-                  <defs>
-                    <radialGradient id="pumpkinGradDropMobile" cx="35%" cy="30%" r="75%">
-                      <stop offset="0%" stopColor="#fdba74" />
-                      <stop offset="45%" stopColor="#ea580c" />
-                      <stop offset="100%" stopColor="#7c2d12" />
-                    </radialGradient>
-                  </defs>
-                  {/* vine curl */}
-                  <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
-                  {/* small leaf */}
-                  <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
-                  {/* stem */}
-                  <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
-                  {/* pumpkin body */}
-                  <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill="url(#pumpkinGradDropMobile)" stroke="#7c2d12" strokeWidth="2.5" />
-                  {/* ridges */}
-                  <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  {/* shine */}
-                  <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
-                </svg>
-              </div>
+            <div className="patch-wrap-mobile" aria-hidden="true">
+              <svg className="patch-vine-mobile" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+              </svg>
+              <div className="patch-pumpkin-mobile small"><PumpkinIcon id="pumpkinPatchSmallMobile" /></div>
+              <div className="patch-pumpkin-mobile medium"><PumpkinIcon id="pumpkinPatchMediumMobile" /></div>
+              <div className="patch-pumpkin-mobile large"><PumpkinIcon id="pumpkinPatchLargeMobile" /></div>
             </div>
             <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
               <Image
@@ -196,81 +195,52 @@ export default function NavBar() {
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <div className="relative">
             <style>{`
-              @keyframes pumpkinDrop {
-                0%   { transform: translateY(-150px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                6%   { opacity: 1; }
-                42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                55%  { transform: translateY(-32px) rotate(277deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                68%  { transform: translateY(0) rotate(319deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-                78%  { transform: translateY(-11px) rotate(346deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-                88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
-                100% { transform: translateY(0) rotate(360deg); }
+              @keyframes pumpkinPatchPopDesktop {
+                0%   { transform: scale(0) rotate(-10deg); opacity: 0; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+                55%  { transform: scale(1.14) rotate(5deg); opacity: 1; }
+                75%  { transform: scale(0.94) rotate(-2deg); }
+                100% { transform: scale(1) rotate(0deg); opacity: 1; }
               }
-              @keyframes pumpkinShadowSettle {
-                0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
-                46%  { opacity: 0.25; transform: translateX(-50%) scaleX(1); }
-                55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
-                68%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
-                100% { opacity: 0.18; transform: translateX(-50%) scaleX(0.9); }
+              @keyframes pumpkinPatchGroundFadeDesktop {
+                0%, 30% { opacity: 0; }
+                100% { opacity: 1; }
               }
-              .pumpkin-drop-wrap {
+              .patch-wrap {
                 position: absolute;
                 left: 100%;
-                bottom: 16%;
-                margin-left: -34px;
-                width: 38px;
-                height: 38px;
+                bottom: 4%;
+                margin-left: -58px;
+                width: 64px;
+                height: 40px;
                 pointer-events: none;
                 z-index: 20;
               }
-              .pumpkin-drop-inner {
-                width: 100%;
-                height: 100%;
-                animation: pumpkinDrop 1.9s 300ms 1 both;
-                filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
-              }
-              .pumpkin-drop-shadow {
+              .patch-vine {
                 position: absolute;
-                left: 50%;
-                bottom: -4px;
-                width: 30px;
-                height: 8px;
-                border-radius: 9999px;
-                background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: pumpkinShadowSettle 1.9s 300ms 1 both;
+                left: 0; right: 0; bottom: 2px;
+                width: 100%; height: 12px;
+                animation: pumpkinPatchGroundFadeDesktop 0.6s 900ms both;
               }
+              .patch-pumpkin {
+                position: absolute;
+                bottom: 0;
+                transform-origin: 50% 100%;
+                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+              }
+              .patch-pumpkin.small  { left: 0px;   width: 17px; height: 17px; animation: pumpkinPatchPopDesktop 0.65s 300ms both; }
+              .patch-pumpkin.medium { left: 16px;  width: 23px; height: 23px; animation: pumpkinPatchPopDesktop 0.65s 520ms both; }
+              .patch-pumpkin.large  { left: 36px;  width: 30px; height: 30px; animation: pumpkinPatchPopDesktop 0.65s 740ms both; }
               @media (prefers-reduced-motion: reduce) {
-                .pumpkin-drop-inner, .pumpkin-drop-shadow { animation: none; }
-                .pumpkin-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
+                .patch-pumpkin, .patch-vine { animation: none !important; opacity: 1 !important; transform: none !important; }
               }
             `}</style>
-            <div className="pumpkin-drop-wrap" aria-hidden="true">
-              <div className="pumpkin-drop-shadow" />
-              <div className="pumpkin-drop-inner">
-                <svg viewBox="0 0 100 100" width="38" height="38">
-                  <defs>
-                    <radialGradient id="pumpkinGradDropDesktop" cx="35%" cy="30%" r="75%">
-                      <stop offset="0%" stopColor="#fdba74" />
-                      <stop offset="45%" stopColor="#ea580c" />
-                      <stop offset="100%" stopColor="#7c2d12" />
-                    </radialGradient>
-                  </defs>
-                  {/* vine curl */}
-                  <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
-                  {/* small leaf */}
-                  <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
-                  {/* stem */}
-                  <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
-                  {/* pumpkin body */}
-                  <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill="url(#pumpkinGradDropDesktop)" stroke="#7c2d12" strokeWidth="2.5" />
-                  {/* ridges */}
-                  <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-                  {/* shine */}
-                  <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
-                </svg>
-              </div>
+            <div className="patch-wrap" aria-hidden="true">
+              <svg className="patch-vine" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+              </svg>
+              <div className="patch-pumpkin small"><PumpkinIcon id="pumpkinPatchSmallDesktop" /></div>
+              <div className="patch-pumpkin medium"><PumpkinIcon id="pumpkinPatchMediumDesktop" /></div>
+              <div className="patch-pumpkin large"><PumpkinIcon id="pumpkinPatchLargeDesktop" /></div>
             </div>
             <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
               <Image
