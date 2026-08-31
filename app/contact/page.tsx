@@ -48,74 +48,82 @@ function WeeklyHoursCard({ lang }: { lang: string }) {
 export default function ContactPage() {
   const { lang } = useLang();
 
+  const locations = [
+    {
+      key: "loc1",
+      label: lang === "en" ? "Location 1" : "Ubicación 1",
+      address: "1801 W Palma Vista Dr.",
+      cityState: "Palmview, TX 78572",
+      phone: "9565810455",
+      phoneDisplay: "(956) 581-0455",
+      mapsQuery: "1801+W+Palma+Vista+Dr+Palmview+TX+78572",
+    },
+    {
+      key: "loc2",
+      label: lang === "en" ? "Location 2" : "Ubicación 2",
+      address: "1800 W Veterans Blvd.",
+      cityState: "Palmview, TX 78572",
+      phone: "9565999025",
+      phoneDisplay: "(956) 599-9025",
+      mapsQuery: "1800+W+Veterans+Blvd+Palmview+TX+78572",
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
-      {/* HEADER */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 px-4 md:px-6 py-14">
-        <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">{t.nav.contact[lang]}</h1>
-          <p className="mt-3 text-white/60 max-w-lg">
+      {/* HERO */}
+      <section className="relative w-full min-h-[360px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-black/60 to-gray-900/80" />
+        </div>
+        <div className="relative z-10 text-center px-4 py-20">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            {lang === "en" ? "Get in Touch" : "Ponte en Contacto"}
+          </h1>
+          <p className="mt-3 text-white/80 max-w-lg mx-auto">
             {lang === "en"
-              ? "Call to ask about a vehicle or in-house financing."
-              : "Llama para preguntar sobre un vehículo o financiamiento propio."}
+              ? "Want to ask about a vehicle or in-house financing? Here's how to reach us."
+              : "¿Preguntas sobre un vehículo o financiamiento propio? Así puedes contactarnos."}
           </p>
         </div>
       </section>
 
       <div className="max-w-[1800px] mx-auto p-4 md:p-6">
 
-        {/* LOCATIONS */}
-        <section className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {[
-            {
-              key: "loc1",
-              label: lang === "en" ? "Location 1" : "Ubicación 1",
-              address: "1801 W Palma Vista Dr.",
-              cityState: "Palmview, TX 78572",
-              phone: "9565810455",
-              phoneDisplay: "(956) 581-0455",
-              mapsQuery: "1801+W+Palma+Vista+Dr+Palmview+TX+78572",
-            },
-            {
-              key: "loc2",
-              label: lang === "en" ? "Location 2" : "Ubicación 2",
-              address: "1800 W Veterans Blvd.",
-              cityState: "Palmview, TX 78572",
-              phone: "9565999025",
-              phoneDisplay: "(956) 599-9025",
-              mapsQuery: "1800+W+Veterans+Blvd+Palmview+TX+78572",
-            },
-          ].map((loc) => (
-            <div key={loc.key} className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 p-6">
+        {/* LOCATIONS — overlapping the hero */}
+        <section className="-mt-20 relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {locations.map((loc) => (
+            <div key={loc.key} className="relative overflow-hidden rounded-3xl bg-white shadow-xl p-6 text-center">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-600" />
-              <div className="flex items-start justify-between">
-                <span className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-red-600 shrink-0">
-                  <MapPin className="w-5 h-5" strokeWidth={2} />
-                </span>
+              <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-50 text-red-600 mb-4">
+                <MapPin className="w-6 h-6" strokeWidth={2} />
+              </span>
+              <p className="text-xs font-bold uppercase tracking-widest text-red-500">{loc.label}</p>
+              <p className="mt-1 text-gray-900 font-bold text-lg">{loc.address}</p>
+              <p className="text-gray-500 text-sm">{loc.cityState}</p>
+              <a href={`tel:${loc.phone}`} className="mt-3 inline-flex items-center justify-center gap-1.5 text-red-600 font-bold hover:underline text-sm">
+                <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
+                {loc.phoneDisplay}
+              </a>
+              <div>
                 <a
                   href={`https://maps.google.com/?q=${loc.mapsQuery}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-red-500 transition mt-2"
-                  aria-label={lang === "en" ? "Get directions" : "Cómo llegar"}
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border-2 border-gray-200 text-gray-600 font-semibold px-5 py-2.5 hover:border-red-300 hover:text-red-600 transition text-sm"
                 >
-                  <Navigation className="w-5 h-5" strokeWidth={2} />
+                  <Navigation className="w-4 h-4" strokeWidth={2} />
+                  {lang === "en" ? "Get Directions" : "Cómo Llegar"}
                 </a>
               </div>
-              <p className="mt-4 text-xs font-bold uppercase tracking-widest text-red-500">{loc.label}</p>
-              <p className="mt-1 text-gray-900 font-bold text-lg">{loc.address}</p>
-              <p className="text-gray-500 text-sm">{loc.cityState}</p>
-              <a href={`tel:${loc.phone}`} className="mt-3 inline-flex items-center gap-1.5 text-red-600 font-bold hover:underline text-sm">
-                <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
-                {loc.phoneDisplay}
-              </a>
             </div>
           ))}
         </section>
 
         {/* HOURS */}
-        <section className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
               {lang === "en" ? "Hours" : "Horario"}
