@@ -7,6 +7,44 @@ const associates = [
   { name: "Cesar", phone: "9564789359", display: "(956) 478-9359" },
 ];
 
+const weeklyHours = [
+  { day: { en: "Monday", es: "Lunes" }, hours: "9:00 AM – 6:00 PM" },
+  { day: { en: "Tuesday", es: "Martes" }, hours: "9:00 AM – 6:00 PM" },
+  { day: { en: "Wednesday", es: "Miércoles" }, hours: "9:00 AM – 6:00 PM" },
+  { day: { en: "Thursday", es: "Jueves" }, hours: "9:00 AM – 6:00 PM" },
+  { day: { en: "Friday", es: "Viernes" }, hours: "9:00 AM – 6:00 PM" },
+  { day: { en: "Saturday", es: "Sábado" }, hours: "10:00 AM – 4:00 PM" },
+  { day: { en: "Sunday", es: "Domingo" }, hours: "Closed" },
+];
+
+function WeeklyHoursCard({ lang }: { lang: string }) {
+  // getDay(): 0 = Sunday ... 6 = Saturday. Our array is Monday-first, so shift by 1.
+  const todayIndex = (new Date().getDay() + 6) % 7;
+
+  return (
+    <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
+      <div className="flex flex-col gap-1.5">
+        {weeklyHours.map((row, i) => {
+          const isToday = i === todayIndex;
+          const hoursLabel =
+            row.hours === "Closed" ? (lang === "en" ? "Closed" : "Cerrado") : row.hours;
+          return (
+            <div
+              key={row.day.en}
+              className={`flex items-center justify-between rounded-xl px-3 py-2 transition ${
+                isToday ? "bg-green-100 text-green-800 font-semibold" : "text-gray-700"
+              }`}
+            >
+              <span>{row.day[lang as "en" | "es"]}</span>
+              <span>{hoursLabel}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function ContactPage() {
   const { lang } = useLang();
 
@@ -76,19 +114,16 @@ export default function ContactPage() {
           ))}
         </section>
 
-        {/* HOURS + INVENTORY ASSOCIATES */}
+        {/* HOURS */}
         <section className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6 flex flex-col justify-center">
-            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-red-600 mb-3">
-              <Clock className="w-5 h-5" strokeWidth={2} />
-            </span>
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+          <div className="md:col-span-1">
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
               {lang === "en" ? "Hours" : "Horario"}
             </p>
-            <p className="mt-1 text-gray-900 font-semibold">{t.contact.hoursVal[lang]}</p>
+            <WeeklyHoursCard lang={lang} />
           </div>
 
-          <div className="md:col-span-2 rounded-3xl border border-gray-200 bg-gray-50 p-6">
+          <div className="md:col-span-2 rounded-3xl border border-gray-200 bg-gray-50 p-6 h-fit">
             <p className="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-4">
               {lang === "en"
                 ? "For inventory questions, please call one of our inventory associates:"
