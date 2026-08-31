@@ -46,7 +46,7 @@ export default function NavBar() {
         <div className="flex md:hidden items-center justify-between px-3 py-1">
           <div className="relative">
             <style>{`
-              @keyframes appleDropMobile {
+              @keyframes pumpkinDropMobile {
                 0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
                 6%   { opacity: 1; }
                 42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -56,14 +56,14 @@ export default function NavBar() {
                 88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
                 100% { transform: translateY(0) rotate(360deg); }
               }
-              @keyframes appleShadowSettleMobile {
+              @keyframes pumpkinShadowSettleMobile {
                 0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
                 46%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
                 55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
                 68%  { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.16; transform: translateX(-50%) scaleX(0.9); }
               }
-              .apple-drop-wrap-mobile {
+              .pumpkin-drop-wrap-mobile {
                 position: absolute;
                 left: 100%;
                 bottom: 20%;
@@ -73,13 +73,13 @@ export default function NavBar() {
                 pointer-events: none;
                 z-index: 20;
               }
-              .apple-drop-inner-mobile {
+              .pumpkin-drop-inner-mobile {
                 width: 100%;
                 height: 100%;
-                animation: appleDropMobile 1.9s 300ms 1 both;
+                animation: pumpkinDropMobile 1.9s 300ms 1 both;
                 filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
               }
-              .apple-drop-shadow-mobile {
+              .pumpkin-drop-shadow-mobile {
                 position: absolute;
                 left: 50%;
                 bottom: -3px;
@@ -87,29 +87,38 @@ export default function NavBar() {
                 height: 5px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: appleShadowSettleMobile 1.9s 300ms 1 both;
+                animation: pumpkinShadowSettleMobile 1.9s 300ms 1 both;
               }
               @media (prefers-reduced-motion: reduce) {
-                .apple-drop-inner-mobile, .apple-drop-shadow-mobile { animation: none; }
-                .apple-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
+                .pumpkin-drop-inner-mobile, .pumpkin-drop-shadow-mobile { animation: none; }
+                .pumpkin-drop-shadow-mobile { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="apple-drop-wrap-mobile" aria-hidden="true">
-              <div className="apple-drop-shadow-mobile" />
-              <div className="apple-drop-inner-mobile">
+            <div className="pumpkin-drop-wrap-mobile" aria-hidden="true">
+              <div className="pumpkin-drop-shadow-mobile" />
+              <div className="pumpkin-drop-inner-mobile">
                 <svg viewBox="0 0 100 100" width="26" height="26">
                   <defs>
-                    <radialGradient id="appleGradDropMobile" cx="35%" cy="30%" r="75%">
-                      <stop offset="0%" stopColor="#fca5a5" />
-                      <stop offset="45%" stopColor="#dc2626" />
-                      <stop offset="100%" stopColor="#7f1d1d" />
+                    <radialGradient id="pumpkinGradDropMobile" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fdba74" />
+                      <stop offset="45%" stopColor="#ea580c" />
+                      <stop offset="100%" stopColor="#7c2d12" />
                     </radialGradient>
                   </defs>
-                  <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropMobile)" stroke="#7f1d1d" strokeWidth="2.5" />
-                  <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                  <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                  <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  {/* vine curl */}
+                  <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
+                  {/* small leaf */}
+                  <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
+                  {/* stem */}
+                  <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
+                  {/* pumpkin body */}
+                  <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill="url(#pumpkinGradDropMobile)" stroke="#7c2d12" strokeWidth="2.5" />
+                  {/* ridges */}
+                  <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  {/* shine */}
+                  <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
                 </svg>
               </div>
             </div>
@@ -187,7 +196,7 @@ export default function NavBar() {
         <div className="hidden md:flex max-w-[1800px] mx-auto pl-2 pr-4 md:pr-6 py-2 items-center justify-between">
           <div className="relative">
             <style>{`
-              @keyframes appleDrop {
+              @keyframes pumpkinDrop {
                 0%   { transform: translateY(-150px) rotate(0deg); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
                 6%   { opacity: 1; }
                 42%  { transform: translateY(0) rotate(222deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -197,14 +206,14 @@ export default function NavBar() {
                 88%  { transform: translateY(0) rotate(360deg); animation-timing-function: ease-out; }
                 100% { transform: translateY(0) rotate(360deg); }
               }
-              @keyframes appleShadowSettle {
+              @keyframes pumpkinShadowSettle {
                 0%, 40% { opacity: 0; transform: translateX(-50%) scaleX(0.4); }
                 46%  { opacity: 0.25; transform: translateX(-50%) scaleX(1); }
                 55%  { opacity: 0.1; transform: translateX(-50%) scaleX(0.65); }
                 68%  { opacity: 0.22; transform: translateX(-50%) scaleX(1); }
                 100% { opacity: 0.18; transform: translateX(-50%) scaleX(0.9); }
               }
-              .apple-drop-wrap {
+              .pumpkin-drop-wrap {
                 position: absolute;
                 left: 100%;
                 bottom: 16%;
@@ -214,13 +223,13 @@ export default function NavBar() {
                 pointer-events: none;
                 z-index: 20;
               }
-              .apple-drop-inner {
+              .pumpkin-drop-inner {
                 width: 100%;
                 height: 100%;
-                animation: appleDrop 1.9s 300ms 1 both;
+                animation: pumpkinDrop 1.9s 300ms 1 both;
                 filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
               }
-              .apple-drop-shadow {
+              .pumpkin-drop-shadow {
                 position: absolute;
                 left: 50%;
                 bottom: -4px;
@@ -228,29 +237,38 @@ export default function NavBar() {
                 height: 8px;
                 border-radius: 9999px;
                 background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 80%);
-                animation: appleShadowSettle 1.9s 300ms 1 both;
+                animation: pumpkinShadowSettle 1.9s 300ms 1 both;
               }
               @media (prefers-reduced-motion: reduce) {
-                .apple-drop-inner, .apple-drop-shadow { animation: none; }
-                .apple-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
+                .pumpkin-drop-inner, .pumpkin-drop-shadow { animation: none; }
+                .pumpkin-drop-shadow { opacity: 0.16; transform: translateX(-50%); }
               }
             `}</style>
-            <div className="apple-drop-wrap" aria-hidden="true">
-              <div className="apple-drop-shadow" />
-              <div className="apple-drop-inner">
+            <div className="pumpkin-drop-wrap" aria-hidden="true">
+              <div className="pumpkin-drop-shadow" />
+              <div className="pumpkin-drop-inner">
                 <svg viewBox="0 0 100 100" width="38" height="38">
                   <defs>
-                    <radialGradient id="appleGradDropDesktop" cx="35%" cy="30%" r="75%">
-                      <stop offset="0%" stopColor="#fca5a5" />
-                      <stop offset="45%" stopColor="#dc2626" />
-                      <stop offset="100%" stopColor="#7f1d1d" />
+                    <radialGradient id="pumpkinGradDropDesktop" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%" stopColor="#fdba74" />
+                      <stop offset="45%" stopColor="#ea580c" />
+                      <stop offset="100%" stopColor="#7c2d12" />
                     </radialGradient>
                   </defs>
-                  <path d="M50,32 C33,20 15,33 15,55 C15,76 31,90 50,90 C69,90 85,76 85,55 C85,33 67,20 50,32 Z" fill="url(#appleGradDropDesktop)" stroke="#7f1d1d" strokeWidth="2.5" />
-                  <path d="M40,30 Q50,20 60,30" fill="none" stroke="#7f1d1d" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M50,24 Q53,12 61,7" fill="none" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-                  <ellipse cx="65" cy="13" rx="11" ry="6.5" fill="#16a34a" transform="rotate(-28 65 13)" />
-                  <ellipse cx="34" cy="46" rx="9" ry="13" fill="white" opacity="0.3" />
+                  {/* vine curl */}
+                  <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
+                  {/* small leaf */}
+                  <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
+                  {/* stem */}
+                  <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
+                  {/* pumpkin body */}
+                  <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill="url(#pumpkinGradDropDesktop)" stroke="#7c2d12" strokeWidth="2.5" />
+                  {/* ridges */}
+                  <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+                  {/* shine */}
+                  <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
                 </svg>
               </div>
             </div>
