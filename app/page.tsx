@@ -7,7 +7,7 @@ import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
-import { Star, Heart, Shield, Car, GraduationCap, Backpack, BookOpen } from "lucide-react";
+import { Star, Heart, Shield, Car, Ticket, Music, Mic2, MapPin, Phone } from "lucide-react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -377,7 +377,7 @@ export default function Home() {
       </div>
       {/* ↑ container closed so this banner can go full-bleed edge-to-edge, like the hero ↑ */}
 
-      {/* TWO-PANEL PROMO BANNER — Back to School + July Meat Market offer */}
+      {/* TWO-PANEL PROMO BANNER — September: Grupo Duelo Giveaway + Second Location spotlight */}
       <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
         <style>{`
           @keyframes emblemFloat {
@@ -388,30 +388,30 @@ export default function Home() {
         `}</style>
         <div className="grid grid-cols-1 md:grid-cols-2">
 
-          {/* Left panel — Back to School Season */}
+          {/* Left panel — Grupo Duelo Concert Giveaway */}
           <div className="relative overflow-hidden bg-gradient-to-br from-red-700 to-red-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
             <div className="flex items-center justify-center gap-3">
               <div
                 className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "0ms" }}
               >
-                <Backpack className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
+                <Ticket className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
-              <GraduationCap className="w-8 h-8 text-amber-400" strokeWidth={2} />
+              <Music className="w-8 h-8 text-amber-400" strokeWidth={2} />
               <div
                 className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "500ms" }}
               >
-                <BookOpen className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
+                <Mic2 className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
             </div>
             <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
-              {lang === "en" ? "Back to School Season is here 🎒" : "¡Ya llegó la Temporada de Regreso a Clases! 🎒"}
+              {lang === "en" ? "Win Tickets to Grupo Duelo 🎟️" : "Gana Boletos para Grupo Duelo 🎟️"}
             </p>
             <p className="text-white/75 max-w-sm">
               {lang === "en"
-                ? "Get ready for the new school year — check out our full lineup of trucks, SUVs, and cars."
-                : "Prepárate para el nuevo ciclo escolar — mira toda nuestra selección de trocas, SUVs y carros."}
+                ? "Enter for a chance to win 2 tickets to see Grupo Duelo live at Bert Ogden Arena in Edinburg, TX on September 26th."
+                : "Participa para ganar 2 boletos para ver a Grupo Duelo en vivo en el Bert Ogden Arena en Edinburg, TX el 26 de septiembre."}
             </p>
             <div className="mt-1 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/30 px-4 py-2">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-white shrink-0">
@@ -419,8 +419,8 @@ export default function Home() {
               </svg>
               <span className="text-white text-sm font-semibold">
                 {lang === "en"
-                  ? "Giveaway live now — 2 winners announced August 5th!"
-                  : "¡Sorteo activo ahora — 2 ganadores el 5 de agosto!"}
+                  ? "Giveaway live now — 1 winner announced September 16th!"
+                  : "¡Sorteo activo ahora — 1 ganador el 16 de septiembre!"}
               </span>
             </div>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
@@ -447,29 +447,38 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right panel — July $50 Meat Market offer */}
+          {/* Right panel — Second Location spotlight */}
           <div className="relative overflow-hidden bg-gray-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
             <div className="flex items-center justify-center w-16 h-16 rounded-full border-2 border-white/30">
-              <span className="text-white font-extrabold text-sm">$50</span>
+              <MapPin className="w-7 h-7 text-white" strokeWidth={2} />
             </div>
             <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
-              {lang === "en" ? "$50 Towards the Meat Market" : "$50 Para la Carnicería"}
+              {lang === "en" ? "Visit Our Second Location for More Inventory" : "Visita Nuestra Segunda Ubicación para Más Inventario"}
             </p>
             <p className="text-white/70 max-w-sm">
               {lang === "en"
-                ? "Buy any vehicle in July and get $50 to Carnes Finas Del Valle. Local dealer, real savings."
-                : "Compra cualquier vehículo en julio y recibe $50 para Carnes Finas Del Valle. Distribuidor local, ahorros reales."}
+                ? "Right behind the Palmview H-E-B — come pay us a visit!"
+                : "Justo atrás del H-E-B de Palmview — ¡ven a visitarnos!"}
             </p>
-            <button
-              type="button"
-              onClick={() => setShowFlyer(true)}
+            <div className="mt-1 flex flex-col items-center gap-1">
+              <p className="text-white font-semibold">1800 W Veterans Blvd.</p>
+              <p className="text-white/60 text-sm">Palmview, TX 78572</p>
+              <a href="tel:+19565999025" className="mt-1 inline-flex items-center gap-2 text-white font-bold hover:text-white/80 transition">
+                <Phone className="w-4 h-4" strokeWidth={2} />
+                (956) 599-9025
+              </a>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=1800+W+Veterans+Blvd+Palmview+TX+78572"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
             >
-              {lang === "en" ? "View Offer" : "Ver Oferta"}
+              {lang === "en" ? "Get Directions" : "Cómo Llegar"}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
-            </button>
+            </a>
           </div>
 
         </div>
