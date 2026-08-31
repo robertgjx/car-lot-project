@@ -7,7 +7,7 @@ import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
-import { Star, Heart, Shield, Car, Ticket, Music, Mic2, MapPin, Phone } from "lucide-react";
+import { Star, Heart, Shield, Car, Ticket, Music, Mic2, MapPin, Phone, Clock } from "lucide-react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -577,10 +577,39 @@ export default function Home() {
             </div>
             <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
               <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">{t.contact.details[lang]}</p>
-              <div className="mt-4 space-y-3 text-gray-700">
-                <p><span className="text-gray-400">{t.contact.phone[lang]}</span> (956) 581-0455</p>
-                <p><span className="text-gray-400">{t.contact.location[lang]}</span> Palmview, TX</p>
-                <p><span className="text-gray-400">{t.contact.hours[lang]}</span> {t.contact.hoursVal[lang]}</p>
+              <div className="mt-4 divide-y divide-gray-100">
+                <a href="tel:+19565810455" className="flex items-center gap-4 py-3 group">
+                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-red-50 text-red-600 shrink-0">
+                    <Phone className="w-4 h-4" strokeWidth={2} />
+                  </span>
+                  <span>
+                    <span className="block text-xs text-gray-400">{t.contact.phone[lang]}</span>
+                    <span className="block font-semibold text-gray-900 group-hover:text-red-600 transition">(956) 581-0455</span>
+                  </span>
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Garcia%27s+Auto+Sales+Palmview+TX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 py-3 group"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-red-50 text-red-600 shrink-0">
+                    <MapPin className="w-4 h-4" strokeWidth={2} />
+                  </span>
+                  <span>
+                    <span className="block text-xs text-gray-400">{t.contact.location[lang]}</span>
+                    <span className="block font-semibold text-gray-900 group-hover:text-red-600 transition">Palmview, TX</span>
+                  </span>
+                </a>
+                <div className="flex items-center gap-4 py-3">
+                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-red-50 text-red-600 shrink-0">
+                    <Clock className="w-4 h-4" strokeWidth={2} />
+                  </span>
+                  <span>
+                    <span className="block text-xs text-gray-400">{t.contact.hours[lang]}</span>
+                    <span className="block font-semibold text-gray-900">{t.contact.hoursVal[lang]}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
