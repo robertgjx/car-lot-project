@@ -88,6 +88,30 @@
     "status": "available"
   },
   {
+    "id": "1995-ford-f-150-sna36125",
+    "year": 1995,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 14900,
+    "down": 6000,
+    "vin": "1FTEF15N5SNA36125",
+    "fuel": "Gasoline",
+    "engine": "5L V-Shaped V8",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "White",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1995-ford-f-150-sna36125/IMG_6002.JPG",
+      "/cars/1995-ford-f-150-sna36125/IMG_6007.JPG",
+      "/cars/1995-ford-f-150-sna36125/IMG_6005.JPG",
+      "/cars/1995-ford-f-150-sna36125/IMG_6004.JPG",
+      "/cars/1995-ford-f-150-sna36125/IMG_6003.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1992-ford-f-150-nna03191",
     "year": 1992,
     "make": "Ford",
