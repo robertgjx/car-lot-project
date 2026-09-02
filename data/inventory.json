@@ -88,6 +88,32 @@
     "status": "available"
   },
   {
+    "id": "1992-ford-f-150-nna03191",
+    "year": 1992,
+    "make": "Ford",
+    "model": "F-150",
+    "price": 9900,
+    "down": 3000,
+    "vin": "1FTDF15Y4NNA03191",
+    "fuel": "Gasoline",
+    "engine": "4.9L In-Line V6",
+    "transmission": "Automatic",
+    "bodyStyle": "Pickup",
+    "doors": 2,
+    "color": "Brown",
+    "location": "Palma Vista",
+    "images": [
+      "/cars/1992-ford-f-150-nna03191/IMG_5979.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5984.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5983.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5982.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5981.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5980.JPG",
+      "/cars/1992-ford-f-150-nna03191/IMG_5978.JPG"
+    ],
+    "status": "available"
+  },
+  {
     "id": "1994-ford-f-150-rna37794",
     "year": 1994,
     "make": "Ford",
