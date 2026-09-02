@@ -145,6 +145,7 @@
     "driveTrain": "4x4",
     "price": 13900,
     "down": 5000,
+    "term":20,
     "vin": "1FTEF14N4RNA37794",
     "fuel": "Gasoline",
     "engine": "5L V-Shaped V8",
