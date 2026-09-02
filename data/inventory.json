@@ -149,6 +149,7 @@
     "model": "F-150",
     "price": 14900,
     "down": 6000,
+    "term":20,
     "vin": "1FTEF15N9TNA19975",
     "fuel": "Gasoline",
     "engine": "5.0L V-Shaped V8",
