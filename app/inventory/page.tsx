@@ -8,6 +8,17 @@ import { vehicles, VehicleType } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
 import { useState, useEffect } from "react";
 import type { MouseEvent as ReactMouseEvent, ChangeEvent } from "react";
+import {
+  Car,
+  Truck as TruckIcon,
+  Bus,
+  MapPin,
+  CheckCircle2,
+  XCircle,
+  Search,
+  Sparkles,
+  CarFront,
+} from "lucide-react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -41,46 +52,15 @@ const fullYear = (year?: number | null) => {
 // ─── Vehicle type icons ───────────────────────────────────────────────────────
 
 const TypeIcon = ({ type, size = 18 }: { type: VehicleType; size?: number }) => {
-  const h = Math.round(size * 0.67);
   switch (type) {
     case "Truck":
-      return (
-        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
-          <rect x="0" y="4" width="8" height="6" rx="1.5" />
-          <path d="M3 4 L4.5 1 L8 1 L8 4Z" />
-          <rect x="9" y="5" width="9" height="5" rx="1.5" />
-          <circle cx="3.5" cy="10.5" r="1.5" />
-          <circle cx="14.5" cy="10.5" r="1.5" />
-        </svg>
-      );
+      return <TruckIcon width={size} height={size} strokeWidth={2.2} />;
     case "SUV":
-      return (
-        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
-          <rect x="0" y="3" width="18" height="7" rx="2" />
-          <rect x="2" y="0" width="12" height="5" rx="1.5" />
-          <circle cx="4.5" cy="10.5" r="1.5" />
-          <circle cx="13.5" cy="10.5" r="1.5" />
-        </svg>
-      );
+      return <CarFront width={size} height={size} strokeWidth={2.2} />;
     case "Van":
-      return (
-        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
-          <rect x="0" y="2" width="18" height="8" rx="2" />
-          <rect x="1" y="3.5" width="6" height="4" rx="1" fill="white" opacity="0.4" />
-          <rect x="8" y="3.5" width="6" height="4" rx="1" fill="white" opacity="0.4" />
-          <circle cx="4.5" cy="10.5" r="1.5" />
-          <circle cx="13.5" cy="10.5" r="1.5" />
-        </svg>
-      );
+      return <Bus width={size} height={size} strokeWidth={2.2} />;
     default:
-      return (
-        <svg width={size} height={h} viewBox="0 0 18 12" fill="currentColor">
-          <rect x="0" y="4" width="18" height="6" rx="2" />
-          <path d="M3 4 L5.5 0 L12.5 0 L15 4Z" />
-          <circle cx="4.5" cy="10.5" r="1.5" />
-          <circle cx="13.5" cy="10.5" r="1.5" />
-        </svg>
-      );
+      return <Car width={size} height={size} strokeWidth={2.2} />;
   }
 };
 
@@ -248,8 +228,9 @@ function VinLookupBar({ lang }: { lang: string }) {
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 shadow-sm">
             <div className="flex items-start justify-between mb-1">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
-                  {lang === "en" ? "🔍 VIN Lookup" : "🔍 Buscar por VIN"}
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1 flex items-center gap-1.5">
+                  <Search className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {lang === "en" ? "VIN Lookup" : "Buscar por VIN"}
                 </p>
                 <p className="text-xs text-gray-400 italic">
                   {lang === "en" ? "Added for your convenience" : "Agregado para su conveniencia"}
@@ -524,16 +505,19 @@ function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof ve
         )}
 
         {highlight && (
-          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-full shadow uppercase tracking-wide">
+          <span className="absolute top-3 right-3 flex items-center gap-1 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-full shadow uppercase tracking-wide">
+            <Sparkles className="w-3 h-3" strokeWidth={2.5} />
             {lang === "en" ? "New" : "Nuevo"}
           </span>
         )}
         {isSold ? (
-          <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+          <span className="absolute top-3 left-3 flex items-center gap-1 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+            <XCircle className="w-3.5 h-3.5" strokeWidth={2.5} />
             {lang === "en" ? "Sold" : "Vendido"}
           </span>
         ) : (
-          <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+          <span className="absolute top-3 left-3 flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+            <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2.5} />
             {lang === "en" ? "Available" : "Disponible"}
           </span>
         )}
@@ -555,7 +539,8 @@ function VehicleCard({ vehicle, lang, highlight = false }: { vehicle: (typeof ve
           )}
           {vehicle.location && (
             <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-400 text-xs px-2.5 py-1 rounded-full border border-gray-100">
-              📍 {vehicle.location}
+              <MapPin className="w-3 h-3" strokeWidth={2.2} />
+              {vehicle.location}
             </span>
           )}
         </div>
@@ -759,7 +744,9 @@ function InventoryInner() {
         </div>
         <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 md:px-6 flex items-center justify-between gap-4 flex-wrap">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold text-white">{t.inv.title[lang]}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-white">
+              {lang === "en" ? "Vehicles" : "Vehículos"}
+            </h1>
             <p className="mt-1 text-white/80 text-sm md:text-base">
               {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
             </p>
@@ -803,7 +790,8 @@ function InventoryInner() {
           <div className="mt-2 mb-8">
             <div className="flex items-center gap-3 mb-4">
               <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm whitespace-nowrap">
-                🆕 {lang === "en" ? "New Inventory" : "Inventario Nuevo"}
+                <Sparkles className="w-3.5 h-3.5" strokeWidth={2.5} />
+                {lang === "en" ? "New Inventory" : "Inventario Nuevo"}
               </span>
               <div className="h-px flex-1 bg-gray-200" />
             </div>
@@ -864,8 +852,8 @@ function InventoryInner() {
                 <select value={location} onChange={(e) => setLocation(e.target.value)}
                   className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
                   <option value="all">{lang === "en" ? "All Locations" : "Todas"}</option>
-                  <option value="Palma Vista">📍 Palma Vista</option>
-                  <option value="Veterans Blvd">📍 Veterans Blvd</option>
+                  <option value="Palma Vista">Palma Vista</option>
+                  <option value="Veterans Blvd">Veterans Blvd</option>
                 </select>
               </div>
 
@@ -876,8 +864,8 @@ function InventoryInner() {
                 <select value={status} onChange={(e) => setStatus(e.target.value)}
                   className="mt-1 w-full rounded-xl bg-white border border-gray-200 px-4 py-3 text-gray-900 outline-none focus:border-red-400 transition">
                   <option value="all">{lang === "en" ? "All" : "Todos"}</option>
-                  <option value="available">{lang === "en" ? "✅ Available" : "✅ Disponible"}</option>
-                  <option value="sold">{lang === "en" ? "🔴 Sold" : "🔴 Vendido"}</option>
+                  <option value="available">{lang === "en" ? "Available" : "Disponible"}</option>
+                  <option value="sold">{lang === "en" ? "Sold" : "Vendido"}</option>
                 </select>
               </div>
 
@@ -978,7 +966,7 @@ function InventoryInner() {
 
         {/* Coming soon banner */}
         <div className="mt-12 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-8 text-center">
-          <p className="text-2xl mb-2">🚘</p>
+          <CarFront className="w-8 h-8 mx-auto mb-2 text-gray-400" strokeWidth={1.8} />
           <p className="text-lg font-bold text-gray-800">
             {lang === "en" ? "More inventory coming soon!" : "¡Más inventario próximamente!"}
           </p>
