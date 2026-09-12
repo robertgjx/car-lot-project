@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Vehicle } from "@/app/lib/vehicles";
 import { useLang, t } from "@/app/lib/LanguageContext";
@@ -22,6 +23,28 @@ function calcMonthly(price: number | null | undefined, down: number | null | und
 function val(v: string | number | null | undefined): string {
   if (v === null || v === undefined || v === "") return "N/A";
   return String(v);
+}
+
+function BackButton({ label }: { label: string }) {
+  const router = useRouter();
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        // Go back to wherever the user came from (preserves search/filter query
+        // params on the inventory page). Fall back to a plain /inventory link
+        // only if there's no history to go back to (e.g. direct link/new tab).
+        if (typeof window !== "undefined" && window.history.length > 1) {
+          router.back();
+        } else {
+          router.push("/inventory");
+        }
+      }}
+      className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition"
+    >
+      {label}
+    </button>
+  );
 }
 
 function LightboxGallery({ images, alt, onShare }: { images: string[]; alt: string; onShare: () => void }) {
@@ -143,9 +166,7 @@ export default function VehicleDetailsClient({
     return (
       <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
         <div className="max-w-5xl mx-auto">
-          <Link href="/inventory" className="inline-block rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-            {t.det.back[lang]}
-          </Link>
+          <BackButton label={t.det.back[lang]} />
           <div className="mt-8 bg-gray-50 border border-gray-200 rounded-2xl p-6">
             <div className="text-xl font-semibold text-gray-900">{t.det.notFound[lang]}</div>
             <div className="mt-2 text-sm text-gray-500">
@@ -178,9 +199,7 @@ export default function VehicleDetailsClient({
     <main className="min-h-screen bg-white text-gray-900 p-6 md:p-10">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between">
-        <Link href="/inventory" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
-          {t.det.back[lang]}
-          </Link>
+          <BackButton label={t.det.back[lang]} />
           <div className="flex items-center gap-2">
             {vehicle.status === "sold" ? (
               <span className="bg-red-600 text-white font-extrabold text-sm px-4 py-2 rounded-xl tracking-widest uppercase shadow">
