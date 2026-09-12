@@ -150,19 +150,21 @@ export default function CustomersPage() {
   return (
     <main className="min-h-screen max-w-[1400px] mx-auto px-4 md:px-6 py-8">
 
-      {/* HEADER */}
-      <div className="mb-6 bg-white border border-gray-200 rounded-2xl px-6 py-5 md:px-8 md:py-6 shadow-sm flex items-center gap-4">
-        <div className="flex items-center justify-center w-12 h-12 shrink-0 rounded-xl bg-red-50">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D85A30" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
+      {/* HERO */}
+      <section className="relative w-full min-h-[280px] flex items-center justify-center overflow-hidden rounded-3xl mb-6">
+        <div className="absolute inset-0">
+          <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-black/60 to-gray-900/80" />
         </div>
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{t.customers.title[lang]}</h1>
-          <p className="mt-0.5 text-gray-500 text-sm">{t.customers.sub[lang]}</p>
+        <div className="relative z-10 text-center px-4 py-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            {t.customers.title[lang]}
+          </h1>
+          <p className="mt-3 text-white/80 max-w-lg mx-auto">
+            {t.customers.sub[lang]}
+          </p>
         </div>
-      </div>
+      </section>
 
       {/* MAIN GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
