@@ -148,10 +148,10 @@ export default function CustomersPage() {
   ];
 
   return (
-    <main className="min-h-screen max-w-[1400px] mx-auto px-4 md:px-6 py-8">
+    <main className="min-h-screen bg-white text-gray-900">
 
-      {/* HERO */}
-      <section className="relative w-full min-h-[280px] flex items-center justify-center overflow-hidden rounded-3xl mb-6">
+      {/* HERO — full-bleed, edge to edge */}
+      <section className="relative w-full min-h-[280px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-black/60 to-gray-900/80" />
@@ -166,8 +166,10 @@ export default function CustomersPage() {
         </div>
       </section>
 
-      {/* MAIN GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 pb-8">
+
+      {/* MAIN GRID — overlaps the hero, same pattern as the Contact page */}
+      <div className="-mt-16 relative z-20 grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         {/* LEFT / MAIN COLUMN */}
         <div className="lg:col-span-2 flex flex-col gap-6">
@@ -317,7 +319,7 @@ export default function CustomersPage() {
         </div>
       </div>
 
-      <div className="pb-10" />
+      </div>
     </main>
   );
 }
