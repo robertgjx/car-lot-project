@@ -749,20 +749,32 @@ function InventoryInner() {
   ];
 
   return (
-    <main className="min-h-screen bg-white text-gray-900 p-4 md:p-6">
-      <div className="max-w-[1800px] mx-auto">
+    <main className="min-h-screen bg-white text-gray-900">
 
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <h1 className="text-4xl font-bold text-gray-900">{t.inv.title[lang]}</h1>
-          <Link href="/" className="rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">
+      {/* HERO — short, cohesive with other pages but doesn't push inventory below the fold */}
+      <section className="relative w-full h-[150px] md:h-[170px] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/lot.PNG" alt="Garcia's Auto Sales lot" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-black/60 to-gray-900/80" />
+        </div>
+        <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 md:px-6 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h1 className="text-2xl md:text-4xl font-bold text-white">{t.inv.title[lang]}</h1>
+            <p className="mt-1 text-white/80 text-sm md:text-base">
+              {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm px-5 py-2.5 font-semibold text-white hover:bg-white/20 transition text-sm whitespace-nowrap"
+          >
             {t.inv.backHome[lang]}
           </Link>
         </div>
+      </section>
 
-        <p className="mt-2 text-gray-500">
-          {lang === "en" ? "Browse our selected inventory." : "Explora nuestro inventario seleccionado."}
-        </p>
+      <div className="p-4 md:p-6">
+      <div className="max-w-[1800px] mx-auto">
 
         <div className="mt-3 flex flex-wrap gap-2">
           <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
@@ -977,6 +989,7 @@ function InventoryInner() {
           </p>
         </div>
 
+      </div>
       </div>
     </main>
   );
