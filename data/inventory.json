@@ -27,7 +27,7 @@
       "/cars/2015-ford-f-250-fec52066/IMG_5646.JPG",
       "/cars/2015-ford-f-250-fec52066/IMG_5647.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-chevrolet-silverado-hd-pf116601",
@@ -59,7 +59,7 @@
       "/cars/2023-chevrolet-silverado-hd-pf116601/IMG_5660.JPG",
       "/cars/2023-chevrolet-silverado-hd-pf116601/IMG_5663.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-chevrolet-equinox-pl222714",
@@ -165,7 +165,7 @@
       "/cars/1994-ford-f-150-rna37794/IMG_5957.JPG",
       "/cars/1994-ford-f-150-rna37794/IMG_5956.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1996-ford-f-150-tna19975",
@@ -317,7 +317,7 @@
       "/cars/2004-chevrolet-silverado-4z110438/IMG_4152.JPEG",
       "/cars/2004-chevrolet-silverado-4z110438/IMG_4153.JPEG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2023-kia-soul-p7193403",
@@ -701,7 +701,7 @@
       "/cars/1994-chevrolet-gmt-400-rz272433/IMG_4210.JPG",
       "/cars/1994-chevrolet-gmt-400-rz272433/IMG_4213.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2019-kia-soul-k7641001",
@@ -903,7 +903,7 @@
       "/cars/2015-jeep-patriot-fd372101/IMG_3620.JPG",
       "/cars/2015-jeep-patriot-fd372101/IMG_3619.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2001-saturn-ls1-1y551665",
@@ -2076,7 +2076,7 @@
       "/cars/2000-ford-f-150-ync06349/PXL_20260423_200635362.JPG",
       "/cars/2000-ford-f-150-ync06349/PXL_20260423_200659118.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1997-chevrolet-gmt-400-vz167775",
@@ -2372,7 +2372,7 @@
       "/cars/2003-chevrolet-silverado-3z212241/IMG_2016.jpeg",
       "/cars/2003-chevrolet-silverado-3z212241/IMG_2017.jpeg"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1972-ford-pk-ykm41422",
@@ -3140,7 +3140,7 @@
       "/cars/2013-ford-f-150-dkf65371/IMG_2816.JPG",
       "/cars/2013-ford-f-150-dkf65371/IMG_2815.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2018-chevrolet-silverado-jz274037",
@@ -4301,7 +4301,7 @@
                  "/cars/2020-ford-f-250-led11522/3573162900239642467.JPG",
                  "/cars/2020-ford-f-250-led11522/3000563840943067478.JPG"
     ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2017-ford-f-150-hke24070",
@@ -4549,7 +4549,7 @@
         "/cars/2019-jeep-grand-cherokee-kc608766/PXL_20260402_164942703.MP.JPG",
         "/cars/2019-jeep-grand-cherokee-kc608766/PXL_20260402_191030597.JPG"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2021-dodge-ram-2500-mg545186",
@@ -5028,7 +5028,7 @@
       "/cars/2019-dodge-ram-2500-kg602330/IMG_2991.JPG",
       "/cars/2019-dodge-ram-2500-kg602330/IMG_2992.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2007-chevrolet-silverado-71128684",
