@@ -23,7 +23,7 @@
       "/cars/2003-chevrolet-silverado-3z112010/IMG_6278.JPG",
       "/cars/2003-chevrolet-silverado-3z112010/IMG_6276.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "1994-ford-f-150-rna43807",
@@ -77,7 +77,7 @@
       "/cars/2000-gmc-sierra-yz181805/IMG_6291.JPG",
       "/cars/2000-gmc-sierra-yz181805/IMG_6290.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2002-ford-f-150-2ca48128",
@@ -101,7 +101,7 @@
       "/cars/2002-ford-f-150-2ca48128/IMG_6305.JPG",
       "/cars/2002-ford-f-150-2ca48128/IMG_6302.JPG"
     ],
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "2001-chevrolet-silverado-1z154592",
@@ -3364,7 +3364,7 @@
                "/cars/2018-chevrolet-equinox-j6177577/1647420136915560001.JPG",
                "/cars/2018-chevrolet-equinox-j6177577/3325308827331622213.JPG"
   ],
-    "status": "available",
+    "status": "sold",
     "location":"Veterans Blvd"
   },
   {
@@ -4803,7 +4803,7 @@
         "/cars/2023-chevrolet-silverado-pg364545/IMG_1928.jpeg",
         "/cars/2023-chevrolet-silverado-pg364545/IMG_1929 2.jpg"
       ],
-      "status": "available"
+      "status": "sold"
     },
     {
       "id": "2009-chevrolet-colorado-98139435",
