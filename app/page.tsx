@@ -7,7 +7,7 @@ import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { vehicles, Vehicle } from "./lib/vehicles";
 import { useLang, t } from "./lib/LanguageContext";
-import { Star, Heart, Shield, Car, Ticket, Music, Mic2, MapPin, Phone, Clock } from "lucide-react";
+import { Star, Heart, Shield, Car, Gift, TreePine, Snowflake, MapPin, Phone, Clock } from "lucide-react";
 
 function formatMoney(n: number | null | undefined) {
   if (n == null) return "N/A";
@@ -377,7 +377,7 @@ export default function Home() {
       </div>
       {/* ↑ container closed so this banner can go full-bleed edge-to-edge, like the hero ↑ */}
 
-      {/* TWO-PANEL PROMO BANNER — September: Grupo Duelo Giveaway + Second Location spotlight */}
+      {/* TWO-PANEL BANNER: Happy Holidays message + Second Location spotlight */}
       <section className="relative w-screen -ml-[var(--sidebar-w,0px)] mt-6">
         <style>{`
           @keyframes emblemFloat {
@@ -385,45 +385,55 @@ export default function Home() {
             50% { transform: translateY(-7px); }
           }
           .flag-emblem { animation: emblemFloat 3s ease-in-out infinite; }
+          @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(0.88); }
+          }
+          .twinkle { animation: twinkle 2.4s ease-in-out infinite; }
+          @media (prefers-reduced-motion: reduce) {
+            .flag-emblem, .twinkle { animation: none; }
+          }
         `}</style>
         <div className="grid grid-cols-1 md:grid-cols-2">
 
-          {/* Left panel — Grupo Duelo Concert Giveaway */}
+          {/* Left panel: Happy Holidays */}
           <div className="relative overflow-hidden bg-gradient-to-br from-red-700 to-red-900 px-8 py-14 md:py-20 flex flex-col items-center text-center gap-4">
-            <div className="flex items-center justify-center gap-3">
+            {/* faint snowflakes in the background */}
+            <Snowflake className="pointer-events-none absolute top-6 left-8 w-10 h-10 text-white/10" strokeWidth={1.5} />
+            <Snowflake className="pointer-events-none absolute bottom-10 left-1/4 w-6 h-6 text-white/10" strokeWidth={1.5} />
+            <Snowflake className="pointer-events-none absolute top-10 right-10 w-7 h-7 text-white/10" strokeWidth={1.5} />
+            <Snowflake className="pointer-events-none absolute bottom-6 right-1/4 w-12 h-12 text-white/10" strokeWidth={1.5} />
+
+            <div className="relative flex items-center justify-center gap-3">
               <div
                 className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "0ms" }}
               >
-                <Ticket className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
+                <Gift className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
-              <Music className="w-8 h-8 text-amber-400" strokeWidth={2} />
+              <Star className="twinkle w-8 h-8 text-amber-400 fill-amber-400" strokeWidth={2} />
               <div
                 className="flag-emblem flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/15 border-2 border-white/50 shadow-lg"
                 style={{ animationDelay: "500ms" }}
               >
-                <Mic2 className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
+                <TreePine className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2} />
               </div>
             </div>
-            <p className="text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
-              {lang === "en" ? "Win Tickets to Grupo Duelo 🎟️" : "Gana Boletos para Grupo Duelo 🎟️"}
+            <p className="relative text-2xl md:text-3xl font-extrabold text-white tracking-tight max-w-md">
+              {lang === "en" ? "Happy Holidays from Garcia's Auto Sales 🎄" : "¡Felices Fiestas de parte de Garcia's Auto Sales! 🎄"}
             </p>
-            <p className="text-white/75 max-w-sm">
+            <p className="relative text-white/75 max-w-sm">
               {lang === "en"
-                ? "Enter for a chance to win 2 tickets to see Grupo Duelo live at Bert Ogden Arena in Edinburg, TX on September 26th."
-                : "Participa para ganar 2 boletos para ver a Grupo Duelo en vivo en el Bert Ogden Arena en Edinburg, TX el 26 de septiembre."}
+                ? "Thank you for trusting our family with your rides this year. From all of us at Garcia's, we wish you and yours a safe and joyful holiday season."
+                : "Gracias por confiar en nuestra familia este año. De parte de todos en Garcia's, les deseamos a usted y a los suyos unas fiestas seguras y llenas de alegría."}
             </p>
-            <div className="mt-1 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/30 px-4 py-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-white shrink-0">
-                <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
-              </svg>
+            <div className="relative mt-1 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/30 px-4 py-2">
+              <Heart className="w-4 h-4 text-white fill-white shrink-0" strokeWidth={2} />
               <span className="text-white text-sm font-semibold">
-                {lang === "en"
-                  ? "Giveaway live now — 1 winner announced September 16th!"
-                  : "¡Sorteo activo ahora — 1 ganador el 16 de septiembre!"}
+                {lang === "en" ? "Proudly serving the RGV since 1984" : "Sirviendo con orgullo al Valle desde 1984"}
               </span>
             </div>
-            <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+            <div className="relative mt-2 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/inventory"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"
@@ -442,7 +452,7 @@ export default function Home() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
                   <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
                 </svg>
-                {lang === "en" ? "Check Out Our Giveaway" : "Ver Nuestro Sorteo"}
+                {lang === "en" ? "Follow Us on Facebook" : "Síguenos en Facebook"}
               </a>
             </div>
           </div>

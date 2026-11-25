@@ -5,30 +5,59 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLang, t } from "./LanguageContext";
 
-function PumpkinIcon({ id }: { id: string }) {
+type OrnamentColor = "red" | "green" | "gold";
+
+const ORNAMENT_COLORS: Record<OrnamentColor, { light: string; mid: string; dark: string; band: string }> = {
+  red:   { light: "#fca5a5", mid: "#dc2626", dark: "#7f1d1d", band: "#fbbf24" },
+  green: { light: "#86efac", mid: "#16a34a", dark: "#14532d", band: "#fbbf24" },
+  gold:  { light: "#fef3c7", mid: "#f59e0b", dark: "#78350f", band: "#dc2626" },
+};
+
+function OrnamentIcon({ id, color }: { id: string; color: OrnamentColor }) {
+  const c = ORNAMENT_COLORS[color];
   return (
     <svg viewBox="0 0 100 100" width="100%" height="100%">
       <defs>
-        <radialGradient id={id} cx="35%" cy="30%" r="75%">
-          <stop offset="0%" stopColor="#fdba74" />
-          <stop offset="45%" stopColor="#ea580c" />
-          <stop offset="100%" stopColor="#7c2d12" />
+        <radialGradient id={id} cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stopColor={c.light} />
+          <stop offset="45%" stopColor={c.mid} />
+          <stop offset="100%" stopColor={c.dark} />
         </radialGradient>
+        <linearGradient id={`${id}-cap`} x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#a8a29e" />
+          <stop offset="50%" stopColor="#f5f5f4" />
+          <stop offset="100%" stopColor="#78716c" />
+        </linearGradient>
       </defs>
-      {/* vine curl */}
-      <path d="M66,16 C73,11 78,15 73,20 C68,25 75,27 70,32" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
-      {/* small leaf */}
-      <ellipse cx="63" cy="12" rx="9" ry="5.5" fill="#16a34a" transform="rotate(-24 63 12)" />
-      {/* stem */}
-      <path d="M45,28 Q43,16 47,9 Q50,7 53,9 Q56,16 55,28 Z" fill="#78350f" />
-      {/* pumpkin body */}
-      <path d="M50,30 C31,20 15,34 15,56 C15,77 31,91 50,91 C69,91 85,77 85,56 C85,34 69,20 50,30 Z" fill={`url(#${id})`} stroke="#7c2d12" strokeWidth="2.5" />
-      {/* ridges */}
-      <path d="M34,33 C28,50 28,73 37,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-      <path d="M50,30 C50,50 50,72 50,91" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
-      <path d="M66,33 C72,50 72,73 63,89" fill="none" stroke="#9a3412" strokeWidth="2" opacity="0.55" />
+      {/* hanging loop */}
+      <path d="M44,13 C44,3 56,3 56,13" fill="none" stroke="#a8a29e" strokeWidth="3" strokeLinecap="round" />
+      {/* metal cap */}
+      <rect x="40" y="12" width="20" height="11" rx="2.5" fill={`url(#${id}-cap)`} stroke="#78716c" strokeWidth="1.5" />
+      {/* ball */}
+      <circle cx="50" cy="59" r="36" fill={`url(#${id})`} stroke={c.dark} strokeWidth="2.5" />
+      {/* decorative band */}
+      <path d="M15,57 Q50,70 85,57" fill="none" stroke={c.band} strokeWidth="5" strokeLinecap="round" opacity="0.9" />
+      <circle cx="32" cy="63" r="2.6" fill="white" opacity="0.85" />
+      <circle cx="50" cy="65.5" r="2.6" fill="white" opacity="0.85" />
+      <circle cx="68" cy="63" r="2.6" fill="white" opacity="0.85" />
       {/* shine */}
-      <ellipse cx="33" cy="47" rx="8" ry="12" fill="white" opacity="0.28" />
+      <ellipse cx="35" cy="42" rx="8" ry="12" fill="white" opacity="0.35" transform="rotate(-25 35 42)" />
+    </svg>
+  );
+}
+
+function GarlandSvg({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 100 20" preserveAspectRatio="none">
+      {/* pine garland */}
+      <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#166534" strokeWidth="5" strokeLinecap="round" opacity="0.85" />
+      <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 3" opacity="0.8" />
+      {/* little lights */}
+      <circle className="garland-light" cx="12" cy="10" r="2.2" fill="#fbbf24" />
+      <circle className="garland-light" cx="30" cy="11" r="2.2" fill="#ef4444" style={{ animationDelay: "400ms" }} />
+      <circle className="garland-light" cx="50" cy="12" r="2.2" fill="#60a5fa" style={{ animationDelay: "800ms" }} />
+      <circle className="garland-light" cx="70" cy="10" r="2.2" fill="#fbbf24" style={{ animationDelay: "1200ms" }} />
+      <circle className="garland-light" cx="88" cy="12" r="2.2" fill="#ef4444" style={{ animationDelay: "1600ms" }} />
     </svg>
   );
 }
@@ -109,17 +138,20 @@ export default function NavBar() {
               .patch-pumpkin-mobile.small  { left: 0px;   width: 11px; height: 11px; animation: pumpkinPatchPop 0.65s 300ms both; }
               .patch-pumpkin-mobile.medium { left: 11px;  width: 15px; height: 15px; animation: pumpkinPatchPop 0.65s 520ms both; }
               .patch-pumpkin-mobile.large  { left: 24px;  width: 20px; height: 20px; animation: pumpkinPatchPop 0.65s 740ms both; }
+              @keyframes garlandTwinkle {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.35; }
+              }
+              .garland-light { animation: garlandTwinkle 2s ease-in-out infinite; }
               @media (prefers-reduced-motion: reduce) {
-                .patch-pumpkin-mobile, .patch-vine-mobile { animation: none !important; opacity: 1 !important; transform: none !important; }
+                .patch-pumpkin-mobile, .patch-vine-mobile, .garland-light { animation: none !important; opacity: 1 !important; transform: none !important; }
               }
             `}</style>
             <div className="patch-wrap-mobile" aria-hidden="true">
-              <svg className="patch-vine-mobile" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
-              </svg>
-              <div className="patch-pumpkin-mobile small"><PumpkinIcon id="pumpkinPatchSmallMobile" /></div>
-              <div className="patch-pumpkin-mobile medium"><PumpkinIcon id="pumpkinPatchMediumMobile" /></div>
-              <div className="patch-pumpkin-mobile large"><PumpkinIcon id="pumpkinPatchLargeMobile" /></div>
+              <GarlandSvg className="patch-vine-mobile" />
+              <div className="patch-pumpkin-mobile small"><OrnamentIcon id="ornamentSmallMobile" color="gold" /></div>
+              <div className="patch-pumpkin-mobile medium"><OrnamentIcon id="ornamentMediumMobile" color="green" /></div>
+              <div className="patch-pumpkin-mobile large"><OrnamentIcon id="ornamentLargeMobile" color="red" /></div>
             </div>
             <Link href="/" onClick={() => setMenuOpen(false)} className="inline-block transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]">
               <Image
@@ -230,17 +262,20 @@ export default function NavBar() {
               .patch-pumpkin.small  { left: 0px;   width: 17px; height: 17px; animation: pumpkinPatchPopDesktop 0.65s 300ms both; }
               .patch-pumpkin.medium { left: 16px;  width: 23px; height: 23px; animation: pumpkinPatchPopDesktop 0.65s 520ms both; }
               .patch-pumpkin.large  { left: 36px;  width: 30px; height: 30px; animation: pumpkinPatchPopDesktop 0.65s 740ms both; }
+              @keyframes garlandTwinkle {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.35; }
+              }
+              .garland-light { animation: garlandTwinkle 2s ease-in-out infinite; }
               @media (prefers-reduced-motion: reduce) {
-                .patch-pumpkin, .patch-vine { animation: none !important; opacity: 1 !important; transform: none !important; }
+                .patch-pumpkin, .patch-vine, .garland-light { animation: none !important; opacity: 1 !important; transform: none !important; }
               }
             `}</style>
             <div className="patch-wrap" aria-hidden="true">
-              <svg className="patch-vine" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M2,14 Q20,6 38,13 T74,10 T98,14" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
-              </svg>
-              <div className="patch-pumpkin small"><PumpkinIcon id="pumpkinPatchSmallDesktop" /></div>
-              <div className="patch-pumpkin medium"><PumpkinIcon id="pumpkinPatchMediumDesktop" /></div>
-              <div className="patch-pumpkin large"><PumpkinIcon id="pumpkinPatchLargeDesktop" /></div>
+              <GarlandSvg className="patch-vine" />
+              <div className="patch-pumpkin small"><OrnamentIcon id="ornamentSmallDesktop" color="gold" /></div>
+              <div className="patch-pumpkin medium"><OrnamentIcon id="ornamentMediumDesktop" color="green" /></div>
+              <div className="patch-pumpkin large"><OrnamentIcon id="ornamentLargeDesktop" color="red" /></div>
             </div>
             <Link href="/" className="inline-flex flex-col transition-transform duration-300 ease-out hover:scale-[1.03] active:scale-[0.98]">
               <Image
